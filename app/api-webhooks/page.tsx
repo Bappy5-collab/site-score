@@ -277,7 +277,7 @@ export default function APIWebhooksPage() {
         </Box>
 
         <Snackbar open={!!toast} autoHideDuration={5000} onClose={() => setToast(null)} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
-          {toast ? <Alert severity={toast.severity} onClose={() => setToast(null)}>{toast.message}</Alert> : null}
+          {toast ? <Alert severity={toast.severity} onClose={() => setToast(null)}>{toast.message}</Alert> : undefined}
         </Snackbar>
       </Layout>
     </ProtectedRoute>

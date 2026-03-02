@@ -328,19 +328,23 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
                     </ListItemIcon>
                     <AnimatePresence>
                       {(!collapsed || isMobile) && (
-                        <ListItemText
+                        <Box
                           component={motion.div}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -10 }}
                           transition={{ duration: 0.2 }}
-                          primary={item.text}
-                          primaryTypographyProps={{
-                            fontWeight: active ? 600 : 500,
-                            fontSize: '0.875rem',
-                            color: active ? '#F1F5F9' : '#94A3B8',
-                          }}
-                        />
+                          sx={{ flex: 1, minWidth: 0 }}
+                        >
+                          <ListItemText
+                            primary={item.text}
+                            primaryTypographyProps={{
+                              fontWeight: active ? 600 : 500,
+                              fontSize: '0.875rem',
+                              color: active ? '#F1F5F9' : '#94A3B8',
+                            }}
+                          />
+                        </Box>
                       )}
                     </AnimatePresence>
                   </ListItemButton>
@@ -382,15 +386,19 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
                 </ListItemIcon>
                 <AnimatePresence>
                   {(!collapsed || isMobile) && (
-                    <ListItemText
+                    <Box
                       component={motion.div}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -10 }}
                       transition={{ duration: 0.2 }}
-                      primary="Logout"
-                      primaryTypographyProps={{ fontWeight: 600, fontSize: '0.875rem', color: '#F87171' }}
-                    />
+                      sx={{ flex: 1, minWidth: 0 }}
+                    >
+                      <ListItemText
+                        primary="Logout"
+                        primaryTypographyProps={{ fontWeight: 600, fontSize: '0.875rem', color: '#F87171' }}
+                      />
+                    </Box>
                   )}
                 </AnimatePresence>
               </ListItemButton>

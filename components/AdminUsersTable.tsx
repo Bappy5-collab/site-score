@@ -94,13 +94,13 @@ const AdminUsersTable: React.FC = () => {
           rows={users}
           columns={columns}
           paginationMode="server"
-          page={page}
-          pageSize={10}
+          paginationModel={{ page, pageSize: 10 }}
           rowCount={total}
           onPaginationModelChange={(model) => {
             setPage(model.page);
             fetchUsers(model.page);
           }}
+          pageSizeOptions={[10]}
           loading={loading}
         />
       </div>

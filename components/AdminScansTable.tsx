@@ -120,13 +120,13 @@ const AdminScansTable: React.FC = () => {
         rows={scans}
         columns={columns}
         paginationMode="server"
-        page={page}
-        pageSize={10}
+        paginationModel={{ page, pageSize: 10 }}
         rowCount={total}
         onPaginationModelChange={(model) => {
           setPage(model.page);
           fetchScans(model.page);
         }}
+        pageSizeOptions={[10]}
         loading={loading}
       />
     </div>

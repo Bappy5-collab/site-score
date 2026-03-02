@@ -167,13 +167,12 @@ const AnalyzerPage = () => {
               sx={{
                 p: 3,
                 mb: 2,
-                mx: 2,
+                mx: 'auto',
+                maxWidth: 900,
                 background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
                 borderRadius: '24px',
-                maxWidth: 900,
-                mx: 'auto',
               }}
             >
               <Grid container spacing={2} alignItems="center">
