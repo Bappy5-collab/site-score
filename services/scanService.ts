@@ -1,5 +1,40 @@
 import api from './api';
 
+// ── Core Web Vitals ──────────────────────────────────────────────────────────
+export interface CoreWebVitals {
+  lcp: number | null;   // ms  — Largest Contentful Paint
+  cls: number | null;   // 0–1 — Cumulative Layout Shift
+  inp: number | null;   // ms  — Interaction to Next Paint
+}
+
+export interface LighthouseMetrics {
+  fcp: number | null;         // ms  — First Contentful Paint
+  tti: number | null;         // ms  — Time to Interactive
+  speedIndex: number | null;  // ms  — Speed Index
+  tbt: number | null;         // ms  — Total Blocking Time
+}
+
+export interface LighthouseDisplayValues {
+  lcp: string | null;
+  cls: string | null;
+  inp: string | null;
+  fcp: string | null;
+  tti: string | null;
+  speedIndex: string | null;
+  tbt: string | null;
+}
+
+export interface LighthouseResult {
+  lighthouseScore: number;
+  deviceType: 'desktop' | 'mobile';
+  coreWebVitals: CoreWebVitals;
+  metrics: LighthouseMetrics;
+  displayValues: LighthouseDisplayValues;
+  lighthouseIssues: string[];
+  auditedAt: string;
+}
+
+// ── Scan ─────────────────────────────────────────────────────────────────────
 export interface Scan {
   _id: string;
   url: string;
@@ -17,6 +52,13 @@ export interface Scan {
   schedule?: 'none' | 'daily' | 'weekly' | 'monthly';
   nextScanDate?: string | null;
   createdAt: string;
+  // Lighthouse fields (optional — populated after separate audit)
+  lighthouseScore?: number | null;
+  lighthouseDeviceType?: 'desktop' | 'mobile' | null;
+  coreWebVitals?: CoreWebVitals;
+  lighthouseMetrics?: LighthouseMetrics;
+  lighthouseDisplayValues?: LighthouseDisplayValues;
+  lighthouseAuditedAt?: string | null;
 }
 
 export interface CreateScanData {
@@ -65,6 +107,24 @@ export const scanService = {
 
   captureScreenshot: async (url: string, scanId?: string): Promise<{ screenshotUrl: string }> => {
     const response = await api.post<{ screenshotUrl: string }>('/screenshot', { url, scanId });
+    return response.data;
+  },
+
+  runLighthouseAudit: async (
+    url: string,
+    deviceType: 'desktop' | 'mobile',
+    scanId?: string
+  ): Promise<LighthouseResult> => {
+    const response = await api.post<LighthouseResult>('/scan/lighthouse', {
+      url,
+      deviceType,
+      scanId,
+    });
+    return response.data;
+  },
+
+  getScanById: async (scanId: string): Promise<Scan> => {
+    const response = await api.get<Scan>(`/scan/${scanId}`);
     return response.data;
   },
 };

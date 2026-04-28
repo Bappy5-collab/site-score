@@ -20,12 +20,13 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import SearchIcon from '@mui/icons-material/Search';
-import { scanService, Scan } from '@/services/scanService';
+import { scanService, Scan, LighthouseResult } from '@/services/scanService';
 import { aiService } from '@/services/aiService';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Layout from '@/components/Layout';
 import PremiumCard from '@/components/PremiumCard';
 import ChatPanel from '@/components/ChatPanel';
+import LighthousePanel from '@/components/LighthousePanel';
 import SpeedIcon from '@mui/icons-material/Speed';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import SecurityIcon from '@mui/icons-material/Security';
@@ -89,6 +90,7 @@ const AnalyzerPage = () => {
   const [capturingScreenshot, setCapturingScreenshot] = useState(false);
   const [generatingReport, setGeneratingReport] = useState(false);
   const [generatingSuggestions, setGeneratingSuggestions] = useState(false);
+  const [lighthouseResult, setLighthouseResult] = useState<LighthouseResult | null>(null);
 
   const handleAnalyze = async () => {
     if (!url.trim()) {
@@ -99,6 +101,7 @@ const AnalyzerPage = () => {
     setError('');
     setLoading(true);
     setScanResult(null);
+    setLighthouseResult(null);
 
     try {
       const result = await scanService.createScan({ url: url.trim() });
@@ -277,7 +280,7 @@ const AnalyzerPage = () => {
                     <PremiumCard
                       title="Performance Score"
                       value={scanResult.performanceScore}
-                      subtitle="/100"
+                      subtitle={lighthouseResult ? '(Lighthouse-weighted)' : '/100'}
                       progress={scanResult.performanceScore}
                       icon={<SpeedIcon />}
                       color="primary"
@@ -304,6 +307,29 @@ const AnalyzerPage = () => {
                     />
                   </Grid>
                 </Grid>
+
+                {/* ── Lighthouse Panel ─────────────────────────────── */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.15 }}
+                >
+                  <Box sx={{ mb: 3, maxWidth: 1200, mx: 'auto' }}>
+                    <LighthousePanel
+                      url={scanResult.url}
+                      scanId={scanResult._id}
+                      onAuditComplete={(result) => {
+                        setLighthouseResult(result);
+                        // Merge the weighted performance score into local state
+                        const basicScore = scanResult.performanceScore;
+                        const merged = Math.round(result.lighthouseScore * 0.7 + basicScore * 0.3);
+                        setScanResult((prev) =>
+                          prev ? { ...prev, performanceScore: merged } : prev
+                        );
+                      }}
+                    />
+                  </Box>
+                </motion.div>
 
                 <Grid container spacing={2} sx={{ mb: 3, maxWidth: 1200, mx: 'auto' }}>
                   <Grid item xs={12} lg={8}>
