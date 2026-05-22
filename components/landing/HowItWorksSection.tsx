@@ -2,6 +2,7 @@
 
 import { Box, Container, Typography, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
+import SectionHeading from './SectionHeading';
 import SearchIcon from '@mui/icons-material/Search';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -29,28 +30,12 @@ export default function HowItWorksSection() {
   return (
     <Box id="how-it-works" sx={{ py: { xs: 8, md: 12 }, position: 'relative' }}>
       <Container maxWidth="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ textAlign: 'center', marginBottom: 56 }}
-        >
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: '1.75rem', md: '2.5rem' },
-              fontWeight: 800,
-              color: '#F1F5F9',
-              letterSpacing: '-0.02em',
-              mb: 1,
-            }}
-          >
-            How it works
-          </Typography>
-          <Typography sx={{ color: '#94A3B8', fontSize: '1.1rem', maxWidth: 520, mx: 'auto' }}>
-            Three steps from data to growth.
-          </Typography>
-        </motion.div>
+        <SectionHeading
+          eyebrow="Process"
+          title="How it works"
+          subtitle="Three steps from data to growth."
+          marginBottom={56}
+        />
 
         <Grid container spacing={4} alignItems="center" justifyContent="center">
           {steps.map((step, index) => {

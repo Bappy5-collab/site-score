@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Box, Container, Typography, Grid, Card, Avatar } from '@mui/material';
 import { motion } from 'framer-motion';
+import SectionHeading from './SectionHeading';
 
 const stats = [
   { label: 'Growth actions completed', value: 125000, suffix: '+' },
@@ -69,28 +70,11 @@ export default function TestimonialsStatsSection() {
   return (
     <Box id="testimonials" sx={{ py: { xs: 8, md: 12 }, position: 'relative' }}>
       <Container maxWidth="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ textAlign: 'center', marginBottom: 48 }}
-        >
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: '1.75rem', md: '2.5rem' },
-              fontWeight: 800,
-              color: '#F1F5F9',
-              letterSpacing: '-0.02em',
-              mb: 1,
-            }}
-          >
-            Trusted by teams that ship
-          </Typography>
-          <Typography sx={{ color: '#94A3B8', fontSize: '1.1rem', maxWidth: 560, mx: 'auto' }}>
-            Numbers and words from people using the AI Growth OS.
-          </Typography>
-        </motion.div>
+        <SectionHeading
+          eyebrow="Testimonials"
+          title="Trusted by teams that ship"
+          subtitle="Numbers and words from people using the AI Growth OS."
+        />
 
         <Grid container spacing={4} sx={{ mb: 6 }}>
           {stats.map((stat, index) => (

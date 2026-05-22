@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { Box, Grid, Typography, Paper } from '@mui/material';
+import { useEffect, useState, ReactNode } from 'react';
+import { useRouter } from 'next/navigation';
+import { Box, Grid, Typography, Paper, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Layout from '@/components/Layout';
@@ -27,6 +28,11 @@ import AssessmentIcon from '@mui/icons-material/Assessment';
 import SpeedIcon from '@mui/icons-material/Speed';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import SecurityIcon from '@mui/icons-material/Security';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import HistoryIcon from '@mui/icons-material/History';
+import StorageIcon from '@mui/icons-material/Storage';
+import AddIcon from '@mui/icons-material/Add';
+import SearchIcon from '@mui/icons-material/Search';
 
 ChartJS.register(
   CategoryScale,
@@ -40,10 +46,45 @@ ChartJS.register(
   Filler
 );
 
+// Section header with a coloured icon accent
+const SectionTitle = ({ icon, children }: { icon: ReactNode; children: ReactNode }) => (
+  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, mb: 3 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 34,
+        height: 34,
+        borderRadius: '10px',
+        color: '#A78BFA',
+        background: 'rgba(139, 92, 246, 0.12)',
+        border: '1px solid rgba(139, 92, 246, 0.2)',
+      }}
+    >
+      {icon}
+    </Box>
+    <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
+      {children}
+    </Typography>
+  </Box>
+);
+
 const DashboardPage = () => {
+  const router = useRouter();
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [scans, setScans] = useState<Scan[]>([]);
   const [loading, setLoading] = useState(true);
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('user');
+      if (stored) setUserName(JSON.parse(stored).name || '');
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -148,19 +189,55 @@ const DashboardPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Typography
-              variant="h4"
+            <Box
               sx={{
-                fontWeight: 700,
+                display: 'flex',
+                alignItems: { xs: 'flex-start', sm: 'center' },
+                justifyContent: 'space-between',
+                flexDirection: { xs: 'column', sm: 'row' },
+                gap: 2,
                 mb: 3,
-                background: 'linear-gradient(135deg, #F1F5F9 0%, #94A3B8 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
               }}
             >
-              Dashboard
-            </Typography>
+              <Box>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: 700,
+                    background: 'linear-gradient(135deg, #F1F5F9 0%, #94A3B8 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  {userName ? `Welcome back, ${userName.split(' ')[0]}` : 'Dashboard'}
+                </Typography>
+                <Typography variant="body2" sx={{ color: '#64748B', mt: 0.5 }}>
+                  Here&apos;s how your websites are performing.
+                </Typography>
+              </Box>
+              <Button
+                variant="contained"
+                startIcon={<AddIcon />}
+                onClick={() => router.push('/analyzer')}
+                sx={{
+                  px: 3,
+                  py: 1.25,
+                  fontWeight: 700,
+                  textTransform: 'none',
+                  borderRadius: '12px',
+                  whiteSpace: 'nowrap',
+                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                  boxShadow: '0 4px 20px rgba(139, 92, 246, 0.4)',
+                  '&:hover': {
+                    background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
+                    boxShadow: '0 6px 28px rgba(139, 92, 246, 0.5)',
+                  },
+                }}
+              >
+                Analyze New Site
+              </Button>
+            </Box>
           </motion.div>
 
           {loading ? (
@@ -233,9 +310,7 @@ const DashboardPage = () => {
                         borderRadius: '20px',
                       }}
                     >
-                      <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: '#F1F5F9' }}>
-                        Score Trends
-                      </Typography>
+                      <SectionTitle icon={<ShowChartIcon />}>Score Trends</SectionTitle>
                       <Box sx={{ height: 300 }}>
                         <Line data={lineData} options={chartOptions} />
                       </Box>
@@ -258,9 +333,7 @@ const DashboardPage = () => {
                         borderRadius: '20px',
                       }}
                     >
-                      <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: '#F1F5F9' }}>
-                        Recent Scans
-                      </Typography>
+                      <SectionTitle icon={<HistoryIcon />}>Recent Scans</SectionTitle>
                       {scans.length > 0 ? (
                         <ScanTable scans={scans.slice(0, 5)} />
                       ) : (
@@ -315,15 +388,54 @@ const DashboardPage = () => {
                         borderRadius: '20px',
                       }}
                     >
-                      <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: '#F1F5F9' }}>
-                        All Scans
-                      </Typography>
+                      <SectionTitle icon={<StorageIcon />}>All Scans</SectionTitle>
                       {scans.length > 0 ? (
                         <ScanTable scans={scans} />
                       ) : (
-                        <Typography variant="body2" sx={{ color: '#94A3B8', textAlign: 'center', py: 4 }}>
-                          No scans yet. Start analyzing websites to see your scan history.
-                        </Typography>
+                        <Box sx={{ textAlign: 'center', py: 6 }}>
+                          <Box
+                            sx={{
+                              width: 64,
+                              height: 64,
+                              mx: 'auto',
+                              mb: 2,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              borderRadius: '18px',
+                              color: '#A78BFA',
+                              background: 'rgba(139, 92, 246, 0.12)',
+                              border: '1px solid rgba(139, 92, 246, 0.2)',
+                            }}
+                          >
+                            <SearchIcon sx={{ fontSize: 32 }} />
+                          </Box>
+                          <Typography variant="h6" sx={{ color: '#F1F5F9', fontWeight: 600, mb: 0.5 }}>
+                            No scans yet
+                          </Typography>
+                          <Typography variant="body2" sx={{ color: '#94A3B8', mb: 3 }}>
+                            Analyze your first website to see scores, trends and AI insights here.
+                          </Typography>
+                          <Button
+                            variant="contained"
+                            startIcon={<AddIcon />}
+                            onClick={() => router.push('/analyzer')}
+                            sx={{
+                              px: 3,
+                              py: 1.1,
+                              fontWeight: 700,
+                              textTransform: 'none',
+                              borderRadius: '12px',
+                              background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                              boxShadow: '0 4px 20px rgba(139, 92, 246, 0.4)',
+                              '&:hover': {
+                                background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
+                              },
+                            }}
+                          >
+                            Run your first scan
+                          </Button>
+                        </Box>
                       )}
                     </Paper>
                   </motion.div>

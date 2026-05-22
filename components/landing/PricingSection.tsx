@@ -2,6 +2,7 @@
 
 import { Box, Container, Typography, Grid, Card, Button } from '@mui/material';
 import { motion } from 'framer-motion';
+import SectionHeading from './SectionHeading';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import { useRouter } from 'next/navigation';
 
@@ -38,28 +39,11 @@ export default function PricingSection() {
   return (
     <Box id="pricing" sx={{ py: { xs: 8, md: 12 }, position: 'relative' }}>
       <Container maxWidth="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ textAlign: 'center', marginBottom: 48 }}
-        >
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: '1.75rem', md: '2.5rem' },
-              fontWeight: 800,
-              color: '#F1F5F9',
-              letterSpacing: '-0.02em',
-              mb: 1,
-            }}
-          >
-            Simple, transparent pricing
-          </Typography>
-          <Typography sx={{ color: '#94A3B8', fontSize: '1.1rem', maxWidth: 560, mx: 'auto' }}>
-            Start free. Upgrade when you need more scans and power.
-          </Typography>
-        </motion.div>
+        <SectionHeading
+          eyebrow="Pricing"
+          title="Simple, transparent pricing"
+          subtitle="Start free. Upgrade when you need more scans and power."
+        />
 
         <Grid container spacing={3} alignItems="stretch" justifyContent="center" sx={{ maxWidth: 1100, mx: 'auto' }}>
           {plans.map((plan, index) => (

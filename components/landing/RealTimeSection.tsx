@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Box, Container, Typography, Grid } from '@mui/material';
 import { motion } from 'framer-motion';
+import SectionHeading from './SectionHeading';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 
@@ -34,28 +35,11 @@ export default function RealTimeSection() {
   return (
     <Box sx={{ py: { xs: 8, md: 12 }, position: 'relative' }}>
       <Container maxWidth="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ textAlign: 'center', marginBottom: 48 }}
-        >
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: '1.75rem', md: '2.5rem' },
-              fontWeight: 800,
-              color: '#F1F5F9',
-              letterSpacing: '-0.02em',
-              mb: 1,
-            }}
-          >
-            Real-time & automation
-          </Typography>
-          <Typography sx={{ color: '#94A3B8', fontSize: '1.1rem', maxWidth: 560, mx: 'auto' }}>
-            Live notifications and score updates. No refresh needed.
-          </Typography>
-        </motion.div>
+        <SectionHeading
+          eyebrow="Live"
+          title="Real-time & automation"
+          subtitle="Live notifications and score updates. No refresh needed."
+        />
 
         <Grid container spacing={4} alignItems="center" justifyContent="center">
           <Grid item xs={12} md={6}>

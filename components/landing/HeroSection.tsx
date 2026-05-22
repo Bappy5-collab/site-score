@@ -5,7 +5,9 @@ import { Box, Container, Typography, Button } from '@mui/material';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import { useRouter } from 'next/navigation';
+import AnimatedHeroBackground from './AnimatedHeroBackground';
 
 export default function HeroSection() {
   const router = useRouter();
@@ -31,6 +33,9 @@ export default function HeroSection() {
 
   return (
     <Box sx={{ position: 'relative', overflow: 'hidden', pt: { xs: 6, md: 10 }, pb: { xs: 8, md: 12 } }}>
+      {/* AI / website themed animated background */}
+      <AnimatedHeroBackground />
+
       {/* Gradient orbs */}
       <Box
         component={motion.div}
@@ -66,6 +71,36 @@ export default function HeroSection() {
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
         <motion.div style={{ opacity: heroOpacity, y: heroY }}>
           <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}
+            >
+              <Box
+                component={motion.div}
+                whileHover={{ scale: 1.03 }}
+                sx={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 1,
+                  px: 2,
+                  py: 0.75,
+                  borderRadius: '9999px',
+                  background: 'rgba(139, 92, 246, 0.1)',
+                  border: '1px solid rgba(139, 92, 246, 0.25)',
+                  backdropFilter: 'blur(12px)',
+                }}
+              >
+                <AutoAwesomeIcon sx={{ fontSize: '1rem', color: '#A78BFA' }} />
+                <Typography
+                  variant="caption"
+                  sx={{ color: '#C4B5FD', fontWeight: 600, letterSpacing: '0.02em' }}
+                >
+                  AI growth copilot — now with real-time insights
+                </Typography>
+              </Box>
+            </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -141,7 +176,7 @@ export default function HeroSection() {
                 variant="outlined"
                 size="large"
                 startIcon={<PlayArrowIcon />}
-                onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => router.push('/demo')}
                 sx={{
                   px: 4,
                   py: 1.75,
@@ -157,8 +192,31 @@ export default function HeroSection() {
                   },
                 }}
               >
-                Watch Demo
+                View Demo
               </Button>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <Box
+                sx={{
+                  mt: 3,
+                  display: 'flex',
+                  gap: { xs: 1.5, sm: 2.5 },
+                  justifyContent: 'center',
+                  flexWrap: 'wrap',
+                  color: '#64748B',
+                  fontSize: '0.85rem',
+                }}
+              >
+                <span>✓ No credit card required</span>
+                <span style={{ opacity: 0.4 }}>•</span>
+                <span>✓ Free forever plan</span>
+                <span style={{ opacity: 0.4 }}>•</span>
+                <span>✓ 2-minute setup</span>
+              </Box>
             </motion.div>
           </Box>
 

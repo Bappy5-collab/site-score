@@ -39,6 +39,27 @@ export default function FinalCTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
+          <Box
+            sx={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 0.85,
+              px: 1.75,
+              py: 0.6,
+              mb: 2.5,
+              borderRadius: '9999px',
+              background: 'rgba(139, 92, 246, 0.1)',
+              border: '1px solid rgba(139, 92, 246, 0.22)',
+            }}
+          >
+            <Box sx={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg, #8B5CF6, #EC4899)' }} />
+            <Typography
+              variant="caption"
+              sx={{ color: '#C4B5FD', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', fontSize: '0.72rem' }}
+            >
+              Get Started
+            </Typography>
+          </Box>
           <Typography
             variant="h2"
             sx={{

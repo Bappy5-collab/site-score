@@ -2,6 +2,7 @@
 
 import { Box, Container, Typography, Grid, Card, CardContent } from '@mui/material';
 import { motion } from 'framer-motion';
+import SectionHeading from './SectionHeading';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import ScheduleIcon from '@mui/icons-material/Schedule';
@@ -40,28 +41,11 @@ export default function FeaturesSection() {
   return (
     <Box id="features" sx={{ py: { xs: 8, md: 12 }, position: 'relative' }}>
       <Container maxWidth="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ textAlign: 'center', marginBottom: 48 }}
-        >
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: '1.75rem', md: '2.5rem' },
-              fontWeight: 800,
-              color: '#F1F5F9',
-              letterSpacing: '-0.02em',
-              mb: 1,
-            }}
-          >
-            AI Growth OS — core features
-          </Typography>
-          <Typography sx={{ color: '#94A3B8', fontSize: '1.1rem', maxWidth: 600, mx: 'auto' }}>
-            From scans to actions to growth, all in one system.
-          </Typography>
-        </motion.div>
+        <SectionHeading
+          eyebrow="Features"
+          title="AI Growth OS — core features"
+          subtitle="From scans to actions to growth, all in one system."
+        />
 
         <Grid container spacing={3}>
           {features.map((item, index) => {

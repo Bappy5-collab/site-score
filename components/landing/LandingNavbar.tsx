@@ -109,6 +109,24 @@ export default function LandingNavbar() {
         )}
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexShrink: 0 }}>
+          {!isMobile && (
+            <Button
+              component={motion.button}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => router.push('/demo')}
+              sx={{
+                color: '#A78BFA',
+                fontWeight: 600,
+                fontSize: '0.9rem',
+                textTransform: 'none',
+                borderRadius: '12px',
+                '&:hover': { color: '#F1F5F9', background: 'rgba(139, 92, 246, 0.12)' },
+              }}
+            >
+              View Demo
+            </Button>
+          )}
           <Button
             component={motion.button}
             whileHover={{ scale: 1.03 }}

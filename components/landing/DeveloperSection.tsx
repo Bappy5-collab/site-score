@@ -2,6 +2,7 @@
 
 import { Box, Container, Typography, Button } from '@mui/material';
 import { motion } from 'framer-motion';
+import SectionHeading from './SectionHeading';
 import CodeIcon from '@mui/icons-material/Code';
 import { useRouter } from 'next/navigation';
 
@@ -20,28 +21,11 @@ export default function DeveloperSection() {
   return (
     <Box sx={{ py: { xs: 8, md: 12 }, position: 'relative' }}>
       <Container maxWidth="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{ textAlign: 'center', marginBottom: 48 }}
-        >
-          <Typography
-            variant="h2"
-            sx={{
-              fontSize: { xs: '1.75rem', md: '2.5rem' },
-              fontWeight: 800,
-              color: '#F1F5F9',
-              letterSpacing: '-0.02em',
-              mb: 1,
-            }}
-          >
-            API & Webhooks
-          </Typography>
-          <Typography sx={{ color: '#94A3B8', fontSize: '1.1rem', maxWidth: 560, mx: 'auto' }}>
-            Integrate scans and growth events into your stack. Secure keys, webhook delivery, and activity logs.
-          </Typography>
-        </motion.div>
+        <SectionHeading
+          eyebrow="Developers"
+          title="API & Webhooks"
+          subtitle="Integrate scans and growth events into your stack. Secure keys, webhook delivery, and activity logs."
+        />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
