@@ -710,7 +710,7 @@ const AnalyzerPage = () => {
                       </Typography>
                       <Box
                         component="img"
-                        src={`http://localhost:5000${scanResult.screenshotUrl}`}
+                        src={`${process.env.NEXT_PUBLIC_SOCKET_URL || 'http://localhost:5000'}${scanResult.screenshotUrl}`}
                         alt="Website screenshot"
                         sx={{
                           maxWidth: '100%',
