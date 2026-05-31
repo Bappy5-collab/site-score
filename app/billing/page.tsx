@@ -28,6 +28,7 @@ import { getSubscription, updateSubscription, type Subscription } from '@/servic
 
 const cardSx = {
   p: 3,
+  height: '100%',
   borderRadius: '20px',
   background: 'rgba(255, 255, 255, 0.03)',
   backdropFilter: 'blur(20px)',
@@ -145,8 +146,8 @@ export default function BillingPage() {
               </Box>
             ) : sub ? (
               <Grid container spacing={3}>
-                <Grid item xs={12} md={6}>
-                  <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>
+                <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
+                  <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} style={{ width: '100%' }}>
                     <Paper elevation={0} sx={cardSx}>
                       <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 2 }}>
                         Current plan
@@ -164,8 +165,8 @@ export default function BillingPage() {
                     </Paper>
                   </motion.div>
                 </Grid>
-                <Grid item xs={12} md={6}>
-                  <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+                <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
+                  <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} style={{ width: '100%' }}>
                     <Paper elevation={0} sx={cardSx}>
                       <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 2 }}>
                         Usage this period

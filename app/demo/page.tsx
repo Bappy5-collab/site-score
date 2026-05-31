@@ -130,7 +130,10 @@ const initialScans: DemoScan[] = [
 });
 
 const scoreColor = (v: number) => (v >= 80 ? '#22C55E' : v >= 60 ? '#F59E0B' : '#F43F5E');
-const fmtDate = (ts: number) => new Date(ts).toLocaleDateString();
+// Pin locale + UTC so server and client render the same string (avoids
+// React hydration mismatches from differing default locales/timezones).
+const fmtDate = (ts: number) =>
+  new Date(ts).toLocaleDateString('en-US', { timeZone: 'UTC' });
 
 const cardSx = {
   p: 3,

@@ -125,12 +125,13 @@ const ReportsPage = () => {
           ) : (
             <Grid container spacing={2}>
               {scans.map((scan) => (
-                <Grid item xs={12} md={6} lg={4} key={scan._id}>
+                <Grid item xs={12} md={6} lg={4} key={scan._id} sx={{ display: 'flex' }}>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     whileHover={{ y: -4, scale: 1.02 }}
                     transition={{ duration: 0.3 }}
+                    style={{ width: '100%' }}
                   >
                     <Paper
                       sx={{
