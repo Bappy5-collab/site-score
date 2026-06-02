@@ -51,8 +51,8 @@ export default function AboutPage() {
                     alignItems: 'flex-start',
                   }}
                 >
-                  <Box sx={{ width: 48, height: 48, borderRadius: '12px', background: 'rgba(139, 92, 246, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <Icon sx={{ color: '#8B5CF6', fontSize: 24 }} />
+                  <Box sx={{ width: 48, height: 48, borderRadius: '12px', background: 'rgba(249, 115, 22, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Icon sx={{ color: '#F97316', fontSize: 24 }} />
                   </Box>
                   <Box>
                     <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 0.5 }}>

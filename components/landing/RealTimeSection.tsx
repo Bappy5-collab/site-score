@@ -61,7 +61,7 @@ export default function RealTimeSection() {
                 }}
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                  <NotificationsActiveIcon sx={{ color: '#8B5CF6', fontSize: 24 }} />
+                  <NotificationsActiveIcon sx={{ color: '#F97316', fontSize: 24 }} />
                   <Typography variant="subtitle2" sx={{ color: '#94A3B8' }}>
                     Notifications
                   </Typography>
@@ -73,7 +73,7 @@ export default function RealTimeSection() {
                     animate={{
                       opacity: i === activeNotif ? 1 : 0.5,
                       scale: i === activeNotif ? 1 : 0.98,
-                      borderColor: i === activeNotif ? 'rgba(139, 92, 246, 0.3)' : 'rgba(255,255,255,0.06)',
+                      borderColor: i === activeNotif ? 'rgba(249, 115, 22, 0.3)' : 'rgba(255,255,255,0.06)',
                     }}
                     transition={{ duration: 0.3 }}
                     style={{ marginBottom: 8 }}
@@ -82,7 +82,7 @@ export default function RealTimeSection() {
                       sx={{
                         p: 2,
                         borderRadius: '14px',
-                        background: i === activeNotif ? 'rgba(139, 92, 246, 0.1)' : 'rgba(255,255,255,0.04)',
+                        background: i === activeNotif ? 'rgba(249, 115, 22, 0.1)' : 'rgba(255,255,255,0.04)',
                         border: '1px solid rgba(255,255,255,0.06)',
                       }}
                     >
@@ -107,13 +107,13 @@ export default function RealTimeSection() {
                   width: 200,
                   height: 200,
                   borderRadius: '24px',
-                  background: 'linear-gradient(145deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.15) 100%)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  background: 'linear-gradient(145deg, rgba(249, 115, 22, 0.2) 0%, rgba(234, 88, 12, 0.15) 100%)',
+                  border: '1px solid rgba(249, 115, 22, 0.3)',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: '0 16px 48px rgba(139, 92, 246, 0.2)',
+                  boxShadow: '0 16px 48px rgba(249, 115, 22, 0.2)',
                 }}
               >
                 <motion.div

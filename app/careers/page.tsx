@@ -54,7 +54,7 @@ export default function CareersPage() {
                   background: 'rgba(255, 255, 255, 0.03)',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
                   borderRadius: '16px',
-                  '&:hover': { borderColor: 'rgba(139, 92, 246, 0.25)' },
+                  '&:hover': { borderColor: 'rgba(249, 115, 22, 0.25)' },
                 }}
               >
                 <CardContent sx={{ p: 3, '&:last-child': { pb: 3 } }}>
@@ -75,11 +75,11 @@ export default function CareersPage() {
                       size="small"
                       sx={{
                         borderRadius: '10px',
-                        borderColor: 'rgba(139, 92, 246, 0.5)',
-                        color: '#8B5CF6',
+                        borderColor: 'rgba(249, 115, 22, 0.5)',
+                        color: '#F97316',
                         textTransform: 'none',
                         fontWeight: 600,
-                        '&:hover': { borderColor: 'rgba(139, 92, 246, 0.8)', background: 'rgba(139, 92, 246, 0.1)' },
+                        '&:hover': { borderColor: 'rgba(249, 115, 22, 0.8)', background: 'rgba(249, 115, 22, 0.1)' },
                       }}
                     >
                       Apply
@@ -109,8 +109,8 @@ export default function CareersPage() {
                     alignItems: 'flex-start',
                   }}
                 >
-                  <Box sx={{ width: 44, height: 44, borderRadius: '12px', background: 'rgba(139, 92, 246, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <Icon sx={{ color: '#8B5CF6', fontSize: 22 }} />
+                  <Box sx={{ width: 44, height: 44, borderRadius: '12px', background: 'rgba(249, 115, 22, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Icon sx={{ color: '#F97316', fontSize: 22 }} />
                   </Box>
                   <Box>
                     <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 0.5 }}>

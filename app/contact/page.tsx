@@ -37,7 +37,7 @@ export default function ContactPage() {
             }}
           >
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
-              <EmailIcon sx={{ color: '#8B5CF6' }} />
+              <EmailIcon sx={{ color: '#F97316' }} />
               <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
                 Email
               </Typography>
@@ -46,7 +46,7 @@ export default function ContactPage() {
               support@sitescore.ai — we typically respond within 24 hours.
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
-              <SupportIcon sx={{ color: '#8B5CF6' }} />
+              <SupportIcon sx={{ color: '#F97316' }} />
               <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
                 In-app help
               </Typography>
@@ -115,8 +115,8 @@ export default function ContactPage() {
                 borderRadius: '12px',
                 fontWeight: 600,
                 textTransform: 'none',
-                background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-                '&:hover': { background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)' },
+                background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+                '&:hover': { background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)' },
               }}
             >
               Send message

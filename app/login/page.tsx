@@ -13,6 +13,8 @@ import {
   InputAdornment,
 } from '@mui/material';
 import { motion } from 'framer-motion';
+import Logo from '@/components/Logo';
+import OAuthButtons from '@/components/OAuthButtons';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useAuth } from '@/context/AuthContext';
@@ -64,7 +66,7 @@ const LoginPage = () => {
           right: '-10%',
           width: 500,
           height: 500,
-          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(249, 115, 22, 0.35) 0%, transparent 70%)',
           borderRadius: '50%',
           filter: 'blur(60px)',
         }}
@@ -79,7 +81,7 @@ const LoginPage = () => {
           left: '-10%',
           width: 400,
           height: 400,
-          background: 'radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(249, 115, 22, 0.3) 0%, transparent 70%)',
           borderRadius: '50%',
           filter: 'blur(60px)',
         }}
@@ -94,27 +96,15 @@ const LoginPage = () => {
           <Box
             sx={{
               p: { xs: 3, sm: 4 },
-              borderRadius: '24px',
-              background: 'rgba(255, 255, 255, 0.03)',
+              borderRadius: '14px',
+              background: '#111827',
               backdropFilter: 'blur(24px)',
               border: '1px solid rgba(255, 255, 255, 0.08)',
               boxShadow: '0 24px 48px rgba(0, 0, 0, 0.2)',
             }}
           >
             <Box sx={{ textAlign: 'center', mb: 3 }}>
-              <Typography
-                variant="h4"
-                sx={{
-                  fontWeight: 800,
-                  letterSpacing: '-0.02em',
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                SiteScore AI
-              </Typography>
+              <Logo size={44} fontSize="1.6rem" sx={{ justifyContent: 'center', mb: 1 }} />
               <Typography sx={{ color: '#94A3B8', mt: 1, fontWeight: 500 }}>
                 Welcome back — sign in to continue
               </Typography>
@@ -164,15 +154,15 @@ const LoginPage = () => {
                     '& fieldset': { border: 'none' },
                     '&:hover': {
                       background: 'rgba(255, 255, 255, 0.06)',
-                      borderColor: 'rgba(139, 92, 246, 0.3)',
+                      borderColor: 'rgba(249, 115, 22, 0.3)',
                     },
                     '&.Mui-focused': {
-                      borderColor: 'rgba(139, 92, 246, 0.6)',
-                      boxShadow: '0 0 0 3px rgba(139, 92, 246, 0.15)',
+                      borderColor: 'rgba(249, 115, 22, 0.6)',
+                      boxShadow: '0 0 0 3px rgba(249, 115, 22, 0.15)',
                     },
                   },
                   '& .MuiInputLabel-root': { color: '#94A3B8' },
-                  '& .MuiInputLabel-root.Mui-focused': { color: '#8B5CF6' },
+                  '& .MuiInputLabel-root.Mui-focused': { color: '#F97316' },
                 }}
               />
               <TextField
@@ -202,15 +192,15 @@ const LoginPage = () => {
                     '& fieldset': { border: 'none' },
                     '&:hover': {
                       background: 'rgba(255, 255, 255, 0.06)',
-                      borderColor: 'rgba(139, 92, 246, 0.3)',
+                      borderColor: 'rgba(249, 115, 22, 0.3)',
                     },
                     '&.Mui-focused': {
-                      borderColor: 'rgba(139, 92, 246, 0.6)',
-                      boxShadow: '0 0 0 3px rgba(139, 92, 246, 0.15)',
+                      borderColor: 'rgba(249, 115, 22, 0.6)',
+                      boxShadow: '0 0 0 3px rgba(249, 115, 22, 0.15)',
                     },
                   },
                   '& .MuiInputLabel-root': { color: '#94A3B8' },
-                  '& .MuiInputLabel-root.Mui-focused': { color: '#8B5CF6' },
+                  '& .MuiInputLabel-root.Mui-focused': { color: '#F97316' },
                 }}
               />
 
@@ -228,20 +218,22 @@ const LoginPage = () => {
                   fontSize: '1rem',
                   fontWeight: 700,
                   textTransform: 'none',
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-                  boxShadow: '0 8px 24px rgba(139, 92, 246, 0.4)',
+                  background: '#EA580C',
+                  boxShadow: 'none',
                   '&:hover': {
-                    background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
-                    boxShadow: '0 12px 32px rgba(139, 92, 246, 0.5)',
+                    background: '#C2410C',
+                    boxShadow: 'none',
                   },
                   '&:disabled': {
-                    background: 'rgba(139, 92, 246, 0.4)',
+                    background: 'rgba(249, 115, 22, 0.4)',
                     color: 'rgba(255,255,255,0.7)',
                   },
                 }}
               >
                 {loading ? 'Signing in...' : 'Sign in'}
               </Button>
+
+              <OAuthButtons label="or sign in with" />
 
               <Typography sx={{ textAlign: 'center', mt: 3 }}>
                 <Link
@@ -254,7 +246,7 @@ const LoginPage = () => {
                   }}
                 >
                   Don&apos;t have an account?{' '}
-                  <Box component="span" sx={{ color: '#8B5CF6' }}>
+                  <Box component="span" sx={{ color: '#F97316' }}>
                     Sign up
                   </Box>
                 </Link>

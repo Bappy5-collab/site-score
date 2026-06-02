@@ -52,7 +52,7 @@ export default function DeveloperSection() {
                 gap: 1,
               }}
             >
-              <CodeIcon sx={{ fontSize: 20, color: '#8B5CF6' }} />
+              <CodeIcon sx={{ fontSize: 20, color: '#F97316' }} />
               <Typography variant="caption" sx={{ color: '#94A3B8' }}>
                 Example: scan + webhooks
               </Typography>
@@ -82,13 +82,13 @@ export default function DeveloperSection() {
               onClick={() => router.push('/signup')}
               sx={{
                 borderRadius: '14px',
-                borderColor: 'rgba(139, 92, 246, 0.5)',
-                color: '#8B5CF6',
+                borderColor: 'rgba(249, 115, 22, 0.5)',
+                color: '#F97316',
                 fontWeight: 600,
                 textTransform: 'none',
                 '&:hover': {
-                  borderColor: 'rgba(139, 92, 246, 0.8)',
-                  background: 'rgba(139, 92, 246, 0.1)',
+                  borderColor: 'rgba(249, 115, 22, 0.8)',
+                  background: 'rgba(249, 115, 22, 0.1)',
                 },
               }}
             >

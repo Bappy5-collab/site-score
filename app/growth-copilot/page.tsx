@@ -20,8 +20,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import { growthChatService, type GrowthChatMessage } from '@/services/growthService';
 
 const cardSx = {
-  borderRadius: '20px',
-  background: 'rgba(255, 255, 255, 0.03)',
+  borderRadius: '12px',
+  background: '#111827',
   backdropFilter: 'blur(20px)',
   border: '1px solid rgba(255, 255, 255, 0.08)',
   overflow: 'hidden',
@@ -85,14 +85,14 @@ export default function GrowthCopilotPage() {
                   width: 48,
                   height: 48,
                   borderRadius: '14px',
-                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%)',
+                  border: '1px solid rgba(249, 115, 22, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
               >
-                <SmartToyIcon sx={{ color: '#8B5CF6', fontSize: 28 }} />
+                <SmartToyIcon sx={{ color: '#F97316', fontSize: 28 }} />
               </Box>
               <Box>
                 <Typography variant="h5" sx={{ fontWeight: 700, color: '#F1F5F9' }}>
@@ -113,7 +113,7 @@ export default function GrowthCopilotPage() {
             <Paper elevation={0} sx={{ ...cardSx, flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
               {loading ? (
                 <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-                  <CircularProgress sx={{ color: '#8B5CF6' }} />
+                  <CircularProgress sx={{ color: '#F97316' }} />
                 </Box>
               ) : (
                 <>
@@ -138,7 +138,7 @@ export default function GrowthCopilotPage() {
                           sx={{
                             width: 36,
                             height: 36,
-                            bgcolor: m.role === 'user' ? 'rgba(139, 92, 246, 0.3)' : 'rgba(236, 72, 153, 0.3)',
+                            bgcolor: m.role === 'user' ? 'rgba(249, 115, 22, 0.3)' : 'rgba(249, 115, 22, 0.3)',
                           }}
                         >
                           {m.role === 'user' ? <PersonIcon fontSize="small" /> : <SmartToyIcon fontSize="small" />}
@@ -149,7 +149,7 @@ export default function GrowthCopilotPage() {
                             maxWidth: '85%',
                             p: 2,
                             borderRadius: '16px',
-                            bgcolor: m.role === 'user' ? 'rgba(139, 92, 246, 0.15)' : 'rgba(255,255,255,0.05)',
+                            bgcolor: m.role === 'user' ? 'rgba(249, 115, 22, 0.15)' : 'rgba(255,255,255,0.05)',
                             border: '1px solid rgba(255,255,255,0.06)',
                           }}
                         >
@@ -161,10 +161,10 @@ export default function GrowthCopilotPage() {
                     ))}
                     {sending && (
                       <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', mb: 2 }}>
-                        <Avatar sx={{ width: 36, height: 36, bgcolor: 'rgba(236, 72, 153, 0.3)' }}>
+                        <Avatar sx={{ width: 36, height: 36, bgcolor: 'rgba(249, 115, 22, 0.3)' }}>
                           <SmartToyIcon fontSize="small" />
                         </Avatar>
-                        <CircularProgress size={24} sx={{ color: '#8B5CF6' }} />
+                        <CircularProgress size={24} sx={{ color: '#F97316' }} />
                       </Box>
                     )}
                     <div ref={messagesEndRef} />
@@ -192,9 +192,9 @@ export default function GrowthCopilotPage() {
                         onClick={handleSend}
                         disabled={sending || !input.trim()}
                         sx={{
-                          bgcolor: 'rgba(139, 92, 246, 0.3)',
-                          color: '#8B5CF6',
-                          '&:hover': { bgcolor: 'rgba(139, 92, 246, 0.5)' },
+                          bgcolor: 'rgba(249, 115, 22, 0.3)',
+                          color: '#F97316',
+                          '&:hover': { bgcolor: 'rgba(249, 115, 22, 0.5)' },
                           '&:disabled': { color: '#64748B' },
                         }}
                       >

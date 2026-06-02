@@ -211,8 +211,8 @@ function DeviceButton({
       startIcon={icon}
       sx={{
         flex: 1,
-        background: active ? 'rgba(139,92,246,0.85)' : 'transparent',
-        border: `1px solid ${active ? 'rgba(139,92,246,0.7)' : 'rgba(139,92,246,0.35)'}`,
+        background: active ? 'rgba(249, 115, 22,0.85)' : 'transparent',
+        border: `1px solid ${active ? 'rgba(249, 115, 22,0.7)' : 'rgba(249, 115, 22,0.35)'}`,
         color: active ? '#fff' : '#94A3B8',
         fontWeight: 600,
         borderRadius: '10px',
@@ -220,8 +220,8 @@ function DeviceButton({
         px: { xs: 1, sm: 1.5 },
         minWidth: 0,
         '&:hover': {
-          background: 'rgba(139,92,246,0.5)',
-          borderColor: 'rgba(139,92,246,0.6)',
+          background: 'rgba(249, 115, 22,0.5)',
+          borderColor: 'rgba(249, 115, 22,0.6)',
         },
         '&.Mui-disabled': {
           opacity: 0.45,
@@ -272,7 +272,7 @@ export default function LighthousePanel({ url, scanId, onAuditComplete }: Props)
         background: 'rgba(255,255,255,0.03)',
         backdropFilter: 'blur(20px)',
         border: '1px solid rgba(255,255,255,0.08)',
-        borderRadius: '20px',
+        borderRadius: '12px',
       }}
     >
       {/* ── Header ─────────────────────────────────────────────────────────── */}
@@ -524,9 +524,9 @@ export default function LighthousePanel({ url, scanId, onAuditComplete }: Props)
                     label={result.deviceType === 'mobile' ? 'Mobile' : 'Desktop'}
                     size="small"
                     sx={{
-                      background: 'rgba(139,92,246,0.15)',
-                      border: '1px solid rgba(139,92,246,0.3)',
-                      color: '#A78BFA',
+                      background: 'rgba(249, 115, 22,0.15)',
+                      border: '1px solid rgba(249, 115, 22,0.3)',
+                      color: '#FB923C',
                       fontWeight: 600,
                       height: 22,
                     }}

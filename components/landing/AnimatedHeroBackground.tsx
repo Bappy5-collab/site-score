@@ -88,7 +88,7 @@ export default function AnimatedHeroBackground() {
           const dist = Math.hypot(dx, dy);
           if (dist < LINK_DIST) {
             const alpha = (1 - dist / LINK_DIST) * 0.5;
-            ctx.strokeStyle = `rgba(139, 92, 246, ${alpha})`;
+            ctx.strokeStyle = `rgba(249, 115, 22, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -140,7 +140,7 @@ export default function AnimatedHeroBackground() {
           position: 'absolute',
           inset: 0,
           backgroundImage:
-            'linear-gradient(rgba(139,92,246,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.06) 1px, transparent 1px)',
+            'linear-gradient(rgba(249, 115, 22,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(249, 115, 22,0.06) 1px, transparent 1px)',
           backgroundSize: '44px 44px',
           maskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%)',
           WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%)',
@@ -165,13 +165,13 @@ export default function AnimatedHeroBackground() {
             width: 50,
             height: 50,
             borderRadius: '15px',
-            background: 'rgba(139, 92, 246, 0.1)',
-            border: '1px solid rgba(139, 92, 246, 0.25)',
+            background: 'rgba(249, 115, 22, 0.1)',
+            border: '1px solid rgba(249, 115, 22, 0.25)',
             backdropFilter: 'blur(8px)',
-            boxShadow: '0 8px 24px rgba(139, 92, 246, 0.15)',
+            boxShadow: '0 8px 24px rgba(249, 115, 22, 0.15)',
           }}
         >
-          <Icon sx={{ color: '#A78BFA', fontSize: '1.4rem' }} />
+          <Icon sx={{ color: '#FB923C', fontSize: '1.4rem' }} />
         </Box>
       ))}
     </Box>

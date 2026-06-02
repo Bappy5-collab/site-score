@@ -96,24 +96,24 @@ const ReportsPage = () => {
             <Paper
               sx={{
                 p: 3,
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: '#111827',
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '20px',
+                borderRadius: '12px',
                 textAlign: 'center',
                 py: 8,
               }}
             >
-              <CircularProgress sx={{ color: '#8B5CF6' }} />
+              <CircularProgress sx={{ color: '#F97316' }} />
             </Paper>
           ) : scans.length === 0 ? (
             <Paper
               sx={{
                 p: 3,
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: '#111827',
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '20px',
+                borderRadius: '12px',
                 textAlign: 'center',
                 py: 8,
               }}
@@ -129,7 +129,7 @@ const ReportsPage = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    whileHover={{ y: -4, scale: 1.02 }}
+                    whileHover={{ y: -2 }}
                     transition={{ duration: 0.3 }}
                     style={{ width: '100%' }}
                   >
@@ -137,10 +137,10 @@ const ReportsPage = () => {
                       sx={{
                         p: 3,
                         height: '100%',
-                        background: 'rgba(255, 255, 255, 0.03)',
+                        background: '#111827',
                         backdropFilter: 'blur(20px)',
                         border: '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '20px',
+                        borderRadius: '12px',
                         display: 'flex',
                         flexDirection: 'column',
                       }}
@@ -160,9 +160,9 @@ const ReportsPage = () => {
                           label={`Performance: ${scan.performanceScore}`}
                           size="small"
                           sx={{
-                            background: 'rgba(139, 92, 246, 0.2)',
-                            color: '#8B5CF6',
-                            border: '1px solid rgba(139, 92, 246, 0.3)',
+                            background: 'rgba(249, 115, 22, 0.2)',
+                            color: '#F97316',
+                            border: '1px solid rgba(249, 115, 22, 0.3)',
                           }}
                         />
                         <Chip
@@ -211,16 +211,16 @@ const ReportsPage = () => {
                             onClick={() => handleExport(scan._id, 'json')}
                             disabled={exporting[scan._id] === 'json'}
                             sx={{
-                              background: 'rgba(139, 92, 246, 0.1)',
-                              border: '1px solid rgba(139, 92, 246, 0.3)',
-                              color: '#8B5CF6',
+                              background: 'rgba(249, 115, 22, 0.1)',
+                              border: '1px solid rgba(249, 115, 22, 0.3)',
+                              color: '#F97316',
                               '&:hover': {
-                                background: 'rgba(139, 92, 246, 0.2)',
+                                background: 'rgba(249, 115, 22, 0.2)',
                               },
                             }}
                           >
                             {exporting[scan._id] === 'json' ? (
-                              <CircularProgress size={20} sx={{ color: '#8B5CF6' }} />
+                              <CircularProgress size={20} sx={{ color: '#F97316' }} />
                             ) : (
                               <DescriptionIcon />
                             )}

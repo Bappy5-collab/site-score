@@ -3,6 +3,7 @@
 import { Box, Typography, Button, Toolbar, AppBar, Container, Grid, IconButton } from '@mui/material';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Logo from '@/components/Logo';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -59,22 +60,7 @@ export default function StaticPageLayout({ children }: StaticPageLayoutProps) {
       >
         <Toolbar sx={{ maxWidth: 1200, mx: 'auto', width: '100%', justifyContent: 'space-between', px: { xs: 2, sm: 3 }, py: 0.5, minHeight: 64 }}>
           <Link href="/landing" passHref style={{ textDecoration: 'none' }}>
-            <Typography
-              component={motion.span}
-              whileHover={{ scale: 1.02 }}
-              sx={{
-                fontWeight: 800,
-                letterSpacing: '-0.02em',
-                background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                fontSize: '1.25rem',
-                cursor: 'pointer',
-              }}
-            >
-              SiteScore AI
-            </Typography>
+            <Logo size={32} fontSize="1.2rem" sx={{ cursor: 'pointer' }} />
           </Link>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
             {navLinks.map((link) => (
@@ -103,10 +89,10 @@ export default function StaticPageLayout({ children }: StaticPageLayoutProps) {
                 component={Link}
                 href="/signup"
                 sx={{
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                  background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
                   fontWeight: 600,
                   textTransform: 'none',
-                  '&:hover': { background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)' },
+                  '&:hover': { background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)' },
                 }}
               >
                 Start Free
@@ -124,29 +110,18 @@ export default function StaticPageLayout({ children }: StaticPageLayoutProps) {
         <Container maxWidth="lg">
           <Grid container spacing={4}>
             <Grid item xs={12} md={4}>
-              <Typography
-                variant="h6"
-                sx={{
-                  fontWeight: 700,
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  mb: 2,
-                }}
-              >
-                SiteScore AI
-              </Typography>
+              <Logo size={32} fontSize="1.2rem" sx={{ mb: 2 }} />
               <Typography variant="body2" sx={{ color: '#94A3B8', mb: 2 }}>
                 AI Growth Operating System.
               </Typography>
               <Box sx={{ display: 'flex', gap: 0.5 }}>
-                <IconButton size="small" sx={{ color: '#94A3B8', '&:hover': { color: '#8B5CF6' } }}>
+                <IconButton size="small" sx={{ color: '#94A3B8', '&:hover': { color: '#F97316' } }}>
                   <TwitterIcon fontSize="small" />
                 </IconButton>
-                <IconButton size="small" sx={{ color: '#94A3B8', '&:hover': { color: '#8B5CF6' } }}>
+                <IconButton size="small" sx={{ color: '#94A3B8', '&:hover': { color: '#F97316' } }}>
                   <LinkedInIcon fontSize="small" />
                 </IconButton>
-                <IconButton size="small" sx={{ color: '#94A3B8', '&:hover': { color: '#8B5CF6' } }}>
+                <IconButton size="small" sx={{ color: '#94A3B8', '&:hover': { color: '#F97316' } }}>
                   <GitHubIcon fontSize="small" />
                 </IconButton>
               </Box>

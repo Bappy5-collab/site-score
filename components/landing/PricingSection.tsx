@@ -63,11 +63,11 @@ export default function PricingSection() {
                   borderRadius: '20px',
                   overflow: 'visible',
                   background: plan.recommended
-                    ? 'linear-gradient(180deg, rgba(139, 92, 246, 0.12) 0%, rgba(21, 25, 50, 0.98) 28%)'
+                    ? 'linear-gradient(180deg, rgba(249, 115, 22, 0.12) 0%, rgba(21, 25, 50, 0.98) 28%)'
                     : 'rgba(255, 255, 255, 0.03)',
                   backdropFilter: 'blur(24px)',
-                  border: plan.recommended ? '1px solid rgba(139, 92, 246, 0.4)' : '1px solid rgba(255, 255, 255, 0.08)',
-                  boxShadow: plan.recommended ? '0 0 0 1px rgba(139, 92, 246, 0.2), 0 24px 48px -12px rgba(0,0,0,0.4)' : 'none',
+                  border: plan.recommended ? '1px solid rgba(249, 115, 22, 0.4)' : '1px solid rgba(255, 255, 255, 0.08)',
+                  boxShadow: plan.recommended ? '0 0 0 1px rgba(249, 115, 22, 0.2), 0 24px 48px -12px rgba(0,0,0,0.4)' : 'none',
                 }}
               >
                 {plan.recommended && (
@@ -80,7 +80,7 @@ export default function PricingSection() {
                       px: 2,
                       py: 0.75,
                       borderRadius: '9999px',
-                      background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                      background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
                       fontSize: '0.75rem',
                       fontWeight: 700,
                       color: '#FFF',
@@ -101,7 +101,7 @@ export default function PricingSection() {
                       sx={{
                         fontSize: '2.75rem',
                         fontWeight: 800,
-                        background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                        background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',
@@ -128,7 +128,7 @@ export default function PricingSection() {
                           '&:not(:last-child)': { borderBottom: '1px solid rgba(255,255,255,0.04)' },
                         }}
                       >
-                        <CheckCircleRoundedIcon sx={{ fontSize: 20, color: plan.recommended ? '#8B5CF6' : '#64748B', flexShrink: 0 }} />
+                        <CheckCircleRoundedIcon sx={{ fontSize: 20, color: plan.recommended ? '#F97316' : '#64748B', flexShrink: 0 }} />
                         <Typography variant="body2" sx={{ color: '#94A3B8' }}>
                           {f}
                         </Typography>
@@ -150,19 +150,19 @@ export default function PricingSection() {
                       textTransform: 'none',
                       ...(plan.recommended
                         ? {
-                            background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-                            boxShadow: '0 8px 24px rgba(139, 92, 246, 0.4)',
+                            background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+                            boxShadow: '0 8px 24px rgba(249, 115, 22, 0.4)',
                             '&:hover': {
-                              background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
-                              boxShadow: '0 12px 32px rgba(139, 92, 246, 0.5)',
+                              background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)',
+                              boxShadow: '0 12px 32px rgba(249, 115, 22, 0.5)',
                             },
                           }
                         : {
                             borderColor: 'rgba(255, 255, 255, 0.15)',
                             color: '#F1F5F9',
                             '&:hover': {
-                              borderColor: 'rgba(139, 92, 246, 0.5)',
-                              background: 'rgba(139, 92, 246, 0.08)',
+                              borderColor: 'rgba(249, 115, 22, 0.5)',
+                              background: 'rgba(249, 115, 22, 0.08)',
                             },
                           }),
                     }}

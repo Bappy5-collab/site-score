@@ -73,15 +73,15 @@ const AIChatPage = () => {
                   sx={{
                     minWidth: 300,
                     '& .MuiOutlinedInput-root': {
-                      background: 'rgba(255, 255, 255, 0.03)',
+                      background: '#111827',
                       border: '1px solid rgba(255, 255, 255, 0.08)',
                       borderRadius: '12px',
                       color: '#F1F5F9',
                       '&:hover': {
-                        borderColor: 'rgba(139, 92, 246, 0.3)',
+                        borderColor: 'rgba(249, 115, 22, 0.3)',
                       },
                       '&.Mui-focused': {
-                        borderColor: '#8B5CF6',
+                        borderColor: '#F97316',
                       },
                       '& fieldset': {
                         border: 'none',
@@ -121,10 +121,10 @@ const AIChatPage = () => {
               <Paper
                 sx={{
                   p: 3,
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  background: '#111827',
                   backdropFilter: 'blur(20px)',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
-                  borderRadius: '20px',
+                  borderRadius: '12px',
                   textAlign: 'center',
                   py: 8,
                 }}
@@ -137,10 +137,10 @@ const AIChatPage = () => {
               <Paper
                 sx={{
                   p: 3,
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  background: '#111827',
                   backdropFilter: 'blur(20px)',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
-                  borderRadius: '20px',
+                  borderRadius: '12px',
                   textAlign: 'center',
                   py: 8,
                 }}

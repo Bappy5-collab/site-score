@@ -6,6 +6,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { useRouter } from 'next/navigation';
+import Logo from '@/components/Logo';
 
 const productLinks = ['Features', 'Pricing', 'API', 'Changelog'];
 const companyLinks = ['About', 'Contact', 'Careers'];
@@ -29,30 +30,18 @@ export default function LandingFooter() {
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 700,
-                background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                mb: 2,
-              }}
-            >
-              SiteScore AI
-            </Typography>
+            <Logo size={34} fontSize="1.25rem" sx={{ mb: 2 }} />
             <Typography variant="body2" sx={{ color: '#94A3B8', mb: 2, maxWidth: 280 }}>
               AI Growth Operating System. Turn scan data into a prioritized action plan and grow with real-time insights.
             </Typography>
             <Box sx={{ display: 'flex', gap: 1 }}>
-              <IconButton component={motion.button} whileHover={{ scale: 1.1 }} sx={{ color: '#94A3B8', '&:hover': { color: '#8B5CF6' } }}>
+              <IconButton component={motion.button} whileHover={{ scale: 1.1 }} sx={{ color: '#94A3B8', '&:hover': { color: '#F97316' } }}>
                 <TwitterIcon fontSize="small" />
               </IconButton>
-              <IconButton component={motion.button} whileHover={{ scale: 1.1 }} sx={{ color: '#94A3B8', '&:hover': { color: '#8B5CF6' } }}>
+              <IconButton component={motion.button} whileHover={{ scale: 1.1 }} sx={{ color: '#94A3B8', '&:hover': { color: '#F97316' } }}>
                 <LinkedInIcon fontSize="small" />
               </IconButton>
-              <IconButton component={motion.button} whileHover={{ scale: 1.1 }} sx={{ color: '#94A3B8', '&:hover': { color: '#8B5CF6' } }}>
+              <IconButton component={motion.button} whileHover={{ scale: 1.1 }} sx={{ color: '#94A3B8', '&:hover': { color: '#F97316' } }}>
                 <GitHubIcon fontSize="small" />
               </IconButton>
             </Box>
@@ -74,7 +63,7 @@ export default function LandingFooter() {
                     background: 'none',
                     border: 'none',
                     cursor: 'pointer',
-                    '&:hover': { color: '#8B5CF6' },
+                    '&:hover': { color: '#F97316' },
                   }}
                 >
                   {label}
@@ -92,7 +81,7 @@ export default function LandingFooter() {
                   key={label}
                   component="a"
                   href="#"
-                  sx={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none', '&:hover': { color: '#8B5CF6' } }}
+                  sx={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none', '&:hover': { color: '#F97316' } }}
                 >
                   {label}
                 </Typography>
@@ -109,7 +98,7 @@ export default function LandingFooter() {
                   key={label}
                   component="a"
                   href="#"
-                  sx={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none', '&:hover': { color: '#8B5CF6' } }}
+                  sx={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none', '&:hover': { color: '#F97316' } }}
                 >
                   {label}
                 </Typography>

@@ -22,6 +22,8 @@ import {
   Tooltip as ChartTooltip,
   Legend,
   Filler,
+  ScriptableContext,
+  Plugin,
 } from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
 import AssessmentIcon from '@mui/icons-material/Assessment';
@@ -57,9 +59,9 @@ const SectionTitle = ({ icon, children }: { icon: ReactNode; children: ReactNode
         width: 34,
         height: 34,
         borderRadius: '10px',
-        color: '#A78BFA',
-        background: 'rgba(139, 92, 246, 0.12)',
-        border: '1px solid rgba(139, 92, 246, 0.2)',
+        color: '#FB923C',
+        background: 'rgba(249, 115, 22, 0.12)',
+        border: '1px solid rgba(249, 115, 22, 0.2)',
       }}
     >
       {icon}
@@ -105,47 +107,106 @@ const DashboardPage = () => {
     fetchData();
   }, []);
 
+  const makeFill = (rgb: string) => (ctx: ScriptableContext<'line'>) => {
+    const { chart } = ctx;
+    const { ctx: canvas, chartArea } = chart;
+    if (!chartArea) return `rgba(${rgb}, 0)`;
+    const g = canvas.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+    g.addColorStop(0, `rgba(${rgb}, 0.3)`);
+    g.addColorStop(0.5, `rgba(${rgb}, 0.08)`);
+    g.addColorStop(1, `rgba(${rgb}, 0)`);
+    return g;
+  };
+
+  const makeStroke = (from: string, to: string) => (ctx: ScriptableContext<'line'>) => {
+    const { chart } = ctx;
+    const { ctx: canvas, chartArea } = chart;
+    if (!chartArea) return from;
+    const g = canvas.createLinearGradient(chartArea.left, 0, chartArea.right, 0);
+    g.addColorStop(0, from);
+    g.addColorStop(1, to);
+    return g;
+  };
+
+  const seriesRgb = ['249, 115, 22', '34, 197, 94', '245, 158, 11'];
+
+  const glowPlugin: Plugin<'line'> = {
+    id: 'glow-trends',
+    beforeDatasetDraw(chart, args) {
+      const { ctx } = chart;
+      ctx.save();
+      ctx.shadowColor = `rgba(${seriesRgb[args.index] || '249, 115, 22'}, 0.4)`;
+      ctx.shadowBlur = 12;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 4;
+    },
+    afterDatasetDraw(chart) {
+      chart.ctx.restore();
+    },
+  };
+
+  const crosshairPlugin: Plugin<'line'> = {
+    id: 'crosshair-trends',
+    afterDraw(chart) {
+      const active = chart.getActiveElements();
+      if (!active.length) return;
+      const { ctx, chartArea } = chart;
+      const x = active[0].element.x;
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(x, chartArea.top);
+      ctx.lineTo(x, chartArea.bottom);
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      ctx.strokeStyle = 'rgba(148, 163, 184, 0.35)';
+      ctx.stroke();
+      ctx.restore();
+    },
+  };
+
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    animation: { duration: 1100, easing: 'easeOutQuart' as const },
+    interaction: { mode: 'index' as const, intersect: false },
     plugins: {
       legend: {
         display: true,
         position: 'top' as const,
+        align: 'end' as const,
         labels: {
           color: '#94A3B8',
           usePointStyle: true,
-          padding: 15,
+          pointStyle: 'circle' as const,
+          boxWidth: 8,
+          boxHeight: 8,
+          padding: 18,
+          font: { size: 12 },
         },
       },
       tooltip: {
-        backgroundColor: 'rgba(15, 23, 42, 0.95)',
-        titleColor: '#F1F5F9',
-        bodyColor: '#94A3B8',
-        borderColor: 'rgba(255, 255, 255, 0.08)',
+        backgroundColor: 'rgba(14, 20, 34, 0.95)',
+        titleColor: '#F8FAFC',
+        bodyColor: '#CBD5E1',
+        borderColor: 'rgba(255, 255, 255, 0.1)',
         borderWidth: 1,
         padding: 12,
-        cornerRadius: 8,
+        cornerRadius: 10,
+        usePointStyle: true,
+        titleFont: { weight: 'bold' as const },
       },
     },
     scales: {
       x: {
-        grid: {
-          color: 'rgba(255, 255, 255, 0.05)',
-        },
-        ticks: {
-          color: '#94A3B8',
-        },
+        grid: { display: false, drawBorder: false } as any,
+        ticks: { color: '#64748B', maxTicksLimit: 7, font: { size: 11 } },
       },
       y: {
-        grid: {
-          color: 'rgba(255, 255, 255, 0.05)',
-        },
-        ticks: {
-          color: '#94A3B8',
-        },
         min: 0,
         max: 100,
+        border: { display: false } as any,
+        grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false } as any,
+        ticks: { color: '#64748B', stepSize: 25, font: { size: 11 }, padding: 8 },
       },
     },
   };
@@ -154,28 +215,43 @@ const DashboardPage = () => {
     labels: scans.slice(0, 10).reverse().map((scan) => new Date(scan.createdAt).toLocaleDateString()),
     datasets: [
       {
-        label: 'Performance Score',
+        label: 'Performance',
         data: scans.slice(0, 10).reverse().map((scan) => scan.performanceScore),
-        borderColor: '#8B5CF6',
-        backgroundColor: 'rgba(139, 92, 246, 0.1)',
-        tension: 0.4,
+        borderColor: makeStroke('#F97316', '#FDBA74'),
+        backgroundColor: makeFill('249, 115, 22'),
+        tension: 0.45,
         fill: true,
+        pointRadius: 0,
+        pointHoverRadius: 5,
+        pointHoverBorderColor: '#0E1422',
+        pointHoverBorderWidth: 2,
+        borderWidth: 2.5,
       },
       {
-        label: 'SEO Score',
+        label: 'SEO',
         data: scans.slice(0, 10).reverse().map((scan) => scan.seoScore),
-        borderColor: '#22C55E',
-        backgroundColor: 'rgba(34, 197, 94, 0.1)',
-        tension: 0.4,
+        borderColor: makeStroke('#22C55E', '#86EFAC'),
+        backgroundColor: makeFill('34, 197, 94'),
+        tension: 0.45,
         fill: true,
+        pointRadius: 0,
+        pointHoverRadius: 5,
+        pointHoverBorderColor: '#0E1422',
+        pointHoverBorderWidth: 2,
+        borderWidth: 2.5,
       },
       {
-        label: 'Security Score',
+        label: 'Security',
         data: scans.slice(0, 10).reverse().map((scan) => scan.securityScore),
-        borderColor: '#F59E0B',
-        backgroundColor: 'rgba(245, 158, 11, 0.1)',
-        tension: 0.4,
+        borderColor: makeStroke('#F59E0B', '#FCD34D'),
+        backgroundColor: makeFill('245, 158, 11'),
+        tension: 0.45,
         fill: true,
+        pointRadius: 0,
+        pointHoverRadius: 5,
+        pointHoverBorderColor: '#0E1422',
+        pointHoverBorderWidth: 2,
+        borderWidth: 2.5,
       },
     ],
   };
@@ -202,17 +278,11 @@ const DashboardPage = () => {
               <Box>
                 <Typography
                   variant="h4"
-                  sx={{
-                    fontWeight: 700,
-                    background: 'linear-gradient(135deg, #F1F5F9 0%, #94A3B8 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
+                  sx={{ fontWeight: 700, color: '#F8FAFC', letterSpacing: '-0.02em' }}
                 >
                   {userName ? `Welcome back, ${userName.split(' ')[0]}` : 'Dashboard'}
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#64748B', mt: 0.5 }}>
+                <Typography variant="body2" sx={{ color: '#94A3B8', mt: 0.5 }}>
                   Here&apos;s how your websites are performing.
                 </Typography>
               </Box>
@@ -227,11 +297,11 @@ const DashboardPage = () => {
                   textTransform: 'none',
                   borderRadius: '12px',
                   whiteSpace: 'nowrap',
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-                  boxShadow: '0 4px 20px rgba(139, 92, 246, 0.4)',
+                  background: '#EA580C',
+                  boxShadow: 'none',
                   '&:hover': {
-                    background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
-                    boxShadow: '0 6px 28px rgba(139, 92, 246, 0.5)',
+                    background: '#C2410C',
+                    boxShadow: 'none',
                   },
                 }}
               >
@@ -302,17 +372,16 @@ const DashboardPage = () => {
                   >
                     <Paper
                       sx={{
-                        p: 3,
+                        p: { xs: 2.5, md: 3 },
                         height: '100%',
-                        background: 'rgba(255, 255, 255, 0.03)',
-                        backdropFilter: 'blur(20px)',
+                        background: 'linear-gradient(155deg, #141B2D 0%, #0E1422 100%)',
                         border: '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '20px',
+                        borderRadius: '16px',
                       }}
                     >
                       <SectionTitle icon={<ShowChartIcon />}>Score Trends</SectionTitle>
                       <Box sx={{ height: 300 }}>
-                        <Line data={lineData} options={chartOptions} />
+                        <Line data={lineData} options={chartOptions} plugins={[glowPlugin, crosshairPlugin]} />
                       </Box>
                     </Paper>
                   </motion.div>
@@ -325,12 +394,11 @@ const DashboardPage = () => {
                   >
                     <Paper
                       sx={{
-                        p: 3,
+                        p: { xs: 2.5, md: 3 },
                         height: '100%',
-                        background: 'rgba(255, 255, 255, 0.03)',
-                        backdropFilter: 'blur(20px)',
+                        background: 'linear-gradient(155deg, #141B2D 0%, #0E1422 100%)',
                         border: '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '20px',
+                        borderRadius: '16px',
                       }}
                     >
                       <SectionTitle icon={<HistoryIcon />}>Recent Scans</SectionTitle>
@@ -381,11 +449,10 @@ const DashboardPage = () => {
                   >
                     <Paper
                       sx={{
-                        p: 3,
-                        background: 'rgba(255, 255, 255, 0.03)',
-                        backdropFilter: 'blur(20px)',
+                        p: { xs: 2.5, md: 3 },
+                        background: 'linear-gradient(155deg, #141B2D 0%, #0E1422 100%)',
                         border: '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '20px',
+                        borderRadius: '16px',
                       }}
                     >
                       <SectionTitle icon={<StorageIcon />}>All Scans</SectionTitle>
@@ -402,10 +469,10 @@ const DashboardPage = () => {
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              borderRadius: '18px',
-                              color: '#A78BFA',
-                              background: 'rgba(139, 92, 246, 0.12)',
-                              border: '1px solid rgba(139, 92, 246, 0.2)',
+                              borderRadius: '12px',
+                              color: '#FB923C',
+                              background: 'rgba(249, 115, 22, 0.12)',
+                              border: '1px solid rgba(249, 115, 22, 0.2)',
                             }}
                           >
                             <SearchIcon sx={{ fontSize: 32 }} />
@@ -426,10 +493,10 @@ const DashboardPage = () => {
                               fontWeight: 700,
                               textTransform: 'none',
                               borderRadius: '12px',
-                              background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-                              boxShadow: '0 4px 20px rgba(139, 92, 246, 0.4)',
+                              background: '#EA580C',
+                              boxShadow: 'none',
                               '&:hover': {
-                                background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
+                                background: '#C2410C',
                               },
                             }}
                           >

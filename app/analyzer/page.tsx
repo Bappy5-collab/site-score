@@ -126,7 +126,7 @@ const AnalyzerPage = () => {
               scanResult.securityScore,
             ],
             backgroundColor: [
-              'rgba(139, 92, 246, 0.8)',
+              'rgba(249, 115, 22, 0.8)',
               'rgba(34, 197, 94, 0.8)',
               'rgba(245, 158, 11, 0.8)',
             ],
@@ -172,10 +172,10 @@ const AnalyzerPage = () => {
                 mb: 2,
                 mx: 'auto',
                 maxWidth: 900,
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: '#111827',
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '24px',
+                borderRadius: '14px',
               }}
             >
               <Grid container spacing={2} alignItems="center">
@@ -193,7 +193,7 @@ const AnalyzerPage = () => {
                     disabled={loading}
                     InputProps={{
                       startAdornment: (
-                        <Box sx={{ mr: 2, color: '#8B5CF6' }}>
+                        <Box sx={{ mr: 2, color: '#F97316' }}>
                           <SearchIcon />
                         </Box>
                       ),
@@ -218,18 +218,18 @@ const AnalyzerPage = () => {
                       fontSize: '1rem',
                       fontWeight: 600,
                       background: loading
-                        ? 'rgba(139, 92, 246, 0.3)'
-                        : 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                        ? 'rgba(249, 115, 22, 0.3)'
+                        : '#F97316',
                       boxShadow: loading
                         ? 'none'
-                        : '0 8px 24px rgba(139, 92, 246, 0.4)',
+                        : 'none',
                       '&:hover': {
-                        background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
-                        boxShadow: '0 12px 32px rgba(139, 92, 246, 0.5)',
+                        background: '#C2410C',
+                        boxShadow: 'none',
                         transform: 'translateY(-2px)',
                       },
                       '&:disabled': {
-                        background: 'rgba(139, 92, 246, 0.3)',
+                        background: 'rgba(249, 115, 22, 0.3)',
                       },
                     }}
                   >
@@ -336,10 +336,10 @@ const AnalyzerPage = () => {
                     <Paper
                       sx={{
                         p: 3,
-                        background: 'rgba(255, 255, 255, 0.03)',
+                        background: '#111827',
                         backdropFilter: 'blur(20px)',
                         border: '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '20px',
+                        borderRadius: '12px',
                       }}
                     >
                       <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: '#F1F5F9' }}>
@@ -356,10 +356,10 @@ const AnalyzerPage = () => {
                     <Paper
                       sx={{
                         p: 3,
-                        background: 'rgba(255, 255, 255, 0.03)',
+                        background: '#111827',
                         backdropFilter: 'blur(20px)',
                         border: '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '20px',
+                        borderRadius: '12px',
                         height: '100%',
                       }}
                     >
@@ -379,7 +379,7 @@ const AnalyzerPage = () => {
                           href={scanResult.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{ color: '#8B5CF6', textDecoration: 'none' }}
+                          style={{ color: '#F97316', textDecoration: 'none' }}
                         >
                           {scanResult.url}
                         </a>
@@ -393,10 +393,10 @@ const AnalyzerPage = () => {
                     sx={{
                       p: 3,
                       mb: 3,
-                      background: 'rgba(255, 255, 255, 0.03)',
+                      background: '#111827',
                       backdropFilter: 'blur(20px)',
                       border: '1px solid rgba(255, 255, 255, 0.08)',
-                      borderRadius: '20px',
+                      borderRadius: '12px',
                       maxWidth: 1200,
                       mx: 'auto',
                     }}
@@ -425,10 +425,10 @@ const AnalyzerPage = () => {
                     sx={{
                       p: 3,
                       mb: 3,
-                      background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%)',
+                      background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%)',
                       backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(139, 92, 246, 0.2)',
-                      borderRadius: '20px',
+                      border: '1px solid rgba(249, 115, 22, 0.2)',
+                      borderRadius: '12px',
                       maxWidth: 1200,
                       mx: 'auto',
                     }}
@@ -450,10 +450,10 @@ const AnalyzerPage = () => {
                     sx={{
                       p: 3,
                       mb: 3,
-                      background: 'rgba(255, 255, 255, 0.03)',
+                      background: '#111827',
                       backdropFilter: 'blur(20px)',
                       border: '1px solid rgba(255, 255, 255, 0.08)',
-                      borderRadius: '20px',
+                      borderRadius: '12px',
                       maxWidth: 1200,
                       mx: 'auto',
                     }}
@@ -480,7 +480,7 @@ const AnalyzerPage = () => {
                               width: 6,
                               height: 6,
                               borderRadius: '50%',
-                              background: '#8B5CF6',
+                              background: '#EA580C',
                             }}
                           />
                           {recommendation}
@@ -500,10 +500,10 @@ const AnalyzerPage = () => {
                       sx={{
                         p: 3,
                         mb: 3,
-                        background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%)',
+                        background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(249, 115, 22, 0.15) 100%)',
                         backdropFilter: 'blur(20px)',
-                        border: '1px solid rgba(139, 92, 246, 0.3)',
-                        borderRadius: '20px',
+                        border: '1px solid rgba(249, 115, 22, 0.3)',
+                        borderRadius: '12px',
                         maxWidth: 1200,
                         mx: 'auto',
                       }}
@@ -530,7 +530,7 @@ const AnalyzerPage = () => {
                                 width: 6,
                                 height: 6,
                                 borderRadius: '50%',
-                                background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                                background: '#EA580C',
                               }}
                             />
                             {suggestion}
@@ -544,10 +544,10 @@ const AnalyzerPage = () => {
                 <Paper
                   sx={{
                     p: 3,
-                    background: 'rgba(255, 255, 255, 0.03)',
+                    background: '#111827',
                     backdropFilter: 'blur(20px)',
                     border: '1px solid rgba(255, 255, 255, 0.08)',
-                    borderRadius: '20px',
+                    borderRadius: '12px',
                     maxWidth: 1200,
                     mx: 'auto',
                   }}
@@ -567,14 +567,14 @@ const AnalyzerPage = () => {
                           }
                         }}
                         sx={{
-                          color: scanResult.isBookmarked ? '#8B5CF6' : '#94A3B8',
+                          color: scanResult.isBookmarked ? '#F97316' : '#94A3B8',
                           background: scanResult.isBookmarked
-                            ? 'rgba(139, 92, 246, 0.1)'
+                            ? 'rgba(249, 115, 22, 0.1)'
                             : 'rgba(255, 255, 255, 0.05)',
-                          border: `1px solid ${scanResult.isBookmarked ? 'rgba(139, 92, 246, 0.3)' : 'rgba(255, 255, 255, 0.08)'}`,
+                          border: `1px solid ${scanResult.isBookmarked ? 'rgba(249, 115, 22, 0.3)' : 'rgba(255, 255, 255, 0.08)'}`,
                           '&:hover': {
-                            background: 'rgba(139, 92, 246, 0.2)',
-                            borderColor: 'rgba(139, 92, 246, 0.5)',
+                            background: 'rgba(249, 115, 22, 0.2)',
+                            borderColor: 'rgba(249, 115, 22, 0.5)',
                           },
                         }}
                       >
@@ -680,21 +680,21 @@ const AnalyzerPage = () => {
                       disabled={generatingSuggestions}
                       sx={{
                         ml: 'auto',
-                        borderColor: 'rgba(139, 92, 246, 0.3)',
-                        color: '#8B5CF6',
+                        borderColor: 'rgba(249, 115, 22, 0.3)',
+                        color: '#F97316',
                         '&:hover': {
-                          borderColor: 'rgba(139, 92, 246, 0.5)',
-                          background: 'rgba(139, 92, 246, 0.1)',
+                          borderColor: 'rgba(249, 115, 22, 0.5)',
+                          background: 'rgba(249, 115, 22, 0.1)',
                         },
                         '&:disabled': {
-                          borderColor: 'rgba(139, 92, 246, 0.2)',
-                          color: 'rgba(139, 92, 246, 0.5)',
+                          borderColor: 'rgba(249, 115, 22, 0.2)',
+                          color: 'rgba(249, 115, 22, 0.5)',
                         },
                       }}
                     >
                       {generatingSuggestions ? (
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                          <CircularProgress size={16} sx={{ color: '#8B5CF6' }} />
+                          <CircularProgress size={16} sx={{ color: '#F97316' }} />
                           Generating...
                         </Box>
                       ) : (

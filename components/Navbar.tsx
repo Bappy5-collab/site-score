@@ -20,6 +20,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useAuth } from '@/context/AuthContext';
+import Logo from '@/components/Logo';
 import { notificationService, Notification } from '@/services/notificationService';
 import { io, Socket } from 'socket.io-client';
 import { formatDistanceToNow } from 'date-fns';
@@ -112,65 +113,45 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
           position: 'sticky',
           top: 0,
           zIndex: 1100,
-          background: 'rgba(21, 25, 50, 0.8)',
-          backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+          background: 'rgba(17, 24, 39, 0.85)',
+          backdropFilter: 'blur(12px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
           boxShadow: 'none',
           width: '100%',
         }}
       >
         <Toolbar sx={{ justifyContent: 'space-between', px: { xs: 1.5, sm: 2, md: 3 }, minHeight: { xs: 56, sm: 64 } }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, sm: 2, md: 3 }, minWidth: 0 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, sm: 2 }, minWidth: 0, flex: 1 }}>
             {onOpenSidebar && (
               <IconButton
                 onClick={onOpenSidebar}
                 sx={{
                   display: { xs: 'flex', md: 'none' },
                   color: '#94A3B8',
-                  '&:hover': { color: '#8B5CF6', background: 'rgba(139, 92, 246, 0.1)' },
+                  '&:hover': { color: '#F97316', background: 'rgba(249, 115, 22, 0.1)' },
                 }}
                 aria-label="Open menu"
               >
                 <MenuIcon />
               </IconButton>
             )}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              style={{ flexShrink: 0 }}
-            >
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{
-                  fontWeight: 700,
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  fontSize: { xs: '1.2rem', sm: '1.35rem', md: '1.5rem' },
-                }}
-              >
-                SiteScore AI
-              </Typography>
-            </motion.div>
+
+            {/* Brand on mobile (sidebar is hidden on xs/sm) */}
+            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+              <Logo size={28} fontSize="1rem" />
+            </Box>
 
             <Box
-              component={motion.div}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
               sx={{
-                display: { xs: 'none', md: 'flex' },
+                display: { xs: 'none', sm: 'flex' },
                 alignItems: 'center',
                 background: 'rgba(255, 255, 255, 0.03)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '12px',
-                px: 2,
+                borderRadius: '8px',
+                px: 1.5,
                 py: 0.5,
-                minWidth: 200,
-                maxWidth: 300,
+                width: '100%',
+                maxWidth: 360,
               }}
             >
               <SearchIcon sx={{ color: '#9CA3AF', mr: 1 }} />
@@ -198,8 +179,8 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
               sx={{
                 color: '#94A3B8',
                 '&:hover': {
-                  color: '#8B5CF6',
-                  background: 'rgba(139, 92, 246, 0.1)',
+                  color: '#F97316',
+                  background: 'rgba(249, 115, 22, 0.1)',
                 },
               }}
             >
@@ -208,8 +189,8 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                 color="error"
                 sx={{
                   '& .MuiBadge-badge': {
-                    background: 'linear-gradient(135deg, #F43F5E 0%, #EC4899 100%)',
-                    boxShadow: '0 0 8px rgba(244, 63, 94, 0.6)',
+                    backgroundColor: '#EF4444',
+                    boxShadow: 'none',
                   },
                 }}
               >
@@ -227,7 +208,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: { xs: 0.75, sm: 1.5 },
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  background: '#111827',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
                   borderRadius: '12px',
                   px: { xs: 1, sm: 2 },
@@ -236,8 +217,8 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                   transition: 'all 0.3s ease',
                   minWidth: 0,
                   '&:hover': {
-                    borderColor: 'rgba(139, 92, 246, 0.3)',
-                    background: 'rgba(139, 92, 246, 0.05)',
+                    borderColor: 'rgba(249, 115, 22, 0.3)',
+                    background: 'rgba(249, 115, 22, 0.05)',
                   },
                 }}
               >
@@ -245,7 +226,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                   sx={{
                     width: { xs: 28, sm: 32 },
                     height: { xs: 28, sm: 32 },
-                    background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                    background: '#EA580C',
                     fontSize: '0.875rem',
                     fontWeight: 600,
                   }}
@@ -299,11 +280,11 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                 label={`${unreadCount} unread`}
                 onClick={handleMarkAllAsRead}
                 sx={{
-                  background: 'rgba(139, 92, 246, 0.2)',
-                  color: '#8B5CF6',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  background: 'rgba(249, 115, 22, 0.2)',
+                  color: '#F97316',
+                  border: '1px solid rgba(249, 115, 22, 0.3)',
                   cursor: 'pointer',
-                  '&:hover': { background: 'rgba(139, 92, 246, 0.3)' },
+                  '&:hover': { background: 'rgba(249, 115, 22, 0.3)' },
                 }}
               />
             )}
@@ -330,8 +311,8 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                     sx={{
                       p: 2,
                       borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
-                      background: notification.read ? 'transparent' : 'rgba(139, 92, 246, 0.05)',
-                      '&:hover': { background: 'rgba(139, 92, 246, 0.1)' },
+                      background: notification.read ? 'transparent' : 'rgba(249, 115, 22, 0.05)',
+                      '&:hover': { background: 'rgba(249, 115, 22, 0.1)' },
                     }}
                   >
                     <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -355,10 +336,10 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                           width: 8,
                           height: 8,
                           borderRadius: '50%',
-                          background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                          background: '#EA580C',
                           ml: 1,
                           flexShrink: 0,
-                          boxShadow: '0 0 8px rgba(139, 92, 246, 0.6)',
+                          boxShadow: 'none',
                         }}
                       />
                     )}

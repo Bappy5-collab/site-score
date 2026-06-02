@@ -38,7 +38,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
         >
           <CircularProgress
             sx={{
-              color: '#8B5CF6',
+              color: '#F97316',
             }}
           />
         </motion.div>

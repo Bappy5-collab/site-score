@@ -13,7 +13,7 @@ export default function FinalCTASection() {
         py: { xs: 10, md: 14 },
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(180deg, rgba(10, 14, 39, 0.5) 0%, rgba(139, 92, 246, 0.08) 50%, rgba(236, 72, 153, 0.06) 100%)',
+        background: 'linear-gradient(180deg, rgba(10, 14, 39, 0.5) 0%, rgba(249, 115, 22, 0.08) 50%, rgba(234, 88, 12, 0.06) 100%)',
         borderTop: '1px solid rgba(255, 255, 255, 0.06)',
       }}
     >
@@ -28,7 +28,7 @@ export default function FinalCTASection() {
           transform: 'translate(-50%, -50%)',
           width: 'min(80vw, 600px)',
           height: 400,
-          background: 'radial-gradient(ellipse, rgba(139, 92, 246, 0.25) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, rgba(249, 115, 22, 0.25) 0%, transparent 70%)',
           borderRadius: '50%',
           filter: 'blur(60px)',
         }}
@@ -48,11 +48,11 @@ export default function FinalCTASection() {
               py: 0.6,
               mb: 2.5,
               borderRadius: '9999px',
-              background: 'rgba(139, 92, 246, 0.1)',
-              border: '1px solid rgba(139, 92, 246, 0.22)',
+              background: 'rgba(249, 115, 22, 0.1)',
+              border: '1px solid rgba(249, 115, 22, 0.22)',
             }}
           >
-            <Box sx={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg, #8B5CF6, #EC4899)' }} />
+            <Box sx={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg, #F97316, #EA580C)' }} />
             <Typography
               variant="caption"
               sx={{ color: '#C4B5FD', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', fontSize: '0.72rem' }}
@@ -99,11 +99,11 @@ export default function FinalCTASection() {
               fontWeight: 700,
               textTransform: 'none',
               borderRadius: '16px',
-              background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-              boxShadow: '0 12px 40px rgba(139, 92, 246, 0.5)',
+              background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+              boxShadow: '0 12px 40px rgba(249, 115, 22, 0.5)',
               '&:hover': {
-                background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
-                boxShadow: '0 16px 48px rgba(139, 92, 246, 0.55)',
+                background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)',
+                boxShadow: '0 16px 48px rgba(249, 115, 22, 0.55)',
               },
             }}
           >

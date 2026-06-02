@@ -124,19 +124,12 @@ const TeamPage = () => {
     try {
       setError('');
       const response = await teamService.inviteMember(inviteEmail.trim());
-      
-      // Check if email was sent
-      if (response.emailSent === false) {
-        // Email not sent, show token dialog
-        setShareToken(response.token);
-        setShowTokenDialog(true);
-        setSuccess('Invite created! Please share the token manually.');
-      } else {
-        setSuccess('Invite sent successfully via email!');
-      }
-      
-      setInviteEmail('');
+
+      // Token-based invite flow: show the token/link to share.
+      setShareToken(response.token);
       setInviteDialogOpen(false);
+      setShowTokenDialog(true);
+      setInviteEmail('');
       loadTeam();
     } catch (err: any) {
       setError(err.response?.data?.message || 'Failed to send invite');
@@ -195,11 +188,11 @@ const TeamPage = () => {
                   variant="outlined"
                   onClick={() => setAcceptDialogOpen(true)}
                   sx={{
-                    borderColor: 'rgba(139, 92, 246, 0.3)',
-                    color: '#8B5CF6',
+                    borderColor: 'rgba(249, 115, 22, 0.3)',
+                    color: '#F97316',
                     '&:hover': {
-                      borderColor: 'rgba(139, 92, 246, 0.5)',
-                      background: 'rgba(139, 92, 246, 0.1)',
+                      borderColor: 'rgba(249, 115, 22, 0.5)',
+                      background: 'rgba(249, 115, 22, 0.1)',
                     },
                   }}
                 >
@@ -211,12 +204,12 @@ const TeamPage = () => {
                   onClick={() => setInviteDialogOpen(true)}
                   disabled={!team}
                   sx={{
-                    background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                    background: '#EA580C',
                     '&:hover': {
-                      background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
+                      background: '#C2410C',
                     },
                     '&:disabled': {
-                      background: 'rgba(139, 92, 246, 0.3)',
+                      background: 'rgba(249, 115, 22, 0.3)',
                     },
                   }}
                 >
@@ -277,8 +270,8 @@ const TeamPage = () => {
               onClose={() => setNewMemberNotification(null)}
               severity="info"
               sx={{
-                background: 'rgba(139, 92, 246, 0.1)',
-                border: '1px solid rgba(139, 92, 246, 0.3)',
+                background: 'rgba(249, 115, 22, 0.1)',
+                border: '1px solid rgba(249, 115, 22, 0.3)',
                 borderRadius: '12px',
               }}
             >
@@ -295,15 +288,15 @@ const TeamPage = () => {
             <Paper
               sx={{
                 p: 3,
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: '#111827',
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '20px',
+                borderRadius: '12px',
                 textAlign: 'center',
                 py: 8,
               }}
             >
-              <CircularProgress sx={{ color: '#8B5CF6' }} />
+              <CircularProgress sx={{ color: '#F97316' }} />
             </Paper>
           ) : !team ? (
             <motion.div
@@ -314,10 +307,10 @@ const TeamPage = () => {
               <Paper
                 sx={{
                   p: 4,
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  background: '#111827',
                   backdropFilter: 'blur(20px)',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
-                  borderRadius: '20px',
+                  borderRadius: '12px',
                   textAlign: 'center',
                 }}
               >
@@ -331,9 +324,9 @@ const TeamPage = () => {
                   variant="contained"
                   onClick={handleCreateTeam}
                   sx={{
-                    background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                    background: '#EA580C',
                     '&:hover': {
-                      background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
+                      background: '#C2410C',
                     },
                   }}
                 >
@@ -352,10 +345,10 @@ const TeamPage = () => {
                   <Paper
                     sx={{
                       p: 3,
-                      background: 'rgba(255, 255, 255, 0.03)',
+                      background: '#111827',
                       backdropFilter: 'blur(20px)',
                       border: '1px solid rgba(255, 255, 255, 0.08)',
-                      borderRadius: '20px',
+                      borderRadius: '12px',
                     }}
                   >
                     <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: '#F1F5F9' }}>
@@ -382,7 +375,7 @@ const TeamPage = () => {
                               <ListItemAvatar>
                                 <Avatar
                                   sx={{
-                                    background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                                    background: '#EA580C',
                                   }}
                                 >
                                   {member.userId?.name?.charAt(0) || 'U'}
@@ -400,10 +393,10 @@ const TeamPage = () => {
                                 sx={{
                                   background:
                                     member.role === 'admin'
-                                      ? 'rgba(139, 92, 246, 0.2)'
+                                      ? 'rgba(249, 115, 22, 0.2)'
                                       : 'rgba(6, 182, 212, 0.2)',
-                                  color: member.role === 'admin' ? '#8B5CF6' : '#06B6D4',
-                                  border: `1px solid ${member.role === 'admin' ? 'rgba(139, 92, 246, 0.3)' : 'rgba(6, 182, 212, 0.3)'}`,
+                                  color: member.role === 'admin' ? '#F97316' : '#06B6D4',
+                                  border: `1px solid ${member.role === 'admin' ? 'rgba(249, 115, 22, 0.3)' : 'rgba(6, 182, 212, 0.3)'}`,
                                 }}
                               />
                             </ListItem>
@@ -417,10 +410,10 @@ const TeamPage = () => {
                   <Paper
                     sx={{
                       p: 3,
-                      background: 'rgba(255, 255, 255, 0.03)',
+                      background: '#111827',
                       backdropFilter: 'blur(20px)',
                       border: '1px solid rgba(255, 255, 255, 0.08)',
-                      borderRadius: '20px',
+                      borderRadius: '12px',
                     }}
                   >
                     <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: '#F1F5F9' }}>
@@ -451,7 +444,7 @@ const TeamPage = () => {
                 background: 'rgba(30, 41, 59, 0.95)',
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '20px',
+                borderRadius: '12px',
               },
             }}
           >
@@ -466,7 +459,7 @@ const TeamPage = () => {
                 sx={{
                   mt: 2,
                   '& .MuiOutlinedInput-root': {
-                    background: 'rgba(255, 255, 255, 0.03)',
+                    background: '#111827',
                     border: '1px solid rgba(255, 255, 255, 0.08)',
                     borderRadius: '12px',
                     color: '#F1F5F9',
@@ -488,9 +481,9 @@ const TeamPage = () => {
                 onClick={handleInvite}
                 variant="contained"
                 sx={{
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                  background: '#EA580C',
                   '&:hover': {
-                    background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
+                    background: '#C2410C',
                   },
                 }}
               >
@@ -508,7 +501,7 @@ const TeamPage = () => {
                 background: 'rgba(30, 41, 59, 0.95)',
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '20px',
+                borderRadius: '12px',
               },
             }}
           >
@@ -522,7 +515,7 @@ const TeamPage = () => {
                 sx={{
                   mt: 2,
                   '& .MuiOutlinedInput-root': {
-                    background: 'rgba(255, 255, 255, 0.03)',
+                    background: '#111827',
                     border: '1px solid rgba(255, 255, 255, 0.08)',
                     borderRadius: '12px',
                     color: '#F1F5F9',
@@ -544,9 +537,9 @@ const TeamPage = () => {
                 onClick={handleAcceptInvite}
                 variant="contained"
                 sx={{
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                  background: '#EA580C',
                   '&:hover': {
-                    background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
+                    background: '#C2410C',
                   },
                 }}
               >
@@ -564,23 +557,24 @@ const TeamPage = () => {
                 background: 'rgba(30, 41, 59, 0.95)',
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '20px',
+                borderRadius: '12px',
                 maxWidth: '500px',
               },
             }}
           >
-            <DialogTitle sx={{ color: '#F1F5F9' }}>Share Invitation Token</DialogTitle>
+            <DialogTitle sx={{ color: '#F1F5F9' }}>Share Invite</DialogTitle>
             <DialogContent>
               <Alert
-                severity="warning"
+                severity="info"
                 sx={{
                   mb: 2,
-                  background: 'rgba(245, 158, 11, 0.1)',
-                  border: '1px solid rgba(245, 158, 11, 0.3)',
+                  background: 'rgba(249, 115, 22, 0.1)',
+                  border: '1px solid rgba(249, 115, 22, 0.3)',
                   borderRadius: '12px',
+                  color: '#F1F5F9',
                 }}
               >
-                Email could not be sent. Please share this token manually with the team member.
+                Send this token or link to your teammate. They can join from <strong>Team → Accept Invite</strong>, or just open the link.
               </Alert>
               <Typography variant="body2" sx={{ mb: 2, color: '#94A3B8' }}>
                 Invite Token:
@@ -611,7 +605,7 @@ const TeamPage = () => {
                   borderRadius: '12px',
                   wordBreak: 'break-all',
                   fontSize: '0.875rem',
-                  color: '#8B5CF6',
+                  color: '#F97316',
                 }}
               >
                 {typeof window !== 'undefined' && shareToken ? `${window.location.origin}/team?token=${shareToken}` : ''}
@@ -630,16 +624,27 @@ const TeamPage = () => {
                 Copy Token
               </Button>
               <Button
+                onClick={() => {
+                  if (shareToken && typeof window !== 'undefined') {
+                    navigator.clipboard.writeText(`${window.location.origin}/team?token=${shareToken}`);
+                    setSuccess('Invite link copied to clipboard!');
+                  }
+                }}
+                sx={{ color: '#94A3B8' }}
+              >
+                Copy Link
+              </Button>
+              <Button
                 onClick={() => setShowTokenDialog(false)}
                 variant="contained"
                 sx={{
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                  background: '#EA580C',
                   '&:hover': {
-                    background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
+                    background: '#C2410C',
                   },
                 }}
               >
-                Close
+                Done
               </Button>
             </DialogActions>
           </Dialog>
@@ -653,7 +658,7 @@ const TeamPageWrapper = () => {
   return (
     <Suspense fallback={
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-        <CircularProgress sx={{ color: '#8B5CF6' }} />
+        <CircularProgress sx={{ color: '#F97316' }} />
       </Box>
     }>
       <TeamPage />

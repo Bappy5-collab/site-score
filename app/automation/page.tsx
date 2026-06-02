@@ -34,12 +34,12 @@ import { formatDistanceToNow } from 'date-fns';
 
 const cardSx = {
   p: 3,
-  borderRadius: '20px',
-  background: 'rgba(255, 255, 255, 0.03)',
+  borderRadius: '12px',
+  background: '#111827',
   backdropFilter: 'blur(20px)',
   border: '1px solid rgba(255, 255, 255, 0.08)',
   transition: 'all 0.3s ease',
-  '&:hover': { borderColor: 'rgba(139, 92, 246, 0.25)' },
+  '&:hover': { borderColor: 'rgba(249, 115, 22, 0.25)' },
 };
 
 function formatNextRun(nextRunAt?: string): string {
@@ -146,14 +146,14 @@ export default function AutomationCenterPage() {
                     width: 48,
                     height: 48,
                     borderRadius: '14px',
-                    background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%)',
-                    border: '1px solid rgba(139, 92, 246, 0.3)',
+                    background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%)',
+                    border: '1px solid rgba(249, 115, 22, 0.3)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}
                 >
-                  <ScheduleIcon sx={{ color: '#8B5CF6', fontSize: 28 }} />
+                  <ScheduleIcon sx={{ color: '#F97316', fontSize: 28 }} />
                 </Box>
                 <Box>
                   <Typography variant="h4" sx={{ fontWeight: 800, color: '#F1F5F9', letterSpacing: '-0.02em' }}>
@@ -170,10 +170,10 @@ export default function AutomationCenterPage() {
                 onClick={() => setDialogOpen(true)}
                 sx={{
                   borderRadius: '14px',
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                  background: '#EA580C',
                   textTransform: 'none',
                   fontWeight: 600,
-                  '&:hover': { background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)' },
+                  '&:hover': { background: '#C2410C' },
                 }}
               >
                 New automation
@@ -187,7 +187,7 @@ export default function AutomationCenterPage() {
             )}
             {loading ? (
               <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
-                <CircularProgress sx={{ color: '#8B5CF6' }} />
+                <CircularProgress sx={{ color: '#F97316' }} />
               </Box>
             ) : (
               <Grid container spacing={3}>
@@ -232,8 +232,8 @@ export default function AutomationCenterPage() {
                               checked={rule.enabled}
                               onChange={() => toggleStatus(rule)}
                               sx={{
-                                '& .MuiSwitch-switchBase.Mui-checked': { color: '#8B5CF6' },
-                                '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: 'rgba(139, 92, 246, 0.5)' },
+                                '& .MuiSwitch-switchBase.Mui-checked': { color: '#F97316' },
+                                '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: 'rgba(249, 115, 22, 0.5)' },
                               }}
                             />
                             <Tooltip title="Delete">
@@ -252,7 +252,7 @@ export default function AutomationCenterPage() {
           </motion.div>
         </Box>
 
-        <Dialog open={dialogOpen} onClose={() => !creating && setDialogOpen(false)} maxWidth="sm" fullWidth PaperProps={{ sx: { background: 'rgba(15, 23, 42, 0.98)', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.08)' } }}>
+        <Dialog open={dialogOpen} onClose={() => !creating && setDialogOpen(false)} maxWidth="sm" fullWidth PaperProps={{ sx: { background: 'rgba(15, 23, 42, 0.98)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.08)' } }}>
             <DialogTitle sx={{ color: '#F1F5F9', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               New automation
               <IconButton onClick={() => !creating && setDialogOpen(false)} sx={{ color: '#94A3B8' }}><CloseIcon /></IconButton>
@@ -270,7 +270,7 @@ export default function AutomationCenterPage() {
             </DialogContent>
             <DialogActions sx={{ p: 2 }}>
               <Button onClick={() => !creating && setDialogOpen(false)} sx={{ color: '#94A3B8', textTransform: 'none' }}>Cancel</Button>
-              <Button variant="contained" onClick={handleCreate} disabled={creating} sx={{ borderRadius: '12px', textTransform: 'none', background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)' }}>
+              <Button variant="contained" onClick={handleCreate} disabled={creating} sx={{ borderRadius: '12px', textTransform: 'none', background: '#EA580C' }}>
                 {creating ? 'Creating…' : 'Create'}
               </Button>
             </DialogActions>

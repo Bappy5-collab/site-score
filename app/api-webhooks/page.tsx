@@ -34,12 +34,12 @@ import { formatDistanceToNow } from 'date-fns';
 
 const cardSx = {
   p: 3,
-  borderRadius: '20px',
-  background: 'rgba(255, 255, 255, 0.03)',
+  borderRadius: '12px',
+  background: '#111827',
   backdropFilter: 'blur(20px)',
   border: '1px solid rgba(255, 255, 255, 0.08)',
   transition: 'all 0.3s ease',
-  '&:hover': { borderColor: 'rgba(139, 92, 246, 0.25)' },
+  '&:hover': { borderColor: 'rgba(249, 115, 22, 0.25)' },
 };
 
 export default function APIWebhooksPage() {
@@ -130,14 +130,14 @@ export default function APIWebhooksPage() {
                   width: 48,
                   height: 48,
                   borderRadius: '14px',
-                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%)',
+                  border: '1px solid rgba(249, 115, 22, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
               >
-                <ApiIcon sx={{ color: '#8B5CF6', fontSize: 28 }} />
+                <ApiIcon sx={{ color: '#F97316', fontSize: 28 }} />
               </Box>
               <Box>
                 <Typography variant="h4" sx={{ fontWeight: 800, color: '#F1F5F9', letterSpacing: '-0.02em' }}>
@@ -151,15 +151,15 @@ export default function APIWebhooksPage() {
 
             {loading ? (
               <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
-                <CircularProgress sx={{ color: '#8B5CF6' }} />
+                <CircularProgress sx={{ color: '#F97316' }} />
               </Box>
             ) : (
               <Grid container spacing={3}>
-                <Grid item xs={12} md={6}>
-                  <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>
-                    <Paper elevation={0} sx={cardSx}>
+                <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
+                  <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} style={{ width: '100%', height: '100%' }}>
+                    <Paper elevation={0} sx={{ ...cardSx, height: '100%', display: 'flex', flexDirection: 'column' }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                        <KeyIcon sx={{ color: '#8B5CF6' }} />
+                        <KeyIcon sx={{ color: '#F97316' }} />
                         <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
                           API Key
                         </Typography>
@@ -191,17 +191,17 @@ export default function APIWebhooksPage() {
                           </Tooltip>
                         )}
                       </Box>
-                      <Button size="small" sx={{ mt: 2, color: '#8B5CF6', textTransform: 'none' }} onClick={handleRegenerateKey} disabled={regenerating}>
+                      <Button size="small" sx={{ mt: 2, color: '#F97316', textTransform: 'none' }} onClick={handleRegenerateKey} disabled={regenerating}>
                         {regenerating ? 'Generating…' : 'Regenerate key'}
                       </Button>
                     </Paper>
                   </motion.div>
                 </Grid>
-                <Grid item xs={12} md={6}>
-                  <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-                    <Paper elevation={0} sx={cardSx}>
+                <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
+                  <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} style={{ width: '100%', height: '100%' }}>
+                    <Paper elevation={0} sx={{ ...cardSx, height: '100%', display: 'flex', flexDirection: 'column' }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                        <WebhookIcon sx={{ color: '#EC4899' }} />
+                        <WebhookIcon sx={{ color: '#F97316' }} />
                         <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
                           Webhook URL
                         </Typography>
@@ -227,7 +227,7 @@ export default function APIWebhooksPage() {
                         }}
                       />
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 1 }}>
-                        <Button variant="outlined" size="small" onClick={handleSaveWebhook} disabled={savingWebhook} sx={{ borderRadius: '10px', borderColor: 'rgba(139, 92, 246, 0.5)', color: '#8B5CF6' }}>
+                        <Button variant="outlined" size="small" onClick={handleSaveWebhook} disabled={savingWebhook} sx={{ borderRadius: '10px', borderColor: 'rgba(249, 115, 22, 0.5)', color: '#F97316' }}>
                           {savingWebhook ? 'Saving…' : 'Save URL'}
                         </Button>
                       </Box>
@@ -238,7 +238,7 @@ export default function APIWebhooksPage() {
                   <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
                     <Paper elevation={0} sx={{ ...cardSx, overflow: 'hidden' }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                        <HistoryIcon sx={{ color: '#8B5CF6' }} />
+                        <HistoryIcon sx={{ color: '#F97316' }} />
                         <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
                           Activity logs
                         </Typography>
@@ -259,7 +259,7 @@ export default function APIWebhooksPage() {
                             )}
                             {logs.map((row) => (
                               <TableRow key={row._id} sx={{ '& td': { borderColor: 'rgba(255,255,255,0.06)', color: '#E2E8F0' } }}>
-                                <TableCell><Box component="span" sx={{ fontFamily: 'monospace', color: row.method === 'POST' ? '#8B5CF6' : '#22C55E' }}>{row.method}</Box></TableCell>
+                                <TableCell><Box component="span" sx={{ fontFamily: 'monospace', color: row.method === 'POST' ? '#F97316' : '#22C55E' }}>{row.method}</Box></TableCell>
                                 <TableCell sx={{ fontFamily: 'monospace', fontSize: '0.8rem' }}>{row.endpoint || '—'}</TableCell>
                                 <TableCell><Box component="span" sx={{ color: row.status && row.status >= 200 && row.status < 300 ? '#22C55E' : '#F59E0B' }}>{row.status ?? row.error ?? '—'}</Box></TableCell>
                                 <TableCell sx={{ color: '#64748B' }}>{row.createdAt ? formatDistanceToNow(new Date(row.createdAt), { addSuffix: true }) : '—'}</TableCell>

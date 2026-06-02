@@ -165,10 +165,10 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        background: 'rgba(255, 255, 255, 0.03)',
+        background: '#111827',
         backdropFilter: 'blur(20px)',
         border: '1px solid rgba(255, 255, 255, 0.08)',
-        borderRadius: '20px',
+        borderRadius: '12px',
         overflow: 'hidden',
       }}
     >
@@ -177,13 +177,13 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
         sx={{
           p: 2,
           borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-          background: 'rgba(139, 92, 246, 0.1)',
+          background: 'rgba(249, 115, 22, 0.1)',
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <Avatar
             sx={{
-              background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+              background: '#EA580C',
               width: 40,
               height: 40,
             }}
@@ -219,17 +219,17 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
             borderRadius: '4px',
           },
           '&::-webkit-scrollbar-thumb': {
-            background: 'rgba(139, 92, 246, 0.3)',
+            background: 'rgba(249, 115, 22, 0.3)',
             borderRadius: '4px',
             '&:hover': {
-              background: 'rgba(139, 92, 246, 0.5)',
+              background: 'rgba(249, 115, 22, 0.5)',
             },
           },
         }}
       >
         {loading && messages.length === 0 ? (
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-            <CircularProgress sx={{ color: '#8B5CF6' }} />
+            <CircularProgress sx={{ color: '#F97316' }} />
           </Box>
         ) : (
           <>
@@ -254,11 +254,11 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
                     {msg.role === 'assistant' && (
                       <Avatar
                         sx={{
-                          background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                          background: '#EA580C',
                           width: 32,
                           height: 32,
                           mt: 0.5,
-                          boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)',
+                          boxShadow: 'none',
                         }}
                       >
                         <SmartToyIcon sx={{ fontSize: 18 }} />
@@ -275,22 +275,22 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
                     >
                       <Box
                         component={motion.div}
-                        whileHover={{ scale: 1.02 }}
+                        whileHover={{ y: -2 }}
                         sx={{
                           p: 2,
                           borderRadius: '16px',
                           background:
                             msg.role === 'user'
-                              ? 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%)'
+                              ? 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%)'
                               : 'rgba(255, 255, 255, 0.05)',
                           border:
                             msg.role === 'user'
-                              ? '1px solid rgba(139, 92, 246, 0.3)'
+                              ? '1px solid rgba(249, 115, 22, 0.3)'
                               : '1px solid rgba(255, 255, 255, 0.08)',
                           backdropFilter: 'blur(10px)',
                           boxShadow:
                             msg.role === 'user'
-                              ? '0 4px 12px rgba(139, 92, 246, 0.2)'
+                              ? '0 4px 12px rgba(249, 115, 22, 0.2)'
                               : '0 2px 8px rgba(0, 0, 0, 0.1)',
                           position: 'relative',
                           '&::before':
@@ -315,7 +315,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
                                   height: 0,
                                   borderTop: '8px solid transparent',
                                   borderBottom: '8px solid transparent',
-                                  borderLeft: '8px solid rgba(139, 92, 246, 0.2)',
+                                  borderLeft: '8px solid rgba(249, 115, 22, 0.2)',
                                 },
                         }}
                       >
@@ -351,7 +351,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
                     {msg.role === 'user' && (
                       <Avatar
                         sx={{
-                          background: 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 100%)',
+                          background: 'linear-gradient(135deg, #06B6D4 0%, #FB923C 100%)',
                           width: 32,
                           height: 32,
                           mt: 0.5,
@@ -381,7 +381,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
                 >
                   <Avatar
                     sx={{
-                      background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                      background: '#EA580C',
                       width: 32,
                       height: 32,
                       mt: 0.5,
@@ -400,7 +400,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
                       alignItems: 'center',
                     }}
                   >
-                    <CircularProgress size={16} sx={{ color: '#8B5CF6' }} />
+                    <CircularProgress size={16} sx={{ color: '#F97316' }} />
                     <Typography variant="body2" sx={{ color: '#94A3B8', fontSize: '0.75rem' }}>
                       Thinking...
                     </Typography>
@@ -443,18 +443,18 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
             disabled={sending || loading}
             sx={{
               '& .MuiOutlinedInput-root': {
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: '#111827',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
                 borderRadius: '12px',
                 color: '#F1F5F9',
                 transition: 'all 0.3s ease',
                 '&:hover': {
-                  borderColor: 'rgba(139, 92, 246, 0.3)',
+                  borderColor: 'rgba(249, 115, 22, 0.3)',
                   background: 'rgba(255, 255, 255, 0.05)',
                 },
                 '&.Mui-focused': {
-                  borderColor: '#8B5CF6',
-                  boxShadow: '0 0 0 3px rgba(139, 92, 246, 0.1)',
+                  borderColor: '#F97316',
+                  boxShadow: '0 0 0 3px rgba(249, 115, 22, 0.1)',
                   background: 'rgba(255, 255, 255, 0.05)',
                 },
                 '& fieldset': {
@@ -479,7 +479,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
             disabled={!message.trim() || sending || loading}
             sx={{
               background: message.trim()
-                ? 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)'
+                ? '#F97316'
                 : 'rgba(255, 255, 255, 0.05)',
               color: message.trim() ? '#FFFFFF' : '#94A3B8',
               width: 48,
@@ -488,9 +488,9 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
               transition: 'all 0.3s ease',
               '&:hover': {
                 background: message.trim()
-                  ? 'linear-gradient(135deg, #7C3AED 0%, #DB2777 100%)'
+                  ? 'linear-gradient(135deg, #EA580C 0%, #EA580C 100%)'
                   : 'rgba(255, 255, 255, 0.08)',
-                boxShadow: message.trim() ? '0 4px 20px rgba(139, 92, 246, 0.4)' : 'none',
+                boxShadow: message.trim() ? 'none' : 'none',
                 transform: 'translateY(-2px)',
               },
               '&:disabled': {

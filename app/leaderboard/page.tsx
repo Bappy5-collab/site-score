@@ -49,7 +49,7 @@ const LeaderboardPage = () => {
     if (rank === 1) return '#F59E0B'; // Gold
     if (rank === 2) return '#94A3B8'; // Silver
     if (rank === 3) return '#CD7F32'; // Bronze
-    return '#8B5CF6';
+    return '#F97316';
   };
 
   return (
@@ -68,14 +68,14 @@ const LeaderboardPage = () => {
                   width: 48,
                   height: 48,
                   borderRadius: '14px',
-                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%)',
+                  border: '1px solid rgba(249, 115, 22, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
               >
-                <LeaderboardIcon sx={{ color: '#8B5CF6', fontSize: 28 }} />
+                <LeaderboardIcon sx={{ color: '#F97316', fontSize: 28 }} />
               </Box>
               <Box>
                 <Typography
@@ -105,10 +105,10 @@ const LeaderboardPage = () => {
               elevation={0}
               sx={{
                 overflow: 'hidden',
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: '#111827',
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '20px',
+                borderRadius: '12px',
                 '&:hover': { borderColor: 'rgba(255, 255, 255, 0.12)' },
               }}
             >
@@ -282,7 +282,7 @@ const LeaderboardPage = () => {
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                               <Avatar
                                 sx={{
-                                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                                  background: '#EA580C',
                                   width: 40,
                                   height: 40,
                                   fontSize: '0.95rem',
@@ -309,9 +309,9 @@ const LeaderboardPage = () => {
                               label={entry.totalScans}
                               size="small"
                               sx={{
-                                background: 'rgba(139, 92, 246, 0.2)',
-                                color: '#A78BFA',
-                                border: '1px solid rgba(139, 92, 246, 0.3)',
+                                background: 'rgba(249, 115, 22, 0.2)',
+                                color: '#FB923C',
+                                border: '1px solid rgba(249, 115, 22, 0.3)',
                                 fontWeight: 600,
                               }}
                             />
@@ -321,7 +321,7 @@ const LeaderboardPage = () => {
                               variant="body2"
                               sx={{
                                 fontWeight: 700,
-                                background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                                background: '#EA580C',
                                 WebkitBackgroundClip: 'text',
                                 WebkitTextFillColor: 'transparent',
                                 backgroundClip: 'text',

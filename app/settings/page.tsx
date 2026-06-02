@@ -31,15 +31,15 @@ const inputSx = {
     '& fieldset': { border: 'none' },
     '&:hover': {
       background: 'rgba(255, 255, 255, 0.06)',
-      borderColor: 'rgba(139, 92, 246, 0.3)',
+      borderColor: 'rgba(249, 115, 22, 0.3)',
     },
     '&.Mui-focused': {
-      borderColor: 'rgba(139, 92, 246, 0.6)',
-      boxShadow: '0 0 0 3px rgba(139, 92, 246, 0.15)',
+      borderColor: 'rgba(249, 115, 22, 0.6)',
+      boxShadow: '0 0 0 3px rgba(249, 115, 22, 0.15)',
     },
   },
   '& .MuiInputLabel-root': { color: '#94A3B8' },
-  '& .MuiInputLabel-root.Mui-focused': { color: '#8B5CF6' },
+  '& .MuiInputLabel-root.Mui-focused': { color: '#F97316' },
 };
 
 const SettingsPage = () => {
@@ -142,8 +142,8 @@ const SettingsPage = () => {
               elevation={0}
               sx={{
                 p: 4,
-                borderRadius: '20px',
-                background: 'rgba(255, 255, 255, 0.03)',
+                borderRadius: '12px',
+                background: '#111827',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
                 mb: 3,
               }}
@@ -216,7 +216,7 @@ const SettingsPage = () => {
                   variant="contained"
                   disabled={profileSaving}
                   component={motion.button}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   sx={{
                     borderRadius: '14px',
@@ -224,11 +224,11 @@ const SettingsPage = () => {
                     px: 3,
                     fontWeight: 700,
                     textTransform: 'none',
-                    background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-                    boxShadow: '0 8px 24px rgba(139, 92, 246, 0.4)',
+                    background: '#EA580C',
+                    boxShadow: 'none',
                     '&:hover': {
-                      background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
-                      boxShadow: '0 12px 32px rgba(139, 92, 246, 0.5)',
+                      background: '#C2410C',
+                      boxShadow: 'none',
                     },
                   }}
                 >
@@ -246,8 +246,8 @@ const SettingsPage = () => {
               elevation={0}
               sx={{
                 p: 4,
-                borderRadius: '20px',
-                background: 'rgba(255, 255, 255, 0.03)',
+                borderRadius: '12px',
+                background: '#111827',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
               }}
             >
@@ -358,7 +358,7 @@ const SettingsPage = () => {
                   variant="outlined"
                   disabled={passwordSaving}
                   component={motion.button}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   sx={{
                     borderRadius: '14px',
@@ -366,11 +366,11 @@ const SettingsPage = () => {
                     px: 3,
                     fontWeight: 700,
                     textTransform: 'none',
-                    borderColor: 'rgba(139, 92, 246, 0.5)',
-                    color: '#8B5CF6',
+                    borderColor: 'rgba(249, 115, 22, 0.5)',
+                    color: '#F97316',
                     '&:hover': {
-                      borderColor: 'rgba(139, 92, 246, 0.8)',
-                      background: 'rgba(139, 92, 246, 0.08)',
+                      borderColor: 'rgba(249, 115, 22, 0.8)',
+                      background: 'rgba(249, 115, 22, 0.08)',
                     },
                   }}
                 >
@@ -387,7 +387,7 @@ const SettingsPage = () => {
                   color: '#94A3B8',
                   textTransform: 'none',
                   fontWeight: 600,
-                  '&:hover': { color: '#8B5CF6', background: 'transparent' },
+                  '&:hover': { color: '#F97316', background: 'transparent' },
                 }}
               >
                 ← Back to profile

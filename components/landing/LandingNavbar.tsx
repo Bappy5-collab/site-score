@@ -1,6 +1,7 @@
 'use client';
 
 import { Box, Typography, Button, Toolbar, AppBar, useMediaQuery, useTheme } from '@mui/material';
+import Logo from '@/components/Logo';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
@@ -50,23 +51,9 @@ export default function LandingNavbar() {
           component={motion.div}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          onClick={() => router.push('/landing')}
-          sx={{ cursor: 'pointer', flexShrink: 0 }}
+          sx={{ flexShrink: 0 }}
         >
-          <Typography
-            variant="h6"
-            sx={{
-              fontWeight: 800,
-              letterSpacing: '-0.02em',
-              background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              fontSize: { xs: '1.2rem', md: '1.4rem' },
-            }}
-          >
-            SiteScore AI
-          </Typography>
+          <Logo size={34} fontSize="1.3rem" onClick={() => router.push('/landing')} />
         </Box>
 
         {!isMobile && (
@@ -116,12 +103,12 @@ export default function LandingNavbar() {
               whileTap={{ scale: 0.97 }}
               onClick={() => router.push('/demo')}
               sx={{
-                color: '#A78BFA',
+                color: '#FB923C',
                 fontWeight: 600,
                 fontSize: '0.9rem',
                 textTransform: 'none',
                 borderRadius: '12px',
-                '&:hover': { color: '#F1F5F9', background: 'rgba(139, 92, 246, 0.12)' },
+                '&:hover': { color: '#F1F5F9', background: 'rgba(249, 115, 22, 0.12)' },
               }}
             >
               View Demo
@@ -154,11 +141,11 @@ export default function LandingNavbar() {
               fontWeight: 700,
               fontSize: '0.9rem',
               textTransform: 'none',
-              background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-              boxShadow: '0 4px 20px rgba(139, 92, 246, 0.4)',
+              background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+              boxShadow: '0 4px 20px rgba(249, 115, 22, 0.4)',
               '&:hover': {
-                background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
-                boxShadow: '0 6px 28px rgba(139, 92, 246, 0.5)',
+                background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)',
+                boxShadow: '0 6px 28px rgba(249, 115, 22, 0.5)',
               },
             }}
           >

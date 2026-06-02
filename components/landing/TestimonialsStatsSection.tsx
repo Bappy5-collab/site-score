@@ -99,7 +99,7 @@ export default function TestimonialsStatsSection() {
                     variant="h3"
                     sx={{
                       fontWeight: 800,
-                      background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                      background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
@@ -145,7 +145,7 @@ export default function TestimonialsStatsSection() {
                       sx={{
                         width: 48,
                         height: 48,
-                        background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                        background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
                         fontSize: '1rem',
                         fontWeight: 600,
                       }}

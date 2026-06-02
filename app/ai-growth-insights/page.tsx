@@ -35,13 +35,13 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, C
 
 const cardSx = {
   p: 3,
-  borderRadius: '20px',
-  background: 'rgba(255, 255, 255, 0.03)',
+  borderRadius: '12px',
+  background: '#111827',
   backdropFilter: 'blur(20px)',
   border: '1px solid rgba(255, 255, 255, 0.08)',
   height: '100%',
   transition: 'all 0.3s ease',
-  '&:hover': { borderColor: 'rgba(139, 92, 246, 0.25)' },
+  '&:hover': { borderColor: 'rgba(249, 115, 22, 0.25)' },
 };
 
 const pageVariants = {
@@ -119,14 +119,14 @@ export default function AIGrowthInsightsPage() {
                   width: 48,
                   height: 48,
                   borderRadius: '14px',
-                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%)',
+                  border: '1px solid rgba(249, 115, 22, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
               >
-                <InsightsIcon sx={{ color: '#8B5CF6', fontSize: 28 }} />
+                <InsightsIcon sx={{ color: '#F97316', fontSize: 28 }} />
               </Box>
               <Box>
                 <Typography variant="h4" sx={{ fontWeight: 800, color: '#F1F5F9', letterSpacing: '-0.02em' }}>
@@ -192,7 +192,7 @@ export default function AIGrowthInsightsPage() {
                   <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
                     <Paper elevation={0} sx={cardSx}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                        <BuildCircleIcon sx={{ color: '#8B5CF6' }} />
+                        <BuildCircleIcon sx={{ color: '#F97316' }} />
                         <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
                           What to Fix Next
                         </Typography>
@@ -218,7 +218,7 @@ export default function AIGrowthInsightsPage() {
                                 <Chip label={s.impact} size="small" sx={{ fontSize: '0.7rem', height: 20 }} />
                                 <Typography variant="caption" sx={{ color: '#64748B' }}>Priority {s.priority}%</Typography>
                               </Box>
-                              <LinearProgress variant="determinate" value={s.priority} sx={{ height: 6, borderRadius: 3, bgcolor: 'rgba(255,255,255,0.06)', '& .MuiLinearProgress-bar': { bgcolor: '#8B5CF6' } }} />
+                              <LinearProgress variant="determinate" value={s.priority} sx={{ height: 6, borderRadius: 3, bgcolor: 'rgba(255,255,255,0.06)', '& .MuiLinearProgress-bar': { bgcolor: '#F97316' } }} />
                             </Paper>
                           </Grid>
                         ))}

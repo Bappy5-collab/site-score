@@ -12,7 +12,7 @@ export const CardSkeleton: React.FC = () => {
     >
       <Box
         sx={{
-          background: 'rgba(255, 255, 255, 0.03)',
+          background: '#111827',
           backdropFilter: 'blur(20px)',
           border: '1px solid rgba(255, 255, 255, 0.08)',
           borderRadius: '16px',
@@ -31,7 +31,7 @@ export const TableSkeleton: React.FC = () => {
   return (
     <Box
       sx={{
-        background: 'rgba(255, 255, 255, 0.03)',
+        background: '#111827',
         backdropFilter: 'blur(20px)',
         border: '1px solid rgba(255, 255, 255, 0.08)',
         borderRadius: '16px',
@@ -54,7 +54,7 @@ export const ChartSkeleton: React.FC = () => {
   return (
     <Box
       sx={{
-        background: 'rgba(255, 255, 255, 0.03)',
+        background: '#111827',
         backdropFilter: 'blur(20px)',
         border: '1px solid rgba(255, 255, 255, 0.08)',
         borderRadius: '16px',

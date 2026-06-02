@@ -35,8 +35,8 @@ export default function SectionHeading({
           py: 0.6,
           mb: 2,
           borderRadius: '9999px',
-          background: 'rgba(139, 92, 246, 0.1)',
-          border: '1px solid rgba(139, 92, 246, 0.22)',
+          background: 'rgba(249, 115, 22, 0.1)',
+          border: '1px solid rgba(249, 115, 22, 0.22)',
           backdropFilter: 'blur(8px)',
         }}
       >
@@ -45,7 +45,7 @@ export default function SectionHeading({
             width: 6,
             height: 6,
             borderRadius: '50%',
-            background: 'linear-gradient(135deg, #8B5CF6, #EC4899)',
+            background: 'linear-gradient(135deg, #F97316, #EA580C)',
           }}
         />
         <Typography

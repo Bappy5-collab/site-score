@@ -29,12 +29,12 @@ import { getSubscription, updateSubscription, type Subscription } from '@/servic
 const cardSx = {
   p: 3,
   height: '100%',
-  borderRadius: '20px',
-  background: 'rgba(255, 255, 255, 0.03)',
+  borderRadius: '12px',
+  background: '#111827',
   backdropFilter: 'blur(20px)',
   border: '1px solid rgba(255, 255, 255, 0.08)',
   transition: 'all 0.3s ease',
-  '&:hover': { borderColor: 'rgba(139, 92, 246, 0.25)' },
+  '&:hover': { borderColor: 'rgba(249, 115, 22, 0.25)' },
 };
 
 const PLANS = [
@@ -106,14 +106,14 @@ export default function BillingPage() {
                     width: 48,
                     height: 48,
                     borderRadius: '14px',
-                    background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%)',
-                    border: '1px solid rgba(139, 92, 246, 0.3)',
+                    background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%)',
+                    border: '1px solid rgba(249, 115, 22, 0.3)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}
                 >
-                  <CreditCardIcon sx={{ color: '#8B5CF6', fontSize: 28 }} />
+                  <CreditCardIcon sx={{ color: '#F97316', fontSize: 28 }} />
                 </Box>
                 <Box>
                   <Typography variant="h4" sx={{ fontWeight: 800, color: '#F1F5F9', letterSpacing: '-0.02em' }}>
@@ -130,10 +130,10 @@ export default function BillingPage() {
                 onClick={() => setPricingOpen(true)}
                 sx={{
                   borderRadius: '14px',
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                  background: '#EA580C',
                   textTransform: 'none',
                   fontWeight: 600,
-                  '&:hover': { background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)' },
+                  '&:hover': { background: '#C2410C' },
                 }}
               >
                 Change plan
@@ -142,7 +142,7 @@ export default function BillingPage() {
 
             {loading ? (
               <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
-                <CircularProgress sx={{ color: '#8B5CF6' }} />
+                <CircularProgress sx={{ color: '#F97316' }} />
               </Box>
             ) : sub ? (
               <Grid container spacing={3}>
@@ -159,7 +159,7 @@ export default function BillingPage() {
                           <Typography variant="body2" sx={{ color: '#64748B' }}>Billing period: {formatPeriod(sub.periodStartsAt)}</Typography>
                         </Box>
                       </Box>
-                      <Button variant="outlined" size="small" onClick={() => setPricingOpen(true)} sx={{ borderRadius: '12px', borderColor: 'rgba(139, 92, 246, 0.5)', color: '#8B5CF6' }}>
+                      <Button variant="outlined" size="small" onClick={() => setPricingOpen(true)} sx={{ borderRadius: '12px', borderColor: 'rgba(249, 115, 22, 0.5)', color: '#F97316' }}>
                         Change plan
                       </Button>
                     </Paper>
@@ -185,7 +185,7 @@ export default function BillingPage() {
                           borderRadius: 5,
                           bgcolor: 'rgba(255,255,255,0.06)',
                           '& .MuiLinearProgress-bar': {
-                            bgcolor: usagePercent > 90 ? '#F59E0B' : '#8B5CF6',
+                            bgcolor: usagePercent > 90 ? '#F59E0B' : '#F97316',
                             borderRadius: 5,
                           },
                         }}
@@ -201,7 +201,7 @@ export default function BillingPage() {
           </motion.div>
         </Box>
 
-        <Dialog open={pricingOpen} onClose={() => setPricingOpen(false)} maxWidth="sm" fullWidth PaperProps={{ sx: { background: 'rgba(15, 23, 42, 0.98)', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.08)' } }}>
+        <Dialog open={pricingOpen} onClose={() => setPricingOpen(false)} maxWidth="sm" fullWidth PaperProps={{ sx: { background: 'rgba(15, 23, 42, 0.98)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.08)' } }}>
           <DialogTitle sx={{ color: '#F1F5F9', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             Choose a plan
             <IconButton onClick={() => setPricingOpen(false)} sx={{ color: '#94A3B8' }}><CloseIcon /></IconButton>
@@ -217,14 +217,14 @@ export default function BillingPage() {
                       sx={{
                         p: 2,
                         borderRadius: '16px',
-                        border: current ? '2px solid rgba(139, 92, 246, 0.5)' : '1px solid rgba(255,255,255,0.08)',
-                        background: current ? 'rgba(139, 92, 246, 0.08)' : 'rgba(255,255,255,0.03)',
+                        border: current ? '2px solid rgba(249, 115, 22, 0.5)' : '1px solid rgba(255,255,255,0.08)',
+                        background: current ? 'rgba(249, 115, 22, 0.08)' : 'rgba(255,255,255,0.03)',
                       }}
                     >
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 1 }}>
                         <Box>
                           <Typography variant="h6" sx={{ color: '#F1F5F9', fontWeight: 600 }}>{plan.name}</Typography>
-                          <Typography variant="h4" sx={{ color: '#8B5CF6', fontWeight: 800 }}>${plan.price}<Typography component="span" variant="body2" sx={{ color: '#64748B', fontWeight: 400 }}>/mo</Typography></Typography>
+                          <Typography variant="h4" sx={{ color: '#F97316', fontWeight: 800 }}>${plan.price}<Typography component="span" variant="body2" sx={{ color: '#64748B', fontWeight: 400 }}>/mo</Typography></Typography>
                           <Typography variant="caption" sx={{ color: '#64748B' }}>{plan.scans >= 99999 ? 'Unlimited' : plan.scans + ' scans/mo'}</Typography>
                         </Box>
                         <Button
@@ -236,7 +236,7 @@ export default function BillingPage() {
                             borderRadius: '12px',
                             textTransform: 'none',
                             fontWeight: 600,
-                            ...(current ? { borderColor: 'rgba(139, 92, 246, 0.5)', color: '#8B5CF6' } : { background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)' }),
+                            ...(current ? { borderColor: 'rgba(249, 115, 22, 0.5)', color: '#F97316' } : { background: '#EA580C' }),
                           }}
                         >
                           {current ? 'Current' : upgrading === plan.name ? 'Updating…' : 'Select'}

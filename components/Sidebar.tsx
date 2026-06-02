@@ -20,7 +20,6 @@ import {
   MenuItem,
   Typography,
 } from '@mui/material';
-import { motion, AnimatePresence } from 'framer-motion';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import HistoryIcon from '@mui/icons-material/History';
 import AssessmentIcon from '@mui/icons-material/Assessment';
@@ -44,13 +43,25 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useAuth } from '@/context/AuthContext';
+import Logo from '@/components/Logo';
 
 const drawerWidth = 260;
-const collapsedWidth = 80;
+const collapsedWidth = 76;
 
 interface SidebarProps {
   mobileOpen?: boolean;
   onMobileClose?: () => void;
+}
+
+interface NavItem {
+  text: string;
+  icon: React.ElementType;
+  path: string;
+}
+
+interface NavSection {
+  heading: string;
+  items: NavItem[];
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) => {
@@ -63,24 +74,52 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const isAdmin = user?.role === 'admin';
+  const showLabels = !collapsed || isMobile;
 
-  const menuItems = [
-    { text: 'Dashboard', icon: DashboardIcon, path: '/dashboard' },
-    { text: 'Analyzer', icon: AssessmentIcon, path: '/analyzer' },
-    { text: 'My Scans', icon: HistoryIcon, path: '/my-scans' },
-    { text: 'AI Chat', icon: ChatIcon, path: '/ai-chat' },
-    { text: 'Compare', icon: CompareArrowsIcon, path: '/compare' },
-    { text: 'Team', icon: GroupIcon, path: '/team' },
-    { text: 'Reports', icon: PictureAsPdfIcon, path: '/reports' },
-    { text: 'Leaderboard', icon: EmojiEventsIcon, path: '/leaderboard' },
-    { text: 'AI Growth Insights', icon: InsightsIcon, path: '/ai-growth-insights' },
-    { text: 'Growth Brain', icon: PsychologyIcon, path: '/growth' },
-    { text: 'Growth Copilot', icon: SmartToyIcon, path: '/growth-copilot' },
-    { text: 'Automation Center', icon: ScheduleIcon, path: '/automation' },
-    { text: 'API & Webhooks', icon: ApiIcon, path: '/api-webhooks' },
-    { text: 'Billing', icon: CreditCardIcon, path: '/billing' },
-    { text: 'Activity Timeline', icon: TimelineIcon, path: '/activity' },
-    ...(isAdmin ? [{ text: 'Admin Panel', icon: AdminPanelSettingsIcon, path: '/admin' }] : []),
+  const sections: NavSection[] = [
+    {
+      heading: 'Overview',
+      items: [
+        { text: 'Dashboard', icon: DashboardIcon, path: '/dashboard' },
+        { text: 'Activity', icon: TimelineIcon, path: '/activity' },
+      ],
+    },
+    {
+      heading: 'Analyze',
+      items: [
+        { text: 'Analyzer', icon: AssessmentIcon, path: '/analyzer' },
+        { text: 'My Scans', icon: HistoryIcon, path: '/my-scans' },
+        { text: 'Compare', icon: CompareArrowsIcon, path: '/compare' },
+        { text: 'Reports', icon: PictureAsPdfIcon, path: '/reports' },
+      ],
+    },
+    {
+      heading: 'Growth',
+      items: [
+        { text: 'AI Chat', icon: ChatIcon, path: '/ai-chat' },
+        { text: 'Growth Insights', icon: InsightsIcon, path: '/ai-growth-insights' },
+        { text: 'Growth Brain', icon: PsychologyIcon, path: '/growth' },
+        { text: 'Growth Copilot', icon: SmartToyIcon, path: '/growth-copilot' },
+        { text: 'Automation', icon: ScheduleIcon, path: '/automation' },
+        { text: 'Leaderboard', icon: EmojiEventsIcon, path: '/leaderboard' },
+      ],
+    },
+    {
+      heading: 'Workspace',
+      items: [
+        { text: 'Team', icon: GroupIcon, path: '/team' },
+        { text: 'API & Webhooks', icon: ApiIcon, path: '/api-webhooks' },
+        { text: 'Billing', icon: CreditCardIcon, path: '/billing' },
+      ],
+    },
+    ...(isAdmin
+      ? [
+          {
+            heading: 'Admin',
+            items: [{ text: 'Admin Panel', icon: AdminPanelSettingsIcon, path: '/admin' }],
+          },
+        ]
+      : []),
   ];
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -100,114 +139,141 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
 
   const isActive = (path: string) => pathname === path;
 
+  const renderNavItem = (item: NavItem) => {
+    const Icon = item.icon;
+    const active = isActive(item.path);
+    return (
+      <ListItem key={item.path} disablePadding sx={{ mb: 0.25 }}>
+        <Tooltip title={collapsed && !isMobile ? item.text : ''} placement="right">
+          <ListItemButton
+            onClick={() => {
+              router.push(item.path);
+              if (isMobile && onMobileClose) onMobileClose();
+            }}
+            sx={{
+              borderRadius: '8px',
+              minHeight: 40,
+              justifyContent: collapsed && !isMobile ? 'center' : 'flex-start',
+              px: collapsed && !isMobile ? 1.25 : 1.5,
+              color: active ? '#F8FAFC' : '#94A3B8',
+              background: active ? 'rgba(249, 115, 22, 0.14)' : 'transparent',
+              transition: 'background-color 0.15s ease, color 0.15s ease',
+              '&:hover': {
+                background: active ? 'rgba(249, 115, 22, 0.18)' : 'rgba(255, 255, 255, 0.04)',
+                color: '#F8FAFC',
+              },
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: collapsed && !isMobile ? 0 : 34,
+                color: active ? '#FB923C' : 'inherit',
+                justifyContent: 'center',
+                '& svg': { fontSize: 20 },
+              }}
+            >
+              <Icon />
+            </ListItemIcon>
+            {showLabels && (
+              <ListItemText
+                primary={item.text}
+                primaryTypographyProps={{
+                  fontWeight: active ? 600 : 500,
+                  fontSize: '0.875rem',
+                  color: 'inherit',
+                  noWrap: true,
+                }}
+              />
+            )}
+          </ListItemButton>
+        </Tooltip>
+      </ListItem>
+    );
+  };
+
   const sidebarContent = (
     <Box
       sx={{
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        background: 'rgba(30, 41, 59, 0.8)',
-        backdropFilter: 'blur(20px)',
-        borderRight: '1px solid rgba(255, 255, 255, 0.08)',
+        background: '#0F172A',
+        borderRight: '1px solid rgba(255, 255, 255, 0.07)',
       }}
     >
-      {/* Profile Section */}
-      <Box sx={{ p: 2, borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
+      {/* Brand */}
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 1.25,
+          px: showLabels ? 2.5 : 0,
+          justifyContent: showLabels ? 'flex-start' : 'center',
+          height: 64,
+          flexShrink: 0,
+          borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
+        }}
+      >
+        <Logo size={32} showText={showLabels} fontSize="1.05rem" />
+      </Box>
+
+      {/* Profile */}
+      <Box sx={{ p: 1.5, borderBottom: '1px solid rgba(255, 255, 255, 0.07)' }}>
         <Box
-          component={motion.div}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
           onClick={handleProfileMenuOpen}
           sx={{
             display: 'flex',
             alignItems: 'center',
-            gap: 2,
-            p: 1.5,
-            borderRadius: '12px',
+            gap: 1.25,
+            p: 1,
+            borderRadius: '8px',
             cursor: 'pointer',
-            background: 'rgba(255, 255, 255, 0.03)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            transition: 'all 0.3s ease',
-            '&:hover': {
-              background: 'rgba(139, 92, 246, 0.1)',
-              borderColor: 'rgba(139, 92, 246, 0.3)',
-            },
+            justifyContent: showLabels ? 'flex-start' : 'center',
+            transition: 'background-color 0.15s ease',
+            '&:hover': { background: 'rgba(255, 255, 255, 0.04)' },
           }}
         >
           <Avatar
             sx={{
-              width: 40,
-              height: 40,
-              background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-              fontSize: '1rem',
+              width: 34,
+              height: 34,
+              background: '#EA580C',
+              fontSize: '0.875rem',
               fontWeight: 600,
             }}
           >
             {user?.name?.charAt(0).toUpperCase() || 'U'}
           </Avatar>
-          <AnimatePresence>
-            {(!collapsed || isMobile) && (
-              <Box
-                component={motion.div}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -10 }}
-                transition={{ duration: 0.2 }}
-                sx={{ flex: 1, minWidth: 0 }}
-              >
+          {showLabels && (
+            <>
+              <Box sx={{ flex: 1, minWidth: 0 }}>
                 <Typography
                   variant="body2"
-                  sx={{
-                    fontWeight: 600,
-                    color: '#F1F5F9',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                  }}
+                  sx={{ fontWeight: 600, color: '#F1F5F9', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
                 >
                   {user?.name || 'User'}
                 </Typography>
                 <Typography
                   variant="caption"
-                  sx={{
-                    color: '#94A3B8',
-                    fontSize: '0.75rem',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                    display: 'block',
-                  }}
+                  sx={{ color: '#64748B', fontSize: '0.75rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block' }}
                 >
                   {user?.email || ''}
                 </Typography>
               </Box>
-            )}
-          </AnimatePresence>
-          <AnimatePresence>
-            {(!collapsed || isMobile) && (
-              <motion.div
-                initial={{ opacity: 0, rotate: -90 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                exit={{ opacity: 0, rotate: -90 }}
-                transition={{ duration: 0.2 }}
-              >
-                <ExpandMoreIcon sx={{ color: '#94A3B8', fontSize: 20 }} />
-              </motion.div>
-            )}
-          </AnimatePresence>
+              <ExpandMoreIcon sx={{ color: '#64748B', fontSize: 18 }} />
+            </>
+          )}
         </Box>
 
-        {/* Profile Dropdown Menu */}
         <Menu
           anchorEl={profileAnchorEl}
           open={profileMenuOpen}
           onClose={handleProfileMenuClose}
           PaperProps={{
             sx: {
-              background: 'rgba(30, 41, 59, 0.95)',
-              backdropFilter: 'blur(20px)',
+              background: '#111827',
               border: '1px solid rgba(255, 255, 255, 0.08)',
-              borderRadius: '16px',
+              borderRadius: '10px',
               mt: 1,
               minWidth: 200,
             },
@@ -220,14 +286,9 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
               router.push('/profile');
               handleProfileMenuClose();
             }}
-            sx={{
-              color: '#F1F5F9',
-              '&:hover': {
-                background: 'rgba(139, 92, 246, 0.1)',
-              },
-            }}
+            sx={{ color: '#F1F5F9', fontSize: '0.875rem', '&:hover': { background: 'rgba(249, 115, 22, 0.1)' } }}
           >
-            <PersonIcon sx={{ mr: 2, fontSize: 20 }} />
+            <PersonIcon sx={{ mr: 1.5, fontSize: 19 }} />
             View Profile
           </MenuItem>
           <MenuItem
@@ -235,14 +296,9 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
               router.push('/settings');
               handleProfileMenuClose();
             }}
-            sx={{
-              color: '#F1F5F9',
-              '&:hover': {
-                background: 'rgba(139, 92, 246, 0.1)',
-              },
-            }}
+            sx={{ color: '#F1F5F9', fontSize: '0.875rem', '&:hover': { background: 'rgba(249, 115, 22, 0.1)' } }}
           >
-            <SettingsIcon sx={{ mr: 2, fontSize: 20 }} />
+            <SettingsIcon sx={{ mr: 1.5, fontSize: 19 }} />
             Account Settings
           </MenuItem>
           <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.08)', my: 0.5 }} />
@@ -251,187 +307,90 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
               handleLogout();
               handleProfileMenuClose();
             }}
-            sx={{
-              color: '#F43F5E',
-              '&:hover': {
-                background: 'rgba(244, 63, 94, 0.1)',
-              },
-            }}
+            sx={{ color: '#F87171', fontSize: '0.875rem', '&:hover': { background: 'rgba(239, 68, 68, 0.1)' } }}
           >
-            <LogoutIcon sx={{ mr: 2, fontSize: 20 }} />
+            <LogoutIcon sx={{ mr: 1.5, fontSize: 19 }} />
             Logout
           </MenuItem>
         </Menu>
       </Box>
 
-      <Box sx={{ overflow: 'auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
-        <List sx={{ pt: 2, px: 1, flex: 1 }}>
-          {menuItems.map((item) => {
-            const Icon = item.icon;
-            const active = isActive(item.path);
-            return (
-              <ListItem key={item.text} disablePadding sx={{ mb: 0.5 }}>
-                <Tooltip title={collapsed && !isMobile ? item.text : ''} placement="right">
-                  <ListItemButton
-                    component={motion.div}
-                    whileHover={{ x: 4 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => {
-                      router.push(item.path);
-                      if (isMobile && onMobileClose) onMobileClose();
-                    }}
-                    sx={{
-                      borderRadius: '12px',
-                      minHeight: 48,
-                      justifyContent: collapsed && !isMobile ? 'center' : 'flex-start',
-                      px: collapsed && !isMobile ? 1.5 : 2,
-                      position: 'relative',
-                      background: active
-                        ? 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%)'
-                        : 'transparent',
-                      border: active ? '1px solid rgba(139, 92, 246, 0.3)' : '1px solid transparent',
-                      '&:hover': {
-                        background: active
-                          ? 'linear-gradient(135deg, rgba(139, 92, 246, 0.3) 0%, rgba(236, 72, 153, 0.3) 100%)'
-                          : 'rgba(255, 255, 255, 0.05)',
-                        borderColor: active ? 'rgba(139, 92, 246, 0.4)' : 'rgba(255, 255, 255, 0.1)',
-                        boxShadow: active ? '0 4px 12px rgba(139, 92, 246, 0.2)' : 'none',
-                      },
-                      transition: 'all 0.3s ease',
-                    }}
-                  >
-                    {active && (
-                      <Box
-                        component={motion.div}
-                        layoutId="activeIndicator"
-                        sx={{
-                          position: 'absolute',
-                          left: 0,
-                          top: '50%',
-                          transform: 'translateY(-50%)',
-                          width: 4,
-                          height: 24,
-                          background: 'linear-gradient(180deg, #8B5CF6 0%, #EC4899 100%)',
-                          borderRadius: '0 4px 4px 0',
-                          boxShadow: '0 0 12px rgba(139, 92, 246, 0.6)',
-                        }}
-                      />
-                    )}
-                    <ListItemIcon
-                      sx={{
-                        minWidth: collapsed && !isMobile ? 0 : 40,
-                        color: active ? '#8B5CF6' : '#94A3B8',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Icon />
-                    </ListItemIcon>
-                    <AnimatePresence>
-                      {(!collapsed || isMobile) && (
-                        <Box
-                          component={motion.div}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -10 }}
-                          transition={{ duration: 0.2 }}
-                          sx={{ flex: 1, minWidth: 0 }}
-                        >
-                          <ListItemText
-                            primary={item.text}
-                            primaryTypographyProps={{
-                              fontWeight: active ? 600 : 500,
-                              fontSize: '0.875rem',
-                              color: active ? '#F1F5F9' : '#94A3B8',
-                            }}
-                          />
-                        </Box>
-                      )}
-                    </AnimatePresence>
-                  </ListItemButton>
-                </Tooltip>
-              </ListItem>
-            );
-          })}
-        </List>
-
-        <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.08)' }} />
-
-        {/* Logout button */}
-        <List sx={{ px: 1, py: 0 }}>
-          <ListItem disablePadding sx={{ mb: 0.5 }}>
-            <Tooltip title={collapsed && !isMobile ? 'Logout' : ''} placement="right">
-              <ListItemButton
-                component={motion.div}
-                whileHover={{ x: 4 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => {
-                  if (isMobile && onMobileClose) onMobileClose();
-                  handleLogout();
-                }}
+      {/* Navigation */}
+      <Box
+        sx={{
+          overflowY: 'auto',
+          overflowX: 'hidden',
+          flex: 1,
+          py: 1.5,
+          '&::-webkit-scrollbar': { width: '6px' },
+          '&::-webkit-scrollbar-thumb': { background: 'rgba(148, 163, 184, 0.25)', borderRadius: '4px' },
+        }}
+      >
+        {sections.map((section) => (
+          <Box key={section.heading} sx={{ px: 1.25, mb: 1.5 }}>
+            {showLabels && (
+              <Typography
                 sx={{
-                  borderRadius: '12px',
-                  minHeight: 48,
-                  justifyContent: collapsed && !isMobile ? 'center' : 'flex-start',
-                  px: collapsed && !isMobile ? 1.5 : 2,
-                  background: 'rgba(239, 68, 68, 0.08)',
-                  border: '1px solid rgba(239, 68, 68, 0.2)',
-                  '&:hover': {
-                    background: 'rgba(239, 68, 68, 0.15)',
-                    borderColor: 'rgba(239, 68, 68, 0.35)',
-                  },
+                  px: 1.5,
+                  mb: 0.5,
+                  color: '#475569',
+                  fontSize: '0.6875rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
                 }}
               >
-                <ListItemIcon sx={{ minWidth: collapsed && !isMobile ? 0 : 40, justifyContent: 'center', color: '#F87171' }}>
-                  <LogoutIcon />
-                </ListItemIcon>
-                <AnimatePresence>
-                  {(!collapsed || isMobile) && (
-                    <Box
-                      component={motion.div}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -10 }}
-                      transition={{ duration: 0.2 }}
-                      sx={{ flex: 1, minWidth: 0 }}
-                    >
-                      <ListItemText
-                        primary="Logout"
-                        primaryTypographyProps={{ fontWeight: 600, fontSize: '0.875rem', color: '#F87171' }}
-                      />
-                    </Box>
-                  )}
-                </AnimatePresence>
-              </ListItemButton>
-            </Tooltip>
-          </ListItem>
-        </List>
+                {section.heading}
+              </Typography>
+            )}
+            <List disablePadding>{section.items.map(renderNavItem)}</List>
+          </Box>
+        ))}
+      </Box>
 
-        <Box sx={{ p: 1 }}>
-          {!isMobile && (
-            <Tooltip title={collapsed ? 'Expand' : 'Collapse'} placement="right">
-              <IconButton
-                component={motion.button}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setCollapsed(!collapsed)}
-                sx={{
-                  width: '100%',
-                  background: 'rgba(139, 92, 246, 0.1)',
-                  border: '1px solid rgba(139, 92, 246, 0.2)',
-                  color: '#8B5CF6',
-                  borderRadius: '12px',
-                  mb: 1,
-                  '&:hover': {
-                    background: 'rgba(139, 92, 246, 0.2)',
-                    boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)',
-                  },
-                }}
-              >
-                {collapsed ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-              </IconButton>
-            </Tooltip>
-          )}
-        </Box>
+      {/* Logout + collapse */}
+      <Box sx={{ p: 1.25, borderTop: '1px solid rgba(255, 255, 255, 0.07)' }}>
+        <Tooltip title={collapsed && !isMobile ? 'Logout' : ''} placement="right">
+          <ListItemButton
+            onClick={() => {
+              if (isMobile && onMobileClose) onMobileClose();
+              handleLogout();
+            }}
+            sx={{
+              borderRadius: '8px',
+              minHeight: 40,
+              mb: 0.5,
+              justifyContent: collapsed && !isMobile ? 'center' : 'flex-start',
+              px: collapsed && !isMobile ? 1.25 : 1.5,
+              color: '#94A3B8',
+              transition: 'background-color 0.15s ease, color 0.15s ease',
+              '&:hover': { background: 'rgba(239, 68, 68, 0.1)', color: '#F87171' },
+            }}
+          >
+            <ListItemIcon sx={{ minWidth: collapsed && !isMobile ? 0 : 34, justifyContent: 'center', color: 'inherit', '& svg': { fontSize: 20 } }}>
+              <LogoutIcon />
+            </ListItemIcon>
+            {showLabels && (
+              <ListItemText primary="Logout" primaryTypographyProps={{ fontWeight: 500, fontSize: '0.875rem', color: 'inherit' }} />
+            )}
+          </ListItemButton>
+        </Tooltip>
+
+        {!isMobile && (
+          <Tooltip title={collapsed ? 'Expand' : 'Collapse'} placement="right">
+            <IconButton
+              onClick={() => setCollapsed(!collapsed)}
+              sx={{
+                width: '100%',
+                color: '#64748B',
+                borderRadius: '8px',
+                '&:hover': { background: 'rgba(255, 255, 255, 0.04)', color: '#94A3B8' },
+              }}
+            >
+              {collapsed ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            </IconButton>
+          </Tooltip>
+        )}
       </Box>
     </Box>
   );
@@ -442,9 +401,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
         variant="temporary"
         open={mobileOpen}
         onClose={onMobileClose || (() => {})}
-        ModalProps={{
-          keepMounted: true,
-        }}
+        ModalProps={{ keepMounted: true }}
         sx={{
           '& .MuiDrawer-paper': {
             width: Math.min(drawerWidth, 280),
@@ -460,20 +417,16 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
 
   return (
     <Box
-      component={motion.div}
-      initial={false}
-      animate={{
-        width: collapsed ? collapsedWidth : drawerWidth,
-      }}
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
       sx={{
         flexShrink: 0,
+        width: collapsed ? collapsedWidth : drawerWidth,
         height: '100vh',
         position: 'fixed',
         top: 0,
         left: 0,
         zIndex: 1200,
         overflow: 'hidden',
+        transition: 'width 0.25s ease',
       }}
     >
       {sidebarContent}

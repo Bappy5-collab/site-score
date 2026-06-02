@@ -59,7 +59,7 @@ export default function HowItWorksSection() {
                       border: '1px solid rgba(255, 255, 255, 0.08)',
                       textAlign: 'center',
                       position: 'relative',
-                      '&:hover': { borderColor: 'rgba(139, 92, 246, 0.25)' },
+                      '&:hover': { borderColor: 'rgba(249, 115, 22, 0.25)' },
                     }}
                   >
                     <Box
@@ -67,8 +67,8 @@ export default function HowItWorksSection() {
                         width: 72,
                         height: 72,
                         borderRadius: '20px',
-                        background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.25) 0%, rgba(236, 72, 153, 0.2) 100%)',
-                        border: '1px solid rgba(139, 92, 246, 0.3)',
+                        background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.25) 0%, rgba(234, 88, 12, 0.2) 100%)',
+                        border: '1px solid rgba(249, 115, 22, 0.3)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -76,7 +76,7 @@ export default function HowItWorksSection() {
                         mb: 2,
                       }}
                     >
-                      <Icon sx={{ fontSize: 36, color: '#8B5CF6' }} />
+                      <Icon sx={{ fontSize: 36, color: '#F97316' }} />
                     </Box>
                     <Typography variant="h5" sx={{ fontWeight: 700, color: '#F1F5F9', mb: 1.5 }}>
                       {step.title}
@@ -92,7 +92,7 @@ export default function HowItWorksSection() {
                           right: -32,
                           top: '50%',
                           transform: 'translateY(-50%)',
-                          color: 'rgba(139, 92, 246, 0.5)',
+                          color: 'rgba(249, 115, 22, 0.5)',
                         }}
                       >
                         <ArrowForwardIcon sx={{ fontSize: 28 }} />

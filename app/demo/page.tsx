@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import PremiumCard from '@/components/PremiumCard';
+import Logo from '@/components/Logo';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -29,6 +30,7 @@ import {
   Tooltip as ChartTooltip,
   Legend,
   Filler,
+  ScriptableContext,
 } from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
 import AssessmentIcon from '@mui/icons-material/Assessment';
@@ -136,19 +138,18 @@ const fmtDate = (ts: number) =>
   new Date(ts).toLocaleDateString('en-US', { timeZone: 'UTC' });
 
 const cardSx = {
-  p: 3,
+  p: { xs: 2.5, md: 3 },
   height: '100%',
-  background: 'rgba(255, 255, 255, 0.03)',
-  backdropFilter: 'blur(20px)',
+  background: 'linear-gradient(155deg, #141B2D 0%, #0E1422 100%)',
   border: '1px solid rgba(255, 255, 255, 0.08)',
-  borderRadius: '20px',
+  borderRadius: '16px',
 };
 
 type SortKey = 'title' | 'performanceScore' | 'seoScore' | 'securityScore' | 'createdAt';
 type MetricKey = 'performanceScore' | 'seoScore' | 'securityScore';
 
 const METRICS: { key: MetricKey; label: string; color: string }[] = [
-  { key: 'performanceScore', label: 'Performance', color: '#8B5CF6' },
+  { key: 'performanceScore', label: 'Performance', color: '#F97316' },
   { key: 'seoScore', label: 'SEO', color: '#22C55E' },
   { key: 'securityScore', label: 'Security', color: '#F59E0B' },
 ];
@@ -207,22 +208,33 @@ export default function DemoDashboardPage() {
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    animation: { duration: 600 },
+    animation: { duration: 900, easing: 'easeOutQuart' as const },
+    interaction: { mode: 'index' as const, intersect: false },
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: 'rgba(15, 23, 42, 0.95)',
-        titleColor: '#F1F5F9',
-        bodyColor: '#94A3B8',
-        borderColor: 'rgba(255, 255, 255, 0.08)',
+        backgroundColor: 'rgba(14, 20, 34, 0.95)',
+        titleColor: '#F8FAFC',
+        bodyColor: '#CBD5E1',
+        borderColor: 'rgba(255, 255, 255, 0.1)',
         borderWidth: 1,
         padding: 12,
-        cornerRadius: 8,
+        cornerRadius: 10,
+        usePointStyle: true,
       },
     },
     scales: {
-      x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#94A3B8' } },
-      y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#94A3B8' }, min: 0, max: 100 },
+      x: {
+        grid: { display: false, drawBorder: false } as any,
+        ticks: { color: '#64748B', maxTicksLimit: 7, font: { size: 11 } },
+      },
+      y: {
+        min: 0,
+        max: 100,
+        border: { display: false } as any,
+        grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false } as any,
+        ticks: { color: '#64748B', stepSize: 25, font: { size: 11 }, padding: 8 },
+      },
     },
   };
 
@@ -232,11 +244,23 @@ export default function DemoDashboardPage() {
       label: m.label,
       data: chronological.map((s) => s[m.key]),
       borderColor: m.color,
-      backgroundColor: `${m.color}1F`,
-      tension: 0.4,
+      tension: 0.45,
       fill: true,
-      pointRadius: 3,
-      pointHoverRadius: 6,
+      pointRadius: 0,
+      pointHoverRadius: 5,
+      pointHoverBorderColor: '#0E1422',
+      pointHoverBorderWidth: 2,
+      borderWidth: 2.5,
+      backgroundColor: (ctx: ScriptableContext<'line'>) => {
+        const { chart } = ctx;
+        const { ctx: canvas, chartArea } = chart;
+        if (!chartArea) return `${m.color}00`;
+        const g = canvas.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+        g.addColorStop(0, `${m.color}59`);
+        g.addColorStop(0.5, `${m.color}14`);
+        g.addColorStop(1, `${m.color}00`);
+        return g;
+      },
     })),
   };
 
@@ -246,7 +270,7 @@ export default function DemoDashboardPage() {
       {
         label: 'Average score',
         data: [stats.avgPerformanceScore, stats.avgSeoScore, stats.avgSecurityScore],
-        backgroundColor: ['rgba(139, 92, 246, 0.7)', 'rgba(34, 197, 94, 0.7)', 'rgba(245, 158, 11, 0.7)'],
+        backgroundColor: ['rgba(249, 115, 22, 0.7)', 'rgba(34, 197, 94, 0.7)', 'rgba(245, 158, 11, 0.7)'],
         borderRadius: 8,
         borderWidth: 0,
       },
@@ -322,9 +346,9 @@ export default function DemoDashboardPage() {
         cursor: 'pointer',
         justifyContent: align,
         userSelect: 'none',
-        color: sortKey === k ? '#A78BFA' : '#64748B',
+        color: sortKey === k ? '#FB923C' : '#64748B',
         transition: 'color 0.15s',
-        '&:hover': { color: '#A78BFA' },
+        '&:hover': { color: '#FB923C' },
       }}
     >
       {label}
@@ -352,7 +376,7 @@ export default function DemoDashboardPage() {
           zIndex: 1100,
           background: 'rgba(10, 14, 39, 0.85)',
           backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(139, 92, 246, 0.25)',
+          borderBottom: '1px solid rgba(249, 115, 22, 0.25)',
         }}
       >
         <Container
@@ -360,6 +384,7 @@ export default function DemoDashboardPage() {
           sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2, py: 1.25, flexWrap: 'wrap' }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25 }}>
+            <Logo size={30} fontSize="1.05rem" onClick={() => router.push('/landing')} sx={{ mr: 0.5 }} />
             <Chip
               icon={<AutoAwesomeIcon sx={{ fontSize: '1rem !important' }} />}
               label="Interactive Demo"
@@ -367,7 +392,7 @@ export default function DemoDashboardPage() {
               sx={{
                 fontWeight: 700,
                 color: '#F1F5F9',
-                background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
                 '& .MuiChip-icon': { color: '#F1F5F9' },
               }}
             />
@@ -396,9 +421,9 @@ export default function DemoDashboardPage() {
                 textTransform: 'none',
                 fontWeight: 700,
                 borderRadius: '10px',
-                background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-                boxShadow: '0 4px 20px rgba(139, 92, 246, 0.4)',
-                '&:hover': { background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)' },
+                background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+                boxShadow: '0 4px 20px rgba(249, 115, 22, 0.4)',
+                '&:hover': { background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)' },
               }}
             >
               Sign up free
@@ -429,7 +454,7 @@ export default function DemoDashboardPage() {
         {/* ── Interactive demo scanner ───────────────────────────────────── */}
         <Paper sx={{ ...cardSx, height: 'auto', mb: 3 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, mb: 2 }}>
-            <RadarIcon sx={{ color: '#A78BFA' }} />
+            <RadarIcon sx={{ color: '#FB923C' }} />
             <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
               Run a demo scan
             </Typography>
@@ -450,8 +475,8 @@ export default function DemoDashboardPage() {
                   borderRadius: '12px',
                   background: 'rgba(255,255,255,0.04)',
                   '& fieldset': { borderColor: 'rgba(255,255,255,0.12)' },
-                  '&:hover fieldset': { borderColor: 'rgba(139,92,246,0.5)' },
-                  '&.Mui-focused fieldset': { borderColor: '#8B5CF6' },
+                  '&:hover fieldset': { borderColor: 'rgba(249, 115, 22,0.5)' },
+                  '&.Mui-focused fieldset': { borderColor: '#F97316' },
                 },
               }}
             />
@@ -465,8 +490,8 @@ export default function DemoDashboardPage() {
                 fontWeight: 700,
                 textTransform: 'none',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-                '&:hover': { background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)' },
+                background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+                '&:hover': { background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)' },
                 '&.Mui-disabled': { background: 'rgba(255,255,255,0.08)', color: '#64748B' },
               }}
             >
@@ -490,11 +515,11 @@ export default function DemoDashboardPage() {
                       background: 'rgba(255,255,255,0.08)',
                       '& .MuiLinearProgress-bar': {
                         borderRadius: 3,
-                        background: 'linear-gradient(90deg, #8B5CF6, #EC4899)',
+                        background: 'linear-gradient(90deg, #F97316, #EA580C)',
                       },
                     }}
                   />
-                  <Typography variant="caption" sx={{ color: '#A78BFA', mt: 1, display: 'block' }}>
+                  <Typography variant="caption" sx={{ color: '#FB923C', mt: 1, display: 'block' }}>
                     {SCAN_STEPS[scanStep]}
                   </Typography>
                 </Box>
@@ -607,15 +632,15 @@ export default function DemoDashboardPage() {
                     borderRadius: '10px',
                     background: 'rgba(255,255,255,0.04)',
                     '& fieldset': { borderColor: 'rgba(255,255,255,0.12)' },
-                    '&:hover fieldset': { borderColor: 'rgba(139,92,246,0.5)' },
-                    '&.Mui-focused fieldset': { borderColor: '#8B5CF6' },
+                    '&:hover fieldset': { borderColor: 'rgba(249, 115, 22,0.5)' },
+                    '&.Mui-focused fieldset': { borderColor: '#F97316' },
                   },
                 }}
               />
               <Tooltip title="Reset demo">
                 <IconButton
                   onClick={resetDemo}
-                  sx={{ color: '#94A3B8', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', '&:hover': { color: '#A78BFA' } }}
+                  sx={{ color: '#94A3B8', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', '&:hover': { color: '#FB923C' } }}
                 >
                   <RefreshIcon />
                 </IconButton>
@@ -675,7 +700,7 @@ export default function DemoDashboardPage() {
                           borderRadius: '12px',
                           cursor: 'pointer',
                           transition: 'background 0.2s',
-                          background: open ? 'rgba(139,92,246,0.08)' : 'transparent',
+                          background: open ? 'rgba(249, 115, 22,0.08)' : 'transparent',
                           '&:hover': { background: 'rgba(255,255,255,0.04)' },
                         }}
                       >
@@ -737,7 +762,7 @@ export default function DemoDashboardPage() {
                           }}
                         >
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                            <AutoAwesomeIcon sx={{ fontSize: '1rem', color: '#A78BFA' }} />
+                            <AutoAwesomeIcon sx={{ fontSize: '1rem', color: '#FB923C' }} />
                             <Typography variant="subtitle2" sx={{ color: '#F1F5F9', fontWeight: 700 }}>
                               AI Summary
                             </Typography>
@@ -775,8 +800,8 @@ export default function DemoDashboardPage() {
             p: { xs: 3, md: 5 },
             textAlign: 'center',
             borderRadius: '24px',
-            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(236, 72, 153, 0.1) 100%)',
-            border: '1px solid rgba(139, 92, 246, 0.25)',
+            background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(234, 88, 12, 0.1) 100%)',
+            border: '1px solid rgba(249, 115, 22, 0.25)',
           }}
         >
           <Typography variant="h5" sx={{ fontWeight: 800, color: '#F1F5F9', mb: 1 }}>
@@ -797,9 +822,9 @@ export default function DemoDashboardPage() {
               fontWeight: 700,
               textTransform: 'none',
               borderRadius: '14px',
-              background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-              boxShadow: '0 8px 32px rgba(139, 92, 246, 0.45)',
-              '&:hover': { background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)' },
+              background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+              boxShadow: '0 8px 32px rgba(249, 115, 22, 0.45)',
+              '&:hover': { background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)' },
             }}
           >
             Start Free

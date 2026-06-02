@@ -18,12 +18,12 @@ import { getActivity, type ActivityItem } from '@/services/activityService';
 
 const cardSx = {
   p: 3,
-  borderRadius: '20px',
-  background: 'rgba(255, 255, 255, 0.03)',
+  borderRadius: '12px',
+  background: '#111827',
   backdropFilter: 'blur(20px)',
   border: '1px solid rgba(255, 255, 255, 0.08)',
   transition: 'all 0.3s ease',
-  '&:hover': { borderColor: 'rgba(139, 92, 246, 0.25)' },
+  '&:hover': { borderColor: 'rgba(249, 115, 22, 0.25)' },
 };
 
 const iconMap: Record<string, React.ComponentType<{ sx?: object }>> = {
@@ -37,13 +37,13 @@ const iconMap: Record<string, React.ComponentType<{ sx?: object }>> = {
 };
 
 const colorMap: Record<string, string> = {
-  scan: '#8B5CF6',
-  report: '#EC4899',
+  scan: '#F97316',
+  report: '#F97316',
   team: '#22C55E',
   schedule: '#F59E0B',
-  api: '#3B82F6',
-  billing: '#8B5CF6',
-  automation: '#8B5CF6',
+  api: '#FB923C',
+  billing: '#F97316',
+  automation: '#F97316',
 };
 
 export default function ActivityTimelinePage() {
@@ -77,14 +77,14 @@ export default function ActivityTimelinePage() {
                   width: 48,
                   height: 48,
                   borderRadius: '14px',
-                  background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%)',
+                  border: '1px solid rgba(249, 115, 22, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
               >
-                <TimelineIcon sx={{ color: '#8B5CF6', fontSize: 28 }} />
+                <TimelineIcon sx={{ color: '#F97316', fontSize: 28 }} />
               </Box>
               <Box>
                 <Typography variant="h4" sx={{ fontWeight: 800, color: '#F1F5F9', letterSpacing: '-0.02em' }}>
@@ -103,7 +103,7 @@ export default function ActivityTimelinePage() {
             )}
             {loading ? (
               <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
-                <CircularProgress sx={{ color: '#8B5CF6' }} />
+                <CircularProgress sx={{ color: '#F97316' }} />
               </Box>
             ) : (
               <Paper elevation={0} sx={cardSx}>
@@ -118,7 +118,7 @@ export default function ActivityTimelinePage() {
                       top: 24,
                       bottom: 24,
                       width: 2,
-                      background: 'linear-gradient(180deg, rgba(139, 92, 246, 0.5), rgba(236, 72, 153, 0.3))',
+                      background: 'linear-gradient(180deg, rgba(249, 115, 22, 0.5), rgba(249, 115, 22, 0.3))',
                       borderRadius: 1,
                     },
                   }}
@@ -128,7 +128,7 @@ export default function ActivityTimelinePage() {
                   )}
                   {activities.map((item, index) => {
                     const Icon = iconMap[item.type] || AssessmentIcon;
-                    const color = colorMap[item.type] || '#8B5CF6';
+                    const color = colorMap[item.type] || '#F97316';
                     const time = item.createdAt ? formatDistanceToNow(new Date(item.createdAt), { addSuffix: true }) : '—';
                     return (
                       <motion.div

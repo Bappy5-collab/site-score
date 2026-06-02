@@ -13,9 +13,9 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ title, score, color = 'primary' }
   const getColorValue = () => {
     switch (color) {
       case 'primary':
-        return '#8B5CF6';
+        return '#F97316';
       case 'secondary':
-        return '#EC4899';
+        return '#F97316';
       case 'success':
         return '#22C55E';
       case 'error':
@@ -23,9 +23,9 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ title, score, color = 'primary' }
       case 'warning':
         return '#F59E0B';
       case 'info':
-        return '#3B82F6';
+        return '#FB923C';
       default:
-        return '#8B5CF6';
+        return '#F97316';
     }
   };
 
@@ -33,7 +33,7 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ title, score, color = 'primary' }
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -4, scale: 1.02 }}
+      whileHover={{ y: -2 }}
       transition={{ duration: 0.3 }}
     >
       <Card
@@ -43,7 +43,7 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ title, score, color = 'primary' }
           background: `linear-gradient(135deg, ${getColorValue()}15 0%, ${getColorValue()}05 100%)`,
           backdropFilter: 'blur(20px)',
           border: `1px solid ${getColorValue()}30`,
-          borderRadius: '20px',
+          borderRadius: '12px',
           position: 'relative',
           overflow: 'hidden',
           '&::before': {

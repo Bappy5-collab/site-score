@@ -20,7 +20,7 @@ const ScanTable: React.FC<ScanTableProps> = ({ scans }) => {
           href={params.value}
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: '#8B5CF6', textDecoration: 'none' }}
+          style={{ color: '#F97316', textDecoration: 'none' }}
         >
           {params.value}
         </a>
@@ -93,18 +93,18 @@ const ScanTable: React.FC<ScanTableProps> = ({ scans }) => {
               outline: 'none',
             },
             '&:hover': {
-              background: 'rgba(139, 92, 246, 0.05)',
+              background: 'rgba(249, 115, 22, 0.05)',
             },
           },
           '& .MuiDataGrid-columnHeaders': {
             borderColor: 'rgba(255, 255, 255, 0.08)',
-            background: 'rgba(255, 255, 255, 0.03)',
+            background: '#111827',
             color: '#94A3B8',
             fontWeight: 600,
           },
           '& .MuiDataGrid-row': {
             '&:hover': {
-              background: 'rgba(139, 92, 246, 0.05)',
+              background: 'rgba(249, 115, 22, 0.05)',
             },
           },
           '& .MuiDataGrid-footerContainer': {

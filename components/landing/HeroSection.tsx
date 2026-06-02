@@ -47,7 +47,7 @@ export default function HeroSection() {
           right: '-10%',
           width: 600,
           height: 600,
-          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(249, 115, 22, 0.35) 0%, transparent 70%)',
           borderRadius: '50%',
           filter: 'blur(80px)',
         }}
@@ -62,7 +62,7 @@ export default function HeroSection() {
           left: '-15%',
           width: 500,
           height: 500,
-          background: 'radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(234, 88, 12, 0.3) 0%, transparent 70%)',
           borderRadius: '50%',
           filter: 'blur(80px)',
         }}
@@ -77,32 +77,13 @@ export default function HeroSection() {
               transition={{ duration: 0.6 }}
               style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}
             >
-              <Box
-                component={motion.div}
-                whileHover={{ scale: 1.03 }}
-                sx={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 1,
-                  px: 2,
-                  py: 0.75,
-                  borderRadius: '9999px',
-                  background: 'rgba(139, 92, 246, 0.1)',
-                  border: '1px solid rgba(139, 92, 246, 0.25)',
-                  backdropFilter: 'blur(12px)',
-                }}
-              >
-                <AutoAwesomeIcon sx={{ fontSize: '1rem', color: '#A78BFA' }} />
-                <Typography
-                  variant="caption"
-                  sx={{ color: '#C4B5FD', fontWeight: 600, letterSpacing: '0.02em' }}
-                >
-                  AI growth copilot — now with real-time insights
-                </Typography>
-              </Box>
+          
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 24 }}
+
+
+              
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
@@ -113,7 +94,7 @@ export default function HeroSection() {
                   fontWeight: 800,
                   lineHeight: 1.15,
                   letterSpacing: '-0.03em',
-                  background: 'linear-gradient(135deg, #F1F5F9 0%, #94A3B8 50%, #8B5CF6 100%)',
+                  background: 'linear-gradient(135deg, #F1F5F9 0%, #94A3B8 50%, #F97316 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -159,11 +140,11 @@ export default function HeroSection() {
                   fontWeight: 700,
                   textTransform: 'none',
                   borderRadius: '14px',
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
-                  boxShadow: '0 8px 32px rgba(139, 92, 246, 0.45)',
+                  background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+                  boxShadow: '0 8px 32px rgba(249, 115, 22, 0.45)',
                   '&:hover': {
-                    background: 'linear-gradient(135deg, #A78BFA 0%, #F472B6 100%)',
-                    boxShadow: '0 12px 40px rgba(139, 92, 246, 0.5)',
+                    background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)',
+                    boxShadow: '0 12px 40px rgba(249, 115, 22, 0.5)',
                   },
                 }}
               >
@@ -184,11 +165,11 @@ export default function HeroSection() {
                   fontWeight: 600,
                   textTransform: 'none',
                   borderRadius: '14px',
-                  borderColor: 'rgba(139, 92, 246, 0.5)',
-                  color: '#A78BFA',
+                  borderColor: 'rgba(249, 115, 22, 0.5)',
+                  color: '#FB923C',
                   '&:hover': {
-                    borderColor: 'rgba(139, 92, 246, 0.8)',
-                    background: 'rgba(139, 92, 246, 0.1)',
+                    borderColor: 'rgba(249, 115, 22, 0.8)',
+                    background: 'rgba(249, 115, 22, 0.1)',
                   },
                 }}
               >
@@ -254,13 +235,13 @@ export default function HeroSection() {
                       width: 140,
                       height: 140,
                       borderRadius: '20px',
-                      background: 'linear-gradient(145deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.15) 100%)',
-                      border: '1px solid rgba(139, 92, 246, 0.3)',
+                      background: 'linear-gradient(145deg, rgba(249, 115, 22, 0.2) 0%, rgba(234, 88, 12, 0.15) 100%)',
+                      border: '1px solid rgba(249, 115, 22, 0.3)',
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      boxShadow: '0 8px 32px rgba(139, 92, 246, 0.2)',
+                      boxShadow: '0 8px 32px rgba(249, 115, 22, 0.2)',
                     }}
                   >
                     <Typography sx={{ fontSize: '2.5rem', fontWeight: 800, color: '#F1F5F9', lineHeight: 1 }}>
@@ -303,7 +284,7 @@ export default function HeroSection() {
                           top: 0,
                           bottom: 0,
                           borderRadius: '10px',
-                          background: 'linear-gradient(90deg, rgba(139, 92, 246, 0.4), rgba(236, 72, 153, 0.3))',
+                          background: 'linear-gradient(90deg, rgba(249, 115, 22, 0.4), rgba(234, 88, 12, 0.3))',
                         }}
                       />
                       <Typography variant="caption" sx={{ color: '#E2E8F0', position: 'relative', zIndex: 1 }}>
@@ -325,7 +306,7 @@ export default function HeroSection() {
                           py: 1.25,
                           px: 2,
                           borderRadius: '12px',
-                          background: i === 0 ? 'rgba(34, 197, 94, 0.12)' : 'rgba(139, 92, 246, 0.12)',
+                          background: i === 0 ? 'rgba(34, 197, 94, 0.12)' : 'rgba(249, 115, 22, 0.12)',
                           border: '1px solid rgba(255,255,255,0.06)',
                           maxWidth: 260,
                         }}

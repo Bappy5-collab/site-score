@@ -70,8 +70,8 @@ const ProfilePage = () => {
                 elevation={0}
                 sx={{
                   p: 4,
-                  borderRadius: '20px',
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  borderRadius: '12px',
+                  background: '#111827',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
                 }}
               >
@@ -94,8 +94,8 @@ const ProfilePage = () => {
                 elevation={0}
                 sx={{
                   p: 4,
-                  borderRadius: '20px',
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  borderRadius: '12px',
+                  background: '#111827',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
                   '&:hover': {
                     borderColor: 'rgba(255, 255, 255, 0.12)',
@@ -107,7 +107,7 @@ const ProfilePage = () => {
                     sx={{
                       width: 88,
                       height: 88,
-                      background: 'linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)',
+                      background: '#EA580C',
                       fontSize: '2rem',
                       fontWeight: 700,
                     }}
@@ -129,10 +129,10 @@ const ProfilePage = () => {
                           textTransform: 'capitalize',
                           background: profile.role === 'admin'
                             ? 'rgba(239, 68, 68, 0.2)'
-                            : 'rgba(139, 92, 246, 0.2)',
+                            : 'rgba(249, 115, 22, 0.2)',
                           color: profile.role === 'admin' ? '#FCA5A5' : '#C4B5FD',
                           border: '1px solid',
-                          borderColor: profile.role === 'admin' ? 'rgba(239, 68, 68, 0.4)' : 'rgba(139, 92, 246, 0.4)',
+                          borderColor: profile.role === 'admin' ? 'rgba(239, 68, 68, 0.4)' : 'rgba(249, 115, 22, 0.4)',
                         }}
                       />
                     )}
@@ -142,17 +142,17 @@ const ProfilePage = () => {
                     startIcon={<SettingsIcon />}
                     onClick={() => router.push('/settings')}
                     component={motion.button}
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     sx={{
                       borderRadius: '12px',
-                      borderColor: 'rgba(139, 92, 246, 0.5)',
-                      color: '#8B5CF6',
+                      borderColor: 'rgba(249, 115, 22, 0.5)',
+                      color: '#F97316',
                       fontWeight: 600,
                       textTransform: 'none',
                       '&:hover': {
-                        borderColor: 'rgba(139, 92, 246, 0.8)',
-                        background: 'rgba(139, 92, 246, 0.08)',
+                        borderColor: 'rgba(249, 115, 22, 0.8)',
+                        background: 'rgba(249, 115, 22, 0.08)',
                       },
                     }}
                   >
@@ -170,13 +170,13 @@ const ProfilePage = () => {
                       gap: 2,
                       p: 2,
                       borderRadius: '14px',
-                      background: 'rgba(255, 255, 255, 0.03)',
+                      background: '#111827',
                       border: '1px solid rgba(255, 255, 255, 0.06)',
                     },
                   }}
                 >
                   <Box className="profile-row">
-                    <PersonIcon sx={{ color: '#8B5CF6', fontSize: 22 }} />
+                    <PersonIcon sx={{ color: '#F97316', fontSize: 22 }} />
                     <Box>
                       <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
                         Full name
@@ -187,7 +187,7 @@ const ProfilePage = () => {
                     </Box>
                   </Box>
                   <Box className="profile-row">
-                    <EmailIcon sx={{ color: '#8B5CF6', fontSize: 22 }} />
+                    <EmailIcon sx={{ color: '#F97316', fontSize: 22 }} />
                     <Box>
                       <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
                         Email address
@@ -199,7 +199,7 @@ const ProfilePage = () => {
                   </Box>
                   {profile.role && (
                     <Box className="profile-row">
-                      <BadgeIcon sx={{ color: '#8B5CF6', fontSize: 22 }} />
+                      <BadgeIcon sx={{ color: '#F97316', fontSize: 22 }} />
                       <Box>
                         <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
                           Role
@@ -212,7 +212,7 @@ const ProfilePage = () => {
                   )}
                   {profile.createdAt && (
                     <Box className="profile-row">
-                      <CalendarTodayIcon sx={{ color: '#8B5CF6', fontSize: 22 }} />
+                      <CalendarTodayIcon sx={{ color: '#F97316', fontSize: 22 }} />
                       <Box>
                         <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
                           Member since
@@ -230,8 +230,8 @@ const ProfilePage = () => {
                 elevation={0}
                 sx={{
                   p: 4,
-                  borderRadius: '20px',
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  borderRadius: '12px',
+                  background: '#111827',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
                   textAlign: 'center',
                 }}

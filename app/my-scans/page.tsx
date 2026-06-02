@@ -99,15 +99,15 @@ const MyScansPage = () => {
                   sx={{
                     width: 300,
                     '& .MuiOutlinedInput-root': {
-                      background: 'rgba(255, 255, 255, 0.03)',
+                      background: '#111827',
                       border: '1px solid rgba(255, 255, 255, 0.08)',
                       borderRadius: '12px',
                       color: '#F1F5F9',
                       '&:hover': {
-                        borderColor: 'rgba(139, 92, 246, 0.3)',
+                        borderColor: 'rgba(249, 115, 22, 0.3)',
                       },
                       '&.Mui-focused': {
-                        borderColor: '#8B5CF6',
+                        borderColor: '#F97316',
                       },
                       '& fieldset': {
                         border: 'none',
@@ -141,7 +141,7 @@ const MyScansPage = () => {
               variant="contained"
               startIcon={<AnalyticsIcon />}
               sx={{
-                background: 'linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%)',
+                background: '#EA580C',
                 color: '#fff',
                 fontWeight: 600,
                 borderRadius: '12px',
@@ -150,7 +150,7 @@ const MyScansPage = () => {
                 textTransform: 'none',
                 fontSize: '1rem',
                 '&:hover': {
-                  background: 'linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%)',
+                  background: 'linear-gradient(135deg, #EA580C 0%, #6D28D9 100%)',
                 },
               }}
             >
@@ -166,10 +166,10 @@ const MyScansPage = () => {
             <Paper
               sx={{
                 p: 3,
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: '#111827',
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '20px',
+                borderRadius: '12px',
               }}
             >
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>

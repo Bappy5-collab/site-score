@@ -65,10 +65,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 borderRadius: '4px',
               },
               '&::-webkit-scrollbar-thumb': {
-                background: 'rgba(139, 92, 246, 0.3)',
+                background: 'rgba(249, 115, 22, 0.3)',
                 borderRadius: '4px',
                 '&:hover': {
-                  background: 'rgba(139, 92, 246, 0.5)',
+                  background: 'rgba(249, 115, 22, 0.5)',
                 },
               },
             }}
