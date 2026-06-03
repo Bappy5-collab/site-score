@@ -36,7 +36,13 @@ const SignupPage = () => {
 
     try {
       await signup(name, email, password);
-      router.push('/dashboard');
+      // New users go through onboarding first.
+      try {
+        localStorage.removeItem('onboardingComplete');
+      } catch {
+        /* ignore */
+      }
+      router.push('/onboarding');
     } catch (err: any) {
       setError(err.response?.data?.message || 'Signup failed');
     } finally {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Box,
   TextField,
@@ -91,6 +91,17 @@ const AnalyzerPage = () => {
   const [generatingReport, setGeneratingReport] = useState(false);
   const [generatingSuggestions, setGeneratingSuggestions] = useState(false);
   const [lighthouseResult, setLighthouseResult] = useState<LighthouseResult | null>(null);
+
+  // Prefill the URL when arriving from onboarding (e.g. /analyzer?url=example.com).
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const prefill = params.get('url');
+      if (prefill) setUrl(prefill);
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   const handleAnalyze = async () => {
     if (!url.trim()) {

@@ -18,6 +18,7 @@ const testimonials = [
     role: 'Head of Growth',
     company: 'TechCorp',
     avatar: 'SK',
+    image: 'https://randomuser.me/api/portraits/women/68.jpg',
     quote: 'We stopped drowning in spreadsheets. The AI tells us exactly what to fix and we just tick it off. Game changer.',
   },
   {
@@ -25,6 +26,7 @@ const testimonials = [
     role: 'SEO Lead',
     company: 'Digital Agency',
     avatar: 'ML',
+    image: 'https://randomuser.me/api/portraits/men/32.jpg',
     quote: 'Growth Brain plus the action list is what we needed. Our clients see results faster and we look like heroes.',
   },
   {
@@ -32,6 +34,7 @@ const testimonials = [
     role: 'Product Manager',
     company: 'SaaS Co',
     avatar: 'JT',
+    image: 'https://randomuser.me/api/portraits/men/75.jpg',
     quote: 'Real-time score and notifications mean we catch regressions before users do. Feels like having a growth ops team.',
   },
 ];
@@ -142,6 +145,8 @@ export default function TestimonialsStatsSection() {
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <Avatar
+                      src={t.image}
+                      alt={t.name}
                       sx={{
                         width: 48,
                         height: 48,

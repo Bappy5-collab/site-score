@@ -9,18 +9,17 @@ import {
   Box,
   IconButton,
   Avatar,
-  InputBase,
   Badge,
   Menu,
   MenuItem,
   Chip,
 } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
-import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useAuth } from '@/context/AuthContext';
 import Logo from '@/components/Logo';
+import GlobalSearch from '@/components/GlobalSearch';
 import { notificationService, Notification } from '@/services/notificationService';
 import { io, Socket } from 'socket.io-client';
 import { formatDistanceToNow } from 'date-fns';
@@ -141,33 +140,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
               <Logo size={28} fontSize="1rem" />
             </Box>
 
-            <Box
-              sx={{
-                display: { xs: 'none', sm: 'flex' },
-                alignItems: 'center',
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '8px',
-                px: 1.5,
-                py: 0.5,
-                width: '100%',
-                maxWidth: 360,
-              }}
-            >
-              <SearchIcon sx={{ color: '#9CA3AF', mr: 1 }} />
-              <InputBase
-                placeholder="Search..."
-                sx={{
-                  color: '#F1F5F9',
-                  flex: 1,
-                  fontSize: '0.875rem',
-                  '&::placeholder': {
-                    color: '#94A3B8',
-                    opacity: 1,
-                  },
-                }}
-              />
-            </Box>
+            <GlobalSearch />
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 0.5, sm: 1, md: 2 }, flexShrink: 0 }}>

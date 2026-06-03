@@ -9,6 +9,7 @@ import Layout from '@/components/Layout';
 import PremiumCard from '@/components/PremiumCard';
 import ScanTable from '@/components/ScanTable';
 import ScoreHistoryChart from '@/components/ScoreHistoryChart';
+import DashboardTour from '@/components/DashboardTour';
 import { CardSkeleton, ChartSkeleton, TableSkeleton } from '@/components/LoadingSkeleton';
 import { scanService, DashboardStats, Scan } from '@/services/scanService';
 import {
@@ -35,6 +36,7 @@ import HistoryIcon from '@mui/icons-material/History';
 import StorageIcon from '@mui/icons-material/Storage';
 import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 ChartJS.register(
   CategoryScale,
@@ -259,6 +261,8 @@ const DashboardPage = () => {
   return (
     <ProtectedRoute>
       <Layout>
+        {/* First-visit guided tour */}
+        <DashboardTour enabled={!loading} />
         <Box sx={{ width: '100%', maxWidth: '1400px', mx: 'auto', px: 2 }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -286,27 +290,48 @@ const DashboardPage = () => {
                   Here&apos;s how your websites are performing.
                 </Typography>
               </Box>
-              <Button
-                variant="contained"
-                startIcon={<AddIcon />}
-                onClick={() => router.push('/analyzer')}
-                sx={{
-                  px: 3,
-                  py: 1.25,
-                  fontWeight: 700,
-                  textTransform: 'none',
-                  borderRadius: '12px',
-                  whiteSpace: 'nowrap',
-                  background: '#EA580C',
-                  boxShadow: 'none',
-                  '&:hover': {
-                    background: '#C2410C',
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Button
+                  variant="outlined"
+                  startIcon={<HelpOutlineIcon />}
+                  onClick={() => window.dispatchEvent(new Event('sitescore:start-tour'))}
+                  sx={{
+                    px: 2.25,
+                    py: 1.25,
+                    fontWeight: 600,
+                    textTransform: 'none',
+                    borderRadius: '12px',
+                    whiteSpace: 'nowrap',
+                    borderColor: 'rgba(255,255,255,0.15)',
+                    color: '#94A3B8',
+                    '&:hover': { borderColor: 'rgba(249,115,22,0.5)', background: 'rgba(249,115,22,0.08)', color: '#F1F5F9' },
+                  }}
+                >
+                  Take a tour
+                </Button>
+                <Button
+                  data-tour="analyze"
+                  variant="contained"
+                  startIcon={<AddIcon />}
+                  onClick={() => router.push('/analyzer')}
+                  sx={{
+                    px: 3,
+                    py: 1.25,
+                    fontWeight: 700,
+                    textTransform: 'none',
+                    borderRadius: '12px',
+                    whiteSpace: 'nowrap',
+                    background: '#EA580C',
                     boxShadow: 'none',
-                  },
-                }}
-              >
-                Analyze New Site
-              </Button>
+                    '&:hover': {
+                      background: '#C2410C',
+                      boxShadow: 'none',
+                    },
+                  }}
+                >
+                  Analyze New Site
+                </Button>
+              </Box>
             </Box>
           </motion.div>
 
@@ -321,7 +346,7 @@ const DashboardPage = () => {
           ) : (
             <>
               {/* Stats Cards */}
-              <Grid container spacing={2} sx={{ mb: 3 }}>
+              <Grid container spacing={2} sx={{ mb: 3 }} data-tour="stats">
                 <Grid item xs={12} sm={6} md={3}>
                   <PremiumCard
                     title="Total Scans"
@@ -371,6 +396,7 @@ const DashboardPage = () => {
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
                     <Paper
+                      data-tour="trends"
                       sx={{
                         p: { xs: 2.5, md: 3 },
                         height: '100%',
@@ -393,6 +419,7 @@ const DashboardPage = () => {
                     transition={{ duration: 0.5, delay: 0.3 }}
                   >
                     <Paper
+                      data-tour="recent"
                       sx={{
                         p: { xs: 2.5, md: 3 },
                         height: '100%',
@@ -448,6 +475,7 @@ const DashboardPage = () => {
                     transition={{ duration: 0.5, delay: 0.4 }}
                   >
                     <Paper
+                      data-tour="all-scans"
                       sx={{
                         p: { xs: 2.5, md: 3 },
                         background: 'linear-gradient(155deg, #141B2D 0%, #0E1422 100%)',
