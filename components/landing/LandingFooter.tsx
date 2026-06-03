@@ -8,16 +8,25 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import { useRouter } from 'next/navigation';
 import Logo from '@/components/Logo';
 
-const productLinks = ['Features', 'Pricing', 'API', 'Changelog'];
-const companyLinks = ['About', 'Contact', 'Careers'];
-const legalLinks = ['Privacy', 'Terms', 'Security'];
+const productLinks = [
+  { label: 'Features', href: '/features' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'API', href: '/api' },
+  { label: 'Changelog', href: '/changelog' },
+];
+const companyLinks = [
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Careers', href: '/careers' },
+];
+const legalLinks = [
+  { label: 'Privacy', href: '/privacy' },
+  { label: 'Terms', href: '/terms' },
+  { label: 'Security', href: '/security' },
+];
 
 export default function LandingFooter() {
   const router = useRouter();
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <Box
@@ -51,11 +60,11 @@ export default function LandingFooter() {
               Product
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-              {productLinks.map((label) => (
+              {productLinks.map(({ label, href }) => (
                 <Typography
                   key={label}
                   component="button"
-                  onClick={() => (label === 'Features' ? scrollTo('features') : label === 'Pricing' ? scrollTo('pricing') : router.push('/landing'))}
+                  onClick={() => router.push(href)}
                   sx={{
                     color: '#94A3B8',
                     fontSize: '0.875rem',
@@ -76,11 +85,11 @@ export default function LandingFooter() {
               Company
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-              {companyLinks.map((label) => (
+              {companyLinks.map(({ label, href }) => (
                 <Typography
                   key={label}
                   component="a"
-                  href="#"
+                  href={href}
                   sx={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none', '&:hover': { color: '#F97316' } }}
                 >
                   {label}
@@ -93,11 +102,11 @@ export default function LandingFooter() {
               Legal
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-              {legalLinks.map((label) => (
+              {legalLinks.map(({ label, href }) => (
                 <Typography
                   key={label}
                   component="a"
-                  href="#"
+                  href={href}
                   sx={{ color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none', '&:hover': { color: '#F97316' } }}
                 >
                   {label}

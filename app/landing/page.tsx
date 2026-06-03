@@ -5,6 +5,8 @@ import LandingNavbar from '@/components/landing/LandingNavbar';
 import HeroSection from '@/components/landing/HeroSection';
 import ProblemSection from '@/components/landing/ProblemSection';
 import FeaturesSection from '@/components/landing/FeaturesSection';
+import DashboardFeaturesSection from '@/components/landing/DashboardFeaturesSection';
+import MetricsShowcaseSection from '@/components/landing/MetricsShowcaseSection';
 import HowItWorksSection from '@/components/landing/HowItWorksSection';
 import RealTimeSection from '@/components/landing/RealTimeSection';
 import DeveloperSection from '@/components/landing/DeveloperSection';
@@ -27,7 +29,9 @@ export default function LandingPage() {
       <main>
         <HeroSection />
         <ProblemSection />
+        <MetricsShowcaseSection />
         <FeaturesSection />
+        <DashboardFeaturesSection />
         <HowItWorksSection />
         <RealTimeSection />
         <DeveloperSection />

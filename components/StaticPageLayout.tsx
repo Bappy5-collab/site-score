@@ -19,9 +19,10 @@ const navLinks = [
 
 const footerLinks = {
   Product: [
-    { label: 'Features', href: '/landing#features' },
-    { label: 'Pricing', href: '/landing#pricing' },
-    { label: 'API', href: '/landing' },
+    { label: 'Features', href: '/features' },
+    { label: 'Pricing', href: '/pricing' },
+    { label: 'API', href: '/api' },
+    { label: 'Changelog', href: '/changelog' },
   ],
   Company: [
     { label: 'About', href: '/about' },
