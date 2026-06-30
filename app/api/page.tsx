@@ -39,11 +39,11 @@ export default function ApiPage() {
           <Box sx={{ textAlign: 'center', mb: 6 }}>
             <Typography
               variant="h1"
-              sx={{ fontSize: { xs: '2rem', md: '2.75rem' }, fontWeight: 800, color: '#F1F5F9', letterSpacing: '-0.02em', mb: 2 }}
+              sx={{ fontSize: { xs: '2rem', md: '2.75rem' }, fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', mb: 2 }}
             >
               Build on the SiteScore API
             </Typography>
-            <Typography sx={{ color: '#94A3B8', fontSize: '1.1rem', lineHeight: 1.7, maxWidth: 620, mx: 'auto' }}>
+            <Typography sx={{ color: '#64748B', fontSize: '1.1rem', lineHeight: 1.7, maxWidth: 620, mx: 'auto' }}>
               Automate audits, stream results into your own tools, and react to changes in real time with webhooks.
             </Typography>
           </Box>
@@ -59,18 +59,18 @@ export default function ApiPage() {
                         sx={{
                           p: 2.5,
                           height: '100%',
-                          borderRadius: '16px',
-                          background: 'rgba(255, 255, 255, 0.03)',
-                          border: '1px solid rgba(255, 255, 255, 0.08)',
+                          borderRadius: '10px',
+                          background: 'rgba(15, 23, 42, 0.03)',
+                          border: '1px solid rgba(15, 23, 42, 0.08)',
                         }}
                       >
-                        <Box sx={{ width: 44, height: 44, borderRadius: '12px', background: 'rgba(249, 115, 22, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 1.5 }}>
-                          <Icon sx={{ color: '#F97316', fontSize: 22 }} />
+                        <Box sx={{ width: 44, height: 44, borderRadius: '8px', background: 'rgba(252, 82, 63, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 1.5 }}>
+                          <Icon sx={{ color: '#FC523F', fontSize: 22 }} />
                         </Box>
-                        <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 0.5 }}>
+                        <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#0F172A', mb: 0.5 }}>
                           {c.title}
                         </Typography>
-                        <Typography variant="body2" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+                        <Typography variant="body2" sx={{ color: '#64748B', lineHeight: 1.6 }}>
                           {c.text}
                         </Typography>
                       </Box>
@@ -83,14 +83,14 @@ export default function ApiPage() {
             <Grid item xs={12} md={6}>
               <Box
                 sx={{
-                  borderRadius: '18px',
+                  borderRadius: '12px',
                   overflow: 'hidden',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  background: 'linear-gradient(155deg, #141B2D 0%, #0E1422 100%)',
-                  boxShadow: '0 24px 48px -12px rgba(0,0,0,0.4)',
+                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  background: 'linear-gradient(155deg, #FFFFFF 0%, #F8FAFC 100%)',
+                  boxShadow: '0 4px 12px rgba(15, 23, 42, 0.08)',
                 }}
               >
-                <Box sx={{ p: 1.5, borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Box sx={{ p: 1.5, borderBottom: '1px solid rgba(15,23,42,0.05)', display: 'flex', alignItems: 'center', gap: 1 }}>
                   <Box sx={{ width: 11, height: 11, borderRadius: '50%', bgcolor: 'rgba(239, 68, 68, 0.8)' }} />
                   <Box sx={{ width: 11, height: 11, borderRadius: '50%', bgcolor: 'rgba(245, 158, 11, 0.8)' }} />
                   <Box sx={{ width: 11, height: 11, borderRadius: '50%', bgcolor: 'rgba(34, 197, 94, 0.8)' }} />
@@ -107,7 +107,7 @@ export default function ApiPage() {
                     fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace',
                     fontSize: '0.8rem',
                     lineHeight: 1.7,
-                    color: '#CBD5E1',
+                    color: '#334155',
                     whiteSpace: 'pre',
                   }}
                 >
@@ -125,11 +125,11 @@ export default function ApiPage() {
               sx={{
                 px: 4,
                 py: 1.5,
-                borderRadius: '14px',
+                borderRadius: '10px',
                 fontWeight: 700,
                 textTransform: 'none',
-                background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
-                '&:hover': { background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)' },
+                background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
+                '&:hover': { background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)' },
               }}
             >
               Get your API key

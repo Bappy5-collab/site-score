@@ -45,7 +45,7 @@ export default function StaticPageLayout({ children }: StaticPageLayoutProps) {
     <Box
       sx={{
         minHeight: '100vh',
-        background: 'linear-gradient(180deg, #0A0E27 0%, #151932 40%, #0A0E27 100%)',
+        background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 40%, #F8FAFC 100%)',
         display: 'flex',
         flexDirection: 'column',
       }}
@@ -54,9 +54,9 @@ export default function StaticPageLayout({ children }: StaticPageLayoutProps) {
         position="sticky"
         elevation={0}
         sx={{
-          background: 'rgba(10, 14, 39, 0.7)',
+          background: 'rgba(248, 250, 252, 0.7)',
           backdropFilter: 'blur(24px)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+          borderBottom: '1px solid rgba(15, 23, 42, 0.05)',
         }}
       >
         <Toolbar sx={{ maxWidth: 1200, mx: 'auto', width: '100%', justifyContent: 'space-between', px: { xs: 2, sm: 3 }, py: 0.5, minHeight: 64 }}>
@@ -69,11 +69,11 @@ export default function StaticPageLayout({ children }: StaticPageLayoutProps) {
                 <Button
                   size="small"
                   sx={{
-                    color: '#94A3B8',
+                    color: '#64748B',
                     fontWeight: 500,
                     textTransform: 'none',
                     fontSize: '0.875rem',
-                    '&:hover': { color: '#F1F5F9', background: 'rgba(255,255,255,0.06)' },
+                    '&:hover': { color: '#0F172A', background: 'rgba(15,23,42,0.05)' },
                   }}
                 >
                   {link.label}
@@ -81,7 +81,7 @@ export default function StaticPageLayout({ children }: StaticPageLayoutProps) {
               </Link>
             ))}
             <Box sx={{ ml: 1, display: 'flex', gap: 0.5 }}>
-              <Button size="small" component={Link} href="/login" sx={{ color: '#94A3B8', fontWeight: 600, textTransform: 'none' }}>
+              <Button size="small" component={Link} href="/login" sx={{ color: '#64748B', fontWeight: 600, textTransform: 'none' }}>
                 Login
               </Button>
               <Button
@@ -90,10 +90,10 @@ export default function StaticPageLayout({ children }: StaticPageLayoutProps) {
                 component={Link}
                 href="/signup"
                 sx={{
-                  background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+                  background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
                   fontWeight: 600,
                   textTransform: 'none',
-                  '&:hover': { background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)' },
+                  '&:hover': { background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)' },
                 }}
               >
                 Start Free
@@ -107,58 +107,58 @@ export default function StaticPageLayout({ children }: StaticPageLayoutProps) {
         {children}
       </Box>
 
-      <Box sx={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', py: 4, mt: 'auto', background: 'rgba(10, 14, 39, 0.6)' }}>
+      <Box sx={{ borderTop: '1px solid rgba(15, 23, 42, 0.08)', py: 4, mt: 'auto', background: 'rgba(248, 250, 252, 0.6)' }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
             <Grid item xs={12} md={4}>
               <Logo size={32} fontSize="1.2rem" sx={{ mb: 2 }} />
-              <Typography variant="body2" sx={{ color: '#94A3B8', mb: 2 }}>
+              <Typography variant="body2" sx={{ color: '#64748B', mb: 2 }}>
                 AI Growth Operating System.
               </Typography>
               <Box sx={{ display: 'flex', gap: 0.5 }}>
-                <IconButton size="small" sx={{ color: '#94A3B8', '&:hover': { color: '#F97316' } }}>
+                <IconButton size="small" sx={{ color: '#64748B', '&:hover': { color: '#FC523F' } }}>
                   <TwitterIcon fontSize="small" />
                 </IconButton>
-                <IconButton size="small" sx={{ color: '#94A3B8', '&:hover': { color: '#F97316' } }}>
+                <IconButton size="small" sx={{ color: '#64748B', '&:hover': { color: '#FC523F' } }}>
                   <LinkedInIcon fontSize="small" />
                 </IconButton>
-                <IconButton size="small" sx={{ color: '#94A3B8', '&:hover': { color: '#F97316' } }}>
+                <IconButton size="small" sx={{ color: '#64748B', '&:hover': { color: '#FC523F' } }}>
                   <GitHubIcon fontSize="small" />
                 </IconButton>
               </Box>
             </Grid>
             <Grid item xs={4} md={2}>
-              <Typography variant="subtitle2" sx={{ color: '#F1F5F9', fontWeight: 600, mb: 1.5 }}>
+              <Typography variant="subtitle2" sx={{ color: '#0F172A', fontWeight: 600, mb: 1.5 }}>
                 Product
               </Typography>
               {footerLinks.Product.map((l) => (
-                <Link key={l.href} href={l.href} style={{ display: 'block', marginBottom: 6, color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none' }}>
+                <Link key={l.href} href={l.href} style={{ display: 'block', marginBottom: 6, color: '#64748B', fontSize: '0.875rem', textDecoration: 'none' }}>
                   {l.label}
                 </Link>
               ))}
             </Grid>
             <Grid item xs={4} md={2}>
-              <Typography variant="subtitle2" sx={{ color: '#F1F5F9', fontWeight: 600, mb: 1.5 }}>
+              <Typography variant="subtitle2" sx={{ color: '#0F172A', fontWeight: 600, mb: 1.5 }}>
                 Company
               </Typography>
               {footerLinks.Company.map((l) => (
-                <Link key={l.href} href={l.href} style={{ display: 'block', marginBottom: 6, color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none' }}>
+                <Link key={l.href} href={l.href} style={{ display: 'block', marginBottom: 6, color: '#64748B', fontSize: '0.875rem', textDecoration: 'none' }}>
                   {l.label}
                 </Link>
               ))}
             </Grid>
             <Grid item xs={4} md={2}>
-              <Typography variant="subtitle2" sx={{ color: '#F1F5F9', fontWeight: 600, mb: 1.5 }}>
+              <Typography variant="subtitle2" sx={{ color: '#0F172A', fontWeight: 600, mb: 1.5 }}>
                 Legal
               </Typography>
               {footerLinks.Legal.map((l) => (
-                <Link key={l.href} href={l.href} style={{ display: 'block', marginBottom: 6, color: '#94A3B8', fontSize: '0.875rem', textDecoration: 'none' }}>
+                <Link key={l.href} href={l.href} style={{ display: 'block', marginBottom: 6, color: '#64748B', fontSize: '0.875rem', textDecoration: 'none' }}>
                   {l.label}
                 </Link>
               ))}
             </Grid>
           </Grid>
-          <Box sx={{ mt: 4, pt: 3, borderTop: '1px solid rgba(255, 255, 255, 0.08)', textAlign: 'center' }}>
+          <Box sx={{ mt: 4, pt: 3, borderTop: '1px solid rgba(15, 23, 42, 0.08)', textAlign: 'center' }}>
             <Typography variant="body2" sx={{ color: '#64748B' }}>
               © {new Date().getFullYear()} SiteScore AI. All rights reserved.
             </Typography>

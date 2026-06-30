@@ -35,25 +35,25 @@ export default function DeveloperSection() {
         >
           <Box
             sx={{
-              background: 'rgba(15, 23, 42, 0.9)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              borderRadius: '20px',
+              background: 'rgba(248, 250, 252, 0.9)',
+              border: '1px solid rgba(15, 23, 42, 0.08)',
+              borderRadius: '12px',
               overflow: 'hidden',
-              boxShadow: '0 24px 48px -12px rgba(0, 0, 0, 0.4)',
+              boxShadow: '0 4px 12px rgba(15, 23, 42, 0.08)',
             }}
           >
             <Box
               sx={{
                 px: 2,
                 py: 1.5,
-                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                borderBottom: '1px solid rgba(15, 23, 42, 0.08)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: 1,
               }}
             >
-              <CodeIcon sx={{ fontSize: 20, color: '#F97316' }} />
-              <Typography variant="caption" sx={{ color: '#94A3B8' }}>
+              <CodeIcon sx={{ fontSize: 20, color: '#FC523F' }} />
+              <Typography variant="caption" sx={{ color: '#64748B' }}>
                 Example: scan + webhooks
               </Typography>
             </Box>
@@ -66,8 +66,8 @@ export default function DeveloperSection() {
                 fontFamily: 'ui-monospace, monospace',
                 fontSize: '0.85rem',
                 lineHeight: 1.7,
-                color: '#E2E8F0',
-                '& .token': { color: '#94A3B8' },
+                color: '#334155',
+                '& .token': { color: '#64748B' },
               }}
             >
               {codeSnippet}
@@ -81,14 +81,14 @@ export default function DeveloperSection() {
               variant="outlined"
               onClick={() => router.push('/signup')}
               sx={{
-                borderRadius: '14px',
-                borderColor: 'rgba(249, 115, 22, 0.5)',
-                color: '#F97316',
+                borderRadius: '10px',
+                borderColor: 'rgba(252, 82, 63, 0.5)',
+                color: '#FC523F',
                 fontWeight: 600,
                 textTransform: 'none',
                 '&:hover': {
-                  borderColor: 'rgba(249, 115, 22, 0.8)',
-                  background: 'rgba(249, 115, 22, 0.1)',
+                  borderColor: 'rgba(252, 82, 63, 0.8)',
+                  background: 'rgba(252, 82, 63, 0.1)',
                 },
               }}
             >

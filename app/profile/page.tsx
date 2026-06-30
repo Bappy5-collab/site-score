@@ -54,14 +54,14 @@ const ProfilePage = () => {
               variant="h4"
               sx={{
                 fontWeight: 700,
-                color: '#F1F5F9',
+                color: '#0F172A',
                 mb: 0.5,
                 letterSpacing: '-0.02em',
               }}
             >
               Profile
             </Typography>
-            <Typography variant="body2" sx={{ color: '#94A3B8', mb: 3 }}>
+            <Typography variant="body2" sx={{ color: '#64748B', mb: 3 }}>
               View your account information
             </Typography>
 
@@ -70,20 +70,20 @@ const ProfilePage = () => {
                 elevation={0}
                 sx={{
                   p: 4,
-                  borderRadius: '12px',
-                  background: '#111827',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderRadius: '8px',
+                  background: '#FFFFFF',
+                  border: '1px solid rgba(15, 23, 42, 0.08)',
                 }}
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 3, mb: 3 }}>
-                  <Skeleton variant="circular" width={88} height={88} sx={{ bgcolor: 'rgba(255,255,255,0.06)' }} />
+                  <Skeleton variant="circular" width={88} height={88} sx={{ bgcolor: 'rgba(15,23,42,0.05)' }} />
                   <Box sx={{ flex: 1 }}>
-                    <Skeleton width="60%" height={32} sx={{ bgcolor: 'rgba(255,255,255,0.06)', mb: 1 }} />
-                    <Skeleton width="40%" height={24} sx={{ bgcolor: 'rgba(255,255,255,0.06)' }} />
+                    <Skeleton width="60%" height={32} sx={{ bgcolor: 'rgba(15,23,42,0.05)', mb: 1 }} />
+                    <Skeleton width="40%" height={24} sx={{ bgcolor: 'rgba(15,23,42,0.05)' }} />
                   </Box>
                 </Box>
-                <Skeleton width="100%" height={56} sx={{ bgcolor: 'rgba(255,255,255,0.06)', borderRadius: 1, mb: 2 }} />
-                <Skeleton width="100%" height={56} sx={{ bgcolor: 'rgba(255,255,255,0.06)', borderRadius: 1 }} />
+                <Skeleton width="100%" height={56} sx={{ bgcolor: 'rgba(15,23,42,0.05)', borderRadius: 1, mb: 2 }} />
+                <Skeleton width="100%" height={56} sx={{ bgcolor: 'rgba(15,23,42,0.05)', borderRadius: 1 }} />
               </Paper>
             ) : profile ? (
               <Paper
@@ -94,11 +94,11 @@ const ProfilePage = () => {
                 elevation={0}
                 sx={{
                   p: 4,
-                  borderRadius: '12px',
-                  background: '#111827',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderRadius: '8px',
+                  background: '#FFFFFF',
+                  border: '1px solid rgba(15, 23, 42, 0.08)',
                   '&:hover': {
-                    borderColor: 'rgba(255, 255, 255, 0.12)',
+                    borderColor: 'rgba(15, 23, 42, 0.1)',
                   },
                 }}
               >
@@ -107,7 +107,7 @@ const ProfilePage = () => {
                     sx={{
                       width: 88,
                       height: 88,
-                      background: '#EA580C',
+                      background: '#E13E2C',
                       fontSize: '2rem',
                       fontWeight: 700,
                     }}
@@ -115,10 +115,10 @@ const ProfilePage = () => {
                     {profile.name?.charAt(0).toUpperCase() || 'U'}
                   </Avatar>
                   <Box sx={{ flex: 1, minWidth: 0 }}>
-                    <Typography variant="h5" sx={{ fontWeight: 700, color: '#F1F5F9', mb: 0.5 }}>
+                    <Typography variant="h5" sx={{ fontWeight: 700, color: '#0F172A', mb: 0.5 }}>
                       {profile.name}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#94A3B8', mb: 1 }}>
+                    <Typography variant="body2" sx={{ color: '#64748B', mb: 1 }}>
                       {profile.email}
                     </Typography>
                     {profile.role && (
@@ -129,10 +129,10 @@ const ProfilePage = () => {
                           textTransform: 'capitalize',
                           background: profile.role === 'admin'
                             ? 'rgba(239, 68, 68, 0.2)'
-                            : 'rgba(249, 115, 22, 0.2)',
+                            : 'rgba(252, 82, 63, 0.2)',
                           color: profile.role === 'admin' ? '#FCA5A5' : '#C4B5FD',
                           border: '1px solid',
-                          borderColor: profile.role === 'admin' ? 'rgba(239, 68, 68, 0.4)' : 'rgba(249, 115, 22, 0.4)',
+                          borderColor: profile.role === 'admin' ? 'rgba(239, 68, 68, 0.4)' : 'rgba(252, 82, 63, 0.4)',
                         }}
                       />
                     )}
@@ -145,14 +145,14 @@ const ProfilePage = () => {
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     sx={{
-                      borderRadius: '12px',
-                      borderColor: 'rgba(249, 115, 22, 0.5)',
-                      color: '#F97316',
+                      borderRadius: '8px',
+                      borderColor: 'rgba(252, 82, 63, 0.5)',
+                      color: '#FC523F',
                       fontWeight: 600,
                       textTransform: 'none',
                       '&:hover': {
-                        borderColor: 'rgba(249, 115, 22, 0.8)',
-                        background: 'rgba(249, 115, 22, 0.08)',
+                        borderColor: 'rgba(252, 82, 63, 0.8)',
+                        background: 'rgba(252, 82, 63, 0.08)',
                       },
                     }}
                   >
@@ -169,42 +169,42 @@ const ProfilePage = () => {
                       alignItems: 'center',
                       gap: 2,
                       p: 2,
-                      borderRadius: '14px',
-                      background: '#111827',
-                      border: '1px solid rgba(255, 255, 255, 0.06)',
+                      borderRadius: '10px',
+                      background: '#F1F5F9',
+                      border: '1px solid rgba(15, 23, 42, 0.05)',
                     },
                   }}
                 >
                   <Box className="profile-row">
-                    <PersonIcon sx={{ color: '#F97316', fontSize: 22 }} />
+                    <PersonIcon sx={{ color: '#FC523F', fontSize: 22 }} />
                     <Box>
                       <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
                         Full name
                       </Typography>
-                      <Typography variant="body1" sx={{ color: '#F1F5F9', fontWeight: 500 }}>
+                      <Typography variant="body1" sx={{ color: '#0F172A', fontWeight: 500 }}>
                         {profile.name}
                       </Typography>
                     </Box>
                   </Box>
                   <Box className="profile-row">
-                    <EmailIcon sx={{ color: '#F97316', fontSize: 22 }} />
+                    <EmailIcon sx={{ color: '#FC523F', fontSize: 22 }} />
                     <Box>
                       <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
                         Email address
                       </Typography>
-                      <Typography variant="body1" sx={{ color: '#F1F5F9', fontWeight: 500 }}>
+                      <Typography variant="body1" sx={{ color: '#0F172A', fontWeight: 500 }}>
                         {profile.email}
                       </Typography>
                     </Box>
                   </Box>
                   {profile.role && (
                     <Box className="profile-row">
-                      <BadgeIcon sx={{ color: '#F97316', fontSize: 22 }} />
+                      <BadgeIcon sx={{ color: '#FC523F', fontSize: 22 }} />
                       <Box>
                         <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
                           Role
                         </Typography>
-                        <Typography variant="body1" sx={{ color: '#F1F5F9', fontWeight: 500, textTransform: 'capitalize' }}>
+                        <Typography variant="body1" sx={{ color: '#0F172A', fontWeight: 500, textTransform: 'capitalize' }}>
                           {profile.role}
                         </Typography>
                       </Box>
@@ -212,12 +212,12 @@ const ProfilePage = () => {
                   )}
                   {profile.createdAt && (
                     <Box className="profile-row">
-                      <CalendarTodayIcon sx={{ color: '#F97316', fontSize: 22 }} />
+                      <CalendarTodayIcon sx={{ color: '#FC523F', fontSize: 22 }} />
                       <Box>
                         <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
                           Member since
                         </Typography>
-                        <Typography variant="body1" sx={{ color: '#F1F5F9', fontWeight: 500 }}>
+                        <Typography variant="body1" sx={{ color: '#0F172A', fontWeight: 500 }}>
                           {format(new Date(profile.createdAt), 'MMMM d, yyyy')}
                         </Typography>
                       </Box>
@@ -230,13 +230,13 @@ const ProfilePage = () => {
                 elevation={0}
                 sx={{
                   p: 4,
-                  borderRadius: '12px',
-                  background: '#111827',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderRadius: '8px',
+                  background: '#FFFFFF',
+                  border: '1px solid rgba(15, 23, 42, 0.08)',
                   textAlign: 'center',
                 }}
               >
-                <Typography sx={{ color: '#94A3B8' }}>Unable to load profile.</Typography>
+                <Typography sx={{ color: '#64748B' }}>Unable to load profile.</Typography>
               </Paper>
             )}
           </motion.div>

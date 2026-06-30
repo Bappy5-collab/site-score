@@ -35,13 +35,13 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, C
 
 const cardSx = {
   p: 3,
-  borderRadius: '12px',
-  background: '#111827',
+  borderRadius: '8px',
+  background: '#FFFFFF',
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(255, 255, 255, 0.08)',
+  border: '1px solid rgba(15, 23, 42, 0.08)',
   height: '100%',
   transition: 'all 0.3s ease',
-  '&:hover': { borderColor: 'rgba(249, 115, 22, 0.25)' },
+  '&:hover': { borderColor: 'rgba(252, 82, 63, 0.25)' },
 };
 
 const pageVariants = {
@@ -54,21 +54,21 @@ const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
-    legend: { labels: { color: '#94A3B8', usePointStyle: true } },
+    legend: { labels: { color: '#64748B', usePointStyle: true } },
     tooltip: {
-      backgroundColor: 'rgba(15, 23, 42, 0.95)',
-      titleColor: '#F1F5F9',
-      bodyColor: '#94A3B8',
-      borderColor: 'rgba(255, 255, 255, 0.08)',
+      backgroundColor: 'rgba(248, 250, 252, 0.95)',
+      titleColor: '#0F172A',
+      bodyColor: '#64748B',
+      borderColor: 'rgba(15, 23, 42, 0.08)',
     },
   },
   scales: {
-    x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8' } },
+    x: { grid: { color: 'rgba(15,23,42,0.04)' }, ticks: { color: '#64748B' } },
     y: {
       min: 0,
       max: 100,
-      grid: { color: 'rgba(255,255,255,0.05)' },
-      ticks: { color: '#94A3B8' },
+      grid: { color: 'rgba(15,23,42,0.04)' },
+      ticks: { color: '#64748B' },
     },
   },
 };
@@ -118,21 +118,21 @@ export default function AIGrowthInsightsPage() {
                 sx={{
                   width: 48,
                   height: 48,
-                  borderRadius: '14px',
-                  background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%)',
-                  border: '1px solid rgba(249, 115, 22, 0.3)',
+                  borderRadius: '10px',
+                  background: 'linear-gradient(135deg, rgba(252, 82, 63, 0.2) 0%, rgba(252, 82, 63, 0.2) 100%)',
+                  border: '1px solid rgba(252, 82, 63, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
               >
-                <InsightsIcon sx={{ color: '#F97316', fontSize: 28 }} />
+                <InsightsIcon sx={{ color: '#FC523F', fontSize: 28 }} />
               </Box>
               <Box>
-                <Typography variant="h4" sx={{ fontWeight: 800, color: '#F1F5F9', letterSpacing: '-0.02em' }}>
+                <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em' }}>
                   AI Growth Insights
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#94A3B8', mt: 0.25 }}>
+                <Typography variant="body2" sx={{ color: '#64748B', mt: 0.25 }}>
                   Trends and smart improvement suggestions from your scan history
                 </Typography>
               </Box>
@@ -144,13 +144,13 @@ export default function AIGrowthInsightsPage() {
               </Alert>
             )}
             {loading ? (
-              <Typography sx={{ color: '#94A3B8' }}>Loading insights...</Typography>
+              <Typography sx={{ color: '#64748B' }}>Loading insights...</Typography>
             ) : (
               <Grid container spacing={3}>
                 <Grid item xs={12} lg={8}>
                   <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>
                     <Paper elevation={0} sx={cardSx}>
-                      <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 2 }}>
+                      <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A', mb: 2 }}>
                         Performance Over Time
                       </Typography>
                       <Box sx={{ height: 320 }}>
@@ -168,7 +168,7 @@ export default function AIGrowthInsightsPage() {
                     <Paper elevation={0} sx={cardSx}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                         <TrendingUpIcon sx={{ color: '#22C55E' }} />
-                        <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
+                        <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A' }}>
                           Growth Summary
                         </Typography>
                       </Box>
@@ -181,7 +181,7 @@ export default function AIGrowthInsightsPage() {
                         </Box>
                         <Box>
                           <Typography variant="caption" sx={{ color: '#64748B' }}>Scans analyzed</Typography>
-                          <Typography variant="h5" sx={{ fontWeight: 700, color: '#F1F5F9' }}>{insights.growthSummary.scansAnalyzed}</Typography>
+                          <Typography variant="h5" sx={{ fontWeight: 700, color: '#0F172A' }}>{insights.growthSummary.scansAnalyzed}</Typography>
                         </Box>
                         <Chip label={insights.growthSummary.trendLabel} size="small" sx={{ background: 'rgba(34, 197, 94, 0.2)', color: '#4ADE80', border: '1px solid rgba(34, 197, 94, 0.3)' }} />
                       </Box>
@@ -192,8 +192,8 @@ export default function AIGrowthInsightsPage() {
                   <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
                     <Paper elevation={0} sx={cardSx}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                        <BuildCircleIcon sx={{ color: '#F97316' }} />
-                        <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
+                        <BuildCircleIcon sx={{ color: '#FC523F' }} />
+                        <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A' }}>
                           What to Fix Next
                         </Typography>
                       </Box>
@@ -206,19 +206,19 @@ export default function AIGrowthInsightsPage() {
                               elevation={0}
                               sx={{
                                 p: 2,
-                                borderRadius: '14px',
-                                background: 'rgba(255,255,255,0.04)',
-                                border: '1px solid rgba(255,255,255,0.06)',
+                                borderRadius: '10px',
+                                background: 'rgba(15,23,42,0.03)',
+                                border: '1px solid rgba(15,23,42,0.05)',
                               }}
                             >
-                              <Typography variant="body2" sx={{ color: '#F1F5F9', fontWeight: 500, mb: 1 }}>
+                              <Typography variant="body2" sx={{ color: '#0F172A', fontWeight: 500, mb: 1 }}>
                                 {s.title}
                               </Typography>
                               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                                 <Chip label={s.impact} size="small" sx={{ fontSize: '0.7rem', height: 20 }} />
                                 <Typography variant="caption" sx={{ color: '#64748B' }}>Priority {s.priority}%</Typography>
                               </Box>
-                              <LinearProgress variant="determinate" value={s.priority} sx={{ height: 6, borderRadius: 3, bgcolor: 'rgba(255,255,255,0.06)', '& .MuiLinearProgress-bar': { bgcolor: '#F97316' } }} />
+                              <LinearProgress variant="determinate" value={s.priority} sx={{ height: 6, borderRadius: 3, bgcolor: 'rgba(15,23,42,0.05)', '& .MuiLinearProgress-bar': { bgcolor: '#FC523F' } }} />
                             </Paper>
                           </Grid>
                         ))}

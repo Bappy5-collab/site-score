@@ -52,23 +52,23 @@ ChartJS.register(
 
 // Section header with a coloured icon accent
 const SectionTitle = ({ icon, children }: { icon: ReactNode; children: ReactNode }) => (
-  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, mb: 3 }}>
+  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, mb: 2.5 }}>
     <Box
       sx={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 34,
-        height: 34,
-        borderRadius: '10px',
-        color: '#FB923C',
-        background: 'rgba(249, 115, 22, 0.12)',
-        border: '1px solid rgba(249, 115, 22, 0.2)',
+        width: 32,
+        height: 32,
+        borderRadius: '8px',
+        color: '#FC523F',
+        background: 'rgba(252, 82, 63, 0.1)',
+        '& svg': { fontSize: 19 },
       }}
     >
       {icon}
     </Box>
-    <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
+    <Typography sx={{ fontWeight: 600, fontSize: '1.0625rem', color: '#0F172A', letterSpacing: '-0.01em' }}>
       {children}
     </Typography>
   </Box>
@@ -130,23 +130,6 @@ const DashboardPage = () => {
     return g;
   };
 
-  const seriesRgb = ['249, 115, 22', '34, 197, 94', '245, 158, 11'];
-
-  const glowPlugin: Plugin<'line'> = {
-    id: 'glow-trends',
-    beforeDatasetDraw(chart, args) {
-      const { ctx } = chart;
-      ctx.save();
-      ctx.shadowColor = `rgba(${seriesRgb[args.index] || '249, 115, 22'}, 0.4)`;
-      ctx.shadowBlur = 12;
-      ctx.shadowOffsetX = 0;
-      ctx.shadowOffsetY = 4;
-    },
-    afterDatasetDraw(chart) {
-      chart.ctx.restore();
-    },
-  };
-
   const crosshairPlugin: Plugin<'line'> = {
     id: 'crosshair-trends',
     afterDraw(chart) {
@@ -177,7 +160,7 @@ const DashboardPage = () => {
         position: 'top' as const,
         align: 'end' as const,
         labels: {
-          color: '#94A3B8',
+          color: '#64748B',
           usePointStyle: true,
           pointStyle: 'circle' as const,
           boxWidth: 8,
@@ -187,13 +170,13 @@ const DashboardPage = () => {
         },
       },
       tooltip: {
-        backgroundColor: 'rgba(14, 20, 34, 0.95)',
-        titleColor: '#F8FAFC',
-        bodyColor: '#CBD5E1',
-        borderColor: 'rgba(255, 255, 255, 0.1)',
+        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+        titleColor: '#0F172A',
+        bodyColor: '#334155',
+        borderColor: 'rgba(15, 23, 42, 0.1)',
         borderWidth: 1,
         padding: 12,
-        cornerRadius: 10,
+        cornerRadius: 8,
         usePointStyle: true,
         titleFont: { weight: 'bold' as const },
       },
@@ -207,7 +190,7 @@ const DashboardPage = () => {
         min: 0,
         max: 100,
         border: { display: false } as any,
-        grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false } as any,
+        grid: { color: 'rgba(15, 23, 42, 0.04)', drawBorder: false } as any,
         ticks: { color: '#64748B', stepSize: 25, font: { size: 11 }, padding: 8 },
       },
     },
@@ -219,13 +202,13 @@ const DashboardPage = () => {
       {
         label: 'Performance',
         data: scans.slice(0, 10).reverse().map((scan) => scan.performanceScore),
-        borderColor: makeStroke('#F97316', '#FDBA74'),
-        backgroundColor: makeFill('249, 115, 22'),
+        borderColor: makeStroke('#FC523F', '#FDA294'),
+        backgroundColor: makeFill('252, 82, 63'),
         tension: 0.45,
         fill: true,
         pointRadius: 0,
         pointHoverRadius: 5,
-        pointHoverBorderColor: '#0E1422',
+        pointHoverBorderColor: '#F8FAFC',
         pointHoverBorderWidth: 2,
         borderWidth: 2.5,
       },
@@ -238,7 +221,7 @@ const DashboardPage = () => {
         fill: true,
         pointRadius: 0,
         pointHoverRadius: 5,
-        pointHoverBorderColor: '#0E1422',
+        pointHoverBorderColor: '#F8FAFC',
         pointHoverBorderWidth: 2,
         borderWidth: 2.5,
       },
@@ -251,7 +234,7 @@ const DashboardPage = () => {
         fill: true,
         pointRadius: 0,
         pointHoverRadius: 5,
-        pointHoverBorderColor: '#0E1422',
+        pointHoverBorderColor: '#F8FAFC',
         pointHoverBorderWidth: 2,
         borderWidth: 2.5,
       },
@@ -282,11 +265,11 @@ const DashboardPage = () => {
               <Box>
                 <Typography
                   variant="h4"
-                  sx={{ fontWeight: 700, color: '#F8FAFC', letterSpacing: '-0.02em' }}
+                  sx={{ fontWeight: 700, color: '#0F172A', letterSpacing: '-0.02em' }}
                 >
                   {userName ? `Welcome back, ${userName.split(' ')[0]}` : 'Dashboard'}
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#94A3B8', mt: 0.5 }}>
+                <Typography variant="body2" sx={{ color: '#64748B', mt: 0.5 }}>
                   Here&apos;s how your websites are performing.
                 </Typography>
               </Box>
@@ -300,11 +283,11 @@ const DashboardPage = () => {
                     py: 1.25,
                     fontWeight: 600,
                     textTransform: 'none',
-                    borderRadius: '12px',
+                    borderRadius: '8px',
                     whiteSpace: 'nowrap',
-                    borderColor: 'rgba(255,255,255,0.15)',
-                    color: '#94A3B8',
-                    '&:hover': { borderColor: 'rgba(249,115,22,0.5)', background: 'rgba(249,115,22,0.08)', color: '#F1F5F9' },
+                    borderColor: 'rgba(15,23,42,0.15)',
+                    color: '#64748B',
+                    '&:hover': { borderColor: 'rgba(252,82,63,0.5)', background: 'rgba(252,82,63,0.08)', color: '#0F172A' },
                   }}
                 >
                   Take a tour
@@ -317,14 +300,14 @@ const DashboardPage = () => {
                   sx={{
                     px: 3,
                     py: 1.25,
-                    fontWeight: 700,
+                    fontWeight: 600,
                     textTransform: 'none',
-                    borderRadius: '12px',
+                    borderRadius: '8px',
                     whiteSpace: 'nowrap',
-                    background: '#EA580C',
-                    boxShadow: 'none',
+                    background: '#FC523F',
+                    boxShadow: '0 1px 2px rgba(252, 82, 63, 0.3)',
                     '&:hover': {
-                      background: '#C2410C',
+                      background: '#E13E2C',
                       boxShadow: 'none',
                     },
                   }}
@@ -400,14 +383,15 @@ const DashboardPage = () => {
                       sx={{
                         p: { xs: 2.5, md: 3 },
                         height: '100%',
-                        background: 'linear-gradient(155deg, #141B2D 0%, #0E1422 100%)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '16px',
+                        background: '#FFFFFF',
+                        border: '1px solid #E5E9F0',
+                        borderRadius: '10px',
+                        boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
                       }}
                     >
                       <SectionTitle icon={<ShowChartIcon />}>Score Trends</SectionTitle>
                       <Box sx={{ height: 300 }}>
-                        <Line data={lineData} options={chartOptions} plugins={[glowPlugin, crosshairPlugin]} />
+                        <Line data={lineData} options={chartOptions} plugins={[crosshairPlugin]} />
                       </Box>
                     </Paper>
                   </motion.div>
@@ -423,16 +407,17 @@ const DashboardPage = () => {
                       sx={{
                         p: { xs: 2.5, md: 3 },
                         height: '100%',
-                        background: 'linear-gradient(155deg, #141B2D 0%, #0E1422 100%)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '16px',
+                        background: '#FFFFFF',
+                        border: '1px solid #E5E9F0',
+                        borderRadius: '10px',
+                        boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
                       }}
                     >
                       <SectionTitle icon={<HistoryIcon />}>Recent Scans</SectionTitle>
                       {scans.length > 0 ? (
                         <ScanTable scans={scans.slice(0, 5)} />
                       ) : (
-                        <Typography variant="body2" sx={{ color: '#94A3B8', textAlign: 'center', py: 4 }}>
+                        <Typography variant="body2" sx={{ color: '#64748B', textAlign: 'center', py: 4 }}>
                           No scans yet
                         </Typography>
                       )}
@@ -478,9 +463,10 @@ const DashboardPage = () => {
                       data-tour="all-scans"
                       sx={{
                         p: { xs: 2.5, md: 3 },
-                        background: 'linear-gradient(155deg, #141B2D 0%, #0E1422 100%)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '16px',
+                        background: '#FFFFFF',
+                        border: '1px solid #E5E9F0',
+                        borderRadius: '10px',
+                        boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
                       }}
                     >
                       <SectionTitle icon={<StorageIcon />}>All Scans</SectionTitle>
@@ -490,25 +476,24 @@ const DashboardPage = () => {
                         <Box sx={{ textAlign: 'center', py: 6 }}>
                           <Box
                             sx={{
-                              width: 64,
-                              height: 64,
+                              width: 60,
+                              height: 60,
                               mx: 'auto',
                               mb: 2,
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
                               borderRadius: '12px',
-                              color: '#FB923C',
-                              background: 'rgba(249, 115, 22, 0.12)',
-                              border: '1px solid rgba(249, 115, 22, 0.2)',
+                              color: '#FC523F',
+                              background: 'rgba(252, 82, 63, 0.1)',
                             }}
                           >
                             <SearchIcon sx={{ fontSize: 32 }} />
                           </Box>
-                          <Typography variant="h6" sx={{ color: '#F1F5F9', fontWeight: 600, mb: 0.5 }}>
+                          <Typography variant="h6" sx={{ color: '#0F172A', fontWeight: 600, mb: 0.5 }}>
                             No scans yet
                           </Typography>
-                          <Typography variant="body2" sx={{ color: '#94A3B8', mb: 3 }}>
+                          <Typography variant="body2" sx={{ color: '#64748B', mb: 3 }}>
                             Analyze your first website to see scores, trends and AI insights here.
                           </Typography>
                           <Button
@@ -518,13 +503,13 @@ const DashboardPage = () => {
                             sx={{
                               px: 3,
                               py: 1.1,
-                              fontWeight: 700,
+                              fontWeight: 600,
                               textTransform: 'none',
-                              borderRadius: '12px',
-                              background: '#EA580C',
-                              boxShadow: 'none',
+                              borderRadius: '8px',
+                              background: '#FC523F',
+                              boxShadow: '0 1px 2px rgba(252, 82, 63, 0.3)',
                               '&:hover': {
-                                background: '#C2410C',
+                                background: '#E13E2C',
                               },
                             }}
                           >

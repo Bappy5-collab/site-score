@@ -165,10 +165,10 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        background: '#111827',
+        background: '#FFFFFF',
         backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        borderRadius: '12px',
+        border: '1px solid rgba(15, 23, 42, 0.08)',
+        borderRadius: '8px',
         overflow: 'hidden',
       }}
     >
@@ -176,14 +176,14 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
       <Box
         sx={{
           p: 2,
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-          background: 'rgba(249, 115, 22, 0.1)',
+          borderBottom: '1px solid rgba(15, 23, 42, 0.08)',
+          background: 'rgba(252, 82, 63, 0.1)',
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <Avatar
             sx={{
-              background: '#EA580C',
+              background: '#E13E2C',
               width: 40,
               height: 40,
             }}
@@ -191,10 +191,10 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
             <SmartToyIcon />
           </Avatar>
           <Box>
-            <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
+            <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A' }}>
               AI Assistant
             </Typography>
-            <Typography variant="caption" sx={{ color: '#94A3B8', fontSize: '0.75rem' }}>
+            <Typography variant="caption" sx={{ color: '#64748B', fontSize: '0.75rem' }}>
               {effectiveScanId === 'general' ? 'Ask about SEO, performance, or security' : 'Ask me anything about your scan'}
             </Typography>
           </Box>
@@ -215,21 +215,21 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
             width: '8px',
           },
           '&::-webkit-scrollbar-track': {
-            background: 'rgba(255, 255, 255, 0.05)',
+            background: 'rgba(15, 23, 42, 0.04)',
             borderRadius: '4px',
           },
           '&::-webkit-scrollbar-thumb': {
-            background: 'rgba(249, 115, 22, 0.3)',
+            background: 'rgba(252, 82, 63, 0.3)',
             borderRadius: '4px',
             '&:hover': {
-              background: 'rgba(249, 115, 22, 0.5)',
+              background: 'rgba(252, 82, 63, 0.5)',
             },
           },
         }}
       >
         {loading && messages.length === 0 ? (
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-            <CircularProgress sx={{ color: '#F97316' }} />
+            <CircularProgress sx={{ color: '#FC523F' }} />
           </Box>
         ) : (
           <>
@@ -254,7 +254,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
                     {msg.role === 'assistant' && (
                       <Avatar
                         sx={{
-                          background: '#EA580C',
+                          background: '#E13E2C',
                           width: 32,
                           height: 32,
                           mt: 0.5,
@@ -278,20 +278,20 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
                         whileHover={{ y: -2 }}
                         sx={{
                           p: 2,
-                          borderRadius: '16px',
+                          borderRadius: '10px',
                           background:
                             msg.role === 'user'
-                              ? 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%)'
-                              : 'rgba(255, 255, 255, 0.05)',
+                              ? 'linear-gradient(135deg, rgba(252, 82, 63, 0.2) 0%, rgba(252, 82, 63, 0.2) 100%)'
+                              : 'rgba(15, 23, 42, 0.04)',
                           border:
                             msg.role === 'user'
-                              ? '1px solid rgba(249, 115, 22, 0.3)'
-                              : '1px solid rgba(255, 255, 255, 0.08)',
+                              ? '1px solid rgba(252, 82, 63, 0.3)'
+                              : '1px solid rgba(15, 23, 42, 0.08)',
                           backdropFilter: 'blur(10px)',
                           boxShadow:
                             msg.role === 'user'
-                              ? '0 4px 12px rgba(249, 115, 22, 0.2)'
-                              : '0 2px 8px rgba(0, 0, 0, 0.1)',
+                              ? '0 4px 12px rgba(252, 82, 63, 0.2)'
+                              : '0 2px 8px rgba(15, 23, 42, 0.08)',
                           position: 'relative',
                           '&::before':
                             msg.role === 'assistant'
@@ -304,7 +304,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
                                   height: 0,
                                   borderTop: '8px solid transparent',
                                   borderBottom: '8px solid transparent',
-                                  borderRight: '8px solid rgba(255, 255, 255, 0.05)',
+                                  borderRight: '8px solid rgba(15, 23, 42, 0.04)',
                                 }
                               : {
                                   content: '""',
@@ -315,14 +315,14 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
                                   height: 0,
                                   borderTop: '8px solid transparent',
                                   borderBottom: '8px solid transparent',
-                                  borderLeft: '8px solid rgba(249, 115, 22, 0.2)',
+                                  borderLeft: '8px solid rgba(252, 82, 63, 0.2)',
                                 },
                         }}
                       >
                         <Typography
                           variant="body1"
                           sx={{
-                            color: '#F1F5F9',
+                            color: '#0F172A',
                             fontSize: '0.875rem',
                             lineHeight: 1.6,
                             whiteSpace: 'pre-wrap',
@@ -335,7 +335,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
                       <Typography
                         variant="caption"
                         sx={{
-                          color: '#94A3B8',
+                          color: '#64748B',
                           fontSize: '0.7rem',
                           px: 1,
                           alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
@@ -351,7 +351,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
                     {msg.role === 'user' && (
                       <Avatar
                         sx={{
-                          background: 'linear-gradient(135deg, #06B6D4 0%, #FB923C 100%)',
+                          background: 'linear-gradient(135deg, #06B6D4 0%, #FD7565 100%)',
                           width: 32,
                           height: 32,
                           mt: 0.5,
@@ -381,7 +381,7 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
                 >
                   <Avatar
                     sx={{
-                      background: '#EA580C',
+                      background: '#E13E2C',
                       width: 32,
                       height: 32,
                       mt: 0.5,
@@ -392,16 +392,16 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
                   <Box
                     sx={{
                       p: 2,
-                      borderRadius: '16px',
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      borderRadius: '10px',
+                      background: 'rgba(15, 23, 42, 0.04)',
+                      border: '1px solid rgba(15, 23, 42, 0.08)',
                       display: 'flex',
                       gap: 1,
                       alignItems: 'center',
                     }}
                   >
-                    <CircularProgress size={16} sx={{ color: '#F97316' }} />
-                    <Typography variant="body2" sx={{ color: '#94A3B8', fontSize: '0.75rem' }}>
+                    <CircularProgress size={16} sx={{ color: '#FC523F' }} />
+                    <Typography variant="body2" sx={{ color: '#64748B', fontSize: '0.75rem' }}>
                       Thinking...
                     </Typography>
                   </Box>
@@ -418,8 +418,8 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
       <Box
         sx={{
           p: 2,
-          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-          background: 'rgba(15, 23, 42, 0.5)',
+          borderTop: '1px solid rgba(15, 23, 42, 0.08)',
+          background: 'rgba(248, 250, 252, 0.5)',
         }}
       >
         <Box
@@ -443,29 +443,29 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
             disabled={sending || loading}
             sx={{
               '& .MuiOutlinedInput-root': {
-                background: '#111827',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '12px',
-                color: '#F1F5F9',
+                background: '#FFFFFF',
+                border: '1px solid rgba(15, 23, 42, 0.08)',
+                borderRadius: '8px',
+                color: '#0F172A',
                 transition: 'all 0.3s ease',
                 '&:hover': {
-                  borderColor: 'rgba(249, 115, 22, 0.3)',
-                  background: 'rgba(255, 255, 255, 0.05)',
+                  borderColor: 'rgba(252, 82, 63, 0.3)',
+                  background: 'rgba(15, 23, 42, 0.04)',
                 },
                 '&.Mui-focused': {
-                  borderColor: '#F97316',
-                  boxShadow: '0 0 0 3px rgba(249, 115, 22, 0.1)',
-                  background: 'rgba(255, 255, 255, 0.05)',
+                  borderColor: '#FC523F',
+                  boxShadow: '0 0 0 3px rgba(252, 82, 63, 0.1)',
+                  background: 'rgba(15, 23, 42, 0.04)',
                 },
                 '& fieldset': {
                   border: 'none',
                 },
               },
               '& .MuiInputBase-input': {
-                color: '#F1F5F9',
+                color: '#0F172A',
                 fontSize: '0.875rem',
                 '&::placeholder': {
-                  color: '#94A3B8',
+                  color: '#64748B',
                   opacity: 1,
                 },
               },
@@ -479,23 +479,23 @@ const ChatPanel: React.FC<ChatPanelProps> = ({ scanId, onClose }) => {
             disabled={!message.trim() || sending || loading}
             sx={{
               background: message.trim()
-                ? '#F97316'
-                : 'rgba(255, 255, 255, 0.05)',
-              color: message.trim() ? '#FFFFFF' : '#94A3B8',
+                ? '#FC523F'
+                : 'rgba(15, 23, 42, 0.04)',
+              color: message.trim() ? '#FFFFFF' : '#64748B',
               width: 48,
               height: 48,
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              border: '1px solid rgba(15, 23, 42, 0.08)',
               transition: 'all 0.3s ease',
               '&:hover': {
                 background: message.trim()
-                  ? 'linear-gradient(135deg, #EA580C 0%, #EA580C 100%)'
-                  : 'rgba(255, 255, 255, 0.08)',
+                  ? 'linear-gradient(135deg, #E13E2C 0%, #E13E2C 100%)'
+                  : 'rgba(15, 23, 42, 0.08)',
                 boxShadow: message.trim() ? 'none' : 'none',
                 transform: 'translateY(-2px)',
               },
               '&:disabled': {
-                background: 'rgba(255, 255, 255, 0.05)',
-                color: '#94A3B8',
+                background: 'rgba(15, 23, 42, 0.04)',
+                color: '#64748B',
                 cursor: 'not-allowed',
               },
             }}

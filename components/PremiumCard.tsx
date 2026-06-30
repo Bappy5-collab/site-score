@@ -22,71 +22,46 @@ const PremiumCard: React.FC<PremiumCardProps> = ({
   color = 'primary',
   progress,
 }) => {
-  const colorMap: Record<string, { main: string; light: string; rgb: string }> = {
-    primary: { main: '#F97316', light: '#FB923C', rgb: '249, 115, 22' },
-    secondary: { main: '#F97316', light: '#FB923C', rgb: '249, 115, 22' },
-    success: { main: '#22C55E', light: '#4ADE80', rgb: '34, 197, 94' },
-    warning: { main: '#F59E0B', light: '#FBBF24', rgb: '245, 158, 11' },
-    error: { main: '#EF4444', light: '#F87171', rgb: '239, 68, 68' },
-    info: { main: '#06B6D4', light: '#22D3EE', rgb: '6, 182, 212' },
+  const colorMap: Record<string, { main: string; rgb: string }> = {
+    primary: { main: '#FC523F', rgb: '252, 82, 63' },
+    secondary: { main: '#FC523F', rgb: '252, 82, 63' },
+    success: { main: '#16A34A', rgb: '22, 163, 74' },
+    warning: { main: '#D97706', rgb: '217, 119, 6' },
+    error: { main: '#DC2626', rgb: '220, 38, 38' },
+    info: { main: '#0891B2', rgb: '8, 145, 178' },
   };
 
   const c = colorMap[color];
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       style={{ width: '100%', height: '100%' }}
     >
       <Card
         sx={{
-          position: 'relative',
           width: '100%',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          overflow: 'hidden',
-          borderRadius: '16px',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          background: 'linear-gradient(155deg, #141B2D 0%, #0E1422 100%)',
-          boxShadow: 'none',
-          transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
-          // soft accent glow in the top-right corner
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: -60,
-            right: -40,
-            width: 160,
-            height: 160,
-            borderRadius: '50%',
-            background: `radial-gradient(circle, rgba(${c.rgb}, 0.22) 0%, rgba(${c.rgb}, 0) 70%)`,
-            pointerEvents: 'none',
-          },
-          // hairline top sheen
-          '&::after': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 24,
-            right: 24,
-            height: '1px',
-            background: `linear-gradient(90deg, transparent, rgba(${c.rgb}, 0.5), transparent)`,
-          },
+          borderRadius: '10px',
+          border: '1px solid #E5E9F0',
+          background: '#FFFFFF',
+          boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+          transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
           '&:hover': {
-            borderColor: `rgba(${c.rgb}, 0.4)`,
-            boxShadow: `0 10px 30px -12px rgba(${c.rgb}, 0.45)`,
+            borderColor: '#D8DEE9',
+            boxShadow: '0 4px 16px rgba(15, 23, 42, 0.08)',
           },
         }}
       >
         <CardContent
-          sx={{ position: 'relative', zIndex: 1, p: 2.75, flex: 1, display: 'flex', flexDirection: 'column', '&:last-child': { pb: 2.75 } }}
+          sx={{ p: 2.5, flex: 1, display: 'flex', flexDirection: 'column', '&:last-child': { pb: 2.5 } }}
         >
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2.25 }}>
-            <Typography sx={{ color: '#94A3B8', fontWeight: 500, fontSize: '0.8125rem', letterSpacing: '0.01em' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+            <Typography sx={{ color: '#64748B', fontWeight: 500, fontSize: '0.8125rem' }}>
               {title}
             </Typography>
             {icon && (
@@ -95,13 +70,11 @@ const PremiumCard: React.FC<PremiumCardProps> = ({
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: 38,
-                  height: 38,
-                  borderRadius: '11px',
-                  color: c.light,
-                  background: `rgba(${c.rgb}, 0.12)`,
-                  border: `1px solid rgba(${c.rgb}, 0.22)`,
-                  boxShadow: `inset 0 1px 0 rgba(255,255,255,0.05)`,
+                  width: 36,
+                  height: 36,
+                  borderRadius: '8px',
+                  color: c.main,
+                  background: `rgba(${c.rgb}, 0.1)`,
                   '& svg': { fontSize: 20 },
                 }}
               >
@@ -114,28 +87,28 @@ const PremiumCard: React.FC<PremiumCardProps> = ({
             <Typography
               sx={{
                 fontWeight: 700,
-                fontSize: '2.25rem',
-                lineHeight: 1.05,
-                color: '#F8FAFC',
-                letterSpacing: '-0.03em',
+                fontSize: '2rem',
+                lineHeight: 1.1,
+                color: '#0F172A',
+                letterSpacing: '-0.025em',
               }}
             >
               {value}
             </Typography>
             {subtitle && (
-              <Typography sx={{ color: '#64748B', fontSize: '0.9rem', fontWeight: 500 }}>
+              <Typography sx={{ color: '#94A3B8', fontSize: '0.875rem', fontWeight: 500 }}>
                 {subtitle}
               </Typography>
             )}
           </Box>
 
           {progress !== undefined && (
-            <Box sx={{ mt: 'auto', pt: 2.75 }}>
+            <Box sx={{ mt: 'auto', pt: 2.5 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.75 }}>
-                <Typography sx={{ color: '#64748B', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                <Typography sx={{ color: '#94A3B8', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
                   Score
                 </Typography>
-                <Typography sx={{ color: c.light, fontSize: '0.7rem', fontWeight: 700 }}>
+                <Typography sx={{ color: c.main, fontSize: '0.75rem', fontWeight: 700 }}>
                   {Math.round(progress)}%
                 </Typography>
               </Box>
@@ -145,11 +118,10 @@ const PremiumCard: React.FC<PremiumCardProps> = ({
                 sx={{
                   height: 6,
                   borderRadius: 999,
-                  background: 'rgba(255, 255, 255, 0.06)',
+                  background: 'rgba(15, 23, 42, 0.06)',
                   '& .MuiLinearProgress-bar': {
                     borderRadius: 999,
-                    background: `linear-gradient(90deg, ${c.main}, ${c.light})`,
-                    boxShadow: `0 0 12px rgba(${c.rgb}, 0.5)`,
+                    background: c.main,
                   },
                 }}
               />

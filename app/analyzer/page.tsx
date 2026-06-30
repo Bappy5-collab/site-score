@@ -51,10 +51,10 @@ const chartOptions = {
       display: false,
     },
     tooltip: {
-      backgroundColor: 'rgba(15, 23, 42, 0.95)',
-      titleColor: '#F1F5F9',
-      bodyColor: '#94A3B8',
-      borderColor: 'rgba(255, 255, 255, 0.08)',
+      backgroundColor: 'rgba(248, 250, 252, 0.95)',
+      titleColor: '#0F172A',
+      bodyColor: '#64748B',
+      borderColor: 'rgba(15, 23, 42, 0.08)',
       borderWidth: 1,
       padding: 12,
       cornerRadius: 8,
@@ -63,18 +63,18 @@ const chartOptions = {
   scales: {
     x: {
       grid: {
-        color: 'rgba(255, 255, 255, 0.05)',
+        color: 'rgba(15, 23, 42, 0.04)',
       },
       ticks: {
-        color: '#94A3B8',
+        color: '#64748B',
       },
     },
     y: {
       grid: {
-        color: 'rgba(255, 255, 255, 0.05)',
+        color: 'rgba(15, 23, 42, 0.04)',
       },
       ticks: {
-        color: '#94A3B8',
+        color: '#64748B',
       },
       min: 0,
       max: 100,
@@ -137,11 +137,11 @@ const AnalyzerPage = () => {
               scanResult.securityScore,
             ],
             backgroundColor: [
-              'rgba(249, 115, 22, 0.8)',
+              'rgba(252, 82, 63, 0.8)',
               'rgba(34, 197, 94, 0.8)',
               'rgba(245, 158, 11, 0.8)',
             ],
-            borderRadius: 8,
+            borderRadius: 6,
           },
         ],
       }
@@ -162,7 +162,7 @@ const AnalyzerPage = () => {
                 fontWeight: 700,
                 mb: 3,
                 textAlign: 'center',
-                background: 'linear-gradient(135deg, #F1F5F9 0%, #94A3B8 100%)',
+                background: 'linear-gradient(135deg, #0F172A 0%, #334155 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -183,10 +183,10 @@ const AnalyzerPage = () => {
                 mb: 2,
                 mx: 'auto',
                 maxWidth: 900,
-                background: '#111827',
+                background: '#FFFFFF',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '14px',
+                border: '1px solid rgba(15, 23, 42, 0.08)',
+                borderRadius: '10px',
               }}
             >
               <Grid container spacing={2} alignItems="center">
@@ -204,7 +204,7 @@ const AnalyzerPage = () => {
                     disabled={loading}
                     InputProps={{
                       startAdornment: (
-                        <Box sx={{ mr: 2, color: '#F97316' }}>
+                        <Box sx={{ mr: 2, color: '#FC523F' }}>
                           <SearchIcon />
                         </Box>
                       ),
@@ -229,18 +229,18 @@ const AnalyzerPage = () => {
                       fontSize: '1rem',
                       fontWeight: 600,
                       background: loading
-                        ? 'rgba(249, 115, 22, 0.3)'
-                        : '#F97316',
+                        ? 'rgba(252, 82, 63, 0.3)'
+                        : '#FC523F',
                       boxShadow: loading
                         ? 'none'
                         : 'none',
                       '&:hover': {
-                        background: '#C2410C',
+                        background: '#C9341F',
                         boxShadow: 'none',
                         transform: 'translateY(-2px)',
                       },
                       '&:disabled': {
-                        background: 'rgba(249, 115, 22, 0.3)',
+                        background: 'rgba(252, 82, 63, 0.3)',
                       },
                     }}
                   >
@@ -268,7 +268,7 @@ const AnalyzerPage = () => {
                     mb: 3,
                     background: 'rgba(239, 68, 68, 0.1)',
                     border: '1px solid rgba(239, 68, 68, 0.3)',
-                    borderRadius: '12px',
+                    borderRadius: '8px',
                   }}
                   onClose={() => setError('')}
                 >
@@ -347,13 +347,13 @@ const AnalyzerPage = () => {
                     <Paper
                       sx={{
                         p: 3,
-                        background: '#111827',
+                        background: '#FFFFFF',
                         backdropFilter: 'blur(20px)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '12px',
+                        border: '1px solid rgba(15, 23, 42, 0.08)',
+                        borderRadius: '8px',
                       }}
                     >
-                      <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: '#F1F5F9' }}>
+                      <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: '#0F172A' }}>
                         Score Breakdown
                       </Typography>
                       {chartData && (
@@ -367,30 +367,30 @@ const AnalyzerPage = () => {
                     <Paper
                       sx={{
                         p: 3,
-                        background: '#111827',
+                        background: '#FFFFFF',
                         backdropFilter: 'blur(20px)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '12px',
+                        border: '1px solid rgba(15, 23, 42, 0.08)',
+                        borderRadius: '8px',
                         height: '100%',
                       }}
                     >
-                      <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#F1F5F9' }}>
+                      <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#0F172A' }}>
                         Website Information
                       </Typography>
-                      <Typography variant="body2" sx={{ color: '#94A3B8', mb: 1.5 }}>
-                        <strong style={{ color: '#F1F5F9' }}>Title:</strong> {scanResult.title}
+                      <Typography variant="body2" sx={{ color: '#64748B', mb: 1.5 }}>
+                        <strong style={{ color: '#0F172A' }}>Title:</strong> {scanResult.title}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: '#94A3B8', mb: 1.5 }}>
-                        <strong style={{ color: '#F1F5F9' }}>Description:</strong>{' '}
+                      <Typography variant="body2" sx={{ color: '#64748B', mb: 1.5 }}>
+                        <strong style={{ color: '#0F172A' }}>Description:</strong>{' '}
                         {scanResult.description}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: '#94A3B8' }}>
-                        <strong style={{ color: '#F1F5F9' }}>URL:</strong>{' '}
+                      <Typography variant="body2" sx={{ color: '#64748B' }}>
+                        <strong style={{ color: '#0F172A' }}>URL:</strong>{' '}
                         <a
                           href={scanResult.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{ color: '#F97316', textDecoration: 'none' }}
+                          style={{ color: '#FC523F', textDecoration: 'none' }}
                         >
                           {scanResult.url}
                         </a>
@@ -404,15 +404,15 @@ const AnalyzerPage = () => {
                     sx={{
                       p: 3,
                       mb: 3,
-                      background: '#111827',
+                      background: '#FFFFFF',
                       backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      borderRadius: '12px',
+                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      borderRadius: '8px',
                       maxWidth: 1200,
                       mx: 'auto',
                     }}
                   >
-                    <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#F1F5F9' }}>
+                    <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#0F172A' }}>
                       Issues Found
                     </Typography>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -436,21 +436,21 @@ const AnalyzerPage = () => {
                     sx={{
                       p: 3,
                       mb: 3,
-                      background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%)',
+                      background: 'linear-gradient(135deg, rgba(252, 82, 63, 0.1) 0%, rgba(252, 82, 63, 0.1) 100%)',
                       backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(249, 115, 22, 0.2)',
-                      borderRadius: '12px',
+                      border: '1px solid rgba(252, 82, 63, 0.2)',
+                      borderRadius: '8px',
                       maxWidth: 1200,
                       mx: 'auto',
                     }}
                   >
                     <Typography
                       variant="h6"
-                      sx={{ mb: 2, fontWeight: 600, color: '#F1F5F9', display: 'flex', alignItems: 'center', gap: 1 }}
+                      sx={{ mb: 2, fontWeight: 600, color: '#0F172A', display: 'flex', alignItems: 'center', gap: 1 }}
                     >
                       <span>🤖</span> AI Analysis Summary
                     </Typography>
-                    <Typography variant="body1" sx={{ color: '#94A3B8' }}>
+                    <Typography variant="body1" sx={{ color: '#64748B' }}>
                       {scanResult.aiSummary}
                     </Typography>
                   </Paper>
@@ -461,17 +461,17 @@ const AnalyzerPage = () => {
                     sx={{
                       p: 3,
                       mb: 3,
-                      background: '#111827',
+                      background: '#FFFFFF',
                       backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      borderRadius: '12px',
+                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      borderRadius: '8px',
                       maxWidth: 1200,
                       mx: 'auto',
                     }}
                   >
                     <Typography
                       variant="h6"
-                      sx={{ mb: 2, fontWeight: 600, color: '#F1F5F9', display: 'flex', alignItems: 'center', gap: 1 }}
+                      sx={{ mb: 2, fontWeight: 600, color: '#0F172A', display: 'flex', alignItems: 'center', gap: 1 }}
                     >
                       <span>💡</span> AI Recommendations
                     </Typography>
@@ -481,7 +481,7 @@ const AnalyzerPage = () => {
                           key={index}
                           component="li"
                           variant="body1"
-                          sx={{ color: '#94A3B8', mb: 1.5, position: 'relative', pl: 2 }}
+                          sx={{ color: '#64748B', mb: 1.5, position: 'relative', pl: 2 }}
                         >
                           <Box
                             sx={{
@@ -491,7 +491,7 @@ const AnalyzerPage = () => {
                               width: 6,
                               height: 6,
                               borderRadius: '50%',
-                              background: '#EA580C',
+                              background: '#E13E2C',
                             }}
                           />
                           {recommendation}
@@ -511,17 +511,17 @@ const AnalyzerPage = () => {
                       sx={{
                         p: 3,
                         mb: 3,
-                        background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(249, 115, 22, 0.15) 100%)',
+                        background: 'linear-gradient(135deg, rgba(252, 82, 63, 0.15) 0%, rgba(252, 82, 63, 0.15) 100%)',
                         backdropFilter: 'blur(20px)',
-                        border: '1px solid rgba(249, 115, 22, 0.3)',
-                        borderRadius: '12px',
+                        border: '1px solid rgba(252, 82, 63, 0.3)',
+                        borderRadius: '8px',
                         maxWidth: 1200,
                         mx: 'auto',
                       }}
                     >
                       <Typography
                         variant="h6"
-                        sx={{ mb: 2, fontWeight: 600, color: '#F1F5F9', display: 'flex', alignItems: 'center', gap: 1 }}
+                        sx={{ mb: 2, fontWeight: 600, color: '#0F172A', display: 'flex', alignItems: 'center', gap: 1 }}
                       >
                         <span>✨</span> AI Suggestions
                       </Typography>
@@ -531,7 +531,7 @@ const AnalyzerPage = () => {
                             key={index}
                             component="li"
                             variant="body1"
-                            sx={{ color: '#94A3B8', mb: 1.5, position: 'relative', pl: 2 }}
+                            sx={{ color: '#64748B', mb: 1.5, position: 'relative', pl: 2 }}
                           >
                             <Box
                               sx={{
@@ -541,7 +541,7 @@ const AnalyzerPage = () => {
                                 width: 6,
                                 height: 6,
                                 borderRadius: '50%',
-                                background: '#EA580C',
+                                background: '#E13E2C',
                               }}
                             />
                             {suggestion}
@@ -555,10 +555,10 @@ const AnalyzerPage = () => {
                 <Paper
                   sx={{
                     p: 3,
-                    background: '#111827',
+                    background: '#FFFFFF',
                     backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    borderRadius: '12px',
+                    border: '1px solid rgba(15, 23, 42, 0.08)',
+                    borderRadius: '8px',
                     maxWidth: 1200,
                     mx: 'auto',
                   }}
@@ -578,14 +578,14 @@ const AnalyzerPage = () => {
                           }
                         }}
                         sx={{
-                          color: scanResult.isBookmarked ? '#F97316' : '#94A3B8',
+                          color: scanResult.isBookmarked ? '#FC523F' : '#64748B',
                           background: scanResult.isBookmarked
-                            ? 'rgba(249, 115, 22, 0.1)'
-                            : 'rgba(255, 255, 255, 0.05)',
-                          border: `1px solid ${scanResult.isBookmarked ? 'rgba(249, 115, 22, 0.3)' : 'rgba(255, 255, 255, 0.08)'}`,
+                            ? 'rgba(252, 82, 63, 0.1)'
+                            : 'rgba(15, 23, 42, 0.04)',
+                          border: `1px solid ${scanResult.isBookmarked ? 'rgba(252, 82, 63, 0.3)' : 'rgba(15, 23, 42, 0.08)'}`,
                           '&:hover': {
-                            background: 'rgba(249, 115, 22, 0.2)',
-                            borderColor: 'rgba(249, 115, 22, 0.5)',
+                            background: 'rgba(252, 82, 63, 0.2)',
+                            borderColor: 'rgba(252, 82, 63, 0.5)',
                           },
                         }}
                       >
@@ -691,21 +691,21 @@ const AnalyzerPage = () => {
                       disabled={generatingSuggestions}
                       sx={{
                         ml: 'auto',
-                        borderColor: 'rgba(249, 115, 22, 0.3)',
-                        color: '#F97316',
+                        borderColor: 'rgba(252, 82, 63, 0.3)',
+                        color: '#FC523F',
                         '&:hover': {
-                          borderColor: 'rgba(249, 115, 22, 0.5)',
-                          background: 'rgba(249, 115, 22, 0.1)',
+                          borderColor: 'rgba(252, 82, 63, 0.5)',
+                          background: 'rgba(252, 82, 63, 0.1)',
                         },
                         '&:disabled': {
-                          borderColor: 'rgba(249, 115, 22, 0.2)',
-                          color: 'rgba(249, 115, 22, 0.5)',
+                          borderColor: 'rgba(252, 82, 63, 0.2)',
+                          color: 'rgba(252, 82, 63, 0.5)',
                         },
                       }}
                     >
                       {generatingSuggestions ? (
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                          <CircularProgress size={16} sx={{ color: '#F97316' }} />
+                          <CircularProgress size={16} sx={{ color: '#FC523F' }} />
                           Generating...
                         </Box>
                       ) : (
@@ -716,7 +716,7 @@ const AnalyzerPage = () => {
 
                   {scanResult.screenshotUrl && (
                     <Box sx={{ mt: 3 }}>
-                      <Typography variant="subtitle2" sx={{ mb: 1, color: '#94A3B8' }}>
+                      <Typography variant="subtitle2" sx={{ mb: 1, color: '#64748B' }}>
                         Screenshot:
                       </Typography>
                       <Box
@@ -729,8 +729,8 @@ const AnalyzerPage = () => {
                         alt="Website screenshot"
                         sx={{
                           maxWidth: '100%',
-                          border: '1px solid rgba(255, 255, 255, 0.08)',
-                          borderRadius: '12px',
+                          border: '1px solid rgba(15, 23, 42, 0.08)',
+                          borderRadius: '8px',
                         }}
                       />
                     </Box>
@@ -749,7 +749,7 @@ const AnalyzerPage = () => {
                       sx={{
                         mb: 2,
                         fontWeight: 600,
-                        color: '#F1F5F9',
+                        color: '#0F172A',
                         display: 'flex',
                         alignItems: 'center',
                         gap: 1,

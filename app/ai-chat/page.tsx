@@ -58,7 +58,7 @@ const AIChatPage = () => {
                 variant="h4"
                 sx={{
                   fontWeight: 700,
-                  background: 'linear-gradient(135deg, #F1F5F9 0%, #94A3B8 100%)',
+                  background: 'linear-gradient(135deg, #0F172A 0%, #334155 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -73,15 +73,15 @@ const AIChatPage = () => {
                   sx={{
                     minWidth: 300,
                     '& .MuiOutlinedInput-root': {
-                      background: '#111827',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      borderRadius: '12px',
-                      color: '#F1F5F9',
+                      background: '#FFFFFF',
+                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      borderRadius: '8px',
+                      color: '#0F172A',
                       '&:hover': {
-                        borderColor: 'rgba(249, 115, 22, 0.3)',
+                        borderColor: 'rgba(252, 82, 63, 0.3)',
                       },
                       '&.Mui-focused': {
-                        borderColor: '#F97316',
+                        borderColor: '#FC523F',
                       },
                       '& fieldset': {
                         border: 'none',
@@ -89,20 +89,20 @@ const AIChatPage = () => {
                     },
                   }}
                 >
-                  <InputLabel sx={{ color: '#94A3B8' }}>Select Scan</InputLabel>
+                  <InputLabel sx={{ color: '#64748B' }}>Select Scan</InputLabel>
                   <Select
                     value={selectedScanId}
                     onChange={(e) => setSelectedScanId(e.target.value)}
                     label="Select Scan"
                     sx={{
-                      color: '#F1F5F9',
+                      color: '#0F172A',
                       '& .MuiSelect-icon': {
-                        color: '#94A3B8',
+                        color: '#64748B',
                       },
                     }}
                   >
                     {scans.map((scan) => (
-                      <MenuItem key={scan._id} value={scan._id} sx={{ color: '#F1F5F9' }}>
+                      <MenuItem key={scan._id} value={scan._id} sx={{ color: '#0F172A' }}>
                         {scan.url}
                       </MenuItem>
                     ))}
@@ -121,15 +121,15 @@ const AIChatPage = () => {
               <Paper
                 sx={{
                   p: 3,
-                  background: '#111827',
+                  background: '#FFFFFF',
                   backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  borderRadius: '12px',
+                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  borderRadius: '8px',
                   textAlign: 'center',
                   py: 8,
                 }}
               >
-                <Typography variant="body2" sx={{ color: '#94A3B8' }}>
+                <Typography variant="body2" sx={{ color: '#64748B' }}>
                   Loading...
                 </Typography>
               </Paper>
@@ -137,18 +137,18 @@ const AIChatPage = () => {
               <Paper
                 sx={{
                   p: 3,
-                  background: '#111827',
+                  background: '#FFFFFF',
                   backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  borderRadius: '12px',
+                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  borderRadius: '8px',
                   textAlign: 'center',
                   py: 8,
                 }}
               >
-                <Typography variant="h6" sx={{ mb: 2, color: '#F1F5F9' }}>
+                <Typography variant="h6" sx={{ mb: 2, color: '#0F172A' }}>
                   No Scans Available
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#94A3B8' }}>
+                <Typography variant="body2" sx={{ color: '#64748B' }}>
                   Please analyze a website first to start chatting with AI.
                 </Typography>
               </Paper>

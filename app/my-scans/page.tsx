@@ -74,7 +74,7 @@ const MyScansPage = () => {
                 variant="h4"
                 sx={{
                   fontWeight: 700,
-                  background: 'linear-gradient(135deg, #F1F5F9 0%, #94A3B8 100%)',
+                  background: 'linear-gradient(135deg, #0F172A 0%, #334155 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -92,31 +92,31 @@ const MyScansPage = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <SearchIcon sx={{ color: '#94A3B8' }} />
+                        <SearchIcon sx={{ color: '#64748B' }} />
                       </InputAdornment>
                     ),
                   }}
                   sx={{
                     width: 300,
                     '& .MuiOutlinedInput-root': {
-                      background: '#111827',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      borderRadius: '12px',
-                      color: '#F1F5F9',
+                      background: '#FFFFFF',
+                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      borderRadius: '8px',
+                      color: '#0F172A',
                       '&:hover': {
-                        borderColor: 'rgba(249, 115, 22, 0.3)',
+                        borderColor: 'rgba(252, 82, 63, 0.3)',
                       },
                       '&.Mui-focused': {
-                        borderColor: '#F97316',
+                        borderColor: '#FC523F',
                       },
                       '& fieldset': {
                         border: 'none',
                       },
                     },
                     '& .MuiInputBase-input': {
-                      color: '#F1F5F9',
+                      color: '#0F172A',
                       '&::placeholder': {
-                        color: '#94A3B8',
+                        color: '#64748B',
                         opacity: 1,
                       },
                     },
@@ -141,16 +141,16 @@ const MyScansPage = () => {
               variant="contained"
               startIcon={<AnalyticsIcon />}
               sx={{
-                background: '#EA580C',
+                background: '#E13E2C',
                 color: '#fff',
                 fontWeight: 600,
-                borderRadius: '12px',
+                borderRadius: '8px',
                 px: 3,
                 py: 1.5,
                 textTransform: 'none',
                 fontSize: '1rem',
                 '&:hover': {
-                  background: 'linear-gradient(135deg, #EA580C 0%, #6D28D9 100%)',
+                  background: 'linear-gradient(135deg, #E13E2C 0%, #6D28D9 100%)',
                 },
               }}
             >
@@ -166,27 +166,27 @@ const MyScansPage = () => {
             <Paper
               sx={{
                 p: 3,
-                background: '#111827',
+                background: '#FFFFFF',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '12px',
+                border: '1px solid rgba(15, 23, 42, 0.08)',
+                borderRadius: '8px',
               }}
             >
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
+                <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A' }}>
                   All Scans ({filteredScans.length})
                 </Typography>
               </Box>
 
               {loading ? (
                 <Box sx={{ textAlign: 'center', py: 4 }}>
-                  <Typography variant="body2" sx={{ color: '#94A3B8' }}>
+                  <Typography variant="body2" sx={{ color: '#64748B' }}>
                     Loading scans...
                   </Typography>
                 </Box>
               ) : filteredScans.length === 0 ? (
                 <Box sx={{ textAlign: 'center', py: 4 }}>
-                  <Typography variant="body2" sx={{ color: '#94A3B8' }}>
+                  <Typography variant="body2" sx={{ color: '#64748B' }}>
                     {searchQuery ? 'No scans found matching your search.' : 'No scans yet. Start analyzing websites to see your scan history.'}
                   </Typography>
                 </Box>

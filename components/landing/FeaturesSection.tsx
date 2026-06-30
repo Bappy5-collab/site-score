@@ -61,14 +61,14 @@ export default function FeaturesSection() {
                   whileHover={{ y: -8, transition: { duration: 0.2 } }}
                   sx={{
                     width: '100%',
-                    background: 'rgba(255, 255, 255, 0.03)',
+                    background: 'rgba(15, 23, 42, 0.03)',
                     backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    borderRadius: '20px',
+                    border: '1px solid rgba(15, 23, 42, 0.08)',
+                    borderRadius: '12px',
                     transition: 'all 0.3s ease',
                     '&:hover': {
-                      borderColor: 'rgba(249, 115, 22, 0.35)',
-                      boxShadow: '0 12px 40px rgba(249, 115, 22, 0.15)',
+                      borderColor: 'rgba(252, 82, 63, 0.35)',
+                      boxShadow: '0 12px 40px rgba(252, 82, 63, 0.15)',
                     },
                   }}
                 >
@@ -77,21 +77,21 @@ export default function FeaturesSection() {
                       sx={{
                         width: 56,
                         height: 56,
-                        borderRadius: '16px',
-                        background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(234, 88, 12, 0.15) 100%)',
-                        border: '1px solid rgba(249, 115, 22, 0.2)',
+                        borderRadius: '10px',
+                        background: 'linear-gradient(135deg, rgba(252, 82, 63, 0.2) 0%, rgba(252, 82, 63, 0.15) 100%)',
+                        border: '1px solid rgba(252, 82, 63, 0.2)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         mb: 2,
                       }}
                     >
-                      <Icon sx={{ fontSize: 28, color: '#F97316' }} />
+                      <Icon sx={{ fontSize: 28, color: '#FC523F' }} />
                     </Box>
-                    <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 1 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A', mb: 1 }}>
                       {item.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+                    <Typography variant="body2" sx={{ color: '#64748B', lineHeight: 1.6 }}>
                       {item.description}
                     </Typography>
                   </CardContent>

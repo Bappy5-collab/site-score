@@ -51,6 +51,7 @@ const collapsedWidth = 76;
 interface SidebarProps {
   mobileOpen?: boolean;
   onMobileClose?: () => void;
+  onCollapsedChange?: (collapsed: boolean) => void;
 }
 
 interface NavItem {
@@ -64,11 +65,19 @@ interface NavSection {
   items: NavItem[];
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) => {
+const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose, onCollapsedChange }) => {
   const router = useRouter();
   const pathname = usePathname();
   const { logout, user } = useAuth();
   const [collapsed, setCollapsed] = useState(false);
+
+  const toggleCollapsed = () => {
+    setCollapsed((prev) => {
+      const next = !prev;
+      onCollapsedChange?.(next);
+      return next;
+    });
+  };
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const [profileAnchorEl, setProfileAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
@@ -151,23 +160,23 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
               if (isMobile && onMobileClose) onMobileClose();
             }}
             sx={{
-              borderRadius: '8px',
+              borderRadius: '6px',
               minHeight: 40,
               justifyContent: collapsed && !isMobile ? 'center' : 'flex-start',
               px: collapsed && !isMobile ? 1.25 : 1.5,
-              color: active ? '#F8FAFC' : '#94A3B8',
-              background: active ? 'rgba(249, 115, 22, 0.14)' : 'transparent',
+              color: active ? '#0F172A' : '#64748B',
+              background: active ? 'rgba(252, 82, 63, 0.14)' : 'transparent',
               transition: 'background-color 0.15s ease, color 0.15s ease',
               '&:hover': {
-                background: active ? 'rgba(249, 115, 22, 0.18)' : 'rgba(255, 255, 255, 0.04)',
-                color: '#F8FAFC',
+                background: active ? 'rgba(252, 82, 63, 0.18)' : 'rgba(15, 23, 42, 0.03)',
+                color: '#0F172A',
               },
             }}
           >
             <ListItemIcon
               sx={{
                 minWidth: collapsed && !isMobile ? 0 : 34,
-                color: active ? '#FB923C' : 'inherit',
+                color: active ? '#FD7565' : 'inherit',
                 justifyContent: 'center',
                 '& svg': { fontSize: 20 },
               }}
@@ -197,8 +206,8 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        background: '#0F172A',
-        borderRight: '1px solid rgba(255, 255, 255, 0.07)',
+        background: '#FFFFFF',
+        borderRight: '1px solid rgba(15, 23, 42, 0.07)',
       }}
     >
       {/* Brand */}
@@ -211,14 +220,14 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
           justifyContent: showLabels ? 'flex-start' : 'center',
           height: 64,
           flexShrink: 0,
-          borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
+          borderBottom: '1px solid rgba(15, 23, 42, 0.07)',
         }}
       >
         <Logo size={32} showText={showLabels} fontSize="1.05rem" />
       </Box>
 
       {/* Profile */}
-      <Box sx={{ p: 1.5, borderBottom: '1px solid rgba(255, 255, 255, 0.07)' }}>
+      <Box sx={{ p: 1.5, borderBottom: '1px solid rgba(15, 23, 42, 0.07)' }}>
         <Box
           onClick={handleProfileMenuOpen}
           sx={{
@@ -226,18 +235,18 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
             alignItems: 'center',
             gap: 1.25,
             p: 1,
-            borderRadius: '8px',
+            borderRadius: '6px',
             cursor: 'pointer',
             justifyContent: showLabels ? 'flex-start' : 'center',
             transition: 'background-color 0.15s ease',
-            '&:hover': { background: 'rgba(255, 255, 255, 0.04)' },
+            '&:hover': { background: 'rgba(15, 23, 42, 0.03)' },
           }}
         >
           <Avatar
             sx={{
               width: 34,
               height: 34,
-              background: '#EA580C',
+              background: '#E13E2C',
               fontSize: '0.875rem',
               fontWeight: 600,
             }}
@@ -249,7 +258,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
               <Box sx={{ flex: 1, minWidth: 0 }}>
                 <Typography
                   variant="body2"
-                  sx={{ fontWeight: 600, color: '#F1F5F9', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+                  sx={{ fontWeight: 600, color: '#0F172A', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
                 >
                   {user?.name || 'User'}
                 </Typography>
@@ -271,9 +280,9 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
           onClose={handleProfileMenuClose}
           PaperProps={{
             sx: {
-              background: '#111827',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              borderRadius: '10px',
+              background: '#FFFFFF',
+              border: '1px solid rgba(15, 23, 42, 0.08)',
+              borderRadius: '8px',
               mt: 1,
               minWidth: 200,
             },
@@ -286,7 +295,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
               router.push('/profile');
               handleProfileMenuClose();
             }}
-            sx={{ color: '#F1F5F9', fontSize: '0.875rem', '&:hover': { background: 'rgba(249, 115, 22, 0.1)' } }}
+            sx={{ color: '#0F172A', fontSize: '0.875rem', '&:hover': { background: 'rgba(252, 82, 63, 0.1)' } }}
           >
             <PersonIcon sx={{ mr: 1.5, fontSize: 19 }} />
             View Profile
@@ -296,12 +305,12 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
               router.push('/settings');
               handleProfileMenuClose();
             }}
-            sx={{ color: '#F1F5F9', fontSize: '0.875rem', '&:hover': { background: 'rgba(249, 115, 22, 0.1)' } }}
+            sx={{ color: '#0F172A', fontSize: '0.875rem', '&:hover': { background: 'rgba(252, 82, 63, 0.1)' } }}
           >
             <SettingsIcon sx={{ mr: 1.5, fontSize: 19 }} />
             Account Settings
           </MenuItem>
-          <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.08)', my: 0.5 }} />
+          <Divider sx={{ borderColor: 'rgba(15, 23, 42, 0.08)', my: 0.5 }} />
           <MenuItem
             onClick={() => {
               handleLogout();
@@ -349,7 +358,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
       </Box>
 
       {/* Logout + collapse */}
-      <Box sx={{ p: 1.25, borderTop: '1px solid rgba(255, 255, 255, 0.07)' }}>
+      <Box sx={{ p: 1.25, borderTop: '1px solid rgba(15, 23, 42, 0.07)' }}>
         <Tooltip title={collapsed && !isMobile ? 'Logout' : ''} placement="right">
           <ListItemButton
             onClick={() => {
@@ -357,12 +366,12 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
               handleLogout();
             }}
             sx={{
-              borderRadius: '8px',
+              borderRadius: '6px',
               minHeight: 40,
               mb: 0.5,
               justifyContent: collapsed && !isMobile ? 'center' : 'flex-start',
               px: collapsed && !isMobile ? 1.25 : 1.5,
-              color: '#94A3B8',
+              color: '#64748B',
               transition: 'background-color 0.15s ease, color 0.15s ease',
               '&:hover': { background: 'rgba(239, 68, 68, 0.1)', color: '#F87171' },
             }}
@@ -379,12 +388,12 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose }) 
         {!isMobile && (
           <Tooltip title={collapsed ? 'Expand' : 'Collapse'} placement="right">
             <IconButton
-              onClick={() => setCollapsed(!collapsed)}
+              onClick={toggleCollapsed}
               sx={{
                 width: '100%',
                 color: '#64748B',
-                borderRadius: '8px',
-                '&:hover': { background: 'rgba(255, 255, 255, 0.04)', color: '#94A3B8' },
+                borderRadius: '6px',
+                '&:hover': { background: 'rgba(15, 23, 42, 0.03)', color: '#64748B' },
               }}
             >
               {collapsed ? <ChevronRightIcon /> : <ChevronLeftIcon />}

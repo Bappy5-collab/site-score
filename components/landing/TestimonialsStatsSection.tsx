@@ -92,17 +92,17 @@ export default function TestimonialsStatsSection() {
                   sx={{
                     textAlign: 'center',
                     p: 3,
-                    borderRadius: '20px',
-                    background: 'rgba(255, 255, 255, 0.03)',
+                    borderRadius: '12px',
+                    background: 'rgba(15, 23, 42, 0.03)',
                     backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    border: '1px solid rgba(15, 23, 42, 0.08)',
                   }}
                 >
                   <Typography
                     variant="h3"
                     sx={{
                       fontWeight: 800,
-                      background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+                      background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
@@ -112,7 +112,7 @@ export default function TestimonialsStatsSection() {
                     {counters[index].toLocaleString()}
                     {stat.suffix}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: '#94A3B8' }}>
+                  <Typography variant="body2" sx={{ color: '#64748B' }}>
                     {stat.label}
                   </Typography>
                 </Box>
@@ -133,14 +133,14 @@ export default function TestimonialsStatsSection() {
                 <Card
                   sx={{
                     height: '100%',
-                    background: 'rgba(255, 255, 255, 0.03)',
+                    background: 'rgba(15, 23, 42, 0.03)',
                     backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    borderRadius: '20px',
+                    border: '1px solid rgba(15, 23, 42, 0.08)',
+                    borderRadius: '12px',
                     p: 3,
                   }}
                 >
-                  <Typography variant="body1" sx={{ color: '#E2E8F0', fontStyle: 'italic', mb: 2, lineHeight: 1.6 }}>
+                  <Typography variant="body1" sx={{ color: '#334155', fontStyle: 'italic', mb: 2, lineHeight: 1.6 }}>
                     "{t.quote}"
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -150,7 +150,7 @@ export default function TestimonialsStatsSection() {
                       sx={{
                         width: 48,
                         height: 48,
-                        background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+                        background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
                         fontSize: '1rem',
                         fontWeight: 600,
                       }}
@@ -158,10 +158,10 @@ export default function TestimonialsStatsSection() {
                       {t.avatar}
                     </Avatar>
                     <Box>
-                      <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#0F172A' }}>
                         {t.name}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#94A3B8' }}>
+                      <Typography variant="caption" sx={{ color: '#64748B' }}>
                         {t.role} at {t.company}
                       </Typography>
                     </Box>

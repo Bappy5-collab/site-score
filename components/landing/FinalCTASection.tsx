@@ -13,8 +13,8 @@ export default function FinalCTASection() {
         py: { xs: 10, md: 14 },
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(180deg, rgba(10, 14, 39, 0.5) 0%, rgba(249, 115, 22, 0.08) 50%, rgba(234, 88, 12, 0.06) 100%)',
-        borderTop: '1px solid rgba(255, 255, 255, 0.06)',
+        background: 'linear-gradient(180deg, rgba(248, 250, 252, 0.5) 0%, rgba(252, 82, 63, 0.08) 50%, rgba(252, 82, 63, 0.06) 100%)',
+        borderTop: '1px solid rgba(15, 23, 42, 0.05)',
       }}
     >
       <Box
@@ -28,7 +28,7 @@ export default function FinalCTASection() {
           transform: 'translate(-50%, -50%)',
           width: 'min(80vw, 600px)',
           height: 400,
-          background: 'radial-gradient(ellipse, rgba(249, 115, 22, 0.25) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, rgba(252, 82, 63, 0.25) 0%, transparent 70%)',
           borderRadius: '50%',
           filter: 'blur(60px)',
         }}
@@ -48,14 +48,14 @@ export default function FinalCTASection() {
               py: 0.6,
               mb: 2.5,
               borderRadius: '9999px',
-              background: 'rgba(249, 115, 22, 0.1)',
-              border: '1px solid rgba(249, 115, 22, 0.22)',
+              background: 'rgba(252, 82, 63, 0.1)',
+              border: '1px solid rgba(252, 82, 63, 0.22)',
             }}
           >
-            <Box sx={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg, #F97316, #EA580C)' }} />
+            <Box sx={{ width: 6, height: 6, borderRadius: '50%', background: 'linear-gradient(135deg, #FC523F, #E13E2C)' }} />
             <Typography
               variant="caption"
-              sx={{ color: '#C4B5FD', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', fontSize: '0.72rem' }}
+              sx={{ color: '#FC523F', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', fontSize: '0.72rem' }}
             >
               Get Started
             </Typography>
@@ -65,7 +65,7 @@ export default function FinalCTASection() {
             sx={{
               fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
               fontWeight: 800,
-              color: '#F1F5F9',
+              color: '#0F172A',
               letterSpacing: '-0.03em',
               lineHeight: 1.2,
               mb: 2,
@@ -75,7 +75,7 @@ export default function FinalCTASection() {
           </Typography>
           <Typography
             sx={{
-              color: '#94A3B8',
+              color: '#64748B',
               fontSize: '1.15rem',
               maxWidth: 480,
               mx: 'auto',
@@ -98,12 +98,12 @@ export default function FinalCTASection() {
               fontSize: '1.2rem',
               fontWeight: 700,
               textTransform: 'none',
-              borderRadius: '16px',
-              background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
-              boxShadow: '0 12px 40px rgba(249, 115, 22, 0.5)',
+              borderRadius: '10px',
+              background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
+              boxShadow: '0 12px 40px rgba(252, 82, 63, 0.5)',
               '&:hover': {
-                background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)',
-                boxShadow: '0 16px 48px rgba(249, 115, 22, 0.55)',
+                background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)',
+                boxShadow: '0 16px 48px rgba(252, 82, 63, 0.55)',
               },
             }}
           >

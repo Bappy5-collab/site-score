@@ -24,23 +24,23 @@ export default function PrivacyPage() {
             sx={{
               fontSize: { xs: '2rem', md: '2.75rem' },
               fontWeight: 800,
-              color: '#F1F5F9',
+              color: '#0F172A',
               letterSpacing: '-0.02em',
               mb: 2,
             }}
           >
             Privacy Policy
           </Typography>
-          <Typography sx={{ color: '#94A3B8', fontSize: '1rem', lineHeight: 1.7, mb: 4 }}>
+          <Typography sx={{ color: '#64748B', fontSize: '1rem', lineHeight: 1.7, mb: 4 }}>
             SiteScore AI (“we”, “us”) is committed to protecting your privacy. This policy describes how we collect, use, and safeguard your information when you use our AI Growth Operating System and related services.
           </Typography>
 
           {sections.map((sec, i) => (
             <Box key={sec.title} sx={{ mb: 3 }}>
-              <Typography variant="h2" sx={{ fontSize: '1.2rem', fontWeight: 700, color: '#F1F5F9', mb: 1 }}>
+              <Typography variant="h2" sx={{ fontSize: '1.2rem', fontWeight: 700, color: '#0F172A', mb: 1 }}>
                 {sec.title}
               </Typography>
-              <Typography sx={{ color: '#94A3B8', fontSize: '1rem', lineHeight: 1.7 }}>
+              <Typography sx={{ color: '#64748B', fontSize: '1rem', lineHeight: 1.7 }}>
                 {sec.body}
               </Typography>
             </Box>

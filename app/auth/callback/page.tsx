@@ -43,13 +43,13 @@ function CallbackInner() {
         alignItems: 'center',
         justifyContent: 'center',
         gap: 3,
-        background: 'linear-gradient(180deg, #0B1120 0%, #111827 100%)',
+        background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%)',
       }}
     >
       <Logo size={44} fontSize="1.6rem" />
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-        <CircularProgress size={22} sx={{ color: '#F97316' }} />
-        <Typography sx={{ color: '#94A3B8', fontWeight: 500 }}>Signing you in…</Typography>
+        <CircularProgress size={22} sx={{ color: '#FC523F' }} />
+        <Typography sx={{ color: '#64748B', fontWeight: 500 }}>Signing you in…</Typography>
       </Box>
     </Box>
   );

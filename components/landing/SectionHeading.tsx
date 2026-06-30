@@ -35,8 +35,8 @@ export default function SectionHeading({
           py: 0.6,
           mb: 2,
           borderRadius: '9999px',
-          background: 'rgba(249, 115, 22, 0.1)',
-          border: '1px solid rgba(249, 115, 22, 0.22)',
+          background: 'rgba(252, 82, 63, 0.1)',
+          border: '1px solid rgba(252, 82, 63, 0.22)',
           backdropFilter: 'blur(8px)',
         }}
       >
@@ -45,13 +45,13 @@ export default function SectionHeading({
             width: 6,
             height: 6,
             borderRadius: '50%',
-            background: 'linear-gradient(135deg, #F97316, #EA580C)',
+            background: 'linear-gradient(135deg, #FC523F, #E13E2C)',
           }}
         />
         <Typography
           variant="caption"
           sx={{
-            color: '#C4B5FD',
+            color: '#FC523F',
             fontWeight: 700,
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
@@ -69,7 +69,7 @@ export default function SectionHeading({
           fontWeight: 800,
           letterSpacing: '-0.025em',
           lineHeight: 1.15,
-          background: 'linear-gradient(135deg, #FFFFFF 0%, #C4B5FD 100%)',
+          background: 'linear-gradient(135deg, #0F172A 0%, #334155 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
@@ -81,7 +81,7 @@ export default function SectionHeading({
 
       {subtitle && (
         <Typography
-          sx={{ color: '#94A3B8', fontSize: '1.1rem', maxWidth: 600, mx: 'auto', lineHeight: 1.6 }}
+          sx={{ color: '#64748B', fontSize: '1.1rem', maxWidth: 600, mx: 'auto', lineHeight: 1.6 }}
         >
           {subtitle}
         </Typography>

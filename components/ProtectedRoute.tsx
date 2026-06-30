@@ -28,7 +28,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
         alignItems="center"
         minHeight="100vh"
         sx={{
-          background: 'linear-gradient(180deg, #0A0E27 0%, #151932 100%)',
+          background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%)',
         }}
       >
         <motion.div
@@ -38,7 +38,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
         >
           <CircularProgress
             sx={{
-              color: '#F97316',
+              color: '#FC523F',
             }}
           />
         </motion.div>

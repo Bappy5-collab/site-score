@@ -112,9 +112,9 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
           position: 'sticky',
           top: 0,
           zIndex: 1100,
-          background: 'rgba(17, 24, 39, 0.85)',
+          background: 'rgba(255, 255, 255, 0.85)',
           backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
+          borderBottom: '1px solid rgba(15, 23, 42, 0.07)',
           boxShadow: 'none',
           width: '100%',
         }}
@@ -126,8 +126,8 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                 onClick={onOpenSidebar}
                 sx={{
                   display: { xs: 'flex', md: 'none' },
-                  color: '#94A3B8',
-                  '&:hover': { color: '#F97316', background: 'rgba(249, 115, 22, 0.1)' },
+                  color: '#64748B',
+                  '&:hover': { color: '#FC523F', background: 'rgba(252, 82, 63, 0.1)' },
                 }}
                 aria-label="Open menu"
               >
@@ -150,10 +150,10 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
               whileTap={{ scale: 0.9 }}
               onClick={handleNotificationOpen}
               sx={{
-                color: '#94A3B8',
+                color: '#64748B',
                 '&:hover': {
-                  color: '#F97316',
-                  background: 'rgba(249, 115, 22, 0.1)',
+                  color: '#FC523F',
+                  background: 'rgba(252, 82, 63, 0.1)',
                 },
               }}
             >
@@ -181,17 +181,17 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: { xs: 0.75, sm: 1.5 },
-                  background: '#111827',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  borderRadius: '12px',
+                  background: '#FFFFFF',
+                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  borderRadius: '8px',
                   px: { xs: 1, sm: 2 },
                   py: 0.5,
                   cursor: 'pointer',
                   transition: 'all 0.3s ease',
                   minWidth: 0,
                   '&:hover': {
-                    borderColor: 'rgba(249, 115, 22, 0.3)',
-                    background: 'rgba(249, 115, 22, 0.05)',
+                    borderColor: 'rgba(252, 82, 63, 0.3)',
+                    background: 'rgba(252, 82, 63, 0.05)',
                   },
                 }}
               >
@@ -199,7 +199,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                   sx={{
                     width: { xs: 28, sm: 32 },
                     height: { xs: 28, sm: 32 },
-                    background: '#EA580C',
+                    background: '#E13E2C',
                     fontSize: '0.875rem',
                     fontWeight: 600,
                   }}
@@ -207,10 +207,10 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                   {user.name?.charAt(0).toUpperCase()}
                 </Avatar>
                 <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                  <Typography variant="body2" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600, color: '#0F172A', lineHeight: 1.3 }}>
                     {user.name}
                   </Typography>
-                  <Typography variant="caption" sx={{ color: '#94A3B8', fontSize: '0.75rem' }}>
+                  <Typography variant="caption" sx={{ color: '#64748B', fontSize: '0.75rem' }}>
                     {user.email}
                   </Typography>
                 </Box>
@@ -229,10 +229,10 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         PaperProps={{
           sx: {
-            background: 'rgba(30, 41, 59, 0.95)',
+            background: 'rgba(255, 255, 255, 0.95)',
             backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRadius: '16px',
+            border: '1px solid rgba(15, 23, 42, 0.08)',
+            borderRadius: '10px',
             mt: 1.5,
             minWidth: 280,
             maxWidth: { xs: 'calc(100vw - 32px)', sm: 420 },
@@ -242,9 +242,9 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
           },
         }}
       >
-        <Box sx={{ p: 2, borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
+        <Box sx={{ p: 2, borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 1 }}>
-            <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
+            <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A' }}>
               Notifications
             </Typography>
             {unreadCount > 0 && (
@@ -253,11 +253,11 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                 label={`${unreadCount} unread`}
                 onClick={handleMarkAllAsRead}
                 sx={{
-                  background: 'rgba(249, 115, 22, 0.2)',
-                  color: '#F97316',
-                  border: '1px solid rgba(249, 115, 22, 0.3)',
+                  background: 'rgba(252, 82, 63, 0.2)',
+                  color: '#FC523F',
+                  border: '1px solid rgba(252, 82, 63, 0.3)',
                   cursor: 'pointer',
-                  '&:hover': { background: 'rgba(249, 115, 22, 0.3)' },
+                  '&:hover': { background: 'rgba(252, 82, 63, 0.3)' },
                 }}
               />
             )}
@@ -266,7 +266,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
         <Box sx={{ maxHeight: 400, overflowY: 'auto' }}>
           {notifications.length === 0 ? (
             <Box sx={{ p: 3, textAlign: 'center' }}>
-              <Typography variant="body2" sx={{ color: '#94A3B8' }}>
+              <Typography variant="body2" sx={{ color: '#64748B' }}>
                 No notifications yet
               </Typography>
             </Box>
@@ -283,9 +283,9 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                     onClick={() => handleNotificationClick(notification)}
                     sx={{
                       p: 2,
-                      borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
-                      background: notification.read ? 'transparent' : 'rgba(249, 115, 22, 0.05)',
-                      '&:hover': { background: 'rgba(249, 115, 22, 0.1)' },
+                      borderBottom: '1px solid rgba(15, 23, 42, 0.04)',
+                      background: notification.read ? 'transparent' : 'rgba(252, 82, 63, 0.05)',
+                      '&:hover': { background: 'rgba(252, 82, 63, 0.1)' },
                     }}
                   >
                     <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -293,13 +293,13 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                         variant="body2"
                         sx={{
                           fontWeight: notification.read ? 400 : 600,
-                          color: '#F1F5F9',
+                          color: '#0F172A',
                           mb: 0.5,
                         }}
                       >
                         {notification.message}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#94A3B8', fontSize: '0.75rem' }}>
+                      <Typography variant="caption" sx={{ color: '#64748B', fontSize: '0.75rem' }}>
                         {formatDistanceToNow(new Date(notification.createdAt), { addSuffix: true })}
                       </Typography>
                     </Box>
@@ -309,7 +309,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                           width: 8,
                           height: 8,
                           borderRadius: '50%',
-                          background: '#EA580C',
+                          background: '#E13E2C',
                           ml: 1,
                           flexShrink: 0,
                           boxShadow: 'none',

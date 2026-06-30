@@ -138,9 +138,9 @@ export default function GlobalSearch() {
   };
 
   const iconFor = (kind: ResultItem['kind']) => {
-    if (kind === 'scan-url') return <BoltIcon sx={{ fontSize: 18, color: '#F97316' }} />;
-    if (kind === 'scan') return <LanguageIcon sx={{ fontSize: 18, color: '#94A3B8' }} />;
-    return <NorthEastIcon sx={{ fontSize: 16, color: '#94A3B8' }} />;
+    if (kind === 'scan-url') return <BoltIcon sx={{ fontSize: 18, color: '#FC523F' }} />;
+    if (kind === 'scan') return <LanguageIcon sx={{ fontSize: 18, color: '#64748B' }} />;
+    return <NorthEastIcon sx={{ fontSize: 16, color: '#64748B' }} />;
   };
 
   return (
@@ -151,16 +151,16 @@ export default function GlobalSearch() {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            background: 'rgba(255, 255, 255, 0.03)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRadius: '8px',
+            background: 'rgba(15, 23, 42, 0.03)',
+            border: '1px solid rgba(15, 23, 42, 0.08)',
+            borderRadius: '6px',
             px: 1.5,
             py: 0.5,
             transition: 'border-color 0.15s ease',
-            '&:focus-within': { borderColor: 'rgba(249, 115, 22, 0.5)' },
+            '&:focus-within': { borderColor: 'rgba(252, 82, 63, 0.5)' },
           }}
         >
-          <SearchIcon sx={{ color: '#9CA3AF', mr: 1 }} />
+          <SearchIcon sx={{ color: '#64748B', mr: 1 }} />
           <InputBase
             placeholder="Search pages, scans, or type a URL…"
             value={query}
@@ -171,10 +171,10 @@ export default function GlobalSearch() {
             }}
             onKeyDown={handleKeyDown}
             sx={{
-              color: '#F1F5F9',
+              color: '#0F172A',
               flex: 1,
               fontSize: '0.875rem',
-              '& input::placeholder': { color: '#94A3B8', opacity: 1 },
+              '& input::placeholder': { color: '#64748B', opacity: 1 },
             }}
           />
         </Box>
@@ -188,19 +188,19 @@ export default function GlobalSearch() {
         >
           <Paper
             sx={{
-              background: 'rgba(17, 24, 39, 0.98)',
+              background: 'rgba(255, 255, 255, 0.98)',
               backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              borderRadius: '12px',
+              border: '1px solid rgba(15, 23, 42, 0.1)',
+              borderRadius: '8px',
               overflow: 'hidden',
-              boxShadow: '0 20px 48px rgba(0,0,0,0.5)',
+              boxShadow: '0 4px 12px rgba(15, 23, 42, 0.08)',
               maxHeight: 420,
               overflowY: 'auto',
             }}
           >
             {results.length === 0 ? (
               <Box sx={{ p: 2.5, textAlign: 'center' }}>
-                <Typography variant="body2" sx={{ color: '#94A3B8' }}>
+                <Typography variant="body2" sx={{ color: '#64748B' }}>
                   No matches for “{query}”
                 </Typography>
               </Box>
@@ -221,7 +221,7 @@ export default function GlobalSearch() {
                       px: 1.75,
                       py: 1.1,
                       cursor: 'pointer',
-                      background: i === active ? 'rgba(249, 115, 22, 0.12)' : 'transparent',
+                      background: i === active ? 'rgba(252, 82, 63, 0.12)' : 'transparent',
                     }}
                   >
                     <Box sx={{ width: 24, display: 'flex', justifyContent: 'center', flexShrink: 0 }}>
@@ -230,7 +230,7 @@ export default function GlobalSearch() {
                     <Box sx={{ minWidth: 0, flex: 1 }}>
                       <Typography
                         variant="body2"
-                        sx={{ color: '#F1F5F9', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+                        sx={{ color: '#0F172A', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
                       >
                         {r.label}
                       </Typography>
