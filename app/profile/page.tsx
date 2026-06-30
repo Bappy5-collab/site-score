@@ -54,14 +54,14 @@ const ProfilePage = () => {
               variant="h4"
               sx={{
                 fontWeight: 700,
-                color: '#0F172A',
+                color: 'var(--text-primary)',
                 mb: 0.5,
                 letterSpacing: '-0.02em',
               }}
             >
               Profile
             </Typography>
-            <Typography variant="body2" sx={{ color: '#64748B', mb: 3 }}>
+            <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 3 }}>
               View your account information
             </Typography>
 
@@ -71,19 +71,19 @@ const ProfilePage = () => {
                 sx={{
                   p: 4,
                   borderRadius: '8px',
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  background: 'var(--bg-surface)',
+                  border: '1px solid var(--border)',
                 }}
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 3, mb: 3 }}>
-                  <Skeleton variant="circular" width={88} height={88} sx={{ bgcolor: 'rgba(15,23,42,0.05)' }} />
+                  <Skeleton variant="circular" width={88} height={88} sx={{ bgcolor: 'var(--overlay-05)' }} />
                   <Box sx={{ flex: 1 }}>
-                    <Skeleton width="60%" height={32} sx={{ bgcolor: 'rgba(15,23,42,0.05)', mb: 1 }} />
-                    <Skeleton width="40%" height={24} sx={{ bgcolor: 'rgba(15,23,42,0.05)' }} />
+                    <Skeleton width="60%" height={32} sx={{ bgcolor: 'var(--overlay-05)', mb: 1 }} />
+                    <Skeleton width="40%" height={24} sx={{ bgcolor: 'var(--overlay-05)' }} />
                   </Box>
                 </Box>
-                <Skeleton width="100%" height={56} sx={{ bgcolor: 'rgba(15,23,42,0.05)', borderRadius: 1, mb: 2 }} />
-                <Skeleton width="100%" height={56} sx={{ bgcolor: 'rgba(15,23,42,0.05)', borderRadius: 1 }} />
+                <Skeleton width="100%" height={56} sx={{ bgcolor: 'var(--overlay-05)', borderRadius: 1, mb: 2 }} />
+                <Skeleton width="100%" height={56} sx={{ bgcolor: 'var(--overlay-05)', borderRadius: 1 }} />
               </Paper>
             ) : profile ? (
               <Paper
@@ -95,10 +95,10 @@ const ProfilePage = () => {
                 sx={{
                   p: 4,
                   borderRadius: '8px',
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  background: 'var(--bg-surface)',
+                  border: '1px solid var(--border)',
                   '&:hover': {
-                    borderColor: 'rgba(15, 23, 42, 0.1)',
+                    borderColor: 'var(--border-strong)',
                   },
                 }}
               >
@@ -115,10 +115,10 @@ const ProfilePage = () => {
                     {profile.name?.charAt(0).toUpperCase() || 'U'}
                   </Avatar>
                   <Box sx={{ flex: 1, minWidth: 0 }}>
-                    <Typography variant="h5" sx={{ fontWeight: 700, color: '#0F172A', mb: 0.5 }}>
+                    <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary)', mb: 0.5 }}>
                       {profile.name}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#64748B', mb: 1 }}>
+                    <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 1 }}>
                       {profile.email}
                     </Typography>
                     {profile.role && (
@@ -170,18 +170,18 @@ const ProfilePage = () => {
                       gap: 2,
                       p: 2,
                       borderRadius: '10px',
-                      background: '#F1F5F9',
-                      border: '1px solid rgba(15, 23, 42, 0.05)',
+                      background: 'var(--bg-elevated)',
+                      border: '1px solid var(--border-subtle)',
                     },
                   }}
                 >
                   <Box className="profile-row">
                     <PersonIcon sx={{ color: '#FC523F', fontSize: 22 }} />
                     <Box>
-                      <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
+                      <Typography variant="caption" sx={{ color: 'var(--text-muted)', display: 'block' }}>
                         Full name
                       </Typography>
-                      <Typography variant="body1" sx={{ color: '#0F172A', fontWeight: 500 }}>
+                      <Typography variant="body1" sx={{ color: 'var(--text-primary)', fontWeight: 500 }}>
                         {profile.name}
                       </Typography>
                     </Box>
@@ -189,10 +189,10 @@ const ProfilePage = () => {
                   <Box className="profile-row">
                     <EmailIcon sx={{ color: '#FC523F', fontSize: 22 }} />
                     <Box>
-                      <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
+                      <Typography variant="caption" sx={{ color: 'var(--text-muted)', display: 'block' }}>
                         Email address
                       </Typography>
-                      <Typography variant="body1" sx={{ color: '#0F172A', fontWeight: 500 }}>
+                      <Typography variant="body1" sx={{ color: 'var(--text-primary)', fontWeight: 500 }}>
                         {profile.email}
                       </Typography>
                     </Box>
@@ -201,10 +201,10 @@ const ProfilePage = () => {
                     <Box className="profile-row">
                       <BadgeIcon sx={{ color: '#FC523F', fontSize: 22 }} />
                       <Box>
-                        <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
+                        <Typography variant="caption" sx={{ color: 'var(--text-muted)', display: 'block' }}>
                           Role
                         </Typography>
-                        <Typography variant="body1" sx={{ color: '#0F172A', fontWeight: 500, textTransform: 'capitalize' }}>
+                        <Typography variant="body1" sx={{ color: 'var(--text-primary)', fontWeight: 500, textTransform: 'capitalize' }}>
                           {profile.role}
                         </Typography>
                       </Box>
@@ -214,10 +214,10 @@ const ProfilePage = () => {
                     <Box className="profile-row">
                       <CalendarTodayIcon sx={{ color: '#FC523F', fontSize: 22 }} />
                       <Box>
-                        <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
+                        <Typography variant="caption" sx={{ color: 'var(--text-muted)', display: 'block' }}>
                           Member since
                         </Typography>
-                        <Typography variant="body1" sx={{ color: '#0F172A', fontWeight: 500 }}>
+                        <Typography variant="body1" sx={{ color: 'var(--text-primary)', fontWeight: 500 }}>
                           {format(new Date(profile.createdAt), 'MMMM d, yyyy')}
                         </Typography>
                       </Box>
@@ -231,12 +231,12 @@ const ProfilePage = () => {
                 sx={{
                   p: 4,
                   borderRadius: '8px',
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  background: 'var(--bg-surface)',
+                  border: '1px solid var(--border)',
                   textAlign: 'center',
                 }}
               >
-                <Typography sx={{ color: '#64748B' }}>Unable to load profile.</Typography>
+                <Typography sx={{ color: 'var(--text-muted)' }}>Unable to load profile.</Typography>
               </Paper>
             )}
           </motion.div>

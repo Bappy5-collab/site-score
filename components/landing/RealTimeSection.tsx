@@ -55,14 +55,14 @@ export default function RealTimeSection() {
                   maxWidth: 380,
                   p: 2.5,
                   borderRadius: '12px',
-                  background: 'rgba(15, 23, 42, 0.03)',
+                  background: 'var(--overlay-03)',
                   backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  border: '1px solid var(--border)',
                 }}
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                   <NotificationsActiveIcon sx={{ color: '#FC523F', fontSize: 24 }} />
-                  <Typography variant="subtitle2" sx={{ color: '#64748B' }}>
+                  <Typography variant="subtitle2" sx={{ color: 'var(--text-muted)' }}>
                     Notifications
                   </Typography>
                 </Box>
@@ -73,7 +73,7 @@ export default function RealTimeSection() {
                     animate={{
                       opacity: i === activeNotif ? 1 : 0.5,
                       scale: i === activeNotif ? 1 : 0.98,
-                      borderColor: i === activeNotif ? 'rgba(252, 82, 63, 0.3)' : 'rgba(15,23,42,0.05)',
+                      borderColor: i === activeNotif ? 'rgba(252, 82, 63, 0.3)' : 'var(--border-subtle)',
                     }}
                     transition={{ duration: 0.3 }}
                     style={{ marginBottom: 8 }}
@@ -82,11 +82,11 @@ export default function RealTimeSection() {
                       sx={{
                         p: 2,
                         borderRadius: '10px',
-                        background: i === activeNotif ? 'rgba(252, 82, 63, 0.1)' : 'rgba(15,23,42,0.03)',
-                        border: '1px solid rgba(15,23,42,0.05)',
+                        background: i === activeNotif ? 'rgba(252, 82, 63, 0.1)' : 'var(--overlay-03)',
+                        border: '1px solid var(--border-subtle)',
                       }}
                     >
-                      <Typography variant="body2" sx={{ color: '#334155' }}>
+                      <Typography variant="body2" sx={{ color: 'var(--text-secondary)' }}>
                         {n.text}
                       </Typography>
                     </Box>
@@ -122,13 +122,13 @@ export default function RealTimeSection() {
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ type: 'spring', stiffness: 200, damping: 20 }}
                 >
-                  <Typography sx={{ fontSize: '4rem', fontWeight: 800, color: '#0F172A', lineHeight: 1 }}>
+                  <Typography sx={{ fontSize: '4rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>
                     {score}
                   </Typography>
                 </motion.div>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mt: 0.5 }}>
                   <TrendingUpIcon sx={{ fontSize: 20, color: '#22C55E' }} />
-                  <Typography variant="body2" sx={{ color: '#64748B', fontWeight: 600 }}>
+                  <Typography variant="body2" sx={{ color: 'var(--text-muted)', fontWeight: 600 }}>
                     Growth Score
                   </Typography>
                 </Box>

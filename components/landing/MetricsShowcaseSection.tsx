@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Box, Container, Grid, Paper, Typography, ToggleButtonGroup, ToggleButton } from '@mui/material';
 import { motion } from 'framer-motion';
 import SectionHeading from './SectionHeading';
+import { useThemeMode } from '@/theme/ThemeModeProvider';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -117,19 +118,6 @@ const barData = {
   ],
 };
 
-const doughnutData = {
-  labels: ['Excellent', 'Good', 'Needs work'],
-  datasets: [
-    {
-      data: [62, 28, 10],
-      backgroundColor: ['#22C55E', '#FC523F', '#EF4444'],
-      borderColor: '#F8FAFC',
-      borderWidth: 3,
-      hoverOffset: 6,
-    },
-  ],
-};
-
 const radarData = {
   labels: ['SEO', 'Speed', 'Security', 'Content', 'UX', 'Authority'],
   datasets: [
@@ -154,113 +142,6 @@ const radarData = {
   ],
 };
 
-const baseScales = {
-  x: {
-    grid: { display: false, drawBorder: false } as any,
-    ticks: { color: '#64748B', font: { size: 11 } },
-  },
-  y: {
-    min: 0,
-    max: 100,
-    border: { display: false } as any,
-    grid: { color: 'rgba(15, 23, 42, 0.04)', drawBorder: false } as any,
-    ticks: { color: '#64748B', stepSize: 25, font: { size: 11 } },
-  },
-};
-
-const lineOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  interaction: { mode: 'index' as const, intersect: false },
-  plugins: {
-    legend: {
-      position: 'top' as const,
-      align: 'end' as const,
-      labels: { color: '#64748B', usePointStyle: true, pointStyle: 'circle' as const, boxWidth: 8, padding: 16, font: { size: 12 } },
-    },
-    tooltip: {
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      titleColor: '#0F172A',
-      bodyColor: '#334155',
-      borderColor: 'rgba(15, 23, 42, 0.1)',
-      borderWidth: 1,
-      padding: 12,
-      cornerRadius: 10,
-      usePointStyle: true,
-    },
-  },
-  scales: baseScales,
-};
-
-const barOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: { display: false },
-    tooltip: {
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      titleColor: '#0F172A',
-      bodyColor: '#334155',
-      borderColor: 'rgba(15, 23, 42, 0.1)',
-      borderWidth: 1,
-      padding: 12,
-      cornerRadius: 10,
-    },
-  },
-  scales: baseScales,
-};
-
-const doughnutOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  cutout: '68%',
-  plugins: {
-    legend: {
-      position: 'bottom' as const,
-      labels: { color: '#64748B', usePointStyle: true, pointStyle: 'circle' as const, boxWidth: 8, padding: 14, font: { size: 12 } },
-    },
-    tooltip: {
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      titleColor: '#0F172A',
-      bodyColor: '#334155',
-      borderColor: 'rgba(15, 23, 42, 0.1)',
-      borderWidth: 1,
-      padding: 12,
-      cornerRadius: 10,
-    },
-  },
-};
-
-const radarOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: {
-      position: 'bottom' as const,
-      labels: { color: '#64748B', usePointStyle: true, pointStyle: 'circle' as const, boxWidth: 8, padding: 14, font: { size: 12 } },
-    },
-    tooltip: {
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      titleColor: '#0F172A',
-      bodyColor: '#334155',
-      borderColor: 'rgba(15, 23, 42, 0.1)',
-      borderWidth: 1,
-      padding: 12,
-      cornerRadius: 10,
-    },
-  },
-  scales: {
-    r: {
-      min: 0,
-      max: 100,
-      angleLines: { color: 'rgba(15, 23, 42, 0.05)' },
-      grid: { color: 'rgba(15, 23, 42, 0.05)' },
-      pointLabels: { color: '#64748B', font: { size: 11 } },
-      ticks: { display: false, stepSize: 25 },
-    },
-  },
-};
-
 const stats = [
   { icon: SearchIcon, label: 'Scans run', value: '128', delta: '+18%', color: '#06B6D4' },
   { icon: SpeedIcon, label: 'Avg performance', value: '84', delta: '+12 pts', color: '#FC523F' },
@@ -271,20 +152,121 @@ const stats = [
 const cardSx = {
   p: { xs: 2.5, md: 3 },
   height: '100%',
-  background: 'linear-gradient(155deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%)',
-  border: '1px solid rgba(15, 23, 42, 0.08)',
+  background: 'var(--bg-surface)',
+  border: '1px solid var(--border)',
   borderRadius: '12px',
   backdropFilter: 'blur(20px)',
 };
 
 const ChartTitle = ({ children }: { children: React.ReactNode }) => (
-  <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#0F172A', mb: 2 }}>
+  <Typography variant="subtitle1" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 2 }}>
     {children}
   </Typography>
 );
 
 export default function MetricsShowcaseSection() {
+  const { mode } = useThemeMode();
+  const dark = mode === 'dark';
   const [range, setRange] = useState<'3M' | '6M' | '8M'>('8M');
+
+  const axisColor = dark ? '#94A3B8' : '#64748B';
+  const gridColor = dark ? 'rgba(255,255,255,0.06)' : 'rgba(15,23,42,0.04)';
+  const tooltipStyle = {
+    backgroundColor: dark ? 'rgba(17,24,39,0.95)' : 'rgba(255,255,255,0.95)',
+    titleColor: dark ? '#F1F5F9' : '#0F172A',
+    bodyColor: dark ? '#CBD5E1' : '#334155',
+    borderColor: dark ? 'rgba(255,255,255,0.1)' : 'rgba(15,23,42,0.1)',
+    borderWidth: 1,
+    padding: 12,
+    cornerRadius: 10,
+  };
+
+  const baseScales = {
+    x: {
+      grid: { display: false, drawBorder: false } as any,
+      ticks: { color: axisColor, font: { size: 11 } },
+    },
+    y: {
+      min: 0,
+      max: 100,
+      border: { display: false } as any,
+      grid: { color: gridColor, drawBorder: false } as any,
+      ticks: { color: axisColor, stepSize: 25, font: { size: 11 } },
+    },
+  };
+
+  const lineOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index' as const, intersect: false },
+    plugins: {
+      legend: {
+        position: 'top' as const,
+        align: 'end' as const,
+        labels: { color: axisColor, usePointStyle: true, pointStyle: 'circle' as const, boxWidth: 8, padding: 16, font: { size: 12 } },
+      },
+      tooltip: { ...tooltipStyle, usePointStyle: true },
+    },
+    scales: baseScales,
+  };
+
+  const barOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: tooltipStyle,
+    },
+    scales: baseScales,
+  };
+
+  const doughnutOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '68%',
+    plugins: {
+      legend: {
+        position: 'bottom' as const,
+        labels: { color: axisColor, usePointStyle: true, pointStyle: 'circle' as const, boxWidth: 8, padding: 14, font: { size: 12 } },
+      },
+      tooltip: tooltipStyle,
+    },
+  };
+
+  const radarOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'bottom' as const,
+        labels: { color: axisColor, usePointStyle: true, pointStyle: 'circle' as const, boxWidth: 8, padding: 14, font: { size: 12 } },
+      },
+      tooltip: tooltipStyle,
+    },
+    scales: {
+      r: {
+        min: 0,
+        max: 100,
+        angleLines: { color: gridColor },
+        grid: { color: gridColor },
+        pointLabels: { color: axisColor, font: { size: 11 } },
+        ticks: { display: false, stepSize: 25 },
+      },
+    },
+  };
+
+  const doughnutData = {
+    labels: ['Excellent', 'Good', 'Needs work'],
+    datasets: [
+      {
+        data: [62, 28, 10],
+        backgroundColor: ['#22C55E', '#FC523F', '#EF4444'],
+        borderColor: dark ? '#111827' : '#FFFFFF',
+        borderWidth: 3,
+        hoverOffset: 6,
+      },
+    ],
+  };
 
   const slice = range === '3M' ? -3 : range === '6M' ? -6 : -8;
   const rangedLine = {
@@ -335,10 +317,10 @@ export default function MetricsShowcaseSection() {
                       {s.delta}
                     </Typography>
                   </Box>
-                  <Typography sx={{ fontSize: '1.9rem', fontWeight: 800, color: '#0F172A', lineHeight: 1 }}>
+                  <Typography sx={{ fontSize: '1.9rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>
                     {s.value}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: '#64748B', mt: 0.5 }}>
+                  <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.5 }}>
                     {s.label}
                   </Typography>
                 </Paper>
@@ -369,8 +351,8 @@ export default function MetricsShowcaseSection() {
                     '& .MuiToggleButton-root': {
                       px: 1.5,
                       py: 0.25,
-                      color: '#64748B',
-                      border: '1px solid rgba(15,23,42,0.1)',
+                      color: 'var(--text-muted)',
+                      border: '1px solid var(--border-strong)',
                       textTransform: 'none',
                       fontSize: '0.75rem',
                       '&.Mui-selected': { color: '#FD7565', background: 'rgba(252, 82, 63, 0.14)' },

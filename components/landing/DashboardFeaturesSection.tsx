@@ -93,7 +93,7 @@ export default function DashboardFeaturesSection() {
                 <Box sx={{ width: 8, height: 8, borderRadius: '50%', background: group.color, boxShadow: `0 0 12px ${group.color}` }} />
                 <Typography
                   sx={{
-                    color: '#334155',
+                    color: 'var(--text-secondary)',
                     fontWeight: 700,
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
@@ -102,7 +102,7 @@ export default function DashboardFeaturesSection() {
                 >
                   {group.heading}
                 </Typography>
-                <Box sx={{ flex: 1, height: '1px', background: 'rgba(15, 23, 42, 0.08)' }} />
+                <Box sx={{ flex: 1, height: '1px', background: 'var(--overlay-08)' }} />
               </Box>
 
               <Grid container spacing={2}>
@@ -123,9 +123,9 @@ export default function DashboardFeaturesSection() {
                           p: 2.5,
                           cursor: 'pointer',
                           borderRadius: '10px',
-                          background: 'rgba(15, 23, 42, 0.03)',
+                          background: 'var(--overlay-03)',
                           backdropFilter: 'blur(20px)',
-                          border: '1px solid rgba(15, 23, 42, 0.08)',
+                          border: '1px solid var(--border)',
                           transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
                           '&:hover': {
                             borderColor: `${group.color}66`,
@@ -149,10 +149,10 @@ export default function DashboardFeaturesSection() {
                         >
                           <Icon sx={{ fontSize: 24 }} />
                         </Box>
-                        <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#0F172A', mb: 0.5 }}>
+                        <Typography variant="subtitle1" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 0.5 }}>
                           {item.title}
                         </Typography>
-                        <Typography variant="body2" sx={{ color: '#64748B', lineHeight: 1.6 }}>
+                        <Typography variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                           {item.description}
                         </Typography>
                       </Box>

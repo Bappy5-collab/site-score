@@ -18,7 +18,7 @@ export default function PricingPage() {
       <PricingSection />
 
       <Container maxWidth="md" sx={{ pb: 4 }}>
-        <Typography variant="h2" sx={{ fontSize: { xs: '1.5rem', md: '1.85rem' }, fontWeight: 800, color: '#0F172A', textAlign: 'center', mb: 4 }}>
+        <Typography variant="h2" sx={{ fontSize: { xs: '1.5rem', md: '1.85rem' }, fontWeight: 800, color: 'var(--text-primary)', textAlign: 'center', mb: 4 }}>
           Frequently asked questions
         </Typography>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -33,14 +33,14 @@ export default function PricingPage() {
               sx={{
                 p: 3,
                 borderRadius: '10px',
-                background: 'rgba(15, 23, 42, 0.03)',
-                border: '1px solid rgba(15, 23, 42, 0.08)',
+                background: 'var(--overlay-03)',
+                border: '1px solid var(--border)',
               }}
             >
-              <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#0F172A', mb: 0.75 }}>
+              <Typography variant="subtitle1" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 0.75 }}>
                 {item.q}
               </Typography>
-              <Typography variant="body2" sx={{ color: '#64748B', lineHeight: 1.7 }}>
+              <Typography variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.7 }}>
                 {item.a}
               </Typography>
             </Box>

@@ -49,7 +49,7 @@ const LoginPage = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 50%, #F8FAFC 100%)',
+        background: 'var(--bg-base)',
         position: 'relative',
         overflow: 'hidden',
         py: 4,
@@ -97,15 +97,15 @@ const LoginPage = () => {
             sx={{
               p: { xs: 3, sm: 4 },
               borderRadius: '10px',
-              background: '#FFFFFF',
+              background: 'var(--bg-surface)',
               backdropFilter: 'blur(24px)',
-              border: '1px solid rgba(15, 23, 42, 0.08)',
-              boxShadow: '0 4px 12px rgba(15, 23, 42, 0.08)',
+              border: '1px solid var(--border)',
+              boxShadow: 'var(--shadow-md)',
             }}
           >
             <Box sx={{ textAlign: 'center', mb: 3 }}>
               <Logo size={44} fontSize="1.6rem" sx={{ justifyContent: 'center', mb: 1 }} />
-              <Typography sx={{ color: '#64748B', mt: 1, fontWeight: 500 }}>
+              <Typography sx={{ color: 'var(--text-muted)', mt: 1, fontWeight: 500 }}>
                 Welcome back — sign in to continue
               </Typography>
             </Box>
@@ -140,7 +140,7 @@ const LoginPage = () => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <EmailOutlinedIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                      <EmailOutlinedIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                     </InputAdornment>
                   ),
                 }}
@@ -148,12 +148,12 @@ const LoginPage = () => {
                   mb: 2,
                   '& .MuiOutlinedInput-root': {
                     borderRadius: '10px',
-                    background: 'rgba(15, 23, 42, 0.03)',
-                    border: '1px solid rgba(15, 23, 42, 0.08)',
-                    color: '#0F172A',
+                    background: 'var(--overlay-03)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-primary)',
                     '& fieldset': { border: 'none' },
                     '&:hover': {
-                      background: 'rgba(15, 23, 42, 0.05)',
+                      background: 'var(--overlay-05)',
                       borderColor: 'rgba(252, 82, 63, 0.3)',
                     },
                     '&.Mui-focused': {
@@ -161,7 +161,7 @@ const LoginPage = () => {
                       boxShadow: '0 0 0 3px rgba(252, 82, 63, 0.15)',
                     },
                   },
-                  '& .MuiInputLabel-root': { color: '#64748B' },
+                  '& .MuiInputLabel-root': { color: 'var(--text-muted)' },
                   '& .MuiInputLabel-root.Mui-focused': { color: '#FC523F' },
                 }}
               />
@@ -178,7 +178,7 @@ const LoginPage = () => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <LockOutlinedIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                      <LockOutlinedIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                     </InputAdornment>
                   ),
                 }}
@@ -186,12 +186,12 @@ const LoginPage = () => {
                   mb: 3,
                   '& .MuiOutlinedInput-root': {
                     borderRadius: '10px',
-                    background: 'rgba(15, 23, 42, 0.03)',
-                    border: '1px solid rgba(15, 23, 42, 0.08)',
-                    color: '#0F172A',
+                    background: 'var(--overlay-03)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-primary)',
                     '& fieldset': { border: 'none' },
                     '&:hover': {
-                      background: 'rgba(15, 23, 42, 0.05)',
+                      background: 'var(--overlay-05)',
                       borderColor: 'rgba(252, 82, 63, 0.3)',
                     },
                     '&.Mui-focused': {
@@ -199,7 +199,7 @@ const LoginPage = () => {
                       boxShadow: '0 0 0 3px rgba(252, 82, 63, 0.15)',
                     },
                   },
-                  '& .MuiInputLabel-root': { color: '#64748B' },
+                  '& .MuiInputLabel-root': { color: 'var(--text-muted)' },
                   '& .MuiInputLabel-root.Mui-focused': { color: '#FC523F' },
                 }}
               />
@@ -239,7 +239,7 @@ const LoginPage = () => {
                 <Link
                   href="/signup"
                   style={{
-                    color: '#64748B',
+                    color: 'var(--text-muted)',
                     textDecoration: 'none',
                     fontWeight: 600,
                     transition: 'color 0.2s',

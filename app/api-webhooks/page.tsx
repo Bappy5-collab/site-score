@@ -35,9 +35,9 @@ import { formatDistanceToNow } from 'date-fns';
 const cardSx = {
   p: 3,
   borderRadius: '8px',
-  background: '#FFFFFF',
+  background: 'var(--bg-surface)',
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(15, 23, 42, 0.08)',
+  border: '1px solid var(--border)',
   transition: 'all 0.3s ease',
   '&:hover': { borderColor: 'rgba(252, 82, 63, 0.25)' },
 };
@@ -140,10 +140,10 @@ export default function APIWebhooksPage() {
                 <ApiIcon sx={{ color: '#FC523F', fontSize: 28 }} />
               </Box>
               <Box>
-                <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em' }}>
+                <Typography variant="h4" sx={{ fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
                   API & Webhooks
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#64748B', mt: 0.25 }}>
+                <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.25 }}>
                   API keys, webhook URL, and activity logs
                 </Typography>
               </Box>
@@ -160,11 +160,11 @@ export default function APIWebhooksPage() {
                     <Paper elevation={0} sx={{ ...cardSx, height: '100%', display: 'flex', flexDirection: 'column' }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                         <KeyIcon sx={{ color: '#FC523F' }} />
-                        <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A' }}>
+                        <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
                           API Key
                         </Typography>
                       </Box>
-                      <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mb: 1 }}>
+                      <Typography variant="caption" sx={{ color: 'var(--text-muted)', display: 'block', mb: 1 }}>
                         Use this key in the X-API-Key header for API requests.
                       </Typography>
                       <Box
@@ -174,18 +174,18 @@ export default function APIWebhooksPage() {
                           gap: 1,
                           p: 1.5,
                           borderRadius: '8px',
-                          background: 'rgba(248, 250, 252, 0.6)',
-                          border: '1px solid rgba(15, 23, 42, 0.05)',
+                          background: 'var(--bg-base)',
+                          border: '1px solid var(--border-subtle)',
                           fontFamily: 'monospace',
                           fontSize: '0.8rem',
-                          color: '#64748B',
+                          color: 'var(--text-muted)',
                           overflow: 'auto',
                         }}
                       >
                         <Box component="span" sx={{ flex: 1, wordBreak: 'break-all' }}>{displayKey}</Box>
                         {(newKeyOnce || hasKey) && (
                           <Tooltip title={copied === 'key' ? 'Copied!' : 'Copy'}>
-                            <IconButton size="small" onClick={() => copyToClipboard(newKeyOnce || displayKey, 'key')} sx={{ color: copied === 'key' ? '#22C55E' : '#64748B' }}>
+                            <IconButton size="small" onClick={() => copyToClipboard(newKeyOnce || displayKey, 'key')} sx={{ color: copied === 'key' ? '#22C55E' : 'var(--text-muted)' }}>
                               {copied === 'key' ? <CheckIcon fontSize="small" /> : <ContentCopyIcon fontSize="small" />}
                             </IconButton>
                           </Tooltip>
@@ -202,11 +202,11 @@ export default function APIWebhooksPage() {
                     <Paper elevation={0} sx={{ ...cardSx, height: '100%', display: 'flex', flexDirection: 'column' }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                         <WebhookIcon sx={{ color: '#FC523F' }} />
-                        <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A' }}>
+                        <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
                           Webhook URL
                         </Typography>
                       </Box>
-                      <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mb: 1 }}>
+                      <Typography variant="caption" sx={{ color: 'var(--text-muted)', display: 'block', mb: 1 }}>
                         We send scan completion events to this URL.
                       </Typography>
                       <TextField
@@ -218,11 +218,11 @@ export default function APIWebhooksPage() {
                         sx={{
                           '& .MuiOutlinedInput-root': {
                             borderRadius: '8px',
-                            bgcolor: 'rgba(248, 250, 252, 0.6)',
+                            bgcolor: 'var(--bg-base)',
                             fontFamily: 'monospace',
                             fontSize: '0.8rem',
-                            color: '#0F172A',
-                            '& fieldset': { borderColor: 'rgba(15,23,42,0.05)' },
+                            color: 'var(--text-primary)',
+                            '& fieldset': { borderColor: 'var(--border-subtle)' },
                           },
                         }}
                       />
@@ -239,7 +239,7 @@ export default function APIWebhooksPage() {
                     <Paper elevation={0} sx={{ ...cardSx, overflow: 'hidden' }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                         <HistoryIcon sx={{ color: '#FC523F' }} />
-                        <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A' }}>
+                        <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
                           Activity logs
                         </Typography>
                       </Box>
@@ -247,22 +247,22 @@ export default function APIWebhooksPage() {
                         <Table size="small">
                           <TableHead>
                             <TableRow>
-                              <TableCell sx={{ color: '#64748B', fontWeight: 600, borderColor: 'rgba(15,23,42,0.05)' }}>Method</TableCell>
-                              <TableCell sx={{ color: '#64748B', fontWeight: 600, borderColor: 'rgba(15,23,42,0.05)' }}>Endpoint</TableCell>
-                              <TableCell sx={{ color: '#64748B', fontWeight: 600, borderColor: 'rgba(15,23,42,0.05)' }}>Status</TableCell>
-                              <TableCell sx={{ color: '#64748B', fontWeight: 600, borderColor: 'rgba(15,23,42,0.05)' }}>Time</TableCell>
+                              <TableCell sx={{ color: 'var(--text-muted)', fontWeight: 600, borderColor: 'var(--border-subtle)' }}>Method</TableCell>
+                              <TableCell sx={{ color: 'var(--text-muted)', fontWeight: 600, borderColor: 'var(--border-subtle)' }}>Endpoint</TableCell>
+                              <TableCell sx={{ color: 'var(--text-muted)', fontWeight: 600, borderColor: 'var(--border-subtle)' }}>Status</TableCell>
+                              <TableCell sx={{ color: 'var(--text-muted)', fontWeight: 600, borderColor: 'var(--border-subtle)' }}>Time</TableCell>
                             </TableRow>
                           </TableHead>
                           <TableBody>
                             {logs.length === 0 && (
-                              <TableRow><TableCell colSpan={4} sx={{ borderColor: 'rgba(15,23,42,0.05)', color: '#64748B' }}>No webhook activity yet</TableCell></TableRow>
+                              <TableRow><TableCell colSpan={4} sx={{ borderColor: 'var(--border-subtle)', color: 'var(--text-muted)' }}>No webhook activity yet</TableCell></TableRow>
                             )}
                             {logs.map((row) => (
-                              <TableRow key={row._id} sx={{ '& td': { borderColor: 'rgba(15,23,42,0.05)', color: '#334155' } }}>
+                              <TableRow key={row._id} sx={{ '& td': { borderColor: 'var(--border-subtle)', color: 'var(--text-secondary)' } }}>
                                 <TableCell><Box component="span" sx={{ fontFamily: 'monospace', color: row.method === 'POST' ? '#FC523F' : '#22C55E' }}>{row.method}</Box></TableCell>
                                 <TableCell sx={{ fontFamily: 'monospace', fontSize: '0.8rem' }}>{row.endpoint || '—'}</TableCell>
                                 <TableCell><Box component="span" sx={{ color: row.status && row.status >= 200 && row.status < 300 ? '#22C55E' : '#F59E0B' }}>{row.status ?? row.error ?? '—'}</Box></TableCell>
-                                <TableCell sx={{ color: '#64748B' }}>{row.createdAt ? formatDistanceToNow(new Date(row.createdAt), { addSuffix: true }) : '—'}</TableCell>
+                                <TableCell sx={{ color: 'var(--text-muted)' }}>{row.createdAt ? formatDistanceToNow(new Date(row.createdAt), { addSuffix: true }) : '—'}</TableCell>
                               </TableRow>
                             ))}
                           </TableBody>

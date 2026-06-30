@@ -24,7 +24,7 @@ interface LogoProps {
 export default function Logo({
   size = 34,
   showText = true,
-  textColor = '#0F172A',
+  textColor = 'var(--text-primary)',
   fontSize,
   sx,
   onClick,

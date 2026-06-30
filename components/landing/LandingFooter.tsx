@@ -31,32 +31,32 @@ export default function LandingFooter() {
   return (
     <Box
       sx={{
-        borderTop: '1px solid rgba(15, 23, 42, 0.08)',
+        borderTop: '1px solid var(--border)',
         py: 6,
-        background: 'rgba(248, 250, 252, 0.6)',
+        background: 'var(--bg-base)',
       }}
     >
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
             <Logo size={34} fontSize="1.25rem" sx={{ mb: 2 }} />
-            <Typography variant="body2" sx={{ color: '#64748B', mb: 2, maxWidth: 280 }}>
+            <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 2, maxWidth: 280 }}>
               AI Growth Operating System. Turn scan data into a prioritized action plan and grow with real-time insights.
             </Typography>
             <Box sx={{ display: 'flex', gap: 1 }}>
-              <IconButton component={motion.button} whileHover={{ scale: 1.1 }} sx={{ color: '#64748B', '&:hover': { color: '#FC523F' } }}>
+              <IconButton component={motion.button} whileHover={{ scale: 1.1 }} sx={{ color: 'var(--text-muted)', '&:hover': { color: '#FC523F' } }}>
                 <TwitterIcon fontSize="small" />
               </IconButton>
-              <IconButton component={motion.button} whileHover={{ scale: 1.1 }} sx={{ color: '#64748B', '&:hover': { color: '#FC523F' } }}>
+              <IconButton component={motion.button} whileHover={{ scale: 1.1 }} sx={{ color: 'var(--text-muted)', '&:hover': { color: '#FC523F' } }}>
                 <LinkedInIcon fontSize="small" />
               </IconButton>
-              <IconButton component={motion.button} whileHover={{ scale: 1.1 }} sx={{ color: '#64748B', '&:hover': { color: '#FC523F' } }}>
+              <IconButton component={motion.button} whileHover={{ scale: 1.1 }} sx={{ color: 'var(--text-muted)', '&:hover': { color: '#FC523F' } }}>
                 <GitHubIcon fontSize="small" />
               </IconButton>
             </Box>
           </Grid>
           <Grid item xs={6} sm={4} md={2}>
-            <Typography variant="subtitle2" sx={{ color: '#0F172A', fontWeight: 600, mb: 2 }}>
+            <Typography variant="subtitle2" sx={{ color: 'var(--text-primary)', fontWeight: 600, mb: 2 }}>
               Product
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
@@ -66,7 +66,7 @@ export default function LandingFooter() {
                   component="button"
                   onClick={() => router.push(href)}
                   sx={{
-                    color: '#64748B',
+                    color: 'var(--text-muted)',
                     fontSize: '0.875rem',
                     textAlign: 'left',
                     background: 'none',
@@ -81,7 +81,7 @@ export default function LandingFooter() {
             </Box>
           </Grid>
           <Grid item xs={6} sm={4} md={2}>
-            <Typography variant="subtitle2" sx={{ color: '#0F172A', fontWeight: 600, mb: 2 }}>
+            <Typography variant="subtitle2" sx={{ color: 'var(--text-primary)', fontWeight: 600, mb: 2 }}>
               Company
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
@@ -90,7 +90,7 @@ export default function LandingFooter() {
                   key={label}
                   component="a"
                   href={href}
-                  sx={{ color: '#64748B', fontSize: '0.875rem', textDecoration: 'none', '&:hover': { color: '#FC523F' } }}
+                  sx={{ color: 'var(--text-muted)', fontSize: '0.875rem', textDecoration: 'none', '&:hover': { color: '#FC523F' } }}
                 >
                   {label}
                 </Typography>
@@ -98,7 +98,7 @@ export default function LandingFooter() {
             </Box>
           </Grid>
           <Grid item xs={6} sm={4} md={2}>
-            <Typography variant="subtitle2" sx={{ color: '#0F172A', fontWeight: 600, mb: 2 }}>
+            <Typography variant="subtitle2" sx={{ color: 'var(--text-primary)', fontWeight: 600, mb: 2 }}>
               Legal
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
@@ -107,7 +107,7 @@ export default function LandingFooter() {
                   key={label}
                   component="a"
                   href={href}
-                  sx={{ color: '#64748B', fontSize: '0.875rem', textDecoration: 'none', '&:hover': { color: '#FC523F' } }}
+                  sx={{ color: 'var(--text-muted)', fontSize: '0.875rem', textDecoration: 'none', '&:hover': { color: '#FC523F' } }}
                 >
                   {label}
                 </Typography>
@@ -115,8 +115,8 @@ export default function LandingFooter() {
             </Box>
           </Grid>
         </Grid>
-        <Box sx={{ mt: 4, pt: 4, borderTop: '1px solid rgba(15, 23, 42, 0.08)', textAlign: 'center' }}>
-          <Typography variant="body2" sx={{ color: '#64748B' }}>
+        <Box sx={{ mt: 4, pt: 4, borderTop: '1px solid var(--border)', textAlign: 'center' }}>
+          <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
             © {new Date().getFullYear()} SiteScore AI. All rights reserved.
           </Typography>
         </Box>

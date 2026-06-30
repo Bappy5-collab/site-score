@@ -108,14 +108,14 @@ const ScanTable: React.FC<ScanTableProps> = ({ scans }) => {
           fontSize: '0.875rem',
           '& .MuiDataGrid-columnSeparator': { display: 'none' },
           '& .MuiDataGrid-cell': {
-            borderColor: '#EEF1F6',
-            color: '#334155',
+            borderColor: 'var(--border-subtle)',
+            color: 'var(--text-secondary)',
             '&:focus, &:focus-within': { outline: 'none' },
           },
           '& .MuiDataGrid-columnHeaders': {
-            borderColor: '#E5E9F0',
-            background: '#F8FAFC',
-            color: '#64748B',
+            borderColor: 'var(--border)',
+            background: 'var(--bg-base)',
+            color: 'var(--text-muted)',
           },
           '& .MuiDataGrid-columnHeaderTitle': {
             fontWeight: 600,
@@ -124,11 +124,11 @@ const ScanTable: React.FC<ScanTableProps> = ({ scans }) => {
             textTransform: 'uppercase',
           },
           '& .MuiDataGrid-row': {
-            '&:hover': { background: 'rgba(15, 23, 42, 0.025)' },
+            '&:hover': { background: 'var(--overlay-02)' },
           },
           '& .MuiDataGrid-footerContainer': {
-            borderColor: '#E5E9F0',
-            color: '#64748B',
+            borderColor: 'var(--border)',
+            color: 'var(--text-muted)',
           },
         }}
       />

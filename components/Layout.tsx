@@ -2,9 +2,6 @@
 
 import { useState } from 'react';
 import { Box } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import theme from '@/theme/theme';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
@@ -21,14 +18,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const sidebarWidth = collapsed ? collapsedWidth : drawerWidth;
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
       <Box
         sx={{
           display: 'flex',
           height: '100vh',
           overflow: 'hidden',
-          backgroundColor: '#F8FAFC',
+          backgroundColor: 'var(--bg-base)',
           width: '100%',
         }}
       >
@@ -68,7 +63,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 width: '6px',
               },
               '&::-webkit-scrollbar-track': {
-                background: 'rgba(15, 23, 42, 0.04)',
+                background: 'var(--overlay-04)',
                 borderRadius: '4px',
               },
               '&::-webkit-scrollbar-thumb': {
@@ -84,7 +79,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </Box>
         </Box>
       </Box>
-    </ThemeProvider>
   );
 };
 

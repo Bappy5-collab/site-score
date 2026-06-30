@@ -69,10 +69,7 @@ export default function SectionHeading({
           fontWeight: 800,
           letterSpacing: '-0.025em',
           lineHeight: 1.15,
-          background: 'linear-gradient(135deg, #0F172A 0%, #334155 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
+          color: 'var(--text-primary)',
           mb: subtitle ? 1.5 : 0,
         }}
       >
@@ -81,7 +78,7 @@ export default function SectionHeading({
 
       {subtitle && (
         <Typography
-          sx={{ color: '#64748B', fontSize: '1.1rem', maxWidth: 600, mx: 'auto', lineHeight: 1.6 }}
+          sx={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: 600, mx: 'auto', lineHeight: 1.6 }}
         >
           {subtitle}
         </Typography>

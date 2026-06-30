@@ -21,9 +21,9 @@ import { growthChatService, type GrowthChatMessage } from '@/services/growthServ
 
 const cardSx = {
   borderRadius: '8px',
-  background: '#FFFFFF',
+  background: 'var(--bg-surface)',
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(15, 23, 42, 0.08)',
+  border: '1px solid var(--border)',
   overflow: 'hidden',
 };
 
@@ -95,10 +95,10 @@ export default function GrowthCopilotPage() {
                 <SmartToyIcon sx={{ color: '#FC523F', fontSize: 28 }} />
               </Box>
               <Box>
-                <Typography variant="h5" sx={{ fontWeight: 700, color: '#0F172A' }}>
+                <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary)' }}>
                   AI Growth Copilot
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#64748B' }}>
+                <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                   Context-aware advice from your scans and growth plan
                 </Typography>
               </Box>
@@ -119,7 +119,7 @@ export default function GrowthCopilotPage() {
                 <>
                   <Box sx={{ flex: 1, overflow: 'auto', p: 2 }}>
                     {messages.length === 0 && (
-                      <Typography sx={{ color: '#64748B', textAlign: 'center', py: 4 }}>
+                      <Typography sx={{ color: 'var(--text-muted)', textAlign: 'center', py: 4 }}>
                         Ask anything about your growth plan, scores, or next steps. I have context from your scans and actions.
                       </Typography>
                     )}
@@ -149,11 +149,11 @@ export default function GrowthCopilotPage() {
                             maxWidth: '85%',
                             p: 2,
                             borderRadius: '10px',
-                            bgcolor: m.role === 'user' ? 'rgba(252, 82, 63, 0.15)' : 'rgba(15,23,42,0.04)',
-                            border: '1px solid rgba(15,23,42,0.05)',
+                            bgcolor: m.role === 'user' ? 'rgba(252, 82, 63, 0.15)' : 'var(--overlay-04)',
+                            border: '1px solid var(--border-subtle)',
                           }}
                         >
-                          <Typography variant="body1" sx={{ color: '#0F172A', whiteSpace: 'pre-wrap' }}>
+                          <Typography variant="body1" sx={{ color: 'var(--text-primary)', whiteSpace: 'pre-wrap' }}>
                             {m.content}
                           </Typography>
                         </Paper>
@@ -169,7 +169,7 @@ export default function GrowthCopilotPage() {
                     )}
                     <div ref={messagesEndRef} />
                   </Box>
-                  <Box sx={{ p: 2, borderTop: '1px solid rgba(15,23,42,0.05)' }}>
+                  <Box sx={{ p: 2, borderTop: '1px solid var(--border-subtle)' }}>
                     <Box sx={{ display: 'flex', gap: 1 }}>
                       <TextField
                         fullWidth
@@ -182,9 +182,9 @@ export default function GrowthCopilotPage() {
                         sx={{
                           '& .MuiOutlinedInput-root': {
                             borderRadius: '10px',
-                            bgcolor: 'rgba(248, 250, 252, 0.6)',
-                            color: '#0F172A',
-                            '& fieldset': { borderColor: 'rgba(15,23,42,0.08)' },
+                            bgcolor: 'var(--bg-base)',
+                            color: 'var(--text-primary)',
+                            '& fieldset': { borderColor: 'var(--border)' },
                           },
                         }}
                       />
@@ -195,7 +195,7 @@ export default function GrowthCopilotPage() {
                           bgcolor: 'rgba(252, 82, 63, 0.3)',
                           color: '#FC523F',
                           '&:hover': { bgcolor: 'rgba(252, 82, 63, 0.5)' },
-                          '&:disabled': { color: '#64748B' },
+                          '&:disabled': { color: 'var(--text-muted)' },
                         }}
                       >
                         <SendIcon />

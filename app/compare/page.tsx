@@ -5,6 +5,7 @@ import { Box, Typography, TextField, Button, Paper, Grid, CircularProgress, Aler
 import { motion } from 'framer-motion';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Layout from '@/components/Layout';
+import { useThemeMode } from '@/theme/ThemeModeProvider';
 import { compareService, ComparisonResult } from '@/services/compareService';
 import {
   Chart as ChartJS,
@@ -34,53 +35,56 @@ const makeBarGradient = (rgb: string) => (ctx: ScriptableContext<'bar'>) => {
 const YOUR_RGB = '252, 82, 63'; // orange
 const COMP_RGB = '56, 189, 248'; // sky blue
 
-const chartOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  animation: { duration: 900, easing: 'easeOutQuart' as const },
-  plugins: {
-    legend: {
-      display: true,
-      position: 'top' as const,
-      align: 'end' as const,
-      labels: {
-        color: '#64748B',
+const ComparePage = () => {
+  const { mode } = useThemeMode();
+  const dark = mode === 'dark';
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    animation: { duration: 900, easing: 'easeOutQuart' as const },
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top' as const,
+        align: 'end' as const,
+        labels: {
+          color: dark ? '#94A3B8' : '#64748B',
+          usePointStyle: true,
+          pointStyle: 'circle' as const,
+          boxWidth: 8,
+          boxHeight: 8,
+          padding: 18,
+          font: { size: 12 },
+        },
+      },
+      tooltip: {
+        backgroundColor: dark ? 'rgba(17,24,39,0.95)' : 'rgba(255,255,255,0.95)',
+        titleColor: dark ? '#F1F5F9' : '#0F172A',
+        bodyColor: dark ? '#CBD5E1' : '#334155',
+        borderColor: dark ? 'rgba(255,255,255,0.1)' : 'rgba(15,23,42,0.1)',
+        borderWidth: 1,
+        padding: 12,
+        cornerRadius: 8,
         usePointStyle: true,
-        pointStyle: 'circle' as const,
-        boxWidth: 8,
-        boxHeight: 8,
-        padding: 18,
-        font: { size: 12 },
+        titleFont: { weight: 'bold' as const },
       },
     },
-    tooltip: {
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      titleColor: '#0F172A',
-      bodyColor: '#334155',
-      borderColor: 'rgba(15, 23, 42, 0.1)',
-      borderWidth: 1,
-      padding: 12,
-      cornerRadius: 8,
-      usePointStyle: true,
-      titleFont: { weight: 'bold' as const },
+    scales: {
+      x: {
+        grid: { display: false, drawBorder: false } as any,
+        ticks: { color: dark ? '#94A3B8' : '#64748B', font: { size: 12 } },
+      },
+      y: {
+        min: 0,
+        max: 100,
+        border: { display: false } as any,
+        grid: { color: dark ? 'rgba(255,255,255,0.06)' : 'rgba(15,23,42,0.04)', drawBorder: false } as any,
+        ticks: { color: dark ? '#94A3B8' : '#64748B', stepSize: 25, font: { size: 11 }, padding: 8 },
+      },
     },
-  },
-  scales: {
-    x: {
-      grid: { display: false, drawBorder: false } as any,
-      ticks: { color: '#64748B', font: { size: 12 } },
-    },
-    y: {
-      min: 0,
-      max: 100,
-      border: { display: false } as any,
-      grid: { color: 'rgba(15, 23, 42, 0.04)', drawBorder: false } as any,
-      ticks: { color: '#64748B', stepSize: 25, font: { size: 11 }, padding: 8 },
-    },
-  },
-};
+  };
 
-const ComparePage = () => {
   const [yourUrl, setYourUrl] = useState('');
   const [competitorUrl, setCompetitorUrl] = useState('');
   const [loading, setLoading] = useState(false);
@@ -158,7 +162,7 @@ const ComparePage = () => {
           >
             <Typography
               variant="h4"
-              sx={{ fontWeight: 700, mb: 3, color: '#0F172A', letterSpacing: '-0.02em' }}
+              sx={{ fontWeight: 700, mb: 3, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}
             >
               Competitor Comparison
             </Typography>
@@ -173,8 +177,8 @@ const ComparePage = () => {
               sx={{
                 p: { xs: 2.5, md: 3 },
                 mb: 3,
-                background: 'linear-gradient(155deg, #FFFFFF 0%, #F8FAFC 100%)',
-                border: '1px solid rgba(15, 23, 42, 0.08)',
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border)',
                 borderRadius: '10px',
               }}
             >
@@ -189,10 +193,10 @@ const ComparePage = () => {
                     disabled={loading}
                     sx={{
                       '& .MuiOutlinedInput-root': {
-                        background: '#FFFFFF',
-                        border: '1px solid rgba(15, 23, 42, 0.08)',
+                        background: 'var(--bg-surface)',
+                        border: '1px solid var(--border)',
                         borderRadius: '8px',
-                        color: '#0F172A',
+                        color: 'var(--text-primary)',
                         '&:hover': {
                           borderColor: 'rgba(252, 82, 63, 0.3)',
                         },
@@ -204,10 +208,10 @@ const ComparePage = () => {
                         },
                       },
                       '& .MuiInputLabel-root': {
-                        color: '#64748B',
+                        color: 'var(--text-muted)',
                       },
                       '& .MuiInputBase-input': {
-                        color: '#0F172A',
+                        color: 'var(--text-primary)',
                       },
                     }}
                   />
@@ -222,10 +226,10 @@ const ComparePage = () => {
                     disabled={loading}
                     sx={{
                       '& .MuiOutlinedInput-root': {
-                        background: '#FFFFFF',
-                        border: '1px solid rgba(15, 23, 42, 0.08)',
+                        background: 'var(--bg-surface)',
+                        border: '1px solid var(--border)',
                         borderRadius: '8px',
-                        color: '#0F172A',
+                        color: 'var(--text-primary)',
                         '&:hover': {
                           borderColor: 'rgba(252, 82, 63, 0.3)',
                         },
@@ -237,10 +241,10 @@ const ComparePage = () => {
                         },
                       },
                       '& .MuiInputLabel-root': {
-                        color: '#64748B',
+                        color: 'var(--text-muted)',
                       },
                       '& .MuiInputBase-input': {
-                        color: '#0F172A',
+                        color: 'var(--text-primary)',
                       },
                     }}
                   />
@@ -301,12 +305,12 @@ const ComparePage = () => {
                   <Paper
                     sx={{
                       p: { xs: 2.5, md: 3 },
-                      background: 'linear-gradient(155deg, #FFFFFF 0%, #F8FAFC 100%)',
-                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      background: 'var(--bg-surface)',
+                      border: '1px solid var(--border)',
                       borderRadius: '10px',
                     }}
                   >
-                    <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: '#0F172A' }}>
+                    <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: 'var(--text-primary)' }}>
                       Comparison Chart
                     </Typography>
                     <Box sx={{ height: 400 }}>
@@ -318,12 +322,12 @@ const ComparePage = () => {
                   <Paper
                     sx={{
                       p: { xs: 2.5, md: 3 },
-                      background: 'linear-gradient(155deg, #FFFFFF 0%, #F8FAFC 100%)',
-                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      background: 'var(--bg-surface)',
+                      border: '1px solid var(--border)',
                       borderRadius: '10px',
                     }}
                   >
-                    <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: '#0F172A' }}>
+                    <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: 'var(--text-primary)' }}>
                       Insights
                     </Typography>
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -332,11 +336,11 @@ const ComparePage = () => {
                           key={index}
                           variant="body2"
                           sx={{
-                            color: '#64748B',
+                            color: 'var(--text-muted)',
                             p: 2,
-                            background: 'rgba(15, 23, 42, 0.04)',
+                            background: 'var(--overlay-04)',
                             borderRadius: '8px',
-                            border: '1px solid rgba(15, 23, 42, 0.08)',
+                            border: '1px solid var(--border)',
                           }}
                         >
                           {insight}

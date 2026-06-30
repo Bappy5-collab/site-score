@@ -47,13 +47,13 @@ const PremiumCard: React.FC<PremiumCardProps> = ({
           display: 'flex',
           flexDirection: 'column',
           borderRadius: '10px',
-          border: '1px solid #E5E9F0',
-          background: '#FFFFFF',
-          boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+          border: '1px solid var(--border)',
+          background: 'var(--bg-surface)',
+          boxShadow: 'var(--shadow-sm)',
           transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
           '&:hover': {
-            borderColor: '#D8DEE9',
-            boxShadow: '0 4px 16px rgba(15, 23, 42, 0.08)',
+            borderColor: 'var(--border-strong)',
+            boxShadow: 'var(--shadow-md)',
           },
         }}
       >
@@ -61,7 +61,7 @@ const PremiumCard: React.FC<PremiumCardProps> = ({
           sx={{ p: 2.5, flex: 1, display: 'flex', flexDirection: 'column', '&:last-child': { pb: 2.5 } }}
         >
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-            <Typography sx={{ color: '#64748B', fontWeight: 500, fontSize: '0.8125rem' }}>
+            <Typography sx={{ color: 'var(--text-muted)', fontWeight: 500, fontSize: '0.8125rem' }}>
               {title}
             </Typography>
             {icon && (
@@ -89,14 +89,14 @@ const PremiumCard: React.FC<PremiumCardProps> = ({
                 fontWeight: 700,
                 fontSize: '2rem',
                 lineHeight: 1.1,
-                color: '#0F172A',
+                color: 'var(--text-primary)',
                 letterSpacing: '-0.025em',
               }}
             >
               {value}
             </Typography>
             {subtitle && (
-              <Typography sx={{ color: '#94A3B8', fontSize: '0.875rem', fontWeight: 500 }}>
+              <Typography sx={{ color: 'var(--text-faint)', fontSize: '0.875rem', fontWeight: 500 }}>
                 {subtitle}
               </Typography>
             )}
@@ -105,7 +105,7 @@ const PremiumCard: React.FC<PremiumCardProps> = ({
           {progress !== undefined && (
             <Box sx={{ mt: 'auto', pt: 2.5 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.75 }}>
-                <Typography sx={{ color: '#94A3B8', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                <Typography sx={{ color: 'var(--text-faint)', fontSize: '0.6875rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
                   Score
                 </Typography>
                 <Typography sx={{ color: c.main, fontSize: '0.75rem', fontWeight: 700 }}>
@@ -118,7 +118,7 @@ const PremiumCard: React.FC<PremiumCardProps> = ({
                 sx={{
                   height: 6,
                   borderRadius: 999,
-                  background: 'rgba(15, 23, 42, 0.06)',
+                  background: 'var(--overlay-05)',
                   '& .MuiLinearProgress-bar': {
                     borderRadius: 999,
                     background: c.main,

@@ -1,6 +1,7 @@
 'use client';
 
 import { Box, Typography, Button, Toolbar, AppBar, useMediaQuery, useTheme } from '@mui/material';
+import ThemeToggle from '@/components/ThemeToggle';
 import Logo from '@/components/Logo';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -28,11 +29,11 @@ export default function LandingNavbar() {
       sx={{
         top: 0,
         zIndex: 1100,
-        background: 'rgba(248, 250, 252, 0.7)',
+        background: 'var(--bg-base)',
         backdropFilter: 'blur(24px) saturate(180%)',
         WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-        borderBottom: '1px solid rgba(15, 23, 42, 0.05)',
-        boxShadow: '0 4px 12px rgba(15, 23, 42, 0.08)',
+        borderBottom: '1px solid var(--border-subtle)',
+        boxShadow: 'var(--shadow-md)',
       }}
     >
       <Toolbar
@@ -67,8 +68,8 @@ export default function LandingNavbar() {
               gap: 0.5,
               p: 0.5,
               borderRadius: '9999px',
-              background: 'rgba(15, 23, 42, 0.03)',
-              border: '1px solid rgba(15, 23, 42, 0.05)',
+              background: 'var(--overlay-03)',
+              border: '1px solid var(--border-subtle)',
             }}
           >
             {navTabs.map((tab) => (
@@ -85,8 +86,8 @@ export default function LandingNavbar() {
                   fontSize: '0.9rem',
                   fontWeight: 600,
                   textTransform: 'none',
-                  color: '#64748B',
-                  '&:hover': { color: '#0F172A', background: 'rgba(15, 23, 42, 0.05)' },
+                  color: 'var(--text-muted)',
+                  '&:hover': { color: 'var(--text-primary)', background: 'var(--overlay-05)' },
                 }}
               >
                 {tab.label}
@@ -96,6 +97,7 @@ export default function LandingNavbar() {
         )}
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexShrink: 0 }}>
+          <ThemeToggle size="small" />
           {!isMobile && (
             <Button
               component={motion.button}
@@ -108,7 +110,7 @@ export default function LandingNavbar() {
                 fontSize: '0.9rem',
                 textTransform: 'none',
                 borderRadius: '8px',
-                '&:hover': { color: '#0F172A', background: 'rgba(252, 82, 63, 0.12)' },
+                '&:hover': { color: 'var(--text-primary)', background: 'rgba(252, 82, 63, 0.12)' },
               }}
             >
               View Demo
@@ -120,12 +122,12 @@ export default function LandingNavbar() {
             whileTap={{ scale: 0.97 }}
             onClick={() => router.push('/login')}
             sx={{
-              color: '#64748B',
+              color: 'var(--text-muted)',
               fontWeight: 600,
               fontSize: '0.9rem',
               textTransform: 'none',
               borderRadius: '8px',
-              '&:hover': { color: '#0F172A', background: 'rgba(15, 23, 42, 0.05)' },
+              '&:hover': { color: 'var(--text-primary)', background: 'var(--overlay-05)' },
             }}
           >
             Login

@@ -82,10 +82,7 @@ const ReportsPage = () => {
               sx={{
                 fontWeight: 700,
                 mb: 3,
-                background: 'linear-gradient(135deg, #0F172A 0%, #334155 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: 'var(--text-primary)',
               }}
             >
               Reports & Export
@@ -96,9 +93,9 @@ const ReportsPage = () => {
             <Paper
               sx={{
                 p: 3,
-                background: '#FFFFFF',
+                background: 'var(--bg-surface)',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(15, 23, 42, 0.08)',
+                border: '1px solid var(--border)',
                 borderRadius: '8px',
                 textAlign: 'center',
                 py: 8,
@@ -110,15 +107,15 @@ const ReportsPage = () => {
             <Paper
               sx={{
                 p: 3,
-                background: '#FFFFFF',
+                background: 'var(--bg-surface)',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(15, 23, 42, 0.08)',
+                border: '1px solid var(--border)',
                 borderRadius: '8px',
                 textAlign: 'center',
                 py: 8,
               }}
             >
-              <Typography variant="body2" sx={{ color: '#64748B' }}>
+              <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                 No scans available for export. Analyze a website first.
               </Typography>
             </Paper>
@@ -137,7 +134,7 @@ const ReportsPage = () => {
                       sx={{
                         p: 3,
                         height: '100%',
-                        background: '#FFFFFF',
+                        background: 'var(--bg-surface)',
                         backdropFilter: 'blur(20px)',
                         border: '1px solid rgba(255, 255, 255, 0.08)',
                         borderRadius: '12px',
@@ -145,12 +142,12 @@ const ReportsPage = () => {
                         flexDirection: 'column',
                       }}
                     >
-                      <Typography variant="h6" sx={{ mb: 1, fontWeight: 600, color: '#0F172A' }}>
+                      <Typography variant="h6" sx={{ mb: 1, fontWeight: 600, color: 'var(--text-primary)' }}>
                         {scan.title || scan.url}
                       </Typography>
                       <Typography
                         variant="body2"
-                        sx={{ mb: 2, color: '#64748B', fontSize: '0.75rem', wordBreak: 'break-all' }}
+                        sx={{ mb: 2, color: 'var(--text-muted)', fontSize: '0.75rem', wordBreak: 'break-all' }}
                       >
                         {scan.url}
                       </Typography>

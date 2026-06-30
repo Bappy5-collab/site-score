@@ -74,10 +74,7 @@ const MyScansPage = () => {
                 variant="h4"
                 sx={{
                   fontWeight: 700,
-                  background: 'linear-gradient(135deg, #0F172A 0%, #334155 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
+                  color: 'var(--text-primary)',
                 }}
               >
                 My Scans
@@ -92,17 +89,17 @@ const MyScansPage = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <SearchIcon sx={{ color: '#64748B' }} />
+                        <SearchIcon sx={{ color: 'var(--text-muted)' }} />
                       </InputAdornment>
                     ),
                   }}
                   sx={{
                     width: 300,
                     '& .MuiOutlinedInput-root': {
-                      background: '#FFFFFF',
-                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      background: 'var(--bg-surface)',
+                      border: '1px solid var(--border)',
                       borderRadius: '8px',
-                      color: '#0F172A',
+                      color: 'var(--text-primary)',
                       '&:hover': {
                         borderColor: 'rgba(252, 82, 63, 0.3)',
                       },
@@ -114,9 +111,9 @@ const MyScansPage = () => {
                       },
                     },
                     '& .MuiInputBase-input': {
-                      color: '#0F172A',
+                      color: 'var(--text-primary)',
                       '&::placeholder': {
-                        color: '#64748B',
+                        color: 'var(--text-muted)',
                         opacity: 1,
                       },
                     },
@@ -166,27 +163,27 @@ const MyScansPage = () => {
             <Paper
               sx={{
                 p: 3,
-                background: '#FFFFFF',
+                background: 'var(--bg-surface)',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(15, 23, 42, 0.08)',
+                border: '1px solid var(--border)',
                 borderRadius: '8px',
               }}
             >
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A' }}>
+                <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
                   All Scans ({filteredScans.length})
                 </Typography>
               </Box>
 
               {loading ? (
                 <Box sx={{ textAlign: 'center', py: 4 }}>
-                  <Typography variant="body2" sx={{ color: '#64748B' }}>
+                  <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                     Loading scans...
                   </Typography>
                 </Box>
               ) : filteredScans.length === 0 ? (
                 <Box sx={{ textAlign: 'center', py: 4 }}>
-                  <Typography variant="body2" sx={{ color: '#64748B' }}>
+                  <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                     {searchQuery ? 'No scans found matching your search.' : 'No scans yet. Start analyzing websites to see your scan history.'}
                   </Typography>
                 </Box>

@@ -13,8 +13,8 @@ export default function FinalCTASection() {
         py: { xs: 10, md: 14 },
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(180deg, rgba(248, 250, 252, 0.5) 0%, rgba(252, 82, 63, 0.08) 50%, rgba(252, 82, 63, 0.06) 100%)',
-        borderTop: '1px solid rgba(15, 23, 42, 0.05)',
+        background: 'linear-gradient(180deg, transparent 0%, rgba(252, 82, 63, 0.08) 50%, rgba(252, 82, 63, 0.06) 100%)',
+        borderTop: '1px solid var(--border-subtle)',
       }}
     >
       <Box
@@ -65,7 +65,7 @@ export default function FinalCTASection() {
             sx={{
               fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
               fontWeight: 800,
-              color: '#0F172A',
+              color: 'var(--text-primary)',
               letterSpacing: '-0.03em',
               lineHeight: 1.2,
               mb: 2,
@@ -75,7 +75,7 @@ export default function FinalCTASection() {
           </Typography>
           <Typography
             sx={{
-              color: '#64748B',
+              color: 'var(--text-muted)',
               fontSize: '1.15rem',
               maxWidth: 480,
               mx: 'auto',

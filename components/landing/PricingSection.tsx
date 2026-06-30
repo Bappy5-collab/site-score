@@ -63,10 +63,10 @@ export default function PricingSection() {
                   borderRadius: '12px',
                   overflow: 'visible',
                   background: plan.recommended
-                    ? 'linear-gradient(180deg, rgba(252, 82, 63, 0.12) 0%, rgba(255, 255, 255, 0.98) 28%)'
-                    : 'rgba(15, 23, 42, 0.03)',
+                    ? 'linear-gradient(180deg, rgba(252, 82, 63, 0.12) 0%, var(--bg-surface) 28%)'
+                    : 'var(--overlay-03)',
                   backdropFilter: 'blur(24px)',
-                  border: plan.recommended ? '1px solid rgba(252, 82, 63, 0.4)' : '1px solid rgba(15, 23, 42, 0.08)',
+                  border: plan.recommended ? '1px solid rgba(252, 82, 63, 0.4)' : '1px solid var(--border)',
                   boxShadow: plan.recommended ? '0 0 0 1px rgba(252, 82, 63, 0.2), 0 24px 48px -12px rgba(15, 23, 42, 0.12)' : 'none',
                 }}
               >
@@ -92,7 +92,7 @@ export default function PricingSection() {
                   </Box>
                 )}
                 <Box sx={{ p: 3.5, flex: 1, display: 'flex', flexDirection: 'column' }}>
-                  <Typography variant="h5" sx={{ fontWeight: 700, color: '#0F172A', mb: 2 }}>
+                  <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary)', mb: 2 }}>
                     {plan.name}
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 0.5, mb: 1 }}>
@@ -109,11 +109,11 @@ export default function PricingSection() {
                     >
                       ${plan.price}
                     </Typography>
-                    <Typography component="span" sx={{ color: '#64748B', fontSize: '1rem' }}>
+                    <Typography component="span" sx={{ color: 'var(--text-muted)', fontSize: '1rem' }}>
                       {plan.period}
                     </Typography>
                   </Box>
-                  <Typography variant="body2" sx={{ color: '#64748B', mb: 3 }}>
+                  <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 3 }}>
                     {plan.scans}
                   </Typography>
                   <Box sx={{ flex: 1, mb: 3 }}>
@@ -125,11 +125,11 @@ export default function PricingSection() {
                           alignItems: 'center',
                           gap: 1.5,
                           py: 1,
-                          '&:not(:last-child)': { borderBottom: '1px solid rgba(15,23,42,0.03)' },
+                          '&:not(:last-child)': { borderBottom: '1px solid var(--border-subtle)' },
                         }}
                       >
-                        <CheckCircleRoundedIcon sx={{ fontSize: 20, color: plan.recommended ? '#FC523F' : '#64748B', flexShrink: 0 }} />
-                        <Typography variant="body2" sx={{ color: '#64748B' }}>
+                        <CheckCircleRoundedIcon sx={{ fontSize: 20, color: plan.recommended ? '#FC523F' : 'var(--text-muted)', flexShrink: 0 }} />
+                        <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                           {f}
                         </Typography>
                       </Box>
@@ -158,8 +158,8 @@ export default function PricingSection() {
                             },
                           }
                         : {
-                            borderColor: 'rgba(15, 23, 42, 0.1)',
-                            color: '#0F172A',
+                            borderColor: 'var(--border-strong)',
+                            color: 'var(--text-primary)',
                             '&:hover': {
                               borderColor: 'rgba(252, 82, 63, 0.5)',
                               background: 'rgba(252, 82, 63, 0.08)',

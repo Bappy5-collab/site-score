@@ -42,11 +42,11 @@ export default function FeaturesPage() {
           <Box sx={{ textAlign: 'center', mb: 6 }}>
             <Typography
               variant="h1"
-              sx={{ fontSize: { xs: '2rem', md: '2.75rem' }, fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', mb: 2 }}
+              sx={{ fontSize: { xs: '2rem', md: '2.75rem' }, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em', mb: 2 }}
             >
               Everything you need to grow
             </Typography>
-            <Typography sx={{ color: '#64748B', fontSize: '1.1rem', lineHeight: 1.7, maxWidth: 640, mx: 'auto' }}>
+            <Typography sx={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.7, maxWidth: 640, mx: 'auto' }}>
               SiteScore AI is a full growth operating system—from deep audits to AI-driven action plans, automation, and reporting.
             </Typography>
           </Box>
@@ -67,8 +67,8 @@ export default function FeaturesPage() {
                       width: '100%',
                       p: 3,
                       borderRadius: '12px',
-                      background: 'rgba(15, 23, 42, 0.03)',
-                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      background: 'var(--overlay-03)',
+                      border: '1px solid var(--border)',
                       transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
                       '&:hover': { borderColor: 'rgba(252, 82, 63, 0.35)', boxShadow: '0 12px 32px rgba(252, 82, 63, 0.15)' },
                     }}
@@ -88,10 +88,10 @@ export default function FeaturesPage() {
                     >
                       <Icon sx={{ fontSize: 26, color: '#FC523F' }} />
                     </Box>
-                    <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A', mb: 0.75 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 0.75 }}>
                       {item.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#64748B', lineHeight: 1.6 }}>
+                    <Typography variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                       {item.text}
                     </Typography>
                   </Box>

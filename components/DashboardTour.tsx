@@ -93,26 +93,26 @@ export default function DashboardTour({ enabled = true }: { enabled?: boolean })
       styles={{
         options: {
           primaryColor: '#FC523F',
-          backgroundColor: '#FFFFFF',
-          arrowColor: '#FFFFFF',
-          textColor: '#334155',
+          backgroundColor: 'var(--bg-surface)',
+          arrowColor: 'var(--bg-surface)',
+          textColor: 'var(--text-secondary)',
           overlayColor: 'rgba(5, 8, 20, 0.7)',
           zIndex: 13000,
         },
         tooltip: {
           borderRadius: 10,
-          border: '1px solid rgba(15,23,42,0.08)',
+          border: '1px solid var(--border)',
           padding: 20,
         },
         tooltipTitle: {
           fontSize: '1.05rem',
           fontWeight: 700,
-          color: '#0F172A',
+          color: 'var(--text-primary)',
         },
         tooltipContent: {
           fontSize: '0.9rem',
           lineHeight: 1.6,
-          color: '#64748B',
+          color: 'var(--text-muted)',
           padding: '8px 0 0',
         },
         buttonNext: {
@@ -123,12 +123,12 @@ export default function DashboardTour({ enabled = true }: { enabled?: boolean })
           background: '#E13E2C',
         },
         buttonBack: {
-          color: '#64748B',
+          color: 'var(--text-muted)',
           fontWeight: 600,
           fontSize: '0.875rem',
         },
         buttonSkip: {
-          color: '#64748B',
+          color: 'var(--text-muted)',
           fontSize: '0.85rem',
         },
         spotlight: {

@@ -28,7 +28,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
         alignItems="center"
         minHeight="100vh"
         sx={{
-          background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%)',
+          background: 'var(--bg-surface)',
         }}
       >
         <motion.div

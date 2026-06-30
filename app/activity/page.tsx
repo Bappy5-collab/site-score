@@ -19,9 +19,9 @@ import { getActivity, type ActivityItem } from '@/services/activityService';
 const cardSx = {
   p: 3,
   borderRadius: '8px',
-  background: '#FFFFFF',
+  background: 'var(--bg-surface)',
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(15, 23, 42, 0.08)',
+  border: '1px solid var(--border)',
   transition: 'all 0.3s ease',
   '&:hover': { borderColor: 'rgba(252, 82, 63, 0.25)' },
 };
@@ -87,10 +87,10 @@ export default function ActivityTimelinePage() {
                 <TimelineIcon sx={{ color: '#FC523F', fontSize: 28 }} />
               </Box>
               <Box>
-                <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em' }}>
+                <Typography variant="h4" sx={{ fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
                   Activity Timeline
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#64748B', mt: 0.25 }}>
+                <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.25 }}>
                   Recent actions and events
                 </Typography>
               </Box>
@@ -124,7 +124,7 @@ export default function ActivityTimelinePage() {
                   }}
                 >
                   {activities.length === 0 && !loading && (
-                    <Typography sx={{ color: '#64748B' }}>No activity yet.</Typography>
+                    <Typography sx={{ color: 'var(--text-muted)' }}>No activity yet.</Typography>
                   )}
                   {activities.map((item, index) => {
                     const Icon = iconMap[item.type] || AssessmentIcon;
@@ -156,7 +156,7 @@ export default function ActivityTimelinePage() {
                               height: 24,
                               borderRadius: '50%',
                               background: color,
-                              border: '3px solid #F8FAFC',
+                              border: '3px solid var(--bg-base)',
                               flexShrink: 0,
                               display: 'flex',
                               alignItems: 'center',
@@ -168,13 +168,13 @@ export default function ActivityTimelinePage() {
                             <Icon sx={{ fontSize: 12, color: '#fff' }} />
                           </Box>
                           <Box sx={{ flex: 1, minWidth: 0, pt: 0.25 }}>
-                            <Typography variant="body1" sx={{ fontWeight: 600, color: '#0F172A' }}>
+                            <Typography variant="body1" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
                               {item.title}
                             </Typography>
-                            <Typography variant="body2" sx={{ color: '#64748B', fontSize: '0.85rem', mt: 0.25 }}>
+                            <Typography variant="body2" sx={{ color: 'var(--text-muted)', fontSize: '0.85rem', mt: 0.25 }}>
                               {item.detail || '—'}
                             </Typography>
-                            <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mt: 0.5 }}>
+                            <Typography variant="caption" sx={{ color: 'var(--text-muted)', display: 'block', mt: 0.5 }}>
                               {time}
                             </Typography>
                           </Box>

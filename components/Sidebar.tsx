@@ -164,12 +164,12 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose, on
               minHeight: 40,
               justifyContent: collapsed && !isMobile ? 'center' : 'flex-start',
               px: collapsed && !isMobile ? 1.25 : 1.5,
-              color: active ? '#0F172A' : '#64748B',
+              color: active ? 'var(--text-primary)' : 'var(--text-muted)',
               background: active ? 'rgba(252, 82, 63, 0.14)' : 'transparent',
               transition: 'background-color 0.15s ease, color 0.15s ease',
               '&:hover': {
-                background: active ? 'rgba(252, 82, 63, 0.18)' : 'rgba(15, 23, 42, 0.03)',
-                color: '#0F172A',
+                background: active ? 'rgba(252, 82, 63, 0.18)' : 'var(--overlay-03)',
+                color: 'var(--text-primary)',
               },
             }}
           >
@@ -206,8 +206,8 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose, on
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        background: '#FFFFFF',
-        borderRight: '1px solid rgba(15, 23, 42, 0.07)',
+        background: 'var(--bg-surface)',
+        borderRight: '1px solid var(--border)',
       }}
     >
       {/* Brand */}
@@ -220,14 +220,14 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose, on
           justifyContent: showLabels ? 'flex-start' : 'center',
           height: 64,
           flexShrink: 0,
-          borderBottom: '1px solid rgba(15, 23, 42, 0.07)',
+          borderBottom: '1px solid var(--border)',
         }}
       >
         <Logo size={32} showText={showLabels} fontSize="1.05rem" />
       </Box>
 
       {/* Profile */}
-      <Box sx={{ p: 1.5, borderBottom: '1px solid rgba(15, 23, 42, 0.07)' }}>
+      <Box sx={{ p: 1.5, borderBottom: '1px solid var(--border)' }}>
         <Box
           onClick={handleProfileMenuOpen}
           sx={{
@@ -239,7 +239,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose, on
             cursor: 'pointer',
             justifyContent: showLabels ? 'flex-start' : 'center',
             transition: 'background-color 0.15s ease',
-            '&:hover': { background: 'rgba(15, 23, 42, 0.03)' },
+            '&:hover': { background: 'var(--overlay-03)' },
           }}
         >
           <Avatar
@@ -258,18 +258,18 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose, on
               <Box sx={{ flex: 1, minWidth: 0 }}>
                 <Typography
                   variant="body2"
-                  sx={{ fontWeight: 600, color: '#0F172A', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+                  sx={{ fontWeight: 600, color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
                 >
                   {user?.name || 'User'}
                 </Typography>
                 <Typography
                   variant="caption"
-                  sx={{ color: '#64748B', fontSize: '0.75rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block' }}
+                  sx={{ color: 'var(--text-muted)', fontSize: '0.75rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block' }}
                 >
                   {user?.email || ''}
                 </Typography>
               </Box>
-              <ExpandMoreIcon sx={{ color: '#64748B', fontSize: 18 }} />
+              <ExpandMoreIcon sx={{ color: 'var(--text-muted)', fontSize: 18 }} />
             </>
           )}
         </Box>
@@ -280,8 +280,8 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose, on
           onClose={handleProfileMenuClose}
           PaperProps={{
             sx: {
-              background: '#FFFFFF',
-              border: '1px solid rgba(15, 23, 42, 0.08)',
+              background: 'var(--bg-surface)',
+              border: '1px solid var(--border)',
               borderRadius: '8px',
               mt: 1,
               minWidth: 200,
@@ -295,7 +295,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose, on
               router.push('/profile');
               handleProfileMenuClose();
             }}
-            sx={{ color: '#0F172A', fontSize: '0.875rem', '&:hover': { background: 'rgba(252, 82, 63, 0.1)' } }}
+            sx={{ color: 'var(--text-primary)', fontSize: '0.875rem', '&:hover': { background: 'rgba(252, 82, 63, 0.1)' } }}
           >
             <PersonIcon sx={{ mr: 1.5, fontSize: 19 }} />
             View Profile
@@ -305,12 +305,12 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose, on
               router.push('/settings');
               handleProfileMenuClose();
             }}
-            sx={{ color: '#0F172A', fontSize: '0.875rem', '&:hover': { background: 'rgba(252, 82, 63, 0.1)' } }}
+            sx={{ color: 'var(--text-primary)', fontSize: '0.875rem', '&:hover': { background: 'rgba(252, 82, 63, 0.1)' } }}
           >
             <SettingsIcon sx={{ mr: 1.5, fontSize: 19 }} />
             Account Settings
           </MenuItem>
-          <Divider sx={{ borderColor: 'rgba(15, 23, 42, 0.08)', my: 0.5 }} />
+          <Divider sx={{ borderColor: 'var(--border)', my: 0.5 }} />
           <MenuItem
             onClick={() => {
               handleLogout();
@@ -342,7 +342,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose, on
                 sx={{
                   px: 1.5,
                   mb: 0.5,
-                  color: '#475569',
+                  color: 'var(--text-tertiary)',
                   fontSize: '0.6875rem',
                   fontWeight: 700,
                   letterSpacing: '0.06em',
@@ -358,7 +358,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose, on
       </Box>
 
       {/* Logout + collapse */}
-      <Box sx={{ p: 1.25, borderTop: '1px solid rgba(15, 23, 42, 0.07)' }}>
+      <Box sx={{ p: 1.25, borderTop: '1px solid var(--border)' }}>
         <Tooltip title={collapsed && !isMobile ? 'Logout' : ''} placement="right">
           <ListItemButton
             onClick={() => {
@@ -371,7 +371,7 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose, on
               mb: 0.5,
               justifyContent: collapsed && !isMobile ? 'center' : 'flex-start',
               px: collapsed && !isMobile ? 1.25 : 1.5,
-              color: '#64748B',
+              color: 'var(--text-muted)',
               transition: 'background-color 0.15s ease, color 0.15s ease',
               '&:hover': { background: 'rgba(239, 68, 68, 0.1)', color: '#F87171' },
             }}
@@ -391,9 +391,9 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileOpen = false, onMobileClose, on
               onClick={toggleCollapsed}
               sx={{
                 width: '100%',
-                color: '#64748B',
+                color: 'var(--text-muted)',
                 borderRadius: '6px',
-                '&:hover': { background: 'rgba(15, 23, 42, 0.03)', color: '#64748B' },
+                '&:hover': { background: 'var(--overlay-03)', color: 'var(--text-muted)' },
               }}
             >
               {collapsed ? <ChevronRightIcon /> : <ChevronLeftIcon />}

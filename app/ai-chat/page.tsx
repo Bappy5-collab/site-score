@@ -58,10 +58,7 @@ const AIChatPage = () => {
                 variant="h4"
                 sx={{
                   fontWeight: 700,
-                  background: 'linear-gradient(135deg, #0F172A 0%, #334155 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
+                  color: 'var(--text-primary)',
                 }}
               >
                 AI Chat Assistant
@@ -73,10 +70,10 @@ const AIChatPage = () => {
                   sx={{
                     minWidth: 300,
                     '& .MuiOutlinedInput-root': {
-                      background: '#FFFFFF',
-                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      background: 'var(--bg-surface)',
+                      border: '1px solid var(--border)',
                       borderRadius: '8px',
-                      color: '#0F172A',
+                      color: 'var(--text-primary)',
                       '&:hover': {
                         borderColor: 'rgba(252, 82, 63, 0.3)',
                       },
@@ -89,20 +86,20 @@ const AIChatPage = () => {
                     },
                   }}
                 >
-                  <InputLabel sx={{ color: '#64748B' }}>Select Scan</InputLabel>
+                  <InputLabel sx={{ color: 'var(--text-muted)' }}>Select Scan</InputLabel>
                   <Select
                     value={selectedScanId}
                     onChange={(e) => setSelectedScanId(e.target.value)}
                     label="Select Scan"
                     sx={{
-                      color: '#0F172A',
+                      color: 'var(--text-primary)',
                       '& .MuiSelect-icon': {
-                        color: '#64748B',
+                        color: 'var(--text-muted)',
                       },
                     }}
                   >
                     {scans.map((scan) => (
-                      <MenuItem key={scan._id} value={scan._id} sx={{ color: '#0F172A' }}>
+                      <MenuItem key={scan._id} value={scan._id} sx={{ color: 'var(--text-primary)' }}>
                         {scan.url}
                       </MenuItem>
                     ))}
@@ -121,15 +118,15 @@ const AIChatPage = () => {
               <Paper
                 sx={{
                   p: 3,
-                  background: '#FFFFFF',
+                  background: 'var(--bg-surface)',
                   backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  border: '1px solid var(--border)',
                   borderRadius: '8px',
                   textAlign: 'center',
                   py: 8,
                 }}
               >
-                <Typography variant="body2" sx={{ color: '#64748B' }}>
+                <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                   Loading...
                 </Typography>
               </Paper>
@@ -137,18 +134,18 @@ const AIChatPage = () => {
               <Paper
                 sx={{
                   p: 3,
-                  background: '#FFFFFF',
+                  background: 'var(--bg-surface)',
                   backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  border: '1px solid var(--border)',
                   borderRadius: '8px',
                   textAlign: 'center',
                   py: 8,
                 }}
               >
-                <Typography variant="h6" sx={{ mb: 2, color: '#0F172A' }}>
+                <Typography variant="h6" sx={{ mb: 2, color: 'var(--text-primary)' }}>
                   No Scans Available
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#64748B' }}>
+                <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                   Please analyze a website first to start chatting with AI.
                 </Typography>
               </Paper>

@@ -35,25 +35,25 @@ export default function DeveloperSection() {
         >
           <Box
             sx={{
-              background: 'rgba(248, 250, 252, 0.9)',
-              border: '1px solid rgba(15, 23, 42, 0.08)',
+              background: 'var(--bg-elevated)',
+              border: '1px solid var(--border)',
               borderRadius: '12px',
               overflow: 'hidden',
-              boxShadow: '0 4px 12px rgba(15, 23, 42, 0.08)',
+              boxShadow: 'var(--shadow-md)',
             }}
           >
             <Box
               sx={{
                 px: 2,
                 py: 1.5,
-                borderBottom: '1px solid rgba(15, 23, 42, 0.08)',
+                borderBottom: '1px solid var(--border)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: 1,
               }}
             >
               <CodeIcon sx={{ fontSize: 20, color: '#FC523F' }} />
-              <Typography variant="caption" sx={{ color: '#64748B' }}>
+              <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>
                 Example: scan + webhooks
               </Typography>
             </Box>
@@ -66,8 +66,8 @@ export default function DeveloperSection() {
                 fontFamily: 'ui-monospace, monospace',
                 fontSize: '0.85rem',
                 lineHeight: 1.7,
-                color: '#334155',
-                '& .token': { color: '#64748B' },
+                color: 'var(--text-secondary)',
+                '& .token': { color: 'var(--text-muted)' },
               }}
             >
               {codeSnippet}

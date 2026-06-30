@@ -26,29 +26,29 @@ export default function TermsPage() {
             sx={{
               fontSize: { xs: '2rem', md: '2.75rem' },
               fontWeight: 800,
-              color: '#0F172A',
+              color: 'var(--text-primary)',
               letterSpacing: '-0.02em',
               mb: 2,
             }}
           >
             Terms of Service
           </Typography>
-          <Typography sx={{ color: '#64748B', fontSize: '1rem', lineHeight: 1.7, mb: 4 }}>
+          <Typography sx={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.7, mb: 4 }}>
             These Terms of Service govern your use of the SiteScore AI website and the AI Growth Operating System. Please read them carefully.
           </Typography>
 
           {sections.map((sec) => (
             <Box key={sec.title} sx={{ mb: 3 }}>
-              <Typography variant="h2" sx={{ fontSize: '1.2rem', fontWeight: 700, color: '#0F172A', mb: 1 }}>
+              <Typography variant="h2" sx={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', mb: 1 }}>
                 {sec.title}
               </Typography>
-              <Typography sx={{ color: '#64748B', fontSize: '1rem', lineHeight: 1.7 }}>
+              <Typography sx={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.7 }}>
                 {sec.body}
               </Typography>
             </Box>
           ))}
 
-          <Typography sx={{ color: '#64748B', fontSize: '0.9rem', mt: 4 }}>
+          <Typography sx={{ color: 'var(--text-muted)', fontSize: '0.9rem', mt: 4 }}>
             Last updated: {new Date().toLocaleDateString('en-US')}. Questions? Contact us at legal@sitescore.ai.
           </Typography>
         </motion.div>

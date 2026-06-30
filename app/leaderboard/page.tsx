@@ -83,13 +83,13 @@ const LeaderboardPage = () => {
                   sx={{
                     fontWeight: 800,
                     letterSpacing: '-0.02em',
-                    color: '#0F172A',
+                    color: 'var(--text-primary)',
                     lineHeight: 1.2,
                   }}
                 >
                   Leaderboard
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#64748B', mt: 0.25 }}>
+                <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.25 }}>
                   Top performers by scan count and average scores
                 </Typography>
               </Box>
@@ -105,22 +105,22 @@ const LeaderboardPage = () => {
               elevation={0}
               sx={{
                 overflow: 'hidden',
-                background: '#FFFFFF',
+                background: 'var(--bg-surface)',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(15, 23, 42, 0.08)',
+                border: '1px solid var(--border)',
                 borderRadius: '8px',
-                '&:hover': { borderColor: 'rgba(15, 23, 42, 0.1)' },
+                '&:hover': { borderColor: 'var(--border-strong)' },
               }}
             >
               {loading ? (
                 <Box sx={{ textAlign: 'center', py: 6 }}>
-                  <Typography variant="body2" sx={{ color: '#64748B' }}>
+                  <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                     Loading leaderboard...
                   </Typography>
                 </Box>
               ) : leaderboard.length === 0 ? (
                 <Box sx={{ textAlign: 'center', py: 6 }}>
-                  <Typography variant="body2" sx={{ color: '#64748B' }}>
+                  <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                     No leaderboard data available yet.
                   </Typography>
                 </Box>
@@ -131,14 +131,14 @@ const LeaderboardPage = () => {
                       <TableRow>
                         <TableCell
                           sx={{
-                            background: 'rgba(248, 250, 252, 0.6)',
-                            color: '#64748B',
+                            background: 'var(--bg-base)',
+                            color: 'var(--text-muted)',
                             fontWeight: 700,
                             fontSize: '0.75rem',
                             textTransform: 'uppercase',
                             letterSpacing: '0.06em',
                             py: 2,
-                            borderBottom: '1px solid rgba(15, 23, 42, 0.08)',
+                            borderBottom: '1px solid var(--border)',
                             width: 100,
                           }}
                         >
@@ -146,14 +146,14 @@ const LeaderboardPage = () => {
                         </TableCell>
                         <TableCell
                           sx={{
-                            background: 'rgba(248, 250, 252, 0.6)',
-                            color: '#64748B',
+                            background: 'var(--bg-base)',
+                            color: 'var(--text-muted)',
                             fontWeight: 700,
                             fontSize: '0.75rem',
                             textTransform: 'uppercase',
                             letterSpacing: '0.06em',
                             py: 2,
-                            borderBottom: '1px solid rgba(15, 23, 42, 0.08)',
+                            borderBottom: '1px solid var(--border)',
                           }}
                         >
                           User
@@ -161,14 +161,14 @@ const LeaderboardPage = () => {
                         <TableCell
                           align="center"
                           sx={{
-                            background: 'rgba(248, 250, 252, 0.6)',
-                            color: '#64748B',
+                            background: 'var(--bg-base)',
+                            color: 'var(--text-muted)',
                             fontWeight: 700,
                             fontSize: '0.75rem',
                             textTransform: 'uppercase',
                             letterSpacing: '0.06em',
                             py: 2,
-                            borderBottom: '1px solid rgba(15, 23, 42, 0.08)',
+                            borderBottom: '1px solid var(--border)',
                             width: 110,
                           }}
                         >
@@ -177,14 +177,14 @@ const LeaderboardPage = () => {
                         <TableCell
                           align="center"
                           sx={{
-                            background: 'rgba(248, 250, 252, 0.6)',
-                            color: '#64748B',
+                            background: 'var(--bg-base)',
+                            color: 'var(--text-muted)',
                             fontWeight: 700,
                             fontSize: '0.75rem',
                             textTransform: 'uppercase',
                             letterSpacing: '0.06em',
                             py: 2,
-                            borderBottom: '1px solid rgba(15, 23, 42, 0.08)',
+                            borderBottom: '1px solid var(--border)',
                             width: 100,
                           }}
                         >
@@ -193,14 +193,14 @@ const LeaderboardPage = () => {
                         <TableCell
                           align="center"
                           sx={{
-                            background: 'rgba(248, 250, 252, 0.6)',
-                            color: '#64748B',
+                            background: 'var(--bg-base)',
+                            color: 'var(--text-muted)',
                             fontWeight: 700,
                             fontSize: '0.75rem',
                             textTransform: 'uppercase',
                             letterSpacing: '0.06em',
                             py: 2,
-                            borderBottom: '1px solid rgba(15, 23, 42, 0.08)',
+                            borderBottom: '1px solid var(--border)',
                             width: 100,
                           }}
                         >
@@ -209,14 +209,14 @@ const LeaderboardPage = () => {
                         <TableCell
                           align="center"
                           sx={{
-                            background: 'rgba(248, 250, 252, 0.6)',
-                            color: '#64748B',
+                            background: 'var(--bg-base)',
+                            color: 'var(--text-muted)',
                             fontWeight: 700,
                             fontSize: '0.75rem',
                             textTransform: 'uppercase',
                             letterSpacing: '0.06em',
                             py: 2,
-                            borderBottom: '1px solid rgba(15, 23, 42, 0.08)',
+                            borderBottom: '1px solid var(--border)',
                             width: 80,
                           }}
                         >
@@ -225,14 +225,14 @@ const LeaderboardPage = () => {
                         <TableCell
                           align="center"
                           sx={{
-                            background: 'rgba(248, 250, 252, 0.6)',
-                            color: '#64748B',
+                            background: 'var(--bg-base)',
+                            color: 'var(--text-muted)',
                             fontWeight: 700,
                             fontSize: '0.75rem',
                             textTransform: 'uppercase',
                             letterSpacing: '0.06em',
                             py: 2,
-                            borderBottom: '1px solid rgba(15, 23, 42, 0.08)',
+                            borderBottom: '1px solid var(--border)',
                             width: 90,
                           }}
                         >
@@ -250,12 +250,12 @@ const LeaderboardPage = () => {
                           transition={{ duration: 0.25, delay: Math.min(index * 0.02, 0.3) }}
                           sx={{
                             '&:hover': {
-                              background: 'rgba(15, 23, 42, 0.03)',
+                              background: 'var(--overlay-03)',
                             },
                             '& td': {
-                              borderBottom: '1px solid rgba(15, 23, 42, 0.05)',
+                              borderBottom: '1px solid var(--border-subtle)',
                               py: 2,
-                              color: '#334155',
+                              color: 'var(--text-secondary)',
                             },
                           }}
                         >
@@ -270,7 +270,7 @@ const LeaderboardPage = () => {
                                 variant="body2"
                                 sx={{
                                   fontWeight: 700,
-                                  color: index < 3 ? getRankColor(index + 1) : '#0F172A',
+                                  color: index < 3 ? getRankColor(index + 1) : 'var(--text-primary)',
                                   fontSize: '0.95rem',
                                 }}
                               >
@@ -292,12 +292,12 @@ const LeaderboardPage = () => {
                                 {entry.user.name.charAt(0).toUpperCase()}
                               </Avatar>
                               <Box sx={{ minWidth: 0 }}>
-                                <Typography variant="body2" sx={{ fontWeight: 600, color: '#0F172A' }}>
+                                <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
                                   {entry.user.name}
                                 </Typography>
                                 <Typography
                                   variant="caption"
-                                  sx={{ color: '#64748B', fontSize: '0.75rem', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 180 }}
+                                  sx={{ color: 'var(--text-muted)', fontSize: '0.75rem', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 180 }}
                                 >
                                   {entry.user.email}
                                 </Typography>
@@ -332,17 +332,17 @@ const LeaderboardPage = () => {
                             </Typography>
                           </TableCell>
                           <TableCell align="center">
-                            <Typography variant="body2" sx={{ color: '#64748B', fontWeight: 500 }}>
+                            <Typography variant="body2" sx={{ color: 'var(--text-muted)', fontWeight: 500 }}>
                               {entry.averagePerformance.toFixed(1)}
                             </Typography>
                           </TableCell>
                           <TableCell align="center">
-                            <Typography variant="body2" sx={{ color: '#64748B', fontWeight: 500 }}>
+                            <Typography variant="body2" sx={{ color: 'var(--text-muted)', fontWeight: 500 }}>
                               {entry.averageSEO.toFixed(1)}
                             </Typography>
                           </TableCell>
                           <TableCell align="center">
-                            <Typography variant="body2" sx={{ color: '#64748B', fontWeight: 500 }}>
+                            <Typography variant="body2" sx={{ color: 'var(--text-muted)', fontWeight: 500 }}>
                               {entry.averageSecurity.toFixed(1)}
                             </Typography>
                           </TableCell>

@@ -79,11 +79,11 @@ export default function ChangelogPage() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <Typography
             variant="h1"
-            sx={{ fontSize: { xs: '2rem', md: '2.75rem' }, fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', mb: 1 }}
+            sx={{ fontSize: { xs: '2rem', md: '2.75rem' }, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em', mb: 1 }}
           >
             Changelog
           </Typography>
-          <Typography sx={{ color: '#64748B', fontSize: '1.1rem', mb: 5 }}>
+          <Typography sx={{ color: 'var(--text-muted)', fontSize: '1.1rem', mb: 5 }}>
             Everything new in SiteScore AI. We ship improvements every week.
           </Typography>
 
@@ -96,7 +96,7 @@ export default function ChangelogPage() {
                 top: 6,
                 bottom: 6,
                 width: '2px',
-                background: 'linear-gradient(180deg, rgba(252, 82, 63, 0.5), rgba(15,23,42,0.04))',
+                background: 'linear-gradient(180deg, rgba(252, 82, 63, 0.5), var(--border-subtle))',
               }}
             />
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
@@ -120,7 +120,7 @@ export default function ChangelogPage() {
                       height: 12,
                       borderRadius: '50%',
                       background: tagColor[entry.tag],
-                      border: '2px solid #F8FAFC',
+                      border: '2px solid var(--bg-base)',
                       boxShadow: `0 0 10px ${tagColor[entry.tag]}`,
                     }}
                   />
@@ -128,8 +128,8 @@ export default function ChangelogPage() {
                     sx={{
                       p: 3,
                       borderRadius: '10px',
-                      background: 'rgba(15, 23, 42, 0.03)',
-                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      background: 'var(--overlay-03)',
+                      border: '1px solid var(--border)',
                     }}
                   >
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexWrap: 'wrap', mb: 1.5 }}>
@@ -138,19 +138,19 @@ export default function ChangelogPage() {
                         size="small"
                         sx={{ background: `${tagColor[entry.tag]}22`, color: tagColor[entry.tag], fontWeight: 700, borderRadius: '6px' }}
                       />
-                      <Typography variant="body2" sx={{ color: '#0F172A', fontWeight: 700 }}>
+                      <Typography variant="body2" sx={{ color: 'var(--text-primary)', fontWeight: 700 }}>
                         {entry.version}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#64748B' }}>
+                      <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>
                         {entry.date}
                       </Typography>
                     </Box>
-                    <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A', mb: 1 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 1 }}>
                       {entry.title}
                     </Typography>
                     <Box component="ul" sx={{ m: 0, pl: 2.5, display: 'flex', flexDirection: 'column', gap: 0.5 }}>
                       {entry.points.map((p) => (
-                        <Typography key={p} component="li" variant="body2" sx={{ color: '#64748B', lineHeight: 1.6 }}>
+                        <Typography key={p} component="li" variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                           {p}
                         </Typography>
                       ))}

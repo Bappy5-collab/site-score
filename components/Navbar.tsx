@@ -20,6 +20,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useAuth } from '@/context/AuthContext';
 import Logo from '@/components/Logo';
 import GlobalSearch from '@/components/GlobalSearch';
+import ThemeToggle from '@/components/ThemeToggle';
 import { notificationService, Notification } from '@/services/notificationService';
 import { io, Socket } from 'socket.io-client';
 import { formatDistanceToNow } from 'date-fns';
@@ -112,9 +113,9 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
           position: 'sticky',
           top: 0,
           zIndex: 1100,
-          background: 'rgba(255, 255, 255, 0.85)',
+          background: 'var(--bg-surface)',
           backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid rgba(15, 23, 42, 0.07)',
+          borderBottom: '1px solid var(--border)',
           boxShadow: 'none',
           width: '100%',
         }}
@@ -126,7 +127,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                 onClick={onOpenSidebar}
                 sx={{
                   display: { xs: 'flex', md: 'none' },
-                  color: '#64748B',
+                  color: 'var(--text-muted)',
                   '&:hover': { color: '#FC523F', background: 'rgba(252, 82, 63, 0.1)' },
                 }}
                 aria-label="Open menu"
@@ -144,13 +145,15 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 0.5, sm: 1, md: 2 }, flexShrink: 0 }}>
+            <ThemeToggle />
+
             <IconButton
               component={motion.button}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleNotificationOpen}
               sx={{
-                color: '#64748B',
+                color: 'var(--text-muted)',
                 '&:hover': {
                   color: '#FC523F',
                   background: 'rgba(252, 82, 63, 0.1)',
@@ -181,8 +184,8 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: { xs: 0.75, sm: 1.5 },
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  background: 'var(--bg-surface)',
+                  border: '1px solid var(--border)',
                   borderRadius: '8px',
                   px: { xs: 1, sm: 2 },
                   py: 0.5,
@@ -207,10 +210,10 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                   {user.name?.charAt(0).toUpperCase()}
                 </Avatar>
                 <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                  <Typography variant="body2" sx={{ fontWeight: 600, color: '#0F172A', lineHeight: 1.3 }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.3 }}>
                     {user.name}
                   </Typography>
-                  <Typography variant="caption" sx={{ color: '#64748B', fontSize: '0.75rem' }}>
+                  <Typography variant="caption" sx={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>
                     {user.email}
                   </Typography>
                 </Box>
@@ -229,9 +232,9 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         PaperProps={{
           sx: {
-            background: 'rgba(255, 255, 255, 0.95)',
+            background: 'var(--bg-surface)',
             backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(15, 23, 42, 0.08)',
+            border: '1px solid var(--border)',
             borderRadius: '10px',
             mt: 1.5,
             minWidth: 280,
@@ -242,9 +245,9 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
           },
         }}
       >
-        <Box sx={{ p: 2, borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
+        <Box sx={{ p: 2, borderBottom: '1px solid var(--border)' }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 1 }}>
-            <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A' }}>
+            <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
               Notifications
             </Typography>
             {unreadCount > 0 && (
@@ -266,7 +269,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
         <Box sx={{ maxHeight: 400, overflowY: 'auto' }}>
           {notifications.length === 0 ? (
             <Box sx={{ p: 3, textAlign: 'center' }}>
-              <Typography variant="body2" sx={{ color: '#64748B' }}>
+              <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                 No notifications yet
               </Typography>
             </Box>
@@ -283,7 +286,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                     onClick={() => handleNotificationClick(notification)}
                     sx={{
                       p: 2,
-                      borderBottom: '1px solid rgba(15, 23, 42, 0.04)',
+                      borderBottom: '1px solid var(--border-subtle)',
                       background: notification.read ? 'transparent' : 'rgba(252, 82, 63, 0.05)',
                       '&:hover': { background: 'rgba(252, 82, 63, 0.1)' },
                     }}
@@ -293,13 +296,13 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenSidebar }) => {
                         variant="body2"
                         sx={{
                           fontWeight: notification.read ? 400 : 600,
-                          color: '#0F172A',
+                          color: 'var(--text-primary)',
                           mb: 0.5,
                         }}
                       >
                         {notification.message}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#64748B', fontSize: '0.75rem' }}>
+                      <Typography variant="caption" sx={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>
                         {formatDistanceToNow(new Date(notification.createdAt), { addSuffix: true })}
                       </Typography>
                     </Box>

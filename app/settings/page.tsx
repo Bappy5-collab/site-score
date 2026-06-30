@@ -25,12 +25,12 @@ import { authService } from '@/services/authService';
 const inputSx = {
   '& .MuiOutlinedInput-root': {
     borderRadius: '10px',
-    background: 'rgba(15, 23, 42, 0.03)',
-    border: '1px solid rgba(15, 23, 42, 0.08)',
-    color: '#0F172A',
+    background: 'var(--overlay-03)',
+    border: '1px solid var(--border)',
+    color: 'var(--text-primary)',
     '& fieldset': { border: 'none' },
     '&:hover': {
-      background: 'rgba(15, 23, 42, 0.05)',
+      background: 'var(--overlay-05)',
       borderColor: 'rgba(252, 82, 63, 0.3)',
     },
     '&.Mui-focused': {
@@ -38,7 +38,7 @@ const inputSx = {
       boxShadow: '0 0 0 3px rgba(252, 82, 63, 0.15)',
     },
   },
-  '& .MuiInputLabel-root': { color: '#64748B' },
+  '& .MuiInputLabel-root': { color: 'var(--text-muted)' },
   '& .MuiInputLabel-root.Mui-focused': { color: '#FC523F' },
 };
 
@@ -122,14 +122,14 @@ const SettingsPage = () => {
               variant="h4"
               sx={{
                 fontWeight: 700,
-                color: '#0F172A',
+                color: 'var(--text-primary)',
                 mb: 0.5,
                 letterSpacing: '-0.02em',
               }}
             >
               Account settings
             </Typography>
-            <Typography variant="body2" sx={{ color: '#64748B', mb: 3 }}>
+            <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 3 }}>
               Manage your profile and security
             </Typography>
 
@@ -143,12 +143,12 @@ const SettingsPage = () => {
               sx={{
                 p: 4,
                 borderRadius: '8px',
-                background: '#FFFFFF',
-                border: '1px solid rgba(15, 23, 42, 0.08)',
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border)',
                 mb: 3,
               }}
             >
-              <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A', mb: 2 }}>
+              <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 2 }}>
                 Profile
               </Typography>
               {profileSuccess && (
@@ -190,7 +190,7 @@ const SettingsPage = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <PersonOutlineIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                        <PersonOutlineIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                       </InputAdornment>
                     ),
                   }}
@@ -206,7 +206,7 @@ const SettingsPage = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <EmailOutlinedIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                        <EmailOutlinedIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                       </InputAdornment>
                     ),
                   }}
@@ -247,11 +247,11 @@ const SettingsPage = () => {
               sx={{
                 p: 4,
                 borderRadius: '8px',
-                background: '#FFFFFF',
-                border: '1px solid rgba(15, 23, 42, 0.08)',
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border)',
               }}
             >
-              <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A', mb: 2 }}>
+              <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 2 }}>
                 Change password
               </Typography>
               {passwordSuccess && (
@@ -294,7 +294,7 @@ const SettingsPage = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <LockOutlinedIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                        <LockOutlinedIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                       </InputAdornment>
                     ),
                     endAdornment: (
@@ -302,7 +302,7 @@ const SettingsPage = () => {
                         <Button
                           size="small"
                           onClick={() => setShowCurrent((s) => !s)}
-                          sx={{ minWidth: 0, color: '#64748B' }}
+                          sx={{ minWidth: 0, color: 'var(--text-muted)' }}
                         >
                           {showCurrent ? <VisibilityOffIcon /> : <VisibilityIcon />}
                         </Button>
@@ -321,7 +321,7 @@ const SettingsPage = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <LockOutlinedIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                        <LockOutlinedIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                       </InputAdornment>
                     ),
                     endAdornment: (
@@ -329,7 +329,7 @@ const SettingsPage = () => {
                         <Button
                           size="small"
                           onClick={() => setShowNew((s) => !s)}
-                          sx={{ minWidth: 0, color: '#64748B' }}
+                          sx={{ minWidth: 0, color: 'var(--text-muted)' }}
                         >
                           {showNew ? <VisibilityOffIcon /> : <VisibilityIcon />}
                         </Button>
@@ -348,7 +348,7 @@ const SettingsPage = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <LockOutlinedIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                        <LockOutlinedIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                       </InputAdornment>
                     ),
                   }}
@@ -384,7 +384,7 @@ const SettingsPage = () => {
                 variant="text"
                 onClick={() => router.push('/profile')}
                 sx={{
-                  color: '#64748B',
+                  color: 'var(--text-muted)',
                   textTransform: 'none',
                   fontWeight: 600,
                   '&:hover': { color: '#FC523F', background: 'transparent' },

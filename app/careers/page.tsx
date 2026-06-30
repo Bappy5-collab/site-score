@@ -28,18 +28,18 @@ export default function CareersPage() {
             sx={{
               fontSize: { xs: '2rem', md: '2.75rem' },
               fontWeight: 800,
-              color: '#0F172A',
+              color: 'var(--text-primary)',
               letterSpacing: '-0.02em',
               mb: 2,
             }}
           >
             Careers at SiteScore AI
           </Typography>
-          <Typography sx={{ color: '#64748B', fontSize: '1.1rem', lineHeight: 1.7, mb: 5 }}>
+          <Typography sx={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.7, mb: 5 }}>
             We’re a small team building the AI Growth Operating System. If you want to help turn data into action for thousands of teams, we’d love to hear from you.
           </Typography>
 
-          <Typography variant="h2" sx={{ fontSize: '1.35rem', fontWeight: 700, color: '#0F172A', mb: 2 }}>
+          <Typography variant="h2" sx={{ fontSize: '1.35rem', fontWeight: 700, color: 'var(--text-primary)', mb: 2 }}>
             Open roles
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 5 }}>
@@ -51,8 +51,8 @@ export default function CareersPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
                 sx={{
-                  background: 'rgba(15, 23, 42, 0.03)',
-                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  background: 'var(--overlay-03)',
+                  border: '1px solid var(--border)',
                   borderRadius: '10px',
                   '&:hover': { borderColor: 'rgba(252, 82, 63, 0.25)' },
                 }}
@@ -60,13 +60,13 @@ export default function CareersPage() {
                 <CardContent sx={{ p: 3, '&:last-child': { pb: 3 } }}>
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', gap: 2 }}>
                     <Box>
-                      <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A', mb: 0.5 }}>
+                      <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 0.5 }}>
                         {job.title}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: '#64748B', mb: 1 }}>
+                      <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 1 }}>
                         {job.team} · {job.location}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: '#64748B', lineHeight: 1.6 }}>
+                      <Typography variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                         {job.description}
                       </Typography>
                     </Box>
@@ -90,7 +90,7 @@ export default function CareersPage() {
             ))}
           </Box>
 
-          <Typography variant="h2" sx={{ fontSize: '1.35rem', fontWeight: 700, color: '#0F172A', mb: 2 }}>
+          <Typography variant="h2" sx={{ fontSize: '1.35rem', fontWeight: 700, color: 'var(--text-primary)', mb: 2 }}>
             What we value
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -102,8 +102,8 @@ export default function CareersPage() {
                   sx={{
                     p: 2.5,
                     borderRadius: '10px',
-                    background: 'rgba(15, 23, 42, 0.03)',
-                    border: '1px solid rgba(15, 23, 42, 0.05)',
+                    background: 'var(--overlay-03)',
+                    border: '1px solid var(--border-subtle)',
                     display: 'flex',
                     gap: 2,
                     alignItems: 'flex-start',
@@ -113,10 +113,10 @@ export default function CareersPage() {
                     <Icon sx={{ color: '#FC523F', fontSize: 22 }} />
                   </Box>
                   <Box>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#0F172A', mb: 0.5 }}>
+                    <Typography variant="subtitle1" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 0.5 }}>
                       {v.label}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#64748B', lineHeight: 1.6 }}>
+                    <Typography variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                       {v.text}
                     </Typography>
                   </Box>
@@ -125,7 +125,7 @@ export default function CareersPage() {
             })}
           </Box>
 
-          <Typography sx={{ color: '#64748B', fontSize: '1rem', lineHeight: 1.7, mt: 4 }}>
+          <Typography sx={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.7, mt: 4 }}>
             Don’t see a fit? Email us at careers@sitescore.ai with your background and what you’d like to do.
           </Typography>
         </motion.div>

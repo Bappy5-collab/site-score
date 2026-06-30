@@ -93,9 +93,9 @@ export default function TestimonialsStatsSection() {
                     textAlign: 'center',
                     p: 3,
                     borderRadius: '12px',
-                    background: 'rgba(15, 23, 42, 0.03)',
+                    background: 'var(--overlay-03)',
                     backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(15, 23, 42, 0.08)',
+                    border: '1px solid var(--border)',
                   }}
                 >
                   <Typography
@@ -112,7 +112,7 @@ export default function TestimonialsStatsSection() {
                     {counters[index].toLocaleString()}
                     {stat.suffix}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: '#64748B' }}>
+                  <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                     {stat.label}
                   </Typography>
                 </Box>
@@ -133,14 +133,14 @@ export default function TestimonialsStatsSection() {
                 <Card
                   sx={{
                     height: '100%',
-                    background: 'rgba(15, 23, 42, 0.03)',
+                    background: 'var(--overlay-03)',
                     backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(15, 23, 42, 0.08)',
+                    border: '1px solid var(--border)',
                     borderRadius: '12px',
                     p: 3,
                   }}
                 >
-                  <Typography variant="body1" sx={{ color: '#334155', fontStyle: 'italic', mb: 2, lineHeight: 1.6 }}>
+                  <Typography variant="body1" sx={{ color: 'var(--text-secondary)', fontStyle: 'italic', mb: 2, lineHeight: 1.6 }}>
                     "{t.quote}"
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -158,10 +158,10 @@ export default function TestimonialsStatsSection() {
                       {t.avatar}
                     </Avatar>
                     <Box>
-                      <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#0F172A' }}>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
                         {t.name}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#64748B' }}>
+                      <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>
                         {t.role} at {t.company}
                       </Typography>
                     </Box>

@@ -30,15 +30,16 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { getInsights, type InsightsResponse } from '@/services/insightsService';
+import { useThemeMode } from '@/theme/ThemeModeProvider';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, ChartTooltip, Legend, Filler);
 
 const cardSx = {
   p: 3,
   borderRadius: '8px',
-  background: '#FFFFFF',
+  background: 'var(--bg-surface)',
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(15, 23, 42, 0.08)',
+  border: '1px solid var(--border)',
   height: '100%',
   transition: 'all 0.3s ease',
   '&:hover': { borderColor: 'rgba(252, 82, 63, 0.25)' },
@@ -50,29 +51,6 @@ const pageVariants = {
   exit: { opacity: 0, y: -8 },
 };
 
-const chartOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: { labels: { color: '#64748B', usePointStyle: true } },
-    tooltip: {
-      backgroundColor: 'rgba(248, 250, 252, 0.95)',
-      titleColor: '#0F172A',
-      bodyColor: '#64748B',
-      borderColor: 'rgba(15, 23, 42, 0.08)',
-    },
-  },
-  scales: {
-    x: { grid: { color: 'rgba(15,23,42,0.04)' }, ticks: { color: '#64748B' } },
-    y: {
-      min: 0,
-      max: 100,
-      grid: { color: 'rgba(15,23,42,0.04)' },
-      ticks: { color: '#64748B' },
-    },
-  },
-};
-
 const defaultInsights: InsightsResponse = {
   performanceOverTime: { labels: [], datasets: [] },
   growthSummary: { trend: 0, scansAnalyzed: 0, trendLabel: 'No data yet' },
@@ -80,6 +58,32 @@ const defaultInsights: InsightsResponse = {
 };
 
 export default function AIGrowthInsightsPage() {
+  const { mode } = useThemeMode();
+  const dark = mode === 'dark';
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { color: dark ? '#94A3B8' : '#64748B', usePointStyle: true } },
+      tooltip: {
+        backgroundColor: dark ? 'rgba(17,24,39,0.95)' : 'rgba(248, 250, 252, 0.95)',
+        titleColor: dark ? '#F1F5F9' : '#0F172A',
+        bodyColor: dark ? '#CBD5E1' : '#64748B',
+        borderColor: dark ? 'rgba(255,255,255,0.1)' : 'rgba(15, 23, 42, 0.08)',
+      },
+    },
+    scales: {
+      x: { grid: { color: dark ? 'rgba(255,255,255,0.06)' : 'rgba(15,23,42,0.04)' }, ticks: { color: dark ? '#94A3B8' : '#64748B' } },
+      y: {
+        min: 0,
+        max: 100,
+        grid: { color: dark ? 'rgba(255,255,255,0.06)' : 'rgba(15,23,42,0.04)' },
+        ticks: { color: dark ? '#94A3B8' : '#64748B' },
+      },
+    },
+  };
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [insights, setInsights] = useState<InsightsResponse>(defaultInsights);
@@ -129,10 +133,10 @@ export default function AIGrowthInsightsPage() {
                 <InsightsIcon sx={{ color: '#FC523F', fontSize: 28 }} />
               </Box>
               <Box>
-                <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em' }}>
+                <Typography variant="h4" sx={{ fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
                   AI Growth Insights
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#64748B', mt: 0.25 }}>
+                <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.25 }}>
                   Trends and smart improvement suggestions from your scan history
                 </Typography>
               </Box>
@@ -144,20 +148,20 @@ export default function AIGrowthInsightsPage() {
               </Alert>
             )}
             {loading ? (
-              <Typography sx={{ color: '#64748B' }}>Loading insights...</Typography>
+              <Typography sx={{ color: 'var(--text-muted)' }}>Loading insights...</Typography>
             ) : (
               <Grid container spacing={3}>
                 <Grid item xs={12} lg={8}>
                   <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>
                     <Paper elevation={0} sx={cardSx}>
-                      <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A', mb: 2 }}>
+                      <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 2 }}>
                         Performance Over Time
                       </Typography>
                       <Box sx={{ height: 320 }}>
                         {performanceOverTime.labels?.length ? (
                           <Line data={performanceOverTime} options={chartOptions} />
                         ) : (
-                          <Typography sx={{ color: '#64748B', pt: 4 }}>Run scans to see performance over time.</Typography>
+                          <Typography sx={{ color: 'var(--text-muted)', pt: 4 }}>Run scans to see performance over time.</Typography>
                         )}
                       </Box>
                     </Paper>
@@ -168,20 +172,20 @@ export default function AIGrowthInsightsPage() {
                     <Paper elevation={0} sx={cardSx}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                         <TrendingUpIcon sx={{ color: '#22C55E' }} />
-                        <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A' }}>
+                        <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
                           Growth Summary
                         </Typography>
                       </Box>
                       <Box sx={{ '& > *': { mb: 2 } }}>
                         <Box>
-                          <Typography variant="caption" sx={{ color: '#64748B' }}>Performance trend</Typography>
+                          <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>Performance trend</Typography>
                           <Typography variant="h5" sx={{ fontWeight: 700, color: insights.growthSummary.trend >= 0 ? '#22C55E' : '#F87171' }}>
                             {insights.growthSummary.trend >= 0 ? '+' : ''}{insights.growthSummary.trend} pts
                           </Typography>
                         </Box>
                         <Box>
-                          <Typography variant="caption" sx={{ color: '#64748B' }}>Scans analyzed</Typography>
-                          <Typography variant="h5" sx={{ fontWeight: 700, color: '#0F172A' }}>{insights.growthSummary.scansAnalyzed}</Typography>
+                          <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>Scans analyzed</Typography>
+                          <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary)' }}>{insights.growthSummary.scansAnalyzed}</Typography>
                         </Box>
                         <Chip label={insights.growthSummary.trendLabel} size="small" sx={{ background: 'rgba(34, 197, 94, 0.2)', color: '#4ADE80', border: '1px solid rgba(34, 197, 94, 0.3)' }} />
                       </Box>
@@ -193,7 +197,7 @@ export default function AIGrowthInsightsPage() {
                     <Paper elevation={0} sx={cardSx}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                         <BuildCircleIcon sx={{ color: '#FC523F' }} />
-                        <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A' }}>
+                        <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
                           What to Fix Next
                         </Typography>
                       </Box>
@@ -207,24 +211,24 @@ export default function AIGrowthInsightsPage() {
                               sx={{
                                 p: 2,
                                 borderRadius: '10px',
-                                background: 'rgba(15,23,42,0.03)',
-                                border: '1px solid rgba(15,23,42,0.05)',
+                                background: 'var(--overlay-03)',
+                                border: '1px solid var(--border-subtle)',
                               }}
                             >
-                              <Typography variant="body2" sx={{ color: '#0F172A', fontWeight: 500, mb: 1 }}>
+                              <Typography variant="body2" sx={{ color: 'var(--text-primary)', fontWeight: 500, mb: 1 }}>
                                 {s.title}
                               </Typography>
                               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                                 <Chip label={s.impact} size="small" sx={{ fontSize: '0.7rem', height: 20 }} />
-                                <Typography variant="caption" sx={{ color: '#64748B' }}>Priority {s.priority}%</Typography>
+                                <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>Priority {s.priority}%</Typography>
                               </Box>
-                              <LinearProgress variant="determinate" value={s.priority} sx={{ height: 6, borderRadius: 3, bgcolor: 'rgba(15,23,42,0.05)', '& .MuiLinearProgress-bar': { bgcolor: '#FC523F' } }} />
+                              <LinearProgress variant="determinate" value={s.priority} sx={{ height: 6, borderRadius: 3, bgcolor: 'var(--overlay-05)', '& .MuiLinearProgress-bar': { bgcolor: '#FC523F' } }} />
                             </Paper>
                           </Grid>
                         ))}
                       </Grid>
                       {insights.suggestions?.length === 0 && (
-                        <Typography variant="body2" sx={{ color: '#64748B', mt: 2 }}>Run more scans to get AI improvement suggestions.</Typography>
+                        <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 2 }}>Run more scans to get AI improvement suggestions.</Typography>
                       )}
                     </Paper>
                   </motion.div>

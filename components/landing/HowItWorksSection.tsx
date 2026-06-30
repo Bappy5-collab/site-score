@@ -54,9 +54,9 @@ export default function HowItWorksSection() {
                       height: '100%',
                       p: 3,
                       borderRadius: '12px',
-                      background: 'rgba(15, 23, 42, 0.03)',
+                      background: 'var(--overlay-03)',
                       backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      border: '1px solid var(--border)',
                       textAlign: 'center',
                       position: 'relative',
                       '&:hover': { borderColor: 'rgba(252, 82, 63, 0.25)' },
@@ -78,10 +78,10 @@ export default function HowItWorksSection() {
                     >
                       <Icon sx={{ fontSize: 36, color: '#FC523F' }} />
                     </Box>
-                    <Typography variant="h5" sx={{ fontWeight: 700, color: '#0F172A', mb: 1.5 }}>
+                    <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary)', mb: 1.5 }}>
                       {step.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#64748B', lineHeight: 1.6 }}>
+                    <Typography variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                       {step.description}
                     </Typography>
                     {index < steps.length - 1 && (

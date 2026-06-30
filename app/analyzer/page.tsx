@@ -49,55 +49,17 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { useThemeMode } from '@/theme/ThemeModeProvider';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ChartTooltip, Legend);
-
-const chartOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: {
-      display: false,
-    },
-    tooltip: {
-      backgroundColor: 'rgba(248, 250, 252, 0.95)',
-      titleColor: '#0F172A',
-      bodyColor: '#64748B',
-      borderColor: 'rgba(15, 23, 42, 0.08)',
-      borderWidth: 1,
-      padding: 12,
-      cornerRadius: 8,
-    },
-  },
-  scales: {
-    x: {
-      grid: {
-        color: 'rgba(15, 23, 42, 0.04)',
-      },
-      ticks: {
-        color: '#64748B',
-      },
-    },
-    y: {
-      grid: {
-        color: 'rgba(15, 23, 42, 0.04)',
-      },
-      ticks: {
-        color: '#64748B',
-      },
-      min: 0,
-      max: 100,
-    },
-  },
-};
 
 // Shared clean card surface used across every result panel
 const panelSx = {
   p: 3,
-  background: '#FFFFFF',
-  border: '1px solid #E5E9F0',
+  background: 'var(--bg-surface)',
+  border: '1px solid var(--border)',
   borderRadius: '10px',
-  boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+  boxShadow: 'var(--shadow-sm)',
 } as const;
 
 // Panel header with a tinted icon tile — replaces the emoji headings
@@ -128,13 +90,55 @@ const PanelTitle = ({
     >
       {icon}
     </Box>
-    <Typography sx={{ fontWeight: 600, fontSize: '1.0625rem', color: '#0F172A', letterSpacing: '-0.01em' }}>
+    <Typography sx={{ fontWeight: 600, fontSize: '1.0625rem', color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>
       {children}
     </Typography>
   </Box>
 );
 
 const AnalyzerPage = () => {
+  const { mode } = useThemeMode();
+  const dark = mode === 'dark';
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        backgroundColor: dark ? 'rgba(17,24,39,0.95)' : 'rgba(248, 250, 252, 0.95)',
+        titleColor: dark ? '#F1F5F9' : '#0F172A',
+        bodyColor: dark ? '#CBD5E1' : '#64748B',
+        borderColor: dark ? 'rgba(255,255,255,0.1)' : 'rgba(15, 23, 42, 0.08)',
+        borderWidth: 1,
+        padding: 12,
+        cornerRadius: 8,
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          color: dark ? 'rgba(255,255,255,0.06)' : 'rgba(15, 23, 42, 0.04)',
+        },
+        ticks: {
+          color: dark ? '#94A3B8' : '#64748B',
+        },
+      },
+      y: {
+        grid: {
+          color: dark ? 'rgba(255,255,255,0.06)' : 'rgba(15, 23, 42, 0.04)',
+        },
+        ticks: {
+          color: dark ? '#94A3B8' : '#64748B',
+        },
+        min: 0,
+        max: 100,
+      },
+    },
+  };
+
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -209,10 +213,10 @@ const AnalyzerPage = () => {
             transition={{ duration: 0.4 }}
           >
             <Box sx={{ mb: 3 }}>
-              <Typography variant="h4" sx={{ fontWeight: 700, color: '#0F172A', letterSpacing: '-0.02em' }}>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
                 Website Analyzer
               </Typography>
-              <Typography variant="body2" sx={{ color: '#64748B', mt: 0.5 }}>
+              <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.5 }}>
                 Enter a URL to audit performance, SEO and security in one scan.
               </Typography>
             </Box>
@@ -227,10 +231,10 @@ const AnalyzerPage = () => {
               sx={{
                 p: { xs: 2, sm: 2.5 },
                 mb: 2.5,
-                background: '#FFFFFF',
-                border: '1px solid #E5E9F0',
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border)',
                 borderRadius: '10px',
-                boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+                boxShadow: 'var(--shadow-sm)',
               }}
             >
               <Grid container spacing={2} alignItems="center">
@@ -248,7 +252,7 @@ const AnalyzerPage = () => {
                     disabled={loading}
                     InputProps={{
                       startAdornment: (
-                        <Box sx={{ mr: 1.5, display: 'flex', color: '#94A3B8' }}>
+                        <Box sx={{ mr: 1.5, display: 'flex', color: 'var(--text-faint)' }}>
                           <SearchIcon />
                         </Box>
                       ),
@@ -400,19 +404,19 @@ const AnalyzerPage = () => {
                       <PanelTitle icon={<InfoOutlinedIcon />}>Website Information</PanelTitle>
                       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.75 }}>
                         <Box>
-                          <Typography sx={{ color: '#94A3B8', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', mb: 0.25 }}>
+                          <Typography sx={{ color: 'var(--text-faint)', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', mb: 0.25 }}>
                             Title
                           </Typography>
-                          <Typography variant="body2" sx={{ color: '#0F172A' }}>{scanResult.title || '—'}</Typography>
+                          <Typography variant="body2" sx={{ color: 'var(--text-primary)' }}>{scanResult.title || '—'}</Typography>
                         </Box>
                         <Box>
-                          <Typography sx={{ color: '#94A3B8', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', mb: 0.25 }}>
+                          <Typography sx={{ color: 'var(--text-faint)', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', mb: 0.25 }}>
                             Description
                           </Typography>
-                          <Typography variant="body2" sx={{ color: '#475569' }}>{scanResult.description || '—'}</Typography>
+                          <Typography variant="body2" sx={{ color: 'var(--text-tertiary)' }}>{scanResult.description || '—'}</Typography>
                         </Box>
                         <Box>
-                          <Typography sx={{ color: '#94A3B8', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', mb: 0.25 }}>
+                          <Typography sx={{ color: 'var(--text-faint)', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', mb: 0.25 }}>
                             URL
                           </Typography>
                           <a
@@ -455,7 +459,7 @@ const AnalyzerPage = () => {
                 {scanResult.aiSummary && (
                   <Paper sx={{ ...panelSx, mb: 3, borderLeft: '3px solid #FC523F' }}>
                     <PanelTitle icon={<SmartToyOutlinedIcon />}>AI Analysis Summary</PanelTitle>
-                    <Typography variant="body1" sx={{ color: '#475569', lineHeight: 1.7 }}>
+                    <Typography variant="body1" sx={{ color: 'var(--text-tertiary)', lineHeight: 1.7 }}>
                       {scanResult.aiSummary}
                     </Typography>
                   </Paper>
@@ -483,7 +487,7 @@ const AnalyzerPage = () => {
                               background: '#FC523F',
                             }}
                           />
-                          <Typography variant="body1" sx={{ color: '#475569', lineHeight: 1.65 }}>
+                          <Typography variant="body1" sx={{ color: 'var(--text-tertiary)', lineHeight: 1.65 }}>
                             {recommendation}
                           </Typography>
                         </Box>
@@ -517,7 +521,7 @@ const AnalyzerPage = () => {
                                 background: '#FC523F',
                               }}
                             />
-                            <Typography variant="body1" sx={{ color: '#475569', lineHeight: 1.65 }}>
+                            <Typography variant="body1" sx={{ color: 'var(--text-tertiary)', lineHeight: 1.65 }}>
                               {suggestion}
                             </Typography>
                           </Box>
@@ -543,11 +547,11 @@ const AnalyzerPage = () => {
                           }
                         }}
                         sx={{
-                          color: scanResult.isBookmarked ? '#FC523F' : '#64748B',
+                          color: scanResult.isBookmarked ? '#FC523F' : 'var(--text-muted)',
                           background: scanResult.isBookmarked
                             ? 'rgba(252, 82, 63, 0.1)'
-                            : 'rgba(15, 23, 42, 0.04)',
-                          border: `1px solid ${scanResult.isBookmarked ? 'rgba(252, 82, 63, 0.3)' : '#E5E9F0'}`,
+                            : 'var(--overlay-04)',
+                          border: `1px solid ${scanResult.isBookmarked ? 'rgba(252, 82, 63, 0.3)' : 'var(--border)'}`,
                           borderRadius: '8px',
                           '&:hover': {
                             background: 'rgba(252, 82, 63, 0.15)',
@@ -684,7 +688,7 @@ const AnalyzerPage = () => {
 
                   {scanResult.screenshotUrl && (
                     <Box sx={{ mt: 3 }}>
-                      <Typography variant="subtitle2" sx={{ mb: 1, color: '#64748B' }}>
+                      <Typography variant="subtitle2" sx={{ mb: 1, color: 'var(--text-muted)' }}>
                         Screenshot:
                       </Typography>
                       <Box
@@ -697,7 +701,7 @@ const AnalyzerPage = () => {
                         alt="Website screenshot"
                         sx={{
                           maxWidth: '100%',
-                          border: '1px solid rgba(15, 23, 42, 0.08)',
+                          border: '1px solid var(--border)',
                           borderRadius: '8px',
                         }}
                       />

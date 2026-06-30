@@ -16,6 +16,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { Scan } from '@/services/scanService';
+import { useThemeMode } from '@/theme/ThemeModeProvider';
 
 ChartJS.register(
   CategoryScale,
@@ -41,6 +42,9 @@ const META: Record<string, { color: string; light: string; rgb: string; label: s
 };
 
 const ScoreHistoryChart: React.FC<ScoreHistoryChartProps> = ({ scans, scoreType, title }) => {
+  const { mode } = useThemeMode();
+  const dark = mode === 'dark';
+
   const sortedScans = [...scans].sort(
     (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
   );
@@ -87,7 +91,7 @@ const ScoreHistoryChart: React.FC<ScoreHistoryChartProps> = ({ scans, scoreType,
         pointRadius: 0,
         pointHoverRadius: 6,
         pointHoverBackgroundColor: meta.light,
-        pointHoverBorderColor: '#F8FAFC',
+        pointHoverBorderColor: dark ? '#111827' : '#FFFFFF',
         pointHoverBorderWidth: 3,
         borderColor: (ctx: ScriptableContext<'line'>) => {
           const { chart } = ctx;
@@ -121,9 +125,9 @@ const ScoreHistoryChart: React.FC<ScoreHistoryChartProps> = ({ scans, scoreType,
       legend: { display: false },
       title: { display: false },
       tooltip: {
-        backgroundColor: 'rgba(255, 255, 255, 0.95)',
-        titleColor: '#0F172A',
-        bodyColor: '#334155',
+        backgroundColor: dark ? 'rgba(17,24,39,0.95)' : 'rgba(255,255,255,0.95)',
+        titleColor: dark ? '#F1F5F9' : '#0F172A',
+        bodyColor: dark ? '#CBD5E1' : '#334155',
         borderColor: `rgba(${meta.rgb}, 0.35)`,
         borderWidth: 1,
         padding: 12,
@@ -135,24 +139,24 @@ const ScoreHistoryChart: React.FC<ScoreHistoryChartProps> = ({ scans, scoreType,
     scales: {
       x: {
         grid: { display: false, drawBorder: false } as any,
-        ticks: { color: '#64748B', maxTicksLimit: 6, font: { size: 11 } },
+        ticks: { color: dark ? '#94A3B8' : '#64748B', maxTicksLimit: 6, font: { size: 11 } },
       },
       y: {
         min: 0,
         max: 100,
         border: { display: false } as any,
-        grid: { color: 'rgba(15, 23, 42, 0.03)', drawBorder: false } as any,
-        ticks: { stepSize: 25, color: '#64748B', font: { size: 11 }, padding: 10 },
+        grid: { color: dark ? 'rgba(255,255,255,0.06)' : 'rgba(15, 23, 42, 0.03)', drawBorder: false } as any,
+        ticks: { stepSize: 25, color: dark ? '#94A3B8' : '#64748B', font: { size: 11 }, padding: 10 },
       },
     },
   };
 
   const Stat = ({ label, value }: { label: string; value: number }) => (
     <Box>
-      <Typography sx={{ color: '#94A3B8', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+      <Typography sx={{ color: 'var(--text-faint)', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
         {label}
       </Typography>
-      <Typography sx={{ color: '#334155', fontSize: '0.95rem', fontWeight: 700, mt: 0.25 }}>{value}</Typography>
+      <Typography sx={{ color: 'var(--text-secondary)', fontSize: '0.95rem', fontWeight: 700, mt: 0.25 }}>{value}</Typography>
     </Box>
   );
 
@@ -164,10 +168,10 @@ const ScoreHistoryChart: React.FC<ScoreHistoryChartProps> = ({ scans, scoreType,
         height: '400px',
         display: 'flex',
         flexDirection: 'column',
-        background: '#FFFFFF',
-        border: '1px solid #E5E9F0',
+        background: 'var(--bg-surface)',
+        border: '1px solid var(--border)',
         borderRadius: '10px',
-        boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+        boxShadow: 'var(--shadow-sm)',
       }}
     >
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
@@ -181,12 +185,12 @@ const ScoreHistoryChart: React.FC<ScoreHistoryChartProps> = ({ scans, scoreType,
                 background: meta.color,
               }}
             />
-            <Typography sx={{ fontWeight: 600, color: '#334155', fontSize: '0.85rem' }}>
+            <Typography sx={{ fontWeight: 600, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
               {title || `${meta.label} Score`}
             </Typography>
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1, mt: 1 }}>
-            <Typography sx={{ fontWeight: 700, fontSize: '2rem', color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1 }}>
+            <Typography sx={{ fontWeight: 700, fontSize: '2rem', color: 'var(--text-primary)', letterSpacing: '-0.03em', lineHeight: 1 }}>
               {latest}
             </Typography>
             {data.length > 1 && (

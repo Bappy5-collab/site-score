@@ -12,6 +12,7 @@ import ScoreHistoryChart from '@/components/ScoreHistoryChart';
 import DashboardTour from '@/components/DashboardTour';
 import { CardSkeleton, ChartSkeleton, TableSkeleton } from '@/components/LoadingSkeleton';
 import { scanService, DashboardStats, Scan } from '@/services/scanService';
+import { useThemeMode } from '@/theme/ThemeModeProvider';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -68,7 +69,7 @@ const SectionTitle = ({ icon, children }: { icon: ReactNode; children: ReactNode
     >
       {icon}
     </Box>
-    <Typography sx={{ fontWeight: 600, fontSize: '1.0625rem', color: '#0F172A', letterSpacing: '-0.01em' }}>
+    <Typography sx={{ fontWeight: 600, fontSize: '1.0625rem', color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>
       {children}
     </Typography>
   </Box>
@@ -76,6 +77,8 @@ const SectionTitle = ({ icon, children }: { icon: ReactNode; children: ReactNode
 
 const DashboardPage = () => {
   const router = useRouter();
+  const { mode } = useThemeMode();
+  const dark = mode === 'dark';
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [scans, setScans] = useState<Scan[]>([]);
   const [loading, setLoading] = useState(true);
@@ -160,7 +163,7 @@ const DashboardPage = () => {
         position: 'top' as const,
         align: 'end' as const,
         labels: {
-          color: '#64748B',
+          color: dark ? '#94A3B8' : '#64748B',
           usePointStyle: true,
           pointStyle: 'circle' as const,
           boxWidth: 8,
@@ -170,10 +173,10 @@ const DashboardPage = () => {
         },
       },
       tooltip: {
-        backgroundColor: 'rgba(255, 255, 255, 0.95)',
-        titleColor: '#0F172A',
-        bodyColor: '#334155',
-        borderColor: 'rgba(15, 23, 42, 0.1)',
+        backgroundColor: dark ? 'rgba(17,24,39,0.95)' : 'rgba(255,255,255,0.95)',
+        titleColor: dark ? '#F1F5F9' : '#0F172A',
+        bodyColor: dark ? '#CBD5E1' : '#334155',
+        borderColor: dark ? 'rgba(255,255,255,0.1)' : 'rgba(15,23,42,0.1)',
         borderWidth: 1,
         padding: 12,
         cornerRadius: 8,
@@ -184,14 +187,14 @@ const DashboardPage = () => {
     scales: {
       x: {
         grid: { display: false, drawBorder: false } as any,
-        ticks: { color: '#64748B', maxTicksLimit: 7, font: { size: 11 } },
+        ticks: { color: dark ? '#94A3B8' : '#64748B', maxTicksLimit: 7, font: { size: 11 } },
       },
       y: {
         min: 0,
         max: 100,
         border: { display: false } as any,
-        grid: { color: 'rgba(15, 23, 42, 0.04)', drawBorder: false } as any,
-        ticks: { color: '#64748B', stepSize: 25, font: { size: 11 }, padding: 8 },
+        grid: { color: dark ? 'rgba(255,255,255,0.06)' : 'rgba(15,23,42,0.04)', drawBorder: false } as any,
+        ticks: { color: dark ? '#94A3B8' : '#64748B', stepSize: 25, font: { size: 11 }, padding: 8 },
       },
     },
   };
@@ -208,7 +211,7 @@ const DashboardPage = () => {
         fill: true,
         pointRadius: 0,
         pointHoverRadius: 5,
-        pointHoverBorderColor: '#F8FAFC',
+        pointHoverBorderColor: dark ? '#111827' : '#FFFFFF',
         pointHoverBorderWidth: 2,
         borderWidth: 2.5,
       },
@@ -221,7 +224,7 @@ const DashboardPage = () => {
         fill: true,
         pointRadius: 0,
         pointHoverRadius: 5,
-        pointHoverBorderColor: '#F8FAFC',
+        pointHoverBorderColor: dark ? '#111827' : '#FFFFFF',
         pointHoverBorderWidth: 2,
         borderWidth: 2.5,
       },
@@ -234,7 +237,7 @@ const DashboardPage = () => {
         fill: true,
         pointRadius: 0,
         pointHoverRadius: 5,
-        pointHoverBorderColor: '#F8FAFC',
+        pointHoverBorderColor: dark ? '#111827' : '#FFFFFF',
         pointHoverBorderWidth: 2,
         borderWidth: 2.5,
       },
@@ -265,11 +268,11 @@ const DashboardPage = () => {
               <Box>
                 <Typography
                   variant="h4"
-                  sx={{ fontWeight: 700, color: '#0F172A', letterSpacing: '-0.02em' }}
+                  sx={{ fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}
                 >
                   {userName ? `Welcome back, ${userName.split(' ')[0]}` : 'Dashboard'}
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#64748B', mt: 0.5 }}>
+                <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.5 }}>
                   Here&apos;s how your websites are performing.
                 </Typography>
               </Box>
@@ -285,9 +288,9 @@ const DashboardPage = () => {
                     textTransform: 'none',
                     borderRadius: '8px',
                     whiteSpace: 'nowrap',
-                    borderColor: 'rgba(15,23,42,0.15)',
-                    color: '#64748B',
-                    '&:hover': { borderColor: 'rgba(252,82,63,0.5)', background: 'rgba(252,82,63,0.08)', color: '#0F172A' },
+                    borderColor: 'var(--border-strong)',
+                    color: 'var(--text-muted)',
+                    '&:hover': { borderColor: 'rgba(252,82,63,0.5)', background: 'rgba(252,82,63,0.08)', color: 'var(--text-primary)' },
                   }}
                 >
                   Take a tour
@@ -383,10 +386,10 @@ const DashboardPage = () => {
                       sx={{
                         p: { xs: 2.5, md: 3 },
                         height: '100%',
-                        background: '#FFFFFF',
-                        border: '1px solid #E5E9F0',
+                        background: 'var(--bg-surface)',
+                        border: '1px solid var(--border)',
                         borderRadius: '10px',
-                        boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+                        boxShadow: 'var(--shadow-sm)',
                       }}
                     >
                       <SectionTitle icon={<ShowChartIcon />}>Score Trends</SectionTitle>
@@ -407,17 +410,17 @@ const DashboardPage = () => {
                       sx={{
                         p: { xs: 2.5, md: 3 },
                         height: '100%',
-                        background: '#FFFFFF',
-                        border: '1px solid #E5E9F0',
+                        background: 'var(--bg-surface)',
+                        border: '1px solid var(--border)',
                         borderRadius: '10px',
-                        boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+                        boxShadow: 'var(--shadow-sm)',
                       }}
                     >
                       <SectionTitle icon={<HistoryIcon />}>Recent Scans</SectionTitle>
                       {scans.length > 0 ? (
                         <ScanTable scans={scans.slice(0, 5)} />
                       ) : (
-                        <Typography variant="body2" sx={{ color: '#64748B', textAlign: 'center', py: 4 }}>
+                        <Typography variant="body2" sx={{ color: 'var(--text-muted)', textAlign: 'center', py: 4 }}>
                           No scans yet
                         </Typography>
                       )}
@@ -463,10 +466,10 @@ const DashboardPage = () => {
                       data-tour="all-scans"
                       sx={{
                         p: { xs: 2.5, md: 3 },
-                        background: '#FFFFFF',
-                        border: '1px solid #E5E9F0',
+                        background: 'var(--bg-surface)',
+                        border: '1px solid var(--border)',
                         borderRadius: '10px',
-                        boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+                        boxShadow: 'var(--shadow-sm)',
                       }}
                     >
                       <SectionTitle icon={<StorageIcon />}>All Scans</SectionTitle>
@@ -490,10 +493,10 @@ const DashboardPage = () => {
                           >
                             <SearchIcon sx={{ fontSize: 32 }} />
                           </Box>
-                          <Typography variant="h6" sx={{ color: '#0F172A', fontWeight: 600, mb: 0.5 }}>
+                          <Typography variant="h6" sx={{ color: 'var(--text-primary)', fontWeight: 600, mb: 0.5 }}>
                             No scans yet
                           </Typography>
-                          <Typography variant="body2" sx={{ color: '#64748B', mb: 3 }}>
+                          <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 3 }}>
                             Analyze your first website to see scores, trends and AI insights here.
                           </Typography>
                           <Button

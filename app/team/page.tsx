@@ -174,10 +174,7 @@ const TeamPage = () => {
                 variant="h4"
                 sx={{
                   fontWeight: 700,
-                  background: 'linear-gradient(135deg, #0F172A 0%, #334155 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
+                  color: 'var(--text-primary)',
                 }}
               >
                 Team Collaboration
@@ -275,10 +272,10 @@ const TeamPage = () => {
                 borderRadius: '8px',
               }}
             >
-              <Typography variant="body2" sx={{ fontWeight: 600, color: '#0F172A' }}>
+              <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
                 New member joined!
               </Typography>
-              <Typography variant="caption" sx={{ color: '#64748B' }}>
+              <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>
                 {newMemberNotification?.name} ({newMemberNotification?.email}) has joined the team
               </Typography>
             </Alert>
@@ -288,9 +285,9 @@ const TeamPage = () => {
             <Paper
               sx={{
                 p: 3,
-                background: '#FFFFFF',
+                background: 'var(--bg-surface)',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(15, 23, 42, 0.08)',
+                border: '1px solid var(--border)',
                 borderRadius: '8px',
                 textAlign: 'center',
                 py: 8,
@@ -307,17 +304,17 @@ const TeamPage = () => {
               <Paper
                 sx={{
                   p: 4,
-                  background: '#FFFFFF',
+                  background: 'var(--bg-surface)',
                   backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  border: '1px solid var(--border)',
                   borderRadius: '8px',
                   textAlign: 'center',
                 }}
               >
-                <Typography variant="h6" sx={{ mb: 2, color: '#0F172A' }}>
+                <Typography variant="h6" sx={{ mb: 2, color: 'var(--text-primary)' }}>
                   No Team Found
                 </Typography>
-                <Typography variant="body2" sx={{ mb: 3, color: '#64748B' }}>
+                <Typography variant="body2" sx={{ mb: 3, color: 'var(--text-muted)' }}>
                   Create a team to start collaborating with others.
                 </Typography>
                 <Button
@@ -345,13 +342,13 @@ const TeamPage = () => {
                   <Paper
                     sx={{
                       p: 3,
-                      background: '#FFFFFF',
+                      background: 'var(--bg-surface)',
                       backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      border: '1px solid var(--border)',
                       borderRadius: '8px',
                     }}
                   >
-                    <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: '#0F172A' }}>
+                    <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: 'var(--text-primary)' }}>
                       Team Members ({team.members?.length || 0})
                     </Typography>
                     <List>
@@ -367,9 +364,9 @@ const TeamPage = () => {
                             <ListItem
                               sx={{
                                 mb: 1,
-                                background: 'rgba(15, 23, 42, 0.04)',
+                                background: 'var(--overlay-04)',
                                 borderRadius: '8px',
-                                border: '1px solid rgba(15, 23, 42, 0.08)',
+                                border: '1px solid var(--border)',
                               }}
                             >
                               <ListItemAvatar>
@@ -384,8 +381,8 @@ const TeamPage = () => {
                               <ListItemText
                                 primary={member.userId?.name || 'Unknown User'}
                                 secondary={member.userId?.email || ''}
-                                primaryTypographyProps={{ color: '#0F172A', fontWeight: 500 }}
-                                secondaryTypographyProps={{ color: '#64748B' }}
+                                primaryTypographyProps={{ color: 'var(--text-primary)', fontWeight: 500 }}
+                                secondaryTypographyProps={{ color: 'var(--text-muted)' }}
                               />
                               <Chip
                                 label={member.role}
@@ -410,23 +407,23 @@ const TeamPage = () => {
                   <Paper
                     sx={{
                       p: 3,
-                      background: '#FFFFFF',
+                      background: 'var(--bg-surface)',
                       backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      border: '1px solid var(--border)',
                       borderRadius: '8px',
                     }}
                   >
-                    <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: '#0F172A' }}>
+                    <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: 'var(--text-primary)' }}>
                       Team Info
                     </Typography>
-                    <Typography variant="body2" sx={{ mb: 2, color: '#64748B' }}>
-                      <strong style={{ color: '#0F172A' }}>Name:</strong> {team.name}
+                    <Typography variant="body2" sx={{ mb: 2, color: 'var(--text-muted)' }}>
+                      <strong style={{ color: 'var(--text-primary)' }}>Name:</strong> {team.name}
                     </Typography>
-                    <Typography variant="body2" sx={{ mb: 2, color: '#64748B' }}>
-                      <strong style={{ color: '#0F172A' }}>Members:</strong> {team.members?.length || 0}
+                    <Typography variant="body2" sx={{ mb: 2, color: 'var(--text-muted)' }}>
+                      <strong style={{ color: 'var(--text-primary)' }}>Members:</strong> {team.members?.length || 0}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#64748B' }}>
-                      <strong style={{ color: '#0F172A' }}>Created:</strong>{' '}
+                    <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
+                      <strong style={{ color: 'var(--text-primary)' }}>Created:</strong>{' '}
                       {new Date(team.createdAt).toLocaleDateString()}
                     </Typography>
                   </Paper>
@@ -441,14 +438,14 @@ const TeamPage = () => {
             onClose={() => setInviteDialogOpen(false)}
             PaperProps={{
               sx: {
-                background: 'rgba(255, 255, 255, 0.95)',
+                background: 'var(--bg-surface)',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(15, 23, 42, 0.08)',
+                border: '1px solid var(--border)',
                 borderRadius: '8px',
               },
             }}
           >
-            <DialogTitle sx={{ color: '#0F172A' }}>Invite Team Member</DialogTitle>
+            <DialogTitle sx={{ color: 'var(--text-primary)' }}>Invite Team Member</DialogTitle>
             <DialogContent>
               <TextField
                 fullWidth
@@ -459,22 +456,22 @@ const TeamPage = () => {
                 sx={{
                   mt: 2,
                   '& .MuiOutlinedInput-root': {
-                    background: '#FFFFFF',
-                    border: '1px solid rgba(15, 23, 42, 0.08)',
+                    background: 'var(--bg-surface)',
+                    border: '1px solid var(--border)',
                     borderRadius: '8px',
-                    color: '#0F172A',
+                    color: 'var(--text-primary)',
                     '& fieldset': {
                       border: 'none',
                     },
                   },
                   '& .MuiInputLabel-root': {
-                    color: '#64748B',
+                    color: 'var(--text-muted)',
                   },
                 }}
               />
             </DialogContent>
             <DialogActions sx={{ p: 2 }}>
-              <Button onClick={() => setInviteDialogOpen(false)} sx={{ color: '#64748B' }}>
+              <Button onClick={() => setInviteDialogOpen(false)} sx={{ color: 'var(--text-muted)' }}>
                 Cancel
               </Button>
               <Button
@@ -498,14 +495,14 @@ const TeamPage = () => {
             onClose={() => setAcceptDialogOpen(false)}
             PaperProps={{
               sx: {
-                background: 'rgba(255, 255, 255, 0.95)',
+                background: 'var(--bg-surface)',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(15, 23, 42, 0.08)',
+                border: '1px solid var(--border)',
                 borderRadius: '8px',
               },
             }}
           >
-            <DialogTitle sx={{ color: '#0F172A' }}>Accept Team Invite</DialogTitle>
+            <DialogTitle sx={{ color: 'var(--text-primary)' }}>Accept Team Invite</DialogTitle>
             <DialogContent>
               <TextField
                 fullWidth
@@ -515,22 +512,22 @@ const TeamPage = () => {
                 sx={{
                   mt: 2,
                   '& .MuiOutlinedInput-root': {
-                    background: '#FFFFFF',
-                    border: '1px solid rgba(15, 23, 42, 0.08)',
+                    background: 'var(--bg-surface)',
+                    border: '1px solid var(--border)',
                     borderRadius: '8px',
-                    color: '#0F172A',
+                    color: 'var(--text-primary)',
                     '& fieldset': {
                       border: 'none',
                     },
                   },
                   '& .MuiInputLabel-root': {
-                    color: '#64748B',
+                    color: 'var(--text-muted)',
                   },
                 }}
               />
             </DialogContent>
             <DialogActions sx={{ p: 2 }}>
-              <Button onClick={() => setAcceptDialogOpen(false)} sx={{ color: '#64748B' }}>
+              <Button onClick={() => setAcceptDialogOpen(false)} sx={{ color: 'var(--text-muted)' }}>
                 Cancel
               </Button>
               <Button
@@ -554,15 +551,15 @@ const TeamPage = () => {
             onClose={() => setShowTokenDialog(false)}
             PaperProps={{
               sx: {
-                background: 'rgba(255, 255, 255, 0.95)',
+                background: 'var(--bg-surface)',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(15, 23, 42, 0.08)',
+                border: '1px solid var(--border)',
                 borderRadius: '8px',
                 maxWidth: '500px',
               },
             }}
           >
-            <DialogTitle sx={{ color: '#0F172A' }}>Share Invite</DialogTitle>
+            <DialogTitle sx={{ color: 'var(--text-primary)' }}>Share Invite</DialogTitle>
             <DialogContent>
               <Alert
                 severity="info"
@@ -571,37 +568,37 @@ const TeamPage = () => {
                   background: 'rgba(252, 82, 63, 0.1)',
                   border: '1px solid rgba(252, 82, 63, 0.3)',
                   borderRadius: '8px',
-                  color: '#0F172A',
+                  color: 'var(--text-primary)',
                 }}
               >
                 Send this token or link to your teammate. They can join from <strong>Team → Accept Invite</strong>, or just open the link.
               </Alert>
-              <Typography variant="body2" sx={{ mb: 2, color: '#64748B' }}>
+              <Typography variant="body2" sx={{ mb: 2, color: 'var(--text-muted)' }}>
                 Invite Token:
               </Typography>
               <Box
                 sx={{
                   p: 2,
-                  background: 'rgba(15, 23, 42, 0.04)',
-                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  background: 'var(--overlay-04)',
+                  border: '1px solid var(--border)',
                   borderRadius: '8px',
                   mb: 2,
                   wordBreak: 'break-all',
                   fontFamily: 'monospace',
                   fontSize: '0.875rem',
-                  color: '#0F172A',
+                  color: 'var(--text-primary)',
                 }}
               >
                 {shareToken}
               </Box>
-              <Typography variant="body2" sx={{ mb: 2, color: '#64748B' }}>
+              <Typography variant="body2" sx={{ mb: 2, color: 'var(--text-muted)' }}>
                 Or share this link:
               </Typography>
               <Box
                 sx={{
                   p: 2,
-                  background: 'rgba(15, 23, 42, 0.04)',
-                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  background: 'var(--overlay-04)',
+                  border: '1px solid var(--border)',
                   borderRadius: '8px',
                   wordBreak: 'break-all',
                   fontSize: '0.875rem',
@@ -619,7 +616,7 @@ const TeamPage = () => {
                     setSuccess('Token copied to clipboard!');
                   }
                 }}
-                sx={{ color: '#64748B' }}
+                sx={{ color: 'var(--text-muted)' }}
               >
                 Copy Token
               </Button>
@@ -630,7 +627,7 @@ const TeamPage = () => {
                     setSuccess('Invite link copied to clipboard!');
                   }
                 }}
-                sx={{ color: '#64748B' }}
+                sx={{ color: 'var(--text-muted)' }}
               >
                 Copy Link
               </Button>

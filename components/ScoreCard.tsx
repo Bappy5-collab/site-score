@@ -62,7 +62,7 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ title, score, color = 'primary' }
         }}
       >
         <CardContent>
-          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#0F172A' }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: 'var(--text-primary)' }}>
             {title}
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -79,7 +79,7 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ title, score, color = 'primary' }
             >
               {score}
             </Typography>
-            <Typography variant="h6" sx={{ ml: 1, color: '#64748B', fontWeight: 500 }}>
+            <Typography variant="h6" sx={{ ml: 1, color: 'var(--text-muted)', fontWeight: 500 }}>
               /100
             </Typography>
           </Box>
@@ -89,7 +89,7 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ title, score, color = 'primary' }
             sx={{
               height: 8,
               borderRadius: 4,
-              background: 'rgba(15, 23, 42, 0.1)',
+              background: 'var(--overlay-10)',
               '& .MuiLinearProgress-bar': {
                 background: `linear-gradient(90deg, ${getColorValue()} 0%, ${getColorValue()}80 100%)`,
                 borderRadius: 4,

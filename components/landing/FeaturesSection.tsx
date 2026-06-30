@@ -61,9 +61,9 @@ export default function FeaturesSection() {
                   whileHover={{ y: -8, transition: { duration: 0.2 } }}
                   sx={{
                     width: '100%',
-                    background: 'rgba(15, 23, 42, 0.03)',
+                    background: 'var(--overlay-03)',
                     backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(15, 23, 42, 0.08)',
+                    border: '1px solid var(--border)',
                     borderRadius: '12px',
                     transition: 'all 0.3s ease',
                     '&:hover': {
@@ -88,10 +88,10 @@ export default function FeaturesSection() {
                     >
                       <Icon sx={{ fontSize: 28, color: '#FC523F' }} />
                     </Box>
-                    <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A', mb: 1 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 1 }}>
                       {item.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#64748B', lineHeight: 1.6 }}>
+                    <Typography variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                       {item.description}
                     </Typography>
                   </CardContent>

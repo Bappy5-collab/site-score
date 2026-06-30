@@ -25,14 +25,14 @@ export default function SecurityPage() {
             sx={{
               fontSize: { xs: '2rem', md: '2.75rem' },
               fontWeight: 800,
-              color: '#0F172A',
+              color: 'var(--text-primary)',
               letterSpacing: '-0.02em',
               mb: 2,
             }}
           >
             Security
           </Typography>
-          <Typography sx={{ color: '#64748B', fontSize: '1.1rem', lineHeight: 1.7, mb: 5 }}>
+          <Typography sx={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.7, mb: 5 }}>
             We take the security of your data seriously. This page summarizes how we protect your information and our security practices for the AI Growth Operating System.
           </Typography>
 
@@ -45,8 +45,8 @@ export default function SecurityPage() {
                   sx={{
                     p: 3,
                     borderRadius: '10px',
-                    background: 'rgba(15, 23, 42, 0.03)',
-                    border: '1px solid rgba(15, 23, 42, 0.08)',
+                    background: 'var(--overlay-03)',
+                    border: '1px solid var(--border)',
                     display: 'flex',
                     gap: 2,
                     alignItems: 'flex-start',
@@ -56,10 +56,10 @@ export default function SecurityPage() {
                     <Icon sx={{ color: '#22C55E', fontSize: 24 }} />
                   </Box>
                   <Box>
-                    <Typography variant="h6" sx={{ fontWeight: 600, color: '#0F172A', mb: 0.5 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 0.5 }}>
                       {p.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#64748B', lineHeight: 1.6 }}>
+                    <Typography variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                       {p.text}
                     </Typography>
                   </Box>
@@ -68,11 +68,11 @@ export default function SecurityPage() {
             })}
           </Box>
 
-          <Typography sx={{ color: '#64748B', fontSize: '1rem', lineHeight: 1.7, mt: 4 }}>
+          <Typography sx={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.7, mt: 4 }}>
             If you discover a security vulnerability, please report it responsibly to security@sitescore.ai. We appreciate coordinated disclosure and will work with you to address issues.
           </Typography>
 
-          <Typography sx={{ color: '#64748B', fontSize: '0.9rem', mt: 4 }}>
+          <Typography sx={{ color: 'var(--text-muted)', fontSize: '0.9rem', mt: 4 }}>
             Last updated: {new Date().toLocaleDateString('en-US')}.
           </Typography>
         </motion.div>
