@@ -28,10 +28,10 @@ const btnSx = {
   textTransform: 'none' as const,
   fontWeight: 600,
   fontSize: '0.9rem',
-  borderRadius: '10px',
+  borderRadius: '8px',
   color: '#1F2937',
-  backgroundColor: '#FFFFFF',
-  border: '1px solid rgba(255,255,255,0.15)',
+  backgroundColor: 'var(--bg-surface)',
+  border: '1px solid var(--border-strong)',
   boxShadow: 'none',
   '&:hover': { backgroundColor: '#F3F4F6', boxShadow: 'none' },
 };
@@ -50,10 +50,10 @@ export default function OAuthButtons({ label = 'or continue with' }: OAuthButton
       <Divider
         sx={{
           my: 2,
-          '&::before, &::after': { borderColor: 'rgba(255,255,255,0.1)' },
+          '&::before, &::after': { borderColor: 'var(--border)' },
         }}
       >
-        <Typography variant="caption" sx={{ color: '#64748B' }}>
+        <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>
           {label}
         </Typography>
       </Divider>

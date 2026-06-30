@@ -82,10 +82,7 @@ const ReportsPage = () => {
               sx={{
                 fontWeight: 700,
                 mb: 3,
-                background: 'linear-gradient(135deg, #F1F5F9 0%, #94A3B8 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: 'var(--text-primary)',
               }}
             >
               Reports & Export
@@ -96,29 +93,29 @@ const ReportsPage = () => {
             <Paper
               sx={{
                 p: 3,
-                background: '#111827',
+                background: 'var(--bg-surface)',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '12px',
+                border: '1px solid var(--border)',
+                borderRadius: '8px',
                 textAlign: 'center',
                 py: 8,
               }}
             >
-              <CircularProgress sx={{ color: '#F97316' }} />
+              <CircularProgress sx={{ color: '#FC523F' }} />
             </Paper>
           ) : scans.length === 0 ? (
             <Paper
               sx={{
                 p: 3,
-                background: '#111827',
+                background: 'var(--bg-surface)',
                 backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '12px',
+                border: '1px solid var(--border)',
+                borderRadius: '8px',
                 textAlign: 'center',
                 py: 8,
               }}
             >
-              <Typography variant="body2" sx={{ color: '#94A3B8' }}>
+              <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                 No scans available for export. Analyze a website first.
               </Typography>
             </Paper>
@@ -137,7 +134,7 @@ const ReportsPage = () => {
                       sx={{
                         p: 3,
                         height: '100%',
-                        background: '#111827',
+                        background: 'var(--bg-surface)',
                         backdropFilter: 'blur(20px)',
                         border: '1px solid rgba(255, 255, 255, 0.08)',
                         borderRadius: '12px',
@@ -145,12 +142,12 @@ const ReportsPage = () => {
                         flexDirection: 'column',
                       }}
                     >
-                      <Typography variant="h6" sx={{ mb: 1, fontWeight: 600, color: '#F1F5F9' }}>
+                      <Typography variant="h6" sx={{ mb: 1, fontWeight: 600, color: 'var(--text-primary)' }}>
                         {scan.title || scan.url}
                       </Typography>
                       <Typography
                         variant="body2"
-                        sx={{ mb: 2, color: '#94A3B8', fontSize: '0.75rem', wordBreak: 'break-all' }}
+                        sx={{ mb: 2, color: 'var(--text-muted)', fontSize: '0.75rem', wordBreak: 'break-all' }}
                       >
                         {scan.url}
                       </Typography>
@@ -160,9 +157,9 @@ const ReportsPage = () => {
                           label={`Performance: ${scan.performanceScore}`}
                           size="small"
                           sx={{
-                            background: 'rgba(249, 115, 22, 0.2)',
-                            color: '#F97316',
-                            border: '1px solid rgba(249, 115, 22, 0.3)',
+                            background: 'rgba(252, 82, 63, 0.2)',
+                            color: '#FC523F',
+                            border: '1px solid rgba(252, 82, 63, 0.3)',
                           }}
                         />
                         <Chip
@@ -211,16 +208,16 @@ const ReportsPage = () => {
                             onClick={() => handleExport(scan._id, 'json')}
                             disabled={exporting[scan._id] === 'json'}
                             sx={{
-                              background: 'rgba(249, 115, 22, 0.1)',
-                              border: '1px solid rgba(249, 115, 22, 0.3)',
-                              color: '#F97316',
+                              background: 'rgba(252, 82, 63, 0.1)',
+                              border: '1px solid rgba(252, 82, 63, 0.3)',
+                              color: '#FC523F',
                               '&:hover': {
-                                background: 'rgba(249, 115, 22, 0.2)',
+                                background: 'rgba(252, 82, 63, 0.2)',
                               },
                             }}
                           >
                             {exporting[scan._id] === 'json' ? (
-                              <CircularProgress size={20} sx={{ color: '#F97316' }} />
+                              <CircularProgress size={20} sx={{ color: '#FC523F' }} />
                             ) : (
                               <DescriptionIcon />
                             )}

@@ -60,14 +60,14 @@ export default function PricingSection() {
                   display: 'flex',
                   flexDirection: 'column',
                   position: 'relative',
-                  borderRadius: '20px',
+                  borderRadius: '12px',
                   overflow: 'visible',
                   background: plan.recommended
-                    ? 'linear-gradient(180deg, rgba(249, 115, 22, 0.12) 0%, rgba(21, 25, 50, 0.98) 28%)'
-                    : 'rgba(255, 255, 255, 0.03)',
+                    ? 'linear-gradient(180deg, rgba(252, 82, 63, 0.12) 0%, var(--bg-surface) 28%)'
+                    : 'var(--overlay-03)',
                   backdropFilter: 'blur(24px)',
-                  border: plan.recommended ? '1px solid rgba(249, 115, 22, 0.4)' : '1px solid rgba(255, 255, 255, 0.08)',
-                  boxShadow: plan.recommended ? '0 0 0 1px rgba(249, 115, 22, 0.2), 0 24px 48px -12px rgba(0,0,0,0.4)' : 'none',
+                  border: plan.recommended ? '1px solid rgba(252, 82, 63, 0.4)' : '1px solid var(--border)',
+                  boxShadow: plan.recommended ? '0 0 0 1px rgba(252, 82, 63, 0.2), 0 24px 48px -12px rgba(15, 23, 42, 0.12)' : 'none',
                 }}
               >
                 {plan.recommended && (
@@ -80,7 +80,7 @@ export default function PricingSection() {
                       px: 2,
                       py: 0.75,
                       borderRadius: '9999px',
-                      background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+                      background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
                       fontSize: '0.75rem',
                       fontWeight: 700,
                       color: '#FFF',
@@ -92,7 +92,7 @@ export default function PricingSection() {
                   </Box>
                 )}
                 <Box sx={{ p: 3.5, flex: 1, display: 'flex', flexDirection: 'column' }}>
-                  <Typography variant="h5" sx={{ fontWeight: 700, color: '#F1F5F9', mb: 2 }}>
+                  <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary)', mb: 2 }}>
                     {plan.name}
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 0.5, mb: 1 }}>
@@ -101,7 +101,7 @@ export default function PricingSection() {
                       sx={{
                         fontSize: '2.75rem',
                         fontWeight: 800,
-                        background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+                        background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',
@@ -109,11 +109,11 @@ export default function PricingSection() {
                     >
                       ${plan.price}
                     </Typography>
-                    <Typography component="span" sx={{ color: '#64748B', fontSize: '1rem' }}>
+                    <Typography component="span" sx={{ color: 'var(--text-muted)', fontSize: '1rem' }}>
                       {plan.period}
                     </Typography>
                   </Box>
-                  <Typography variant="body2" sx={{ color: '#94A3B8', mb: 3 }}>
+                  <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 3 }}>
                     {plan.scans}
                   </Typography>
                   <Box sx={{ flex: 1, mb: 3 }}>
@@ -125,11 +125,11 @@ export default function PricingSection() {
                           alignItems: 'center',
                           gap: 1.5,
                           py: 1,
-                          '&:not(:last-child)': { borderBottom: '1px solid rgba(255,255,255,0.04)' },
+                          '&:not(:last-child)': { borderBottom: '1px solid var(--border-subtle)' },
                         }}
                       >
-                        <CheckCircleRoundedIcon sx={{ fontSize: 20, color: plan.recommended ? '#F97316' : '#64748B', flexShrink: 0 }} />
-                        <Typography variant="body2" sx={{ color: '#94A3B8' }}>
+                        <CheckCircleRoundedIcon sx={{ fontSize: 20, color: plan.recommended ? '#FC523F' : 'var(--text-muted)', flexShrink: 0 }} />
+                        <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                           {f}
                         </Typography>
                       </Box>
@@ -145,24 +145,24 @@ export default function PricingSection() {
                     sx={{
                       mt: 'auto',
                       py: 1.5,
-                      borderRadius: '14px',
+                      borderRadius: '10px',
                       fontWeight: 700,
                       textTransform: 'none',
                       ...(plan.recommended
                         ? {
-                            background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
-                            boxShadow: '0 8px 24px rgba(249, 115, 22, 0.4)',
+                            background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
+                            boxShadow: '0 8px 24px rgba(252, 82, 63, 0.4)',
                             '&:hover': {
-                              background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)',
-                              boxShadow: '0 12px 32px rgba(249, 115, 22, 0.5)',
+                              background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)',
+                              boxShadow: '0 12px 32px rgba(252, 82, 63, 0.5)',
                             },
                           }
                         : {
-                            borderColor: 'rgba(255, 255, 255, 0.15)',
-                            color: '#F1F5F9',
+                            borderColor: 'var(--border-strong)',
+                            color: 'var(--text-primary)',
                             '&:hover': {
-                              borderColor: 'rgba(249, 115, 22, 0.5)',
-                              background: 'rgba(249, 115, 22, 0.08)',
+                              borderColor: 'rgba(252, 82, 63, 0.5)',
+                              background: 'rgba(252, 82, 63, 0.08)',
                             },
                           }),
                     }}

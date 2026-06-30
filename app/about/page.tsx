@@ -17,18 +17,18 @@ export default function AboutPage() {
             sx={{
               fontSize: { xs: '2rem', md: '2.75rem' },
               fontWeight: 800,
-              color: '#F1F5F9',
+              color: 'var(--text-primary)',
               letterSpacing: '-0.02em',
               mb: 2,
             }}
           >
             About SiteScore AI
           </Typography>
-          <Typography sx={{ color: '#94A3B8', fontSize: '1.1rem', lineHeight: 1.7, mb: 4 }}>
+          <Typography sx={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.7, mb: 4 }}>
             We built SiteScore AI because we were tired of SEO and performance tools that hand you reports and leave you guessing what to do next. Our mission is simple: turn data into a clear action plan so you can grow instead of just measure.
           </Typography>
 
-          <Typography variant="h2" sx={{ fontSize: '1.5rem', fontWeight: 700, color: '#F1F5F9', mb: 2, mt: 4 }}>
+          <Typography variant="h2" sx={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)', mb: 2, mt: 4 }}>
             What we believe
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -43,22 +43,22 @@ export default function AboutPage() {
                   key={item.title}
                   sx={{
                     p: 2.5,
-                    borderRadius: '16px',
-                    background: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid rgba(255, 255, 255, 0.06)',
+                    borderRadius: '10px',
+                    background: 'var(--overlay-03)',
+                    border: '1px solid var(--border-subtle)',
                     display: 'flex',
                     gap: 2,
                     alignItems: 'flex-start',
                   }}
                 >
-                  <Box sx={{ width: 48, height: 48, borderRadius: '12px', background: 'rgba(249, 115, 22, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <Icon sx={{ color: '#F97316', fontSize: 24 }} />
+                  <Box sx={{ width: 48, height: 48, borderRadius: '8px', background: 'rgba(252, 82, 63, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Icon sx={{ color: '#FC523F', fontSize: 24 }} />
                   </Box>
                   <Box>
-                    <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 0.5 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 0.5 }}>
                       {item.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+                    <Typography variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                       {item.text}
                     </Typography>
                   </Box>
@@ -67,7 +67,7 @@ export default function AboutPage() {
             })}
           </Box>
 
-          <Typography sx={{ color: '#94A3B8', fontSize: '1rem', lineHeight: 1.7, mt: 5 }}>
+          <Typography sx={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.7, mt: 5 }}>
             We’re a small team focused on making website growth predictable and actionable. If that resonates, we’d love to hear from you—head to Contact or try the product free.
           </Typography>
         </motion.div>

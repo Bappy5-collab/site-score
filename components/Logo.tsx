@@ -24,7 +24,7 @@ interface LogoProps {
 export default function Logo({
   size = 34,
   showText = true,
-  textColor = '#F8FAFC',
+  textColor = 'var(--text-primary)',
   fontSize,
   sx,
   onClick,
@@ -56,8 +56,8 @@ export default function Logo({
       >
         <defs>
           <linearGradient id={gid} x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#FB923C" />
-            <stop offset="1" stopColor="#EA580C" />
+            <stop stopColor="#FD7565" />
+            <stop offset="1" stopColor="#E13E2C" />
           </linearGradient>
         </defs>
         <rect width="40" height="40" rx="11" fill={`url(#${gid})`} />
@@ -80,7 +80,7 @@ export default function Logo({
           }}
         >
           SiteScore
-          <Box component="span" sx={{ color: '#F97316' }}>
+          <Box component="span" sx={{ color: '#FC523F' }}>
             {' '}
             AI
           </Box>

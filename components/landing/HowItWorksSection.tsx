@@ -53,22 +53,22 @@ export default function HowItWorksSection() {
                     sx={{
                       height: '100%',
                       p: 3,
-                      borderRadius: '24px',
-                      background: 'rgba(255, 255, 255, 0.03)',
+                      borderRadius: '12px',
+                      background: 'var(--overlay-03)',
                       backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      border: '1px solid var(--border)',
                       textAlign: 'center',
                       position: 'relative',
-                      '&:hover': { borderColor: 'rgba(249, 115, 22, 0.25)' },
+                      '&:hover': { borderColor: 'rgba(252, 82, 63, 0.25)' },
                     }}
                   >
                     <Box
                       sx={{
                         width: 72,
                         height: 72,
-                        borderRadius: '20px',
-                        background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.25) 0%, rgba(234, 88, 12, 0.2) 100%)',
-                        border: '1px solid rgba(249, 115, 22, 0.3)',
+                        borderRadius: '12px',
+                        background: 'linear-gradient(135deg, rgba(252, 82, 63, 0.25) 0%, rgba(252, 82, 63, 0.2) 100%)',
+                        border: '1px solid rgba(252, 82, 63, 0.3)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -76,12 +76,12 @@ export default function HowItWorksSection() {
                         mb: 2,
                       }}
                     >
-                      <Icon sx={{ fontSize: 36, color: '#F97316' }} />
+                      <Icon sx={{ fontSize: 36, color: '#FC523F' }} />
                     </Box>
-                    <Typography variant="h5" sx={{ fontWeight: 700, color: '#F1F5F9', mb: 1.5 }}>
+                    <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary)', mb: 1.5 }}>
                       {step.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+                    <Typography variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                       {step.description}
                     </Typography>
                     {index < steps.length - 1 && (
@@ -92,7 +92,7 @@ export default function HowItWorksSection() {
                           right: -32,
                           top: '50%',
                           transform: 'translateY(-50%)',
-                          color: 'rgba(249, 115, 22, 0.5)',
+                          color: 'rgba(252, 82, 63, 0.5)',
                         }}
                       >
                         <ArrowForwardIcon sx={{ fontSize: 28 }} />

@@ -1,6 +1,7 @@
 'use client';
 
 import { Box, Typography, Button, Toolbar, AppBar, useMediaQuery, useTheme } from '@mui/material';
+import ThemeToggle from '@/components/ThemeToggle';
 import Logo from '@/components/Logo';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
@@ -28,11 +29,11 @@ export default function LandingNavbar() {
       sx={{
         top: 0,
         zIndex: 1100,
-        background: 'rgba(10, 14, 39, 0.7)',
+        background: 'var(--bg-base)',
         backdropFilter: 'blur(24px) saturate(180%)',
         WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
-        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+        borderBottom: '1px solid var(--border-subtle)',
+        boxShadow: 'var(--shadow-md)',
       }}
     >
       <Toolbar
@@ -67,8 +68,8 @@ export default function LandingNavbar() {
               gap: 0.5,
               p: 0.5,
               borderRadius: '9999px',
-              background: 'rgba(255, 255, 255, 0.04)',
-              border: '1px solid rgba(255, 255, 255, 0.06)',
+              background: 'var(--overlay-03)',
+              border: '1px solid var(--border-subtle)',
             }}
           >
             {navTabs.map((tab) => (
@@ -85,8 +86,8 @@ export default function LandingNavbar() {
                   fontSize: '0.9rem',
                   fontWeight: 600,
                   textTransform: 'none',
-                  color: '#94A3B8',
-                  '&:hover': { color: '#F1F5F9', background: 'rgba(255, 255, 255, 0.06)' },
+                  color: 'var(--text-muted)',
+                  '&:hover': { color: 'var(--text-primary)', background: 'var(--overlay-05)' },
                 }}
               >
                 {tab.label}
@@ -96,6 +97,7 @@ export default function LandingNavbar() {
         )}
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexShrink: 0 }}>
+          <ThemeToggle size="small" />
           {!isMobile && (
             <Button
               component={motion.button}
@@ -103,12 +105,12 @@ export default function LandingNavbar() {
               whileTap={{ scale: 0.97 }}
               onClick={() => router.push('/demo')}
               sx={{
-                color: '#FB923C',
+                color: '#FD7565',
                 fontWeight: 600,
                 fontSize: '0.9rem',
                 textTransform: 'none',
-                borderRadius: '12px',
-                '&:hover': { color: '#F1F5F9', background: 'rgba(249, 115, 22, 0.12)' },
+                borderRadius: '8px',
+                '&:hover': { color: 'var(--text-primary)', background: 'rgba(252, 82, 63, 0.12)' },
               }}
             >
               View Demo
@@ -120,12 +122,12 @@ export default function LandingNavbar() {
             whileTap={{ scale: 0.97 }}
             onClick={() => router.push('/login')}
             sx={{
-              color: '#94A3B8',
+              color: 'var(--text-muted)',
               fontWeight: 600,
               fontSize: '0.9rem',
               textTransform: 'none',
-              borderRadius: '12px',
-              '&:hover': { color: '#F1F5F9', background: 'rgba(255, 255, 255, 0.06)' },
+              borderRadius: '8px',
+              '&:hover': { color: 'var(--text-primary)', background: 'var(--overlay-05)' },
             }}
           >
             Login
@@ -137,15 +139,15 @@ export default function LandingNavbar() {
             variant="contained"
             onClick={() => router.push('/signup')}
             sx={{
-              borderRadius: '12px',
+              borderRadius: '8px',
               fontWeight: 700,
               fontSize: '0.9rem',
               textTransform: 'none',
-              background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
-              boxShadow: '0 4px 20px rgba(249, 115, 22, 0.4)',
+              background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
+              boxShadow: '0 4px 20px rgba(252, 82, 63, 0.4)',
               '&:hover': {
-                background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)',
-                boxShadow: '0 6px 28px rgba(249, 115, 22, 0.5)',
+                background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)',
+                boxShadow: '0 6px 28px rgba(252, 82, 63, 0.5)',
               },
             }}
           >

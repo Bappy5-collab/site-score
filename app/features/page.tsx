@@ -42,11 +42,11 @@ export default function FeaturesPage() {
           <Box sx={{ textAlign: 'center', mb: 6 }}>
             <Typography
               variant="h1"
-              sx={{ fontSize: { xs: '2rem', md: '2.75rem' }, fontWeight: 800, color: '#F1F5F9', letterSpacing: '-0.02em', mb: 2 }}
+              sx={{ fontSize: { xs: '2rem', md: '2.75rem' }, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em', mb: 2 }}
             >
               Everything you need to grow
             </Typography>
-            <Typography sx={{ color: '#94A3B8', fontSize: '1.1rem', lineHeight: 1.7, maxWidth: 640, mx: 'auto' }}>
+            <Typography sx={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.7, maxWidth: 640, mx: 'auto' }}>
               SiteScore AI is a full growth operating system—from deep audits to AI-driven action plans, automation, and reporting.
             </Typography>
           </Box>
@@ -66,32 +66,32 @@ export default function FeaturesPage() {
                     sx={{
                       width: '100%',
                       p: 3,
-                      borderRadius: '18px',
-                      background: 'rgba(255, 255, 255, 0.03)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      borderRadius: '12px',
+                      background: 'var(--overlay-03)',
+                      border: '1px solid var(--border)',
                       transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
-                      '&:hover': { borderColor: 'rgba(249, 115, 22, 0.35)', boxShadow: '0 12px 32px rgba(249, 115, 22, 0.15)' },
+                      '&:hover': { borderColor: 'rgba(252, 82, 63, 0.35)', boxShadow: '0 12px 32px rgba(252, 82, 63, 0.15)' },
                     }}
                   >
                     <Box
                       sx={{
                         width: 52,
                         height: 52,
-                        borderRadius: '14px',
-                        background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(234, 88, 12, 0.15) 100%)',
-                        border: '1px solid rgba(249, 115, 22, 0.2)',
+                        borderRadius: '10px',
+                        background: 'linear-gradient(135deg, rgba(252, 82, 63, 0.2) 0%, rgba(252, 82, 63, 0.15) 100%)',
+                        border: '1px solid rgba(252, 82, 63, 0.2)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         mb: 2,
                       }}
                     >
-                      <Icon sx={{ fontSize: 26, color: '#F97316' }} />
+                      <Icon sx={{ fontSize: 26, color: '#FC523F' }} />
                     </Box>
-                    <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 0.75 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 0.75 }}>
                       {item.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+                    <Typography variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                       {item.text}
                     </Typography>
                   </Box>
@@ -108,11 +108,11 @@ export default function FeaturesPage() {
               sx={{
                 px: 4,
                 py: 1.5,
-                borderRadius: '14px',
+                borderRadius: '10px',
                 fontWeight: 700,
                 textTransform: 'none',
-                background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
-                '&:hover': { background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)' },
+                background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
+                '&:hover': { background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)' },
               }}
             >
               Start free

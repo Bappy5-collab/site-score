@@ -138,9 +138,9 @@ export default function GlobalSearch() {
   };
 
   const iconFor = (kind: ResultItem['kind']) => {
-    if (kind === 'scan-url') return <BoltIcon sx={{ fontSize: 18, color: '#F97316' }} />;
-    if (kind === 'scan') return <LanguageIcon sx={{ fontSize: 18, color: '#94A3B8' }} />;
-    return <NorthEastIcon sx={{ fontSize: 16, color: '#94A3B8' }} />;
+    if (kind === 'scan-url') return <BoltIcon sx={{ fontSize: 18, color: '#FC523F' }} />;
+    if (kind === 'scan') return <LanguageIcon sx={{ fontSize: 18, color: 'var(--text-muted)' }} />;
+    return <NorthEastIcon sx={{ fontSize: 16, color: 'var(--text-muted)' }} />;
   };
 
   return (
@@ -151,16 +151,16 @@ export default function GlobalSearch() {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            background: 'rgba(255, 255, 255, 0.03)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRadius: '8px',
+            background: 'var(--overlay-03)',
+            border: '1px solid var(--border)',
+            borderRadius: '6px',
             px: 1.5,
             py: 0.5,
             transition: 'border-color 0.15s ease',
-            '&:focus-within': { borderColor: 'rgba(249, 115, 22, 0.5)' },
+            '&:focus-within': { borderColor: 'rgba(252, 82, 63, 0.5)' },
           }}
         >
-          <SearchIcon sx={{ color: '#9CA3AF', mr: 1 }} />
+          <SearchIcon sx={{ color: 'var(--text-muted)', mr: 1 }} />
           <InputBase
             placeholder="Search pages, scans, or type a URL…"
             value={query}
@@ -171,10 +171,10 @@ export default function GlobalSearch() {
             }}
             onKeyDown={handleKeyDown}
             sx={{
-              color: '#F1F5F9',
+              color: 'var(--text-primary)',
               flex: 1,
               fontSize: '0.875rem',
-              '& input::placeholder': { color: '#94A3B8', opacity: 1 },
+              '& input::placeholder': { color: 'var(--text-muted)', opacity: 1 },
             }}
           />
         </Box>
@@ -188,19 +188,19 @@ export default function GlobalSearch() {
         >
           <Paper
             sx={{
-              background: 'rgba(17, 24, 39, 0.98)',
+              background: 'var(--bg-surface)',
               backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              borderRadius: '12px',
+              border: '1px solid var(--border-strong)',
+              borderRadius: '8px',
               overflow: 'hidden',
-              boxShadow: '0 20px 48px rgba(0,0,0,0.5)',
+              boxShadow: 'var(--shadow-md)',
               maxHeight: 420,
               overflowY: 'auto',
             }}
           >
             {results.length === 0 ? (
               <Box sx={{ p: 2.5, textAlign: 'center' }}>
-                <Typography variant="body2" sx={{ color: '#94A3B8' }}>
+                <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                   No matches for “{query}”
                 </Typography>
               </Box>
@@ -221,7 +221,7 @@ export default function GlobalSearch() {
                       px: 1.75,
                       py: 1.1,
                       cursor: 'pointer',
-                      background: i === active ? 'rgba(249, 115, 22, 0.12)' : 'transparent',
+                      background: i === active ? 'rgba(252, 82, 63, 0.12)' : 'transparent',
                     }}
                   >
                     <Box sx={{ width: 24, display: 'flex', justifyContent: 'center', flexShrink: 0 }}>
@@ -230,19 +230,19 @@ export default function GlobalSearch() {
                     <Box sx={{ minWidth: 0, flex: 1 }}>
                       <Typography
                         variant="body2"
-                        sx={{ color: '#F1F5F9', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+                        sx={{ color: 'var(--text-primary)', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
                       >
                         {r.label}
                       </Typography>
                       <Typography
                         variant="caption"
-                        sx={{ color: '#64748B', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block' }}
+                        sx={{ color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block' }}
                       >
                         {r.sublabel}
                       </Typography>
                     </Box>
                     {i === active && (
-                      <Typography variant="caption" sx={{ color: '#64748B', flexShrink: 0 }}>
+                      <Typography variant="caption" sx={{ color: 'var(--text-muted)', flexShrink: 0 }}>
                         ↵
                       </Typography>
                     )}

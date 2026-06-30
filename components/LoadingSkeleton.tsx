@@ -12,10 +12,10 @@ export const CardSkeleton: React.FC = () => {
     >
       <Box
         sx={{
-          background: '#111827',
+          background: 'var(--bg-surface)',
           backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          borderRadius: '16px',
+          border: '1px solid var(--border)',
+          borderRadius: '10px',
           p: 3,
         }}
       >
@@ -31,10 +31,10 @@ export const TableSkeleton: React.FC = () => {
   return (
     <Box
       sx={{
-        background: '#111827',
+        background: 'var(--bg-surface)',
         backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        borderRadius: '16px',
+        border: '1px solid var(--border)',
+        borderRadius: '10px',
         p: 2,
       }}
     >
@@ -54,10 +54,10 @@ export const ChartSkeleton: React.FC = () => {
   return (
     <Box
       sx={{
-        background: '#111827',
+        background: 'var(--bg-surface)',
         backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        borderRadius: '16px',
+        border: '1px solid var(--border)',
+        borderRadius: '10px',
         p: 3,
         height: 400,
       }}

@@ -20,6 +20,15 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import SearchIcon from '@mui/icons-material/Search';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import ReportProblemOutlinedIcon from '@mui/icons-material/ReportProblemOutlined';
+import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined';
+import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
+import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import { ReactNode } from 'react';
 import { scanService, Scan, LighthouseResult } from '@/services/scanService';
 import { aiService } from '@/services/aiService';
 import ProtectedRoute from '@/components/ProtectedRoute';
@@ -40,49 +49,96 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { useThemeMode } from '@/theme/ThemeModeProvider';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, ChartTooltip, Legend);
 
-const chartOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: {
-      display: false,
-    },
-    tooltip: {
-      backgroundColor: 'rgba(15, 23, 42, 0.95)',
-      titleColor: '#F1F5F9',
-      bodyColor: '#94A3B8',
-      borderColor: 'rgba(255, 255, 255, 0.08)',
-      borderWidth: 1,
-      padding: 12,
-      cornerRadius: 8,
-    },
-  },
-  scales: {
-    x: {
-      grid: {
-        color: 'rgba(255, 255, 255, 0.05)',
-      },
-      ticks: {
-        color: '#94A3B8',
-      },
-    },
-    y: {
-      grid: {
-        color: 'rgba(255, 255, 255, 0.05)',
-      },
-      ticks: {
-        color: '#94A3B8',
-      },
-      min: 0,
-      max: 100,
-    },
-  },
-};
+// Shared clean card surface used across every result panel
+const panelSx = {
+  p: 3,
+  background: 'var(--bg-surface)',
+  border: '1px solid var(--border)',
+  borderRadius: '10px',
+  boxShadow: 'var(--shadow-sm)',
+} as const;
+
+// Panel header with a tinted icon tile — replaces the emoji headings
+const PanelTitle = ({
+  icon,
+  children,
+  color = '#FC523F',
+  rgb = '252, 82, 63',
+}: {
+  icon: ReactNode;
+  children: ReactNode;
+  color?: string;
+  rgb?: string;
+}) => (
+  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, mb: 2.5 }}>
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 32,
+        height: 32,
+        borderRadius: '8px',
+        color,
+        background: `rgba(${rgb}, 0.1)`,
+        '& svg': { fontSize: 19 },
+      }}
+    >
+      {icon}
+    </Box>
+    <Typography sx={{ fontWeight: 600, fontSize: '1.0625rem', color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>
+      {children}
+    </Typography>
+  </Box>
+);
 
 const AnalyzerPage = () => {
+  const { mode } = useThemeMode();
+  const dark = mode === 'dark';
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        backgroundColor: dark ? 'rgba(17,24,39,0.95)' : 'rgba(248, 250, 252, 0.95)',
+        titleColor: dark ? '#F1F5F9' : '#0F172A',
+        bodyColor: dark ? '#CBD5E1' : '#64748B',
+        borderColor: dark ? 'rgba(255,255,255,0.1)' : 'rgba(15, 23, 42, 0.08)',
+        borderWidth: 1,
+        padding: 12,
+        cornerRadius: 8,
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          color: dark ? 'rgba(255,255,255,0.06)' : 'rgba(15, 23, 42, 0.04)',
+        },
+        ticks: {
+          color: dark ? '#94A3B8' : '#64748B',
+        },
+      },
+      y: {
+        grid: {
+          color: dark ? 'rgba(255,255,255,0.06)' : 'rgba(15, 23, 42, 0.04)',
+        },
+        ticks: {
+          color: dark ? '#94A3B8' : '#64748B',
+        },
+        min: 0,
+        max: 100,
+      },
+    },
+  };
+
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -137,11 +193,11 @@ const AnalyzerPage = () => {
               scanResult.securityScore,
             ],
             backgroundColor: [
-              'rgba(249, 115, 22, 0.8)',
+              'rgba(252, 82, 63, 0.8)',
               'rgba(34, 197, 94, 0.8)',
               'rgba(245, 158, 11, 0.8)',
             ],
-            borderRadius: 8,
+            borderRadius: 6,
           },
         ],
       }
@@ -150,43 +206,35 @@ const AnalyzerPage = () => {
   return (
     <ProtectedRoute>
       <Layout>
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: '100%', maxWidth: 1200, mx: 'auto' }}>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
           >
-            <Typography
-              variant="h4"
-              sx={{
-                fontWeight: 700,
-                mb: 3,
-                textAlign: 'center',
-                background: 'linear-gradient(135deg, #F1F5F9 0%, #94A3B8 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              Website Analyzer
-            </Typography>
+            <Box sx={{ mb: 3 }}>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
+                Website Analyzer
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.5 }}>
+                Enter a URL to audit performance, SEO and security in one scan.
+              </Typography>
+            </Box>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.4, delay: 0.05 }}
           >
             <Paper
               sx={{
-                p: 3,
-                mb: 2,
-                mx: 'auto',
-                maxWidth: 900,
-                background: '#111827',
-                backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                borderRadius: '14px',
+                p: { xs: 2, sm: 2.5 },
+                mb: 2.5,
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border)',
+                borderRadius: '10px',
+                boxShadow: 'var(--shadow-sm)',
               }}
             >
               <Grid container spacing={2} alignItems="center">
@@ -204,15 +252,14 @@ const AnalyzerPage = () => {
                     disabled={loading}
                     InputProps={{
                       startAdornment: (
-                        <Box sx={{ mr: 2, color: '#F97316' }}>
+                        <Box sx={{ mr: 1.5, display: 'flex', color: 'var(--text-faint)' }}>
                           <SearchIcon />
                         </Box>
                       ),
                     }}
                     sx={{
                       '& .MuiOutlinedInput-root': {
-                        fontSize: '1.125rem',
-                        py: 1.5,
+                        fontSize: '1rem',
                       },
                     }}
                   />
@@ -224,28 +271,25 @@ const AnalyzerPage = () => {
                     size="large"
                     onClick={handleAnalyze}
                     disabled={loading}
+                    startIcon={!loading ? <AutoAwesomeIcon sx={{ fontSize: 18 }} /> : undefined}
                     sx={{
-                      height: '56px',
-                      fontSize: '1rem',
+                      height: '52px',
+                      fontSize: '0.9375rem',
                       fontWeight: 600,
-                      background: loading
-                        ? 'rgba(249, 115, 22, 0.3)'
-                        : '#F97316',
-                      boxShadow: loading
-                        ? 'none'
-                        : 'none',
+                      background: '#FC523F',
+                      boxShadow: '0 1px 2px rgba(252, 82, 63, 0.3)',
                       '&:hover': {
-                        background: '#C2410C',
+                        background: '#E13E2C',
                         boxShadow: 'none',
-                        transform: 'translateY(-2px)',
                       },
                       '&:disabled': {
-                        background: 'rgba(249, 115, 22, 0.3)',
+                        background: 'rgba(252, 82, 63, 0.4)',
+                        color: '#FFFFFF',
                       },
                     }}
                   >
                     {loading ? (
-                      <CircularProgress size={24} sx={{ color: '#F1F5F9' }} />
+                      <CircularProgress size={22} sx={{ color: '#FFFFFF' }} />
                     ) : (
                       'Analyze'
                     )}
@@ -266,9 +310,11 @@ const AnalyzerPage = () => {
                   severity="error"
                   sx={{
                     mb: 3,
-                    background: 'rgba(239, 68, 68, 0.1)',
-                    border: '1px solid rgba(239, 68, 68, 0.3)',
-                    borderRadius: '12px',
+                    background: 'rgba(220, 38, 38, 0.08)',
+                    border: '1px solid rgba(220, 38, 38, 0.2)',
+                    color: '#B91C1C',
+                    borderRadius: '8px',
+                    '& .MuiAlert-icon': { color: '#DC2626' },
                   }}
                   onClose={() => setError('')}
                 >
@@ -344,18 +390,8 @@ const AnalyzerPage = () => {
 
                 <Grid container spacing={2} sx={{ mb: 3, maxWidth: 1200, mx: 'auto' }}>
                   <Grid item xs={12} lg={8}>
-                    <Paper
-                      sx={{
-                        p: 3,
-                        background: '#111827',
-                        backdropFilter: 'blur(20px)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '12px',
-                      }}
-                    >
-                      <Typography variant="h6" sx={{ mb: 3, fontWeight: 600, color: '#F1F5F9' }}>
-                        Score Breakdown
-                      </Typography>
+                    <Paper sx={panelSx}>
+                      <PanelTitle icon={<BarChartIcon />}>Score Breakdown</PanelTitle>
                       {chartData && (
                         <Box sx={{ height: 300 }}>
                           <Bar data={chartData} options={chartOptions} />
@@ -364,66 +400,55 @@ const AnalyzerPage = () => {
                     </Paper>
                   </Grid>
                   <Grid item xs={12} lg={4}>
-                    <Paper
-                      sx={{
-                        p: 3,
-                        background: '#111827',
-                        backdropFilter: 'blur(20px)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                        borderRadius: '12px',
-                        height: '100%',
-                      }}
-                    >
-                      <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#F1F5F9' }}>
-                        Website Information
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: '#94A3B8', mb: 1.5 }}>
-                        <strong style={{ color: '#F1F5F9' }}>Title:</strong> {scanResult.title}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: '#94A3B8', mb: 1.5 }}>
-                        <strong style={{ color: '#F1F5F9' }}>Description:</strong>{' '}
-                        {scanResult.description}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: '#94A3B8' }}>
-                        <strong style={{ color: '#F1F5F9' }}>URL:</strong>{' '}
-                        <a
-                          href={scanResult.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ color: '#F97316', textDecoration: 'none' }}
-                        >
-                          {scanResult.url}
-                        </a>
-                      </Typography>
+                    <Paper sx={{ ...panelSx, height: '100%' }}>
+                      <PanelTitle icon={<InfoOutlinedIcon />}>Website Information</PanelTitle>
+                      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.75 }}>
+                        <Box>
+                          <Typography sx={{ color: 'var(--text-faint)', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', mb: 0.25 }}>
+                            Title
+                          </Typography>
+                          <Typography variant="body2" sx={{ color: 'var(--text-primary)' }}>{scanResult.title || '—'}</Typography>
+                        </Box>
+                        <Box>
+                          <Typography sx={{ color: 'var(--text-faint)', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', mb: 0.25 }}>
+                            Description
+                          </Typography>
+                          <Typography variant="body2" sx={{ color: 'var(--text-tertiary)' }}>{scanResult.description || '—'}</Typography>
+                        </Box>
+                        <Box>
+                          <Typography sx={{ color: 'var(--text-faint)', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', mb: 0.25 }}>
+                            URL
+                          </Typography>
+                          <a
+                            href={scanResult.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ color: '#FC523F', textDecoration: 'none', fontSize: '0.875rem', wordBreak: 'break-all' }}
+                          >
+                            {scanResult.url}
+                          </a>
+                        </Box>
+                      </Box>
                     </Paper>
                   </Grid>
                 </Grid>
 
                 {scanResult.issues && scanResult.issues.length > 0 && (
-                  <Paper
-                    sx={{
-                      p: 3,
-                      mb: 3,
-                      background: '#111827',
-                      backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      borderRadius: '12px',
-                      maxWidth: 1200,
-                      mx: 'auto',
-                    }}
-                  >
-                    <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#F1F5F9' }}>
+                  <Paper sx={{ ...panelSx, mb: 3 }}>
+                    <PanelTitle icon={<ReportProblemOutlinedIcon />} color="#DC2626" rgb="220, 38, 38">
                       Issues Found
-                    </Typography>
+                    </PanelTitle>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                       {scanResult.issues.map((issue, index) => (
                         <Chip
                           key={index}
                           label={issue}
                           sx={{
-                            background: 'rgba(244, 63, 94, 0.1)',
-                            border: '1px solid rgba(244, 63, 94, 0.3)',
-                            color: '#F43F5E',
+                            background: 'rgba(220, 38, 38, 0.08)',
+                            border: '1px solid rgba(220, 38, 38, 0.2)',
+                            color: '#B91C1C',
+                            fontWeight: 500,
+                            borderRadius: '6px',
                           }}
                         />
                       ))}
@@ -432,70 +457,40 @@ const AnalyzerPage = () => {
                 )}
 
                 {scanResult.aiSummary && (
-                  <Paper
-                    sx={{
-                      p: 3,
-                      mb: 3,
-                      background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%)',
-                      backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(249, 115, 22, 0.2)',
-                      borderRadius: '12px',
-                      maxWidth: 1200,
-                      mx: 'auto',
-                    }}
-                  >
-                    <Typography
-                      variant="h6"
-                      sx={{ mb: 2, fontWeight: 600, color: '#F1F5F9', display: 'flex', alignItems: 'center', gap: 1 }}
-                    >
-                      <span>🤖</span> AI Analysis Summary
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: '#94A3B8' }}>
+                  <Paper sx={{ ...panelSx, mb: 3, borderLeft: '3px solid #FC523F' }}>
+                    <PanelTitle icon={<SmartToyOutlinedIcon />}>AI Analysis Summary</PanelTitle>
+                    <Typography variant="body1" sx={{ color: 'var(--text-tertiary)', lineHeight: 1.7 }}>
                       {scanResult.aiSummary}
                     </Typography>
                   </Paper>
                 )}
 
                 {scanResult.aiRecommendations && scanResult.aiRecommendations.length > 0 && (
-                  <Paper
-                    sx={{
-                      p: 3,
-                      mb: 3,
-                      background: '#111827',
-                      backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      borderRadius: '12px',
-                      maxWidth: 1200,
-                      mx: 'auto',
-                    }}
-                  >
-                    <Typography
-                      variant="h6"
-                      sx={{ mb: 2, fontWeight: 600, color: '#F1F5F9', display: 'flex', alignItems: 'center', gap: 1 }}
-                    >
-                      <span>💡</span> AI Recommendations
-                    </Typography>
-                    <Box component="ul" sx={{ pl: 3, mt: 2, listStyle: 'none' }}>
+                  <Paper sx={{ ...panelSx, mb: 3 }}>
+                    <PanelTitle icon={<LightbulbOutlinedIcon />} color="#D97706" rgb="217, 119, 6">
+                      AI Recommendations
+                    </PanelTitle>
+                    <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
                       {scanResult.aiRecommendations.map((recommendation, index) => (
-                        <Typography
-                          key={index}
+                        <Box
                           component="li"
-                          variant="body1"
-                          sx={{ color: '#94A3B8', mb: 1.5, position: 'relative', pl: 2 }}
+                          key={index}
+                          sx={{ display: 'flex', gap: 1.5, mb: 1.5, '&:last-child': { mb: 0 } }}
                         >
                           <Box
                             sx={{
-                              position: 'absolute',
-                              left: 0,
-                              top: '0.5rem',
+                              flexShrink: 0,
+                              mt: '0.45rem',
                               width: 6,
                               height: 6,
                               borderRadius: '50%',
-                              background: '#EA580C',
+                              background: '#FC523F',
                             }}
                           />
-                          {recommendation}
-                        </Typography>
+                          <Typography variant="body1" sx={{ color: 'var(--text-tertiary)', lineHeight: 1.65 }}>
+                            {recommendation}
+                          </Typography>
+                        </Box>
                       ))}
                     </Box>
                   </Paper>
@@ -503,67 +498,41 @@ const AnalyzerPage = () => {
 
                 {scanResult.aiSuggestions && scanResult.aiSuggestions.length > 0 && (
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.4 }}
                   >
-                    <Paper
-                      sx={{
-                        p: 3,
-                        mb: 3,
-                        background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(249, 115, 22, 0.15) 100%)',
-                        backdropFilter: 'blur(20px)',
-                        border: '1px solid rgba(249, 115, 22, 0.3)',
-                        borderRadius: '12px',
-                        maxWidth: 1200,
-                        mx: 'auto',
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        sx={{ mb: 2, fontWeight: 600, color: '#F1F5F9', display: 'flex', alignItems: 'center', gap: 1 }}
-                      >
-                        <span>✨</span> AI Suggestions
-                      </Typography>
-                      <Box component="ul" sx={{ pl: 3, mt: 2, listStyle: 'none' }}>
+                    <Paper sx={{ ...panelSx, mb: 3, borderLeft: '3px solid #FC523F' }}>
+                      <PanelTitle icon={<AutoAwesomeOutlinedIcon />}>AI Suggestions</PanelTitle>
+                      <Box component="ul" sx={{ p: 0, m: 0, listStyle: 'none' }}>
                         {scanResult.aiSuggestions.map((suggestion, index) => (
-                          <Typography
-                            key={index}
+                          <Box
                             component="li"
-                            variant="body1"
-                            sx={{ color: '#94A3B8', mb: 1.5, position: 'relative', pl: 2 }}
+                            key={index}
+                            sx={{ display: 'flex', gap: 1.5, mb: 1.5, '&:last-child': { mb: 0 } }}
                           >
                             <Box
                               sx={{
-                                position: 'absolute',
-                                left: 0,
-                                top: '0.5rem',
+                                flexShrink: 0,
+                                mt: '0.45rem',
                                 width: 6,
                                 height: 6,
                                 borderRadius: '50%',
-                                background: '#EA580C',
+                                background: '#FC523F',
                               }}
                             />
-                            {suggestion}
-                          </Typography>
+                            <Typography variant="body1" sx={{ color: 'var(--text-tertiary)', lineHeight: 1.65 }}>
+                              {suggestion}
+                            </Typography>
+                          </Box>
                         ))}
                       </Box>
                     </Paper>
                   </motion.div>
                 )}
 
-                <Paper
-                  sx={{
-                    p: 3,
-                    background: '#111827',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    borderRadius: '12px',
-                    maxWidth: 1200,
-                    mx: 'auto',
-                  }}
-                >
-                  <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', flexWrap: 'wrap' }}>
+                <Paper sx={panelSx}>
+                  <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center', flexWrap: 'wrap' }}>
                     <Tooltip title={scanResult.isBookmarked ? 'Remove bookmark' : 'Bookmark this scan'}>
                       <IconButton
                         component={motion.button}
@@ -578,14 +547,15 @@ const AnalyzerPage = () => {
                           }
                         }}
                         sx={{
-                          color: scanResult.isBookmarked ? '#F97316' : '#94A3B8',
+                          color: scanResult.isBookmarked ? '#FC523F' : 'var(--text-muted)',
                           background: scanResult.isBookmarked
-                            ? 'rgba(249, 115, 22, 0.1)'
-                            : 'rgba(255, 255, 255, 0.05)',
-                          border: `1px solid ${scanResult.isBookmarked ? 'rgba(249, 115, 22, 0.3)' : 'rgba(255, 255, 255, 0.08)'}`,
+                            ? 'rgba(252, 82, 63, 0.1)'
+                            : 'var(--overlay-04)',
+                          border: `1px solid ${scanResult.isBookmarked ? 'rgba(252, 82, 63, 0.3)' : 'var(--border)'}`,
+                          borderRadius: '8px',
                           '&:hover': {
-                            background: 'rgba(249, 115, 22, 0.2)',
-                            borderColor: 'rgba(249, 115, 22, 0.5)',
+                            background: 'rgba(252, 82, 63, 0.15)',
+                            borderColor: 'rgba(252, 82, 63, 0.4)',
                           },
                         }}
                       >
@@ -615,17 +585,18 @@ const AnalyzerPage = () => {
                         }}
                         disabled={capturingScreenshot}
                         sx={{
-                          color: '#06B6D4',
-                          background: 'rgba(6, 182, 212, 0.1)',
-                          border: '1px solid rgba(6, 182, 212, 0.3)',
+                          color: '#0891B2',
+                          background: 'rgba(8, 145, 178, 0.08)',
+                          border: '1px solid rgba(8, 145, 178, 0.2)',
+                          borderRadius: '8px',
                           '&:hover': {
-                            background: 'rgba(6, 182, 212, 0.2)',
-                            borderColor: 'rgba(6, 182, 212, 0.5)',
+                            background: 'rgba(8, 145, 178, 0.15)',
+                            borderColor: 'rgba(8, 145, 178, 0.4)',
                           },
                         }}
                       >
                         {capturingScreenshot ? (
-                          <CircularProgress size={24} sx={{ color: '#06B6D4' }} />
+                          <CircularProgress size={24} sx={{ color: '#0891B2' }} />
                         ) : (
                           <CameraAltIcon />
                         )}
@@ -657,17 +628,18 @@ const AnalyzerPage = () => {
                         }}
                         disabled={generatingReport}
                         sx={{
-                          color: '#F43F5E',
-                          background: 'rgba(244, 63, 94, 0.1)',
-                          border: '1px solid rgba(244, 63, 94, 0.3)',
+                          color: '#DC2626',
+                          background: 'rgba(220, 38, 38, 0.08)',
+                          border: '1px solid rgba(220, 38, 38, 0.2)',
+                          borderRadius: '8px',
                           '&:hover': {
-                            background: 'rgba(244, 63, 94, 0.2)',
-                            borderColor: 'rgba(244, 63, 94, 0.5)',
+                            background: 'rgba(220, 38, 38, 0.15)',
+                            borderColor: 'rgba(220, 38, 38, 0.4)',
                           },
                         }}
                       >
                         {generatingReport ? (
-                          <CircularProgress size={24} sx={{ color: '#F43F5E' }} />
+                          <CircularProgress size={24} sx={{ color: '#DC2626' }} />
                         ) : (
                           <PictureAsPdfIcon />
                         )}
@@ -691,21 +663,21 @@ const AnalyzerPage = () => {
                       disabled={generatingSuggestions}
                       sx={{
                         ml: 'auto',
-                        borderColor: 'rgba(249, 115, 22, 0.3)',
-                        color: '#F97316',
+                        borderColor: 'rgba(252, 82, 63, 0.3)',
+                        color: '#FC523F',
                         '&:hover': {
-                          borderColor: 'rgba(249, 115, 22, 0.5)',
-                          background: 'rgba(249, 115, 22, 0.1)',
+                          borderColor: 'rgba(252, 82, 63, 0.5)',
+                          background: 'rgba(252, 82, 63, 0.1)',
                         },
                         '&:disabled': {
-                          borderColor: 'rgba(249, 115, 22, 0.2)',
-                          color: 'rgba(249, 115, 22, 0.5)',
+                          borderColor: 'rgba(252, 82, 63, 0.2)',
+                          color: 'rgba(252, 82, 63, 0.5)',
                         },
                       }}
                     >
                       {generatingSuggestions ? (
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                          <CircularProgress size={16} sx={{ color: '#F97316' }} />
+                          <CircularProgress size={16} sx={{ color: '#FC523F' }} />
                           Generating...
                         </Box>
                       ) : (
@@ -716,7 +688,7 @@ const AnalyzerPage = () => {
 
                   {scanResult.screenshotUrl && (
                     <Box sx={{ mt: 3 }}>
-                      <Typography variant="subtitle2" sx={{ mb: 1, color: '#94A3B8' }}>
+                      <Typography variant="subtitle2" sx={{ mb: 1, color: 'var(--text-muted)' }}>
                         Screenshot:
                       </Typography>
                       <Box
@@ -729,8 +701,8 @@ const AnalyzerPage = () => {
                         alt="Website screenshot"
                         sx={{
                           maxWidth: '100%',
-                          border: '1px solid rgba(255, 255, 255, 0.08)',
-                          borderRadius: '12px',
+                          border: '1px solid var(--border)',
+                          borderRadius: '8px',
                         }}
                       />
                     </Box>
@@ -743,20 +715,8 @@ const AnalyzerPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  <Box sx={{ mt: 3, maxWidth: 1200, mx: 'auto' }}>
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        mb: 2,
-                        fontWeight: 600,
-                        color: '#F1F5F9',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 1,
-                      }}
-                    >
-                      💬 Chat with AI Assistant
-                    </Typography>
+                  <Box sx={{ mt: 3 }}>
+                    <PanelTitle icon={<ChatBubbleOutlineIcon />}>Chat with AI Assistant</PanelTitle>
                     <Box sx={{ height: '600px' }}>
                       <ChatPanel scanId={scanResult._id} />
                     </Box>

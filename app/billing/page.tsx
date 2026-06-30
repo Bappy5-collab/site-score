@@ -29,12 +29,12 @@ import { getSubscription, updateSubscription, type Subscription } from '@/servic
 const cardSx = {
   p: 3,
   height: '100%',
-  borderRadius: '12px',
-  background: '#111827',
+  borderRadius: '8px',
+  background: 'var(--bg-surface)',
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(255, 255, 255, 0.08)',
+  border: '1px solid var(--border)',
   transition: 'all 0.3s ease',
-  '&:hover': { borderColor: 'rgba(249, 115, 22, 0.25)' },
+  '&:hover': { borderColor: 'rgba(252, 82, 63, 0.25)' },
 };
 
 const PLANS = [
@@ -105,21 +105,21 @@ export default function BillingPage() {
                   sx={{
                     width: 48,
                     height: 48,
-                    borderRadius: '14px',
-                    background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%)',
-                    border: '1px solid rgba(249, 115, 22, 0.3)',
+                    borderRadius: '10px',
+                    background: 'linear-gradient(135deg, rgba(252, 82, 63, 0.2) 0%, rgba(252, 82, 63, 0.2) 100%)',
+                    border: '1px solid rgba(252, 82, 63, 0.3)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}
                 >
-                  <CreditCardIcon sx={{ color: '#F97316', fontSize: 28 }} />
+                  <CreditCardIcon sx={{ color: '#FC523F', fontSize: 28 }} />
                 </Box>
                 <Box>
-                  <Typography variant="h4" sx={{ fontWeight: 800, color: '#F1F5F9', letterSpacing: '-0.02em' }}>
+                  <Typography variant="h4" sx={{ fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
                     Billing & Subscription
                   </Typography>
-                  <Typography variant="body2" sx={{ color: '#94A3B8', mt: 0.25 }}>
+                  <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.25 }}>
                     Manage your plan and usage
                   </Typography>
                 </Box>
@@ -129,11 +129,11 @@ export default function BillingPage() {
                 startIcon={<UpgradeIcon />}
                 onClick={() => setPricingOpen(true)}
                 sx={{
-                  borderRadius: '14px',
-                  background: '#EA580C',
+                  borderRadius: '10px',
+                  background: '#E13E2C',
                   textTransform: 'none',
                   fontWeight: 600,
-                  '&:hover': { background: '#C2410C' },
+                  '&:hover': { background: '#C9341F' },
                 }}
               >
                 Change plan
@@ -142,24 +142,24 @@ export default function BillingPage() {
 
             {loading ? (
               <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
-                <CircularProgress sx={{ color: '#F97316' }} />
+                <CircularProgress sx={{ color: '#FC523F' }} />
               </Box>
             ) : sub ? (
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
                   <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} style={{ width: '100%' }}>
                     <Paper elevation={0} sx={cardSx}>
-                      <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 2 }}>
+                      <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 2 }}>
                         Current plan
                       </Typography>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
                         <CheckCircleIcon sx={{ color: '#22C55E', fontSize: 28 }} />
                         <Box>
-                          <Typography variant="h5" sx={{ fontWeight: 700, color: '#F1F5F9' }}>{sub.plan}</Typography>
-                          <Typography variant="body2" sx={{ color: '#64748B' }}>Billing period: {formatPeriod(sub.periodStartsAt)}</Typography>
+                          <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary)' }}>{sub.plan}</Typography>
+                          <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>Billing period: {formatPeriod(sub.periodStartsAt)}</Typography>
                         </Box>
                       </Box>
-                      <Button variant="outlined" size="small" onClick={() => setPricingOpen(true)} sx={{ borderRadius: '12px', borderColor: 'rgba(249, 115, 22, 0.5)', color: '#F97316' }}>
+                      <Button variant="outlined" size="small" onClick={() => setPricingOpen(true)} sx={{ borderRadius: '8px', borderColor: 'rgba(252, 82, 63, 0.5)', color: '#FC523F' }}>
                         Change plan
                       </Button>
                     </Paper>
@@ -168,12 +168,12 @@ export default function BillingPage() {
                 <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
                   <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} style={{ width: '100%' }}>
                     <Paper elevation={0} sx={cardSx}>
-                      <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 2 }}>
+                      <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 2 }}>
                         Usage this period
                       </Typography>
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                        <Typography variant="body2" sx={{ color: '#94A3B8' }}>Scans</Typography>
-                        <Typography variant="body2" sx={{ color: '#F1F5F9', fontWeight: 600 }}>
+                        <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>Scans</Typography>
+                        <Typography variant="body2" sx={{ color: 'var(--text-primary)', fontWeight: 600 }}>
                           {sub.scansUsed} / {sub.scansLimit === 99999 ? 'Unlimited' : sub.scansLimit}
                         </Typography>
                       </Box>
@@ -183,14 +183,14 @@ export default function BillingPage() {
                         sx={{
                           height: 10,
                           borderRadius: 5,
-                          bgcolor: 'rgba(255,255,255,0.06)',
+                          bgcolor: 'var(--overlay-05)',
                           '& .MuiLinearProgress-bar': {
-                            bgcolor: usagePercent > 90 ? '#F59E0B' : '#F97316',
+                            bgcolor: usagePercent > 90 ? '#F59E0B' : '#FC523F',
                             borderRadius: 5,
                           },
                         }}
                       />
-                      <Typography variant="caption" sx={{ color: '#64748B', mt: 1, display: 'block' }}>
+                      <Typography variant="caption" sx={{ color: 'var(--text-muted)', mt: 1, display: 'block' }}>
                         {sub.scansLimit === 99999 ? 'Unlimited' : `${sub.remaining} scans remaining`}
                       </Typography>
                     </Paper>
@@ -201,10 +201,10 @@ export default function BillingPage() {
           </motion.div>
         </Box>
 
-        <Dialog open={pricingOpen} onClose={() => setPricingOpen(false)} maxWidth="sm" fullWidth PaperProps={{ sx: { background: 'rgba(15, 23, 42, 0.98)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.08)' } }}>
-          <DialogTitle sx={{ color: '#F1F5F9', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Dialog open={pricingOpen} onClose={() => setPricingOpen(false)} maxWidth="sm" fullWidth PaperProps={{ sx: { background: 'var(--bg-base)', borderRadius: '8px', border: '1px solid var(--border)' } }}>
+          <DialogTitle sx={{ color: 'var(--text-primary)', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             Choose a plan
-            <IconButton onClick={() => setPricingOpen(false)} sx={{ color: '#94A3B8' }}><CloseIcon /></IconButton>
+            <IconButton onClick={() => setPricingOpen(false)} sx={{ color: 'var(--text-muted)' }}><CloseIcon /></IconButton>
           </DialogTitle>
           <DialogContent>
             <Grid container spacing={2}>
@@ -216,16 +216,16 @@ export default function BillingPage() {
                       elevation={0}
                       sx={{
                         p: 2,
-                        borderRadius: '16px',
-                        border: current ? '2px solid rgba(249, 115, 22, 0.5)' : '1px solid rgba(255,255,255,0.08)',
-                        background: current ? 'rgba(249, 115, 22, 0.08)' : 'rgba(255,255,255,0.03)',
+                        borderRadius: '10px',
+                        border: current ? '2px solid rgba(252, 82, 63, 0.5)' : '1px solid var(--border)',
+                        background: current ? 'rgba(252, 82, 63, 0.08)' : 'var(--overlay-03)',
                       }}
                     >
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 1 }}>
                         <Box>
-                          <Typography variant="h6" sx={{ color: '#F1F5F9', fontWeight: 600 }}>{plan.name}</Typography>
-                          <Typography variant="h4" sx={{ color: '#F97316', fontWeight: 800 }}>${plan.price}<Typography component="span" variant="body2" sx={{ color: '#64748B', fontWeight: 400 }}>/mo</Typography></Typography>
-                          <Typography variant="caption" sx={{ color: '#64748B' }}>{plan.scans >= 99999 ? 'Unlimited' : plan.scans + ' scans/mo'}</Typography>
+                          <Typography variant="h6" sx={{ color: 'var(--text-primary)', fontWeight: 600 }}>{plan.name}</Typography>
+                          <Typography variant="h4" sx={{ color: '#FC523F', fontWeight: 800 }}>${plan.price}<Typography component="span" variant="body2" sx={{ color: 'var(--text-muted)', fontWeight: 400 }}>/mo</Typography></Typography>
+                          <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>{plan.scans >= 99999 ? 'Unlimited' : plan.scans + ' scans/mo'}</Typography>
                         </Box>
                         <Button
                           variant={current ? 'outlined' : 'contained'}
@@ -233,16 +233,16 @@ export default function BillingPage() {
                           disabled={current || upgrading === plan.name}
                           onClick={() => handleSelectPlan(plan.name)}
                           sx={{
-                            borderRadius: '12px',
+                            borderRadius: '8px',
                             textTransform: 'none',
                             fontWeight: 600,
-                            ...(current ? { borderColor: 'rgba(249, 115, 22, 0.5)', color: '#F97316' } : { background: '#EA580C' }),
+                            ...(current ? { borderColor: 'rgba(252, 82, 63, 0.5)', color: '#FC523F' } : { background: '#E13E2C' }),
                           }}
                         >
                           {current ? 'Current' : upgrading === plan.name ? 'Updating…' : 'Select'}
                         </Button>
                       </Box>
-                      <Box component="ul" sx={{ m: 0, mt: 1.5, pl: 2, color: '#94A3B8', fontSize: '0.85rem' }}>
+                      <Box component="ul" sx={{ m: 0, mt: 1.5, pl: 2, color: 'var(--text-muted)', fontSize: '0.85rem' }}>
                         {plan.features.map((f, i) => (
                           <li key={i}>{f}</li>
                         ))}
@@ -254,7 +254,7 @@ export default function BillingPage() {
             </Grid>
           </DialogContent>
           <DialogActions sx={{ p: 2, pt: 0 }}>
-            <Button onClick={() => setPricingOpen(false)} sx={{ color: '#94A3B8', textTransform: 'none' }}>Cancel</Button>
+            <Button onClick={() => setPricingOpen(false)} sx={{ color: 'var(--text-muted)', textTransform: 'none' }}>Cancel</Button>
           </DialogActions>
         </Dialog>
 

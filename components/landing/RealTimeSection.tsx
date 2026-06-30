@@ -54,15 +54,15 @@ export default function RealTimeSection() {
                   width: '100%',
                   maxWidth: 380,
                   p: 2.5,
-                  borderRadius: '20px',
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  borderRadius: '12px',
+                  background: 'var(--overlay-03)',
                   backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  border: '1px solid var(--border)',
                 }}
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                  <NotificationsActiveIcon sx={{ color: '#F97316', fontSize: 24 }} />
-                  <Typography variant="subtitle2" sx={{ color: '#94A3B8' }}>
+                  <NotificationsActiveIcon sx={{ color: '#FC523F', fontSize: 24 }} />
+                  <Typography variant="subtitle2" sx={{ color: 'var(--text-muted)' }}>
                     Notifications
                   </Typography>
                 </Box>
@@ -73,7 +73,7 @@ export default function RealTimeSection() {
                     animate={{
                       opacity: i === activeNotif ? 1 : 0.5,
                       scale: i === activeNotif ? 1 : 0.98,
-                      borderColor: i === activeNotif ? 'rgba(249, 115, 22, 0.3)' : 'rgba(255,255,255,0.06)',
+                      borderColor: i === activeNotif ? 'rgba(252, 82, 63, 0.3)' : 'var(--border-subtle)',
                     }}
                     transition={{ duration: 0.3 }}
                     style={{ marginBottom: 8 }}
@@ -81,12 +81,12 @@ export default function RealTimeSection() {
                     <Box
                       sx={{
                         p: 2,
-                        borderRadius: '14px',
-                        background: i === activeNotif ? 'rgba(249, 115, 22, 0.1)' : 'rgba(255,255,255,0.04)',
-                        border: '1px solid rgba(255,255,255,0.06)',
+                        borderRadius: '10px',
+                        background: i === activeNotif ? 'rgba(252, 82, 63, 0.1)' : 'var(--overlay-03)',
+                        border: '1px solid var(--border-subtle)',
                       }}
                     >
-                      <Typography variant="body2" sx={{ color: '#E2E8F0' }}>
+                      <Typography variant="body2" sx={{ color: 'var(--text-secondary)' }}>
                         {n.text}
                       </Typography>
                     </Box>
@@ -106,14 +106,14 @@ export default function RealTimeSection() {
                 sx={{
                   width: 200,
                   height: 200,
-                  borderRadius: '24px',
-                  background: 'linear-gradient(145deg, rgba(249, 115, 22, 0.2) 0%, rgba(234, 88, 12, 0.15) 100%)',
-                  border: '1px solid rgba(249, 115, 22, 0.3)',
+                  borderRadius: '12px',
+                  background: 'linear-gradient(145deg, rgba(252, 82, 63, 0.2) 0%, rgba(252, 82, 63, 0.15) 100%)',
+                  border: '1px solid rgba(252, 82, 63, 0.3)',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: '0 16px 48px rgba(249, 115, 22, 0.2)',
+                  boxShadow: '0 16px 48px rgba(252, 82, 63, 0.2)',
                 }}
               >
                 <motion.div
@@ -122,13 +122,13 @@ export default function RealTimeSection() {
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ type: 'spring', stiffness: 200, damping: 20 }}
                 >
-                  <Typography sx={{ fontSize: '4rem', fontWeight: 800, color: '#F1F5F9', lineHeight: 1 }}>
+                  <Typography sx={{ fontSize: '4rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>
                     {score}
                   </Typography>
                 </motion.div>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mt: 0.5 }}>
                   <TrendingUpIcon sx={{ fontSize: 20, color: '#22C55E' }} />
-                  <Typography variant="body2" sx={{ color: '#94A3B8', fontWeight: 600 }}>
+                  <Typography variant="body2" sx={{ color: 'var(--text-muted)', fontWeight: 600 }}>
                     Growth Score
                   </Typography>
                 </Box>

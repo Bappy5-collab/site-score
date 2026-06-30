@@ -34,12 +34,12 @@ import { formatDistanceToNow } from 'date-fns';
 
 const cardSx = {
   p: 3,
-  borderRadius: '12px',
-  background: '#111827',
+  borderRadius: '8px',
+  background: 'var(--bg-surface)',
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(255, 255, 255, 0.08)',
+  border: '1px solid var(--border)',
   transition: 'all 0.3s ease',
-  '&:hover': { borderColor: 'rgba(249, 115, 22, 0.25)' },
+  '&:hover': { borderColor: 'rgba(252, 82, 63, 0.25)' },
 };
 
 function formatNextRun(nextRunAt?: string): string {
@@ -145,21 +145,21 @@ export default function AutomationCenterPage() {
                   sx={{
                     width: 48,
                     height: 48,
-                    borderRadius: '14px',
-                    background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%)',
-                    border: '1px solid rgba(249, 115, 22, 0.3)',
+                    borderRadius: '10px',
+                    background: 'linear-gradient(135deg, rgba(252, 82, 63, 0.2) 0%, rgba(252, 82, 63, 0.2) 100%)',
+                    border: '1px solid rgba(252, 82, 63, 0.3)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}
                 >
-                  <ScheduleIcon sx={{ color: '#F97316', fontSize: 28 }} />
+                  <ScheduleIcon sx={{ color: '#FC523F', fontSize: 28 }} />
                 </Box>
                 <Box>
-                  <Typography variant="h4" sx={{ fontWeight: 800, color: '#F1F5F9', letterSpacing: '-0.02em' }}>
+                  <Typography variant="h4" sx={{ fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
                     Automation Center
                   </Typography>
-                  <Typography variant="body2" sx={{ color: '#94A3B8', mt: 0.25 }}>
+                  <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.25 }}>
                     Schedule and manage automated scans
                   </Typography>
                 </Box>
@@ -169,11 +169,11 @@ export default function AutomationCenterPage() {
                 startIcon={<AddIcon />}
                 onClick={() => setDialogOpen(true)}
                 sx={{
-                  borderRadius: '14px',
-                  background: '#EA580C',
+                  borderRadius: '10px',
+                  background: '#E13E2C',
                   textTransform: 'none',
                   fontWeight: 600,
-                  '&:hover': { background: '#C2410C' },
+                  '&:hover': { background: '#C9341F' },
                 }}
               >
                 New automation
@@ -187,14 +187,14 @@ export default function AutomationCenterPage() {
             )}
             {loading ? (
               <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
-                <CircularProgress sx={{ color: '#F97316' }} />
+                <CircularProgress sx={{ color: '#FC523F' }} />
               </Box>
             ) : (
               <Grid container spacing={3}>
                 {rules.length === 0 && !loading && (
                   <Grid item xs={12}>
                     <Paper elevation={0} sx={cardSx}>
-                      <Typography sx={{ color: '#94A3B8' }}>No automations yet. Create one to run scans on a schedule.</Typography>
+                      <Typography sx={{ color: 'var(--text-muted)' }}>No automations yet. Create one to run scans on a schedule.</Typography>
                     </Paper>
                   </Grid>
                 )}
@@ -204,10 +204,10 @@ export default function AutomationCenterPage() {
                       <Paper elevation={0} sx={cardSx}>
                         <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 2 }}>
                           <Box sx={{ flex: 1, minWidth: 0 }}>
-                            <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 0.5 }}>
+                            <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 0.5 }}>
                               {rule.name}
                             </Typography>
-                            <Typography variant="body2" sx={{ color: '#64748B', mb: 1 }}>{rule.url}</Typography>
+                            <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 1 }}>{rule.url}</Typography>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexWrap: 'wrap' }}>
                               <Chip
                                 size="small"
@@ -215,29 +215,29 @@ export default function AutomationCenterPage() {
                                 icon={rule.enabled ? <PlayArrowIcon sx={{ fontSize: 16 }} /> : <PauseIcon sx={{ fontSize: 16 }} />}
                                 sx={{
                                   background: rule.enabled ? 'rgba(34, 197, 94, 0.2)' : 'rgba(148, 163, 184, 0.2)',
-                                  color: rule.enabled ? '#4ADE80' : '#94A3B8',
+                                  color: rule.enabled ? '#4ADE80' : 'var(--text-muted)',
                                   border: '1px solid',
                                   borderColor: rule.enabled ? 'rgba(34, 197, 94, 0.3)' : 'rgba(148, 163, 184, 0.3)',
                                   '& .MuiChip-icon': { color: 'inherit' },
                                 }}
                               />
-                              <Typography variant="caption" sx={{ color: '#64748B' }}>{rule.schedule}</Typography>
-                              <Typography variant="caption" sx={{ color: '#64748B' }}>Last: {formatLastRun(rule.lastRunAt)}</Typography>
-                              <Typography variant="caption" sx={{ color: '#64748B' }}>Next: {formatNextRun(rule.nextRunAt)}</Typography>
+                              <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>{rule.schedule}</Typography>
+                              <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>Last: {formatLastRun(rule.lastRunAt)}</Typography>
+                              <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>Next: {formatNextRun(rule.nextRunAt)}</Typography>
                             </Box>
                           </Box>
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                            <Typography variant="body2" sx={{ color: '#94A3B8' }}>Enabled</Typography>
+                            <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>Enabled</Typography>
                             <Switch
                               checked={rule.enabled}
                               onChange={() => toggleStatus(rule)}
                               sx={{
-                                '& .MuiSwitch-switchBase.Mui-checked': { color: '#F97316' },
-                                '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: 'rgba(249, 115, 22, 0.5)' },
+                                '& .MuiSwitch-switchBase.Mui-checked': { color: '#FC523F' },
+                                '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': { bgcolor: 'rgba(252, 82, 63, 0.5)' },
                               }}
                             />
                             <Tooltip title="Delete">
-                              <IconButton size="small" onClick={() => handleDelete(rule._id)} sx={{ color: '#64748B', '&:hover': { color: '#F87171' } }}>
+                              <IconButton size="small" onClick={() => handleDelete(rule._id)} sx={{ color: 'var(--text-muted)', '&:hover': { color: '#F87171' } }}>
                                 <DeleteOutlineIcon fontSize="small" />
                               </IconButton>
                             </Tooltip>
@@ -252,25 +252,25 @@ export default function AutomationCenterPage() {
           </motion.div>
         </Box>
 
-        <Dialog open={dialogOpen} onClose={() => !creating && setDialogOpen(false)} maxWidth="sm" fullWidth PaperProps={{ sx: { background: 'rgba(15, 23, 42, 0.98)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.08)' } }}>
-            <DialogTitle sx={{ color: '#F1F5F9', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Dialog open={dialogOpen} onClose={() => !creating && setDialogOpen(false)} maxWidth="sm" fullWidth PaperProps={{ sx: { background: 'var(--bg-base)', borderRadius: '8px', border: '1px solid var(--border)' } }}>
+            <DialogTitle sx={{ color: 'var(--text-primary)', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               New automation
-              <IconButton onClick={() => !creating && setDialogOpen(false)} sx={{ color: '#94A3B8' }}><CloseIcon /></IconButton>
+              <IconButton onClick={() => !creating && setDialogOpen(false)} sx={{ color: 'var(--text-muted)' }}><CloseIcon /></IconButton>
             </DialogTitle>
             <DialogContent>
-              <TextField fullWidth label="Name" value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="e.g. Homepage check" sx={{ mt: 1, '& .MuiOutlinedInput-root': { borderRadius: '12px' } }} />
-              <TextField fullWidth label="URL" value={newUrl} onChange={(e) => setNewUrl(e.target.value)} placeholder="https://example.com" sx={{ mt: 2, '& .MuiOutlinedInput-root': { borderRadius: '12px' } }} />
+              <TextField fullWidth label="Name" value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="e.g. Homepage check" sx={{ mt: 1, '& .MuiOutlinedInput-root': { borderRadius: '8px' } }} />
+              <TextField fullWidth label="URL" value={newUrl} onChange={(e) => setNewUrl(e.target.value)} placeholder="https://example.com" sx={{ mt: 2, '& .MuiOutlinedInput-root': { borderRadius: '8px' } }} />
               <Box sx={{ mt: 2 }}>
-                <Typography variant="body2" sx={{ color: '#94A3B8', mb: 1 }}>Schedule</Typography>
+                <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 1 }}>Schedule</Typography>
                 <Box sx={{ display: 'flex', gap: 1 }}>
-                  <Button variant={newSchedule === 'daily' ? 'contained' : 'outlined'} size="small" onClick={() => setNewSchedule('daily')} sx={{ borderRadius: '10px', textTransform: 'none' }}>Daily</Button>
-                  <Button variant={newSchedule === 'weekly' ? 'contained' : 'outlined'} size="small" onClick={() => setNewSchedule('weekly')} sx={{ borderRadius: '10px', textTransform: 'none' }}>Weekly</Button>
+                  <Button variant={newSchedule === 'daily' ? 'contained' : 'outlined'} size="small" onClick={() => setNewSchedule('daily')} sx={{ borderRadius: '8px', textTransform: 'none' }}>Daily</Button>
+                  <Button variant={newSchedule === 'weekly' ? 'contained' : 'outlined'} size="small" onClick={() => setNewSchedule('weekly')} sx={{ borderRadius: '8px', textTransform: 'none' }}>Weekly</Button>
                 </Box>
               </Box>
             </DialogContent>
             <DialogActions sx={{ p: 2 }}>
-              <Button onClick={() => !creating && setDialogOpen(false)} sx={{ color: '#94A3B8', textTransform: 'none' }}>Cancel</Button>
-              <Button variant="contained" onClick={handleCreate} disabled={creating} sx={{ borderRadius: '12px', textTransform: 'none', background: '#EA580C' }}>
+              <Button onClick={() => !creating && setDialogOpen(false)} sx={{ color: 'var(--text-muted)', textTransform: 'none' }}>Cancel</Button>
+              <Button variant="contained" onClick={handleCreate} disabled={creating} sx={{ borderRadius: '8px', textTransform: 'none', background: '#E13E2C' }}>
                 {creating ? 'Creating…' : 'Create'}
               </Button>
             </DialogActions>

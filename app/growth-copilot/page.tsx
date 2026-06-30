@@ -20,10 +20,10 @@ import PersonIcon from '@mui/icons-material/Person';
 import { growthChatService, type GrowthChatMessage } from '@/services/growthService';
 
 const cardSx = {
-  borderRadius: '12px',
-  background: '#111827',
+  borderRadius: '8px',
+  background: 'var(--bg-surface)',
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(255, 255, 255, 0.08)',
+  border: '1px solid var(--border)',
   overflow: 'hidden',
 };
 
@@ -84,21 +84,21 @@ export default function GrowthCopilotPage() {
                 sx={{
                   width: 48,
                   height: 48,
-                  borderRadius: '14px',
-                  background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%)',
-                  border: '1px solid rgba(249, 115, 22, 0.3)',
+                  borderRadius: '10px',
+                  background: 'linear-gradient(135deg, rgba(252, 82, 63, 0.2) 0%, rgba(252, 82, 63, 0.2) 100%)',
+                  border: '1px solid rgba(252, 82, 63, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
               >
-                <SmartToyIcon sx={{ color: '#F97316', fontSize: 28 }} />
+                <SmartToyIcon sx={{ color: '#FC523F', fontSize: 28 }} />
               </Box>
               <Box>
-                <Typography variant="h5" sx={{ fontWeight: 700, color: '#F1F5F9' }}>
+                <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary)' }}>
                   AI Growth Copilot
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#94A3B8' }}>
+                <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                   Context-aware advice from your scans and growth plan
                 </Typography>
               </Box>
@@ -113,13 +113,13 @@ export default function GrowthCopilotPage() {
             <Paper elevation={0} sx={{ ...cardSx, flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
               {loading ? (
                 <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-                  <CircularProgress sx={{ color: '#F97316' }} />
+                  <CircularProgress sx={{ color: '#FC523F' }} />
                 </Box>
               ) : (
                 <>
                   <Box sx={{ flex: 1, overflow: 'auto', p: 2 }}>
                     {messages.length === 0 && (
-                      <Typography sx={{ color: '#64748B', textAlign: 'center', py: 4 }}>
+                      <Typography sx={{ color: 'var(--text-muted)', textAlign: 'center', py: 4 }}>
                         Ask anything about your growth plan, scores, or next steps. I have context from your scans and actions.
                       </Typography>
                     )}
@@ -138,7 +138,7 @@ export default function GrowthCopilotPage() {
                           sx={{
                             width: 36,
                             height: 36,
-                            bgcolor: m.role === 'user' ? 'rgba(249, 115, 22, 0.3)' : 'rgba(249, 115, 22, 0.3)',
+                            bgcolor: m.role === 'user' ? 'rgba(252, 82, 63, 0.3)' : 'rgba(252, 82, 63, 0.3)',
                           }}
                         >
                           {m.role === 'user' ? <PersonIcon fontSize="small" /> : <SmartToyIcon fontSize="small" />}
@@ -148,12 +148,12 @@ export default function GrowthCopilotPage() {
                           sx={{
                             maxWidth: '85%',
                             p: 2,
-                            borderRadius: '16px',
-                            bgcolor: m.role === 'user' ? 'rgba(249, 115, 22, 0.15)' : 'rgba(255,255,255,0.05)',
-                            border: '1px solid rgba(255,255,255,0.06)',
+                            borderRadius: '10px',
+                            bgcolor: m.role === 'user' ? 'rgba(252, 82, 63, 0.15)' : 'var(--overlay-04)',
+                            border: '1px solid var(--border-subtle)',
                           }}
                         >
-                          <Typography variant="body1" sx={{ color: '#F1F5F9', whiteSpace: 'pre-wrap' }}>
+                          <Typography variant="body1" sx={{ color: 'var(--text-primary)', whiteSpace: 'pre-wrap' }}>
                             {m.content}
                           </Typography>
                         </Paper>
@@ -161,15 +161,15 @@ export default function GrowthCopilotPage() {
                     ))}
                     {sending && (
                       <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', mb: 2 }}>
-                        <Avatar sx={{ width: 36, height: 36, bgcolor: 'rgba(249, 115, 22, 0.3)' }}>
+                        <Avatar sx={{ width: 36, height: 36, bgcolor: 'rgba(252, 82, 63, 0.3)' }}>
                           <SmartToyIcon fontSize="small" />
                         </Avatar>
-                        <CircularProgress size={24} sx={{ color: '#F97316' }} />
+                        <CircularProgress size={24} sx={{ color: '#FC523F' }} />
                       </Box>
                     )}
                     <div ref={messagesEndRef} />
                   </Box>
-                  <Box sx={{ p: 2, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                  <Box sx={{ p: 2, borderTop: '1px solid var(--border-subtle)' }}>
                     <Box sx={{ display: 'flex', gap: 1 }}>
                       <TextField
                         fullWidth
@@ -181,10 +181,10 @@ export default function GrowthCopilotPage() {
                         disabled={sending}
                         sx={{
                           '& .MuiOutlinedInput-root': {
-                            borderRadius: '14px',
-                            bgcolor: 'rgba(15, 23, 42, 0.6)',
-                            color: '#F1F5F9',
-                            '& fieldset': { borderColor: 'rgba(255,255,255,0.08)' },
+                            borderRadius: '10px',
+                            bgcolor: 'var(--bg-base)',
+                            color: 'var(--text-primary)',
+                            '& fieldset': { borderColor: 'var(--border)' },
                           },
                         }}
                       />
@@ -192,10 +192,10 @@ export default function GrowthCopilotPage() {
                         onClick={handleSend}
                         disabled={sending || !input.trim()}
                         sx={{
-                          bgcolor: 'rgba(249, 115, 22, 0.3)',
-                          color: '#F97316',
-                          '&:hover': { bgcolor: 'rgba(249, 115, 22, 0.5)' },
-                          '&:disabled': { color: '#64748B' },
+                          bgcolor: 'rgba(252, 82, 63, 0.3)',
+                          color: '#FC523F',
+                          '&:hover': { bgcolor: 'rgba(252, 82, 63, 0.5)' },
+                          '&:disabled': { color: 'var(--text-muted)' },
                         }}
                       >
                         <SendIcon />

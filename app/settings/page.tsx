@@ -24,22 +24,22 @@ import { authService } from '@/services/authService';
 
 const inputSx = {
   '& .MuiOutlinedInput-root': {
-    borderRadius: '14px',
-    background: 'rgba(255, 255, 255, 0.04)',
-    border: '1px solid rgba(255, 255, 255, 0.08)',
-    color: '#F1F5F9',
+    borderRadius: '10px',
+    background: 'var(--overlay-03)',
+    border: '1px solid var(--border)',
+    color: 'var(--text-primary)',
     '& fieldset': { border: 'none' },
     '&:hover': {
-      background: 'rgba(255, 255, 255, 0.06)',
-      borderColor: 'rgba(249, 115, 22, 0.3)',
+      background: 'var(--overlay-05)',
+      borderColor: 'rgba(252, 82, 63, 0.3)',
     },
     '&.Mui-focused': {
-      borderColor: 'rgba(249, 115, 22, 0.6)',
-      boxShadow: '0 0 0 3px rgba(249, 115, 22, 0.15)',
+      borderColor: 'rgba(252, 82, 63, 0.6)',
+      boxShadow: '0 0 0 3px rgba(252, 82, 63, 0.15)',
     },
   },
-  '& .MuiInputLabel-root': { color: '#94A3B8' },
-  '& .MuiInputLabel-root.Mui-focused': { color: '#F97316' },
+  '& .MuiInputLabel-root': { color: 'var(--text-muted)' },
+  '& .MuiInputLabel-root.Mui-focused': { color: '#FC523F' },
 };
 
 const SettingsPage = () => {
@@ -122,14 +122,14 @@ const SettingsPage = () => {
               variant="h4"
               sx={{
                 fontWeight: 700,
-                color: '#F1F5F9',
+                color: 'var(--text-primary)',
                 mb: 0.5,
                 letterSpacing: '-0.02em',
               }}
             >
               Account settings
             </Typography>
-            <Typography variant="body2" sx={{ color: '#94A3B8', mb: 3 }}>
+            <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 3 }}>
               Manage your profile and security
             </Typography>
 
@@ -142,13 +142,13 @@ const SettingsPage = () => {
               elevation={0}
               sx={{
                 p: 4,
-                borderRadius: '12px',
-                background: '#111827',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '8px',
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border)',
                 mb: 3,
               }}
             >
-              <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 2 }}>
+              <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 2 }}>
                 Profile
               </Typography>
               {profileSuccess && (
@@ -156,10 +156,10 @@ const SettingsPage = () => {
                   severity="success"
                   sx={{
                     mb: 2,
-                    background: 'rgba(34, 197, 94, 0.15)',
+                    background: 'rgba(34, 197, 94, 0.12)',
                     border: '1px solid rgba(34, 197, 94, 0.3)',
-                    color: '#86EFAC',
-                    borderRadius: '12px',
+                    color: '#15803D',
+                    borderRadius: '8px',
                   }}
                 >
                   {profileSuccess}
@@ -170,10 +170,10 @@ const SettingsPage = () => {
                   severity="error"
                   sx={{
                     mb: 2,
-                    background: 'rgba(239, 68, 68, 0.15)',
+                    background: 'rgba(239, 68, 68, 0.12)',
                     border: '1px solid rgba(239, 68, 68, 0.3)',
-                    color: '#FCA5A5',
-                    borderRadius: '12px',
+                    color: '#B91C1C',
+                    borderRadius: '8px',
                   }}
                 >
                   {profileError}
@@ -190,7 +190,7 @@ const SettingsPage = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <PersonOutlineIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                        <PersonOutlineIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                       </InputAdornment>
                     ),
                   }}
@@ -206,7 +206,7 @@ const SettingsPage = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <EmailOutlinedIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                        <EmailOutlinedIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                       </InputAdornment>
                     ),
                   }}
@@ -219,15 +219,15 @@ const SettingsPage = () => {
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   sx={{
-                    borderRadius: '14px',
+                    borderRadius: '10px',
                     py: 1.25,
                     px: 3,
                     fontWeight: 700,
                     textTransform: 'none',
-                    background: '#EA580C',
+                    background: '#E13E2C',
                     boxShadow: 'none',
                     '&:hover': {
-                      background: '#C2410C',
+                      background: '#C9341F',
                       boxShadow: 'none',
                     },
                   }}
@@ -246,12 +246,12 @@ const SettingsPage = () => {
               elevation={0}
               sx={{
                 p: 4,
-                borderRadius: '12px',
-                background: '#111827',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '8px',
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border)',
               }}
             >
-              <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 2 }}>
+              <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 2 }}>
                 Change password
               </Typography>
               {passwordSuccess && (
@@ -259,10 +259,10 @@ const SettingsPage = () => {
                   severity="success"
                   sx={{
                     mb: 2,
-                    background: 'rgba(34, 197, 94, 0.15)',
+                    background: 'rgba(34, 197, 94, 0.12)',
                     border: '1px solid rgba(34, 197, 94, 0.3)',
-                    color: '#86EFAC',
-                    borderRadius: '12px',
+                    color: '#15803D',
+                    borderRadius: '8px',
                   }}
                 >
                   {passwordSuccess}
@@ -273,10 +273,10 @@ const SettingsPage = () => {
                   severity="error"
                   sx={{
                     mb: 2,
-                    background: 'rgba(239, 68, 68, 0.15)',
+                    background: 'rgba(239, 68, 68, 0.12)',
                     border: '1px solid rgba(239, 68, 68, 0.3)',
-                    color: '#FCA5A5',
-                    borderRadius: '12px',
+                    color: '#B91C1C',
+                    borderRadius: '8px',
                   }}
                 >
                   {passwordError}
@@ -294,7 +294,7 @@ const SettingsPage = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <LockOutlinedIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                        <LockOutlinedIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                       </InputAdornment>
                     ),
                     endAdornment: (
@@ -302,7 +302,7 @@ const SettingsPage = () => {
                         <Button
                           size="small"
                           onClick={() => setShowCurrent((s) => !s)}
-                          sx={{ minWidth: 0, color: '#94A3B8' }}
+                          sx={{ minWidth: 0, color: 'var(--text-muted)' }}
                         >
                           {showCurrent ? <VisibilityOffIcon /> : <VisibilityIcon />}
                         </Button>
@@ -321,7 +321,7 @@ const SettingsPage = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <LockOutlinedIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                        <LockOutlinedIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                       </InputAdornment>
                     ),
                     endAdornment: (
@@ -329,7 +329,7 @@ const SettingsPage = () => {
                         <Button
                           size="small"
                           onClick={() => setShowNew((s) => !s)}
-                          sx={{ minWidth: 0, color: '#94A3B8' }}
+                          sx={{ minWidth: 0, color: 'var(--text-muted)' }}
                         >
                           {showNew ? <VisibilityOffIcon /> : <VisibilityIcon />}
                         </Button>
@@ -348,7 +348,7 @@ const SettingsPage = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <LockOutlinedIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                        <LockOutlinedIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                       </InputAdornment>
                     ),
                   }}
@@ -361,16 +361,16 @@ const SettingsPage = () => {
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   sx={{
-                    borderRadius: '14px',
+                    borderRadius: '10px',
                     py: 1.25,
                     px: 3,
                     fontWeight: 700,
                     textTransform: 'none',
-                    borderColor: 'rgba(249, 115, 22, 0.5)',
-                    color: '#F97316',
+                    borderColor: 'rgba(252, 82, 63, 0.5)',
+                    color: '#FC523F',
                     '&:hover': {
-                      borderColor: 'rgba(249, 115, 22, 0.8)',
-                      background: 'rgba(249, 115, 22, 0.08)',
+                      borderColor: 'rgba(252, 82, 63, 0.8)',
+                      background: 'rgba(252, 82, 63, 0.08)',
                     },
                   }}
                 >
@@ -384,10 +384,10 @@ const SettingsPage = () => {
                 variant="text"
                 onClick={() => router.push('/profile')}
                 sx={{
-                  color: '#94A3B8',
+                  color: 'var(--text-muted)',
                   textTransform: 'none',
                   fontWeight: 600,
-                  '&:hover': { color: '#F97316', background: 'transparent' },
+                  '&:hover': { color: '#FC523F', background: 'transparent' },
                 }}
               >
                 ← Back to profile

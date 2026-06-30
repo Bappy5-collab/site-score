@@ -57,10 +57,10 @@ export default function ProblemSection() {
                     whileHover={{ y: -6 }}
                     sx={{
                       height: '100%',
-                      background: 'rgba(255, 255, 255, 0.03)',
+                      background: 'var(--overlay-03)',
                       backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      borderRadius: '20px',
+                      border: '1px solid var(--border)',
+                      borderRadius: '12px',
                       '&:hover': { borderColor: 'rgba(239, 68, 68, 0.25)', boxShadow: '0 8px 32px rgba(239, 68, 68, 0.1)' },
                     }}
                   >
@@ -69,7 +69,7 @@ export default function ProblemSection() {
                         sx={{
                           width: 48,
                           height: 48,
-                          borderRadius: '14px',
+                          borderRadius: '10px',
                           background: 'rgba(239, 68, 68, 0.12)',
                           display: 'flex',
                           alignItems: 'center',
@@ -79,10 +79,10 @@ export default function ProblemSection() {
                       >
                         <Icon sx={{ fontSize: 26, color: '#F87171' }} />
                       </Box>
-                      <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 1 }}>
+                      <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 1 }}>
                         {item.title}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+                      <Typography variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                         {item.description}
                       </Typography>
                     </CardContent>

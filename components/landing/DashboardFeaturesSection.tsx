@@ -43,7 +43,7 @@ const groups: FeatureGroup[] = [
   },
   {
     heading: 'Analyze',
-    color: '#F97316',
+    color: '#FC523F',
     features: [
       { icon: AssessmentIcon, title: 'Analyzer', description: 'Run a deep audit of any URL—SEO, performance, accessibility, and security in one pass.' },
       { icon: HistoryIcon, title: 'My Scans', description: 'Browse, filter, and revisit every scan you have ever run with full historical detail.' },
@@ -93,7 +93,7 @@ export default function DashboardFeaturesSection() {
                 <Box sx={{ width: 8, height: 8, borderRadius: '50%', background: group.color, boxShadow: `0 0 12px ${group.color}` }} />
                 <Typography
                   sx={{
-                    color: '#CBD5E1',
+                    color: 'var(--text-secondary)',
                     fontWeight: 700,
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
@@ -102,7 +102,7 @@ export default function DashboardFeaturesSection() {
                 >
                   {group.heading}
                 </Typography>
-                <Box sx={{ flex: 1, height: '1px', background: 'rgba(255, 255, 255, 0.08)' }} />
+                <Box sx={{ flex: 1, height: '1px', background: 'var(--overlay-08)' }} />
               </Box>
 
               <Grid container spacing={2}>
@@ -122,10 +122,10 @@ export default function DashboardFeaturesSection() {
                           width: '100%',
                           p: 2.5,
                           cursor: 'pointer',
-                          borderRadius: '16px',
-                          background: 'rgba(255, 255, 255, 0.03)',
+                          borderRadius: '10px',
+                          background: 'var(--overlay-03)',
                           backdropFilter: 'blur(20px)',
-                          border: '1px solid rgba(255, 255, 255, 0.08)',
+                          border: '1px solid var(--border)',
                           transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
                           '&:hover': {
                             borderColor: `${group.color}66`,
@@ -137,7 +137,7 @@ export default function DashboardFeaturesSection() {
                           sx={{
                             width: 46,
                             height: 46,
-                            borderRadius: '12px',
+                            borderRadius: '8px',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -149,10 +149,10 @@ export default function DashboardFeaturesSection() {
                         >
                           <Icon sx={{ fontSize: 24 }} />
                         </Box>
-                        <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 0.5 }}>
+                        <Typography variant="subtitle1" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 0.5 }}>
                           {item.title}
                         </Typography>
-                        <Typography variant="body2" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+                        <Typography variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                           {item.description}
                         </Typography>
                       </Box>

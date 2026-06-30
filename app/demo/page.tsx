@@ -19,6 +19,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import PremiumCard from '@/components/PremiumCard';
 import Logo from '@/components/Logo';
+import { useThemeMode } from '@/theme/ThemeModeProvider';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -140,22 +141,24 @@ const fmtDate = (ts: number) =>
 const cardSx = {
   p: { xs: 2.5, md: 3 },
   height: '100%',
-  background: 'linear-gradient(155deg, #141B2D 0%, #0E1422 100%)',
-  border: '1px solid rgba(255, 255, 255, 0.08)',
-  borderRadius: '16px',
+  background: 'var(--bg-surface)',
+  border: '1px solid var(--border)',
+  borderRadius: '10px',
 };
 
 type SortKey = 'title' | 'performanceScore' | 'seoScore' | 'securityScore' | 'createdAt';
 type MetricKey = 'performanceScore' | 'seoScore' | 'securityScore';
 
 const METRICS: { key: MetricKey; label: string; color: string }[] = [
-  { key: 'performanceScore', label: 'Performance', color: '#F97316' },
+  { key: 'performanceScore', label: 'Performance', color: '#FC523F' },
   { key: 'seoScore', label: 'SEO', color: '#22C55E' },
   { key: 'securityScore', label: 'Security', color: '#F59E0B' },
 ];
 
 export default function DemoDashboardPage() {
   const router = useRouter();
+  const { mode } = useThemeMode();
+  const dark = mode === 'dark';
 
   const [scans, setScans] = useState<DemoScan[]>(initialScans);
   const [query, setQuery] = useState('');
@@ -213,27 +216,27 @@ export default function DemoDashboardPage() {
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: 'rgba(14, 20, 34, 0.95)',
-        titleColor: '#F8FAFC',
-        bodyColor: '#CBD5E1',
-        borderColor: 'rgba(255, 255, 255, 0.1)',
+        backgroundColor: dark ? 'rgba(17,24,39,0.95)' : 'rgba(255,255,255,0.95)',
+        titleColor: dark ? '#F1F5F9' : '#0F172A',
+        bodyColor: dark ? '#CBD5E1' : '#334155',
+        borderColor: dark ? 'rgba(255,255,255,0.1)' : 'rgba(15,23,42,0.1)',
         borderWidth: 1,
         padding: 12,
-        cornerRadius: 10,
+        cornerRadius: 8,
         usePointStyle: true,
       },
     },
     scales: {
       x: {
         grid: { display: false, drawBorder: false } as any,
-        ticks: { color: '#64748B', maxTicksLimit: 7, font: { size: 11 } },
+        ticks: { color: dark ? '#94A3B8' : '#64748B', maxTicksLimit: 7, font: { size: 11 } },
       },
       y: {
         min: 0,
         max: 100,
         border: { display: false } as any,
-        grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false } as any,
-        ticks: { color: '#64748B', stepSize: 25, font: { size: 11 }, padding: 8 },
+        grid: { color: dark ? 'rgba(255,255,255,0.06)' : 'rgba(15,23,42,0.04)', drawBorder: false } as any,
+        ticks: { color: dark ? '#94A3B8' : '#64748B', stepSize: 25, font: { size: 11 }, padding: 8 },
       },
     },
   };
@@ -248,7 +251,7 @@ export default function DemoDashboardPage() {
       fill: true,
       pointRadius: 0,
       pointHoverRadius: 5,
-      pointHoverBorderColor: '#0E1422',
+      pointHoverBorderColor: dark ? '#111827' : '#FFFFFF',
       pointHoverBorderWidth: 2,
       borderWidth: 2.5,
       backgroundColor: (ctx: ScriptableContext<'line'>) => {
@@ -270,8 +273,8 @@ export default function DemoDashboardPage() {
       {
         label: 'Average score',
         data: [stats.avgPerformanceScore, stats.avgSeoScore, stats.avgSecurityScore],
-        backgroundColor: ['rgba(249, 115, 22, 0.7)', 'rgba(34, 197, 94, 0.7)', 'rgba(245, 158, 11, 0.7)'],
-        borderRadius: 8,
+        backgroundColor: ['rgba(252, 82, 63, 0.7)', 'rgba(34, 197, 94, 0.7)', 'rgba(245, 158, 11, 0.7)'],
+        borderRadius: 6,
         borderWidth: 0,
       },
     ],
@@ -346,9 +349,9 @@ export default function DemoDashboardPage() {
         cursor: 'pointer',
         justifyContent: align,
         userSelect: 'none',
-        color: sortKey === k ? '#FB923C' : '#64748B',
+        color: sortKey === k ? '#FD7565' : 'var(--text-muted)',
         transition: 'color 0.15s',
-        '&:hover': { color: '#FB923C' },
+        '&:hover': { color: '#FD7565' },
       }}
     >
       {label}
@@ -365,7 +368,7 @@ export default function DemoDashboardPage() {
     <Box
       sx={{
         minHeight: '100vh',
-        background: 'linear-gradient(180deg, #0A0E27 0%, #151932 45%, #0A0E27 100%)',
+        background: 'var(--bg-base)',
       }}
     >
       {/* Demo-mode banner */}
@@ -374,9 +377,9 @@ export default function DemoDashboardPage() {
           position: 'sticky',
           top: 0,
           zIndex: 1100,
-          background: 'rgba(10, 14, 39, 0.85)',
+          background: 'var(--bg-base)',
           backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(249, 115, 22, 0.25)',
+          borderBottom: '1px solid rgba(252, 82, 63, 0.25)',
         }}
       >
         <Container
@@ -392,11 +395,11 @@ export default function DemoDashboardPage() {
               sx={{
                 fontWeight: 700,
                 color: '#F1F5F9',
-                background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+                background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
                 '& .MuiChip-icon': { color: '#F1F5F9' },
               }}
             />
-            <Typography variant="body2" sx={{ color: '#94A3B8', display: { xs: 'none', sm: 'block' } }}>
+            <Typography variant="body2" sx={{ color: 'var(--text-muted)', display: { xs: 'none', sm: 'block' } }}>
               Try everything below — sample data, no account needed.
             </Typography>
           </Box>
@@ -404,11 +407,11 @@ export default function DemoDashboardPage() {
             <Button
               onClick={() => router.push('/landing')}
               sx={{
-                color: '#94A3B8',
+                color: 'var(--text-muted)',
                 textTransform: 'none',
                 fontWeight: 600,
-                borderRadius: '10px',
-                '&:hover': { color: '#F1F5F9', background: 'rgba(255,255,255,0.06)' },
+                borderRadius: '8px',
+                '&:hover': { color: 'var(--text-primary)', background: 'var(--overlay-05)' },
               }}
             >
               Back to site
@@ -420,10 +423,10 @@ export default function DemoDashboardPage() {
               sx={{
                 textTransform: 'none',
                 fontWeight: 700,
-                borderRadius: '10px',
-                background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
-                boxShadow: '0 4px 20px rgba(249, 115, 22, 0.4)',
-                '&:hover': { background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)' },
+                borderRadius: '8px',
+                background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
+                boxShadow: '0 4px 20px rgba(252, 82, 63, 0.4)',
+                '&:hover': { background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)' },
               }}
             >
               Sign up free
@@ -438,15 +441,12 @@ export default function DemoDashboardPage() {
             variant="h4"
             sx={{
               fontWeight: 800,
-              background: 'linear-gradient(135deg, #F1F5F9 0%, #94A3B8 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              color: 'var(--text-primary)',
             }}
           >
             Dashboard
           </Typography>
-          <Typography variant="body2" sx={{ color: '#64748B', mb: 3 }}>
+          <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 3 }}>
             Run a demo scan, search, sort, and explore — the whole dashboard reacts live.
           </Typography>
         </motion.div>
@@ -454,8 +454,8 @@ export default function DemoDashboardPage() {
         {/* ── Interactive demo scanner ───────────────────────────────────── */}
         <Paper sx={{ ...cardSx, height: 'auto', mb: 3 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, mb: 2 }}>
-            <RadarIcon sx={{ color: '#FB923C' }} />
-            <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
+            <RadarIcon sx={{ color: '#FD7565' }} />
+            <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
               Run a demo scan
             </Typography>
           </Box>
@@ -471,12 +471,12 @@ export default function DemoDashboardPage() {
                 flex: 1,
                 minWidth: 240,
                 '& .MuiOutlinedInput-root': {
-                  color: '#F1F5F9',
-                  borderRadius: '12px',
-                  background: 'rgba(255,255,255,0.04)',
-                  '& fieldset': { borderColor: 'rgba(255,255,255,0.12)' },
-                  '&:hover fieldset': { borderColor: 'rgba(249, 115, 22,0.5)' },
-                  '&.Mui-focused fieldset': { borderColor: '#F97316' },
+                  color: 'var(--text-primary)',
+                  borderRadius: '8px',
+                  background: 'var(--overlay-03)',
+                  '& fieldset': { borderColor: 'var(--border-strong)' },
+                  '&:hover fieldset': { borderColor: 'rgba(252, 82, 63,0.5)' },
+                  '&.Mui-focused fieldset': { borderColor: '#FC523F' },
                 },
               }}
             />
@@ -489,10 +489,10 @@ export default function DemoDashboardPage() {
                 px: 3,
                 fontWeight: 700,
                 textTransform: 'none',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
-                '&:hover': { background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)' },
-                '&.Mui-disabled': { background: 'rgba(255,255,255,0.08)', color: '#64748B' },
+                borderRadius: '8px',
+                background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
+                '&:hover': { background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)' },
+                '&.Mui-disabled': { background: 'var(--overlay-08)', color: 'var(--text-muted)' },
               }}
             >
               {scanning ? 'Scanning…' : 'Analyze'}
@@ -512,14 +512,14 @@ export default function DemoDashboardPage() {
                     sx={{
                       height: 6,
                       borderRadius: 3,
-                      background: 'rgba(255,255,255,0.08)',
+                      background: 'var(--overlay-08)',
                       '& .MuiLinearProgress-bar': {
                         borderRadius: 3,
-                        background: 'linear-gradient(90deg, #F97316, #EA580C)',
+                        background: 'linear-gradient(90deg, #FC523F, #E13E2C)',
                       },
                     }}
                   />
-                  <Typography variant="caption" sx={{ color: '#FB923C', mt: 1, display: 'block' }}>
+                  <Typography variant="caption" sx={{ color: '#FD7565', mt: 1, display: 'block' }}>
                     {SCAN_STEPS[scanStep]}
                   </Typography>
                 </Box>
@@ -570,7 +570,7 @@ export default function DemoDashboardPage() {
           <Grid item xs={12} md={8}>
             <Paper sx={cardSx}>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2, flexWrap: 'wrap', gap: 1 }}>
-                <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
+                <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
                   Score Trends
                 </Typography>
                 {/* metric toggles */}
@@ -584,10 +584,10 @@ export default function DemoDashboardPage() {
                       sx={{
                         cursor: 'pointer',
                         fontWeight: 600,
-                        color: visible[m.key] ? '#0A0E27' : '#64748B',
-                        background: visible[m.key] ? m.color : 'rgba(255,255,255,0.05)',
-                        border: `1px solid ${visible[m.key] ? m.color : 'rgba(255,255,255,0.1)'}`,
-                        '&:hover': { background: visible[m.key] ? m.color : 'rgba(255,255,255,0.1)' },
+                        color: visible[m.key] ? '#0F172A' : 'var(--text-muted)',
+                        background: visible[m.key] ? m.color : 'var(--overlay-04)',
+                        border: `1px solid ${visible[m.key] ? m.color : 'var(--border-strong)'}`,
+                        '&:hover': { background: visible[m.key] ? m.color : 'var(--overlay-10)' },
                       }}
                     />
                   ))}
@@ -600,7 +600,7 @@ export default function DemoDashboardPage() {
           </Grid>
           <Grid item xs={12} md={4}>
             <Paper sx={cardSx}>
-              <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#F1F5F9' }}>
+              <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: 'var(--text-primary)' }}>
                 Category Averages
               </Typography>
               <Box sx={{ height: 300 }}>
@@ -613,9 +613,9 @@ export default function DemoDashboardPage() {
         {/* ── Scans table (search + sort + expand) ───────────────────────── */}
         <Paper sx={{ ...cardSx, height: 'auto' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2, gap: 2, flexWrap: 'wrap' }}>
-            <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9' }}>
+            <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>
               Scans{' '}
-              <Typography component="span" sx={{ color: '#64748B', fontWeight: 500 }}>
+              <Typography component="span" sx={{ color: 'var(--text-muted)', fontWeight: 500 }}>
                 ({filteredSorted.length})
               </Typography>
             </Typography>
@@ -625,22 +625,22 @@ export default function DemoDashboardPage() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 size="small"
-                InputProps={{ startAdornment: <SearchIcon sx={{ color: '#64748B', mr: 1, fontSize: '1.1rem' }} /> }}
+                InputProps={{ startAdornment: <SearchIcon sx={{ color: 'var(--text-muted)', mr: 1, fontSize: '1.1rem' }} /> }}
                 sx={{
                   '& .MuiOutlinedInput-root': {
-                    color: '#F1F5F9',
-                    borderRadius: '10px',
-                    background: 'rgba(255,255,255,0.04)',
-                    '& fieldset': { borderColor: 'rgba(255,255,255,0.12)' },
-                    '&:hover fieldset': { borderColor: 'rgba(249, 115, 22,0.5)' },
-                    '&.Mui-focused fieldset': { borderColor: '#F97316' },
+                    color: 'var(--text-primary)',
+                    borderRadius: '8px',
+                    background: 'var(--overlay-03)',
+                    '& fieldset': { borderColor: 'var(--border-strong)' },
+                    '&:hover fieldset': { borderColor: 'rgba(252, 82, 63,0.5)' },
+                    '&.Mui-focused fieldset': { borderColor: '#FC523F' },
                   },
                 }}
               />
               <Tooltip title="Reset demo">
                 <IconButton
                   onClick={resetDemo}
-                  sx={{ color: '#94A3B8', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', '&:hover': { color: '#FB923C' } }}
+                  sx={{ color: 'var(--text-muted)', border: '1px solid var(--border-strong)', borderRadius: '8px', '&:hover': { color: '#FD7565' } }}
                 >
                   <RefreshIcon />
                 </IconButton>
@@ -672,7 +672,7 @@ export default function DemoDashboardPage() {
               </Box>
 
               {filteredSorted.length === 0 && (
-                <Typography sx={{ color: '#64748B', textAlign: 'center', py: 4 }}>
+                <Typography sx={{ color: 'var(--text-muted)', textAlign: 'center', py: 4 }}>
                   No scans match &ldquo;{query}&rdquo;.
                 </Typography>
               )}
@@ -697,20 +697,20 @@ export default function DemoDashboardPage() {
                           alignItems: 'center',
                           px: 2,
                           py: 1.5,
-                          borderRadius: '12px',
+                          borderRadius: '8px',
                           cursor: 'pointer',
                           transition: 'background 0.2s',
-                          background: open ? 'rgba(249, 115, 22,0.08)' : 'transparent',
-                          '&:hover': { background: 'rgba(255,255,255,0.04)' },
+                          background: open ? 'rgba(252, 82, 63,0.08)' : 'transparent',
+                          '&:hover': { background: 'var(--overlay-03)' },
                         }}
                       >
                         <Box sx={{ minWidth: 0 }}>
-                          <Typography noWrap sx={{ color: '#F1F5F9', fontWeight: 600, fontSize: '0.9rem' }}>
+                          <Typography noWrap sx={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.9rem' }}>
                             {s.title}
                           </Typography>
                           <Typography
                             noWrap
-                            sx={{ color: '#64748B', fontSize: '0.78rem', display: 'flex', alignItems: 'center', gap: 0.5 }}
+                            sx={{ color: 'var(--text-muted)', fontSize: '0.78rem', display: 'flex', alignItems: 'center', gap: 0.5 }}
                           >
                             <OpenInNewIcon sx={{ fontSize: '0.85rem' }} /> {s.url}
                           </Typography>
@@ -723,7 +723,7 @@ export default function DemoDashboardPage() {
                                 minWidth: 44,
                                 justifyContent: 'center',
                                 py: 0.5,
-                                borderRadius: '8px',
+                                borderRadius: '6px',
                                 fontWeight: 700,
                                 fontSize: '0.85rem',
                                 color: scoreColor(v),
@@ -735,13 +735,13 @@ export default function DemoDashboardPage() {
                             </Box>
                           </Box>
                         ))}
-                        <Typography sx={{ color: '#94A3B8', fontSize: '0.82rem', textAlign: 'right' }}>
+                        <Typography sx={{ color: 'var(--text-muted)', fontSize: '0.82rem', textAlign: 'right' }}>
                           {fmtDate(s.createdAt)}
                         </Typography>
                         <Box sx={{ textAlign: 'right' }}>
                           <ExpandMoreIcon
                             sx={{
-                              color: '#64748B',
+                              color: 'var(--text-muted)',
                               transition: 'transform 0.2s',
                               transform: open ? 'rotate(180deg)' : 'none',
                             }}
@@ -756,28 +756,28 @@ export default function DemoDashboardPage() {
                             mx: 1,
                             mb: 1,
                             p: 2.5,
-                            borderRadius: '14px',
-                            background: 'rgba(255,255,255,0.03)',
-                            border: '1px solid rgba(255,255,255,0.07)',
+                            borderRadius: '10px',
+                            background: 'var(--overlay-03)',
+                            border: '1px solid var(--border)',
                           }}
                         >
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                            <AutoAwesomeIcon sx={{ fontSize: '1rem', color: '#FB923C' }} />
-                            <Typography variant="subtitle2" sx={{ color: '#F1F5F9', fontWeight: 700 }}>
+                            <AutoAwesomeIcon sx={{ fontSize: '1rem', color: '#FD7565' }} />
+                            <Typography variant="subtitle2" sx={{ color: 'var(--text-primary)', fontWeight: 700 }}>
                               AI Summary
                             </Typography>
                           </Box>
-                          <Typography variant="body2" sx={{ color: '#94A3B8', mb: 2 }}>
+                          <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 2 }}>
                             {s.aiSummary}
                           </Typography>
-                          <Typography variant="subtitle2" sx={{ color: '#F1F5F9', fontWeight: 700, mb: 1 }}>
+                          <Typography variant="subtitle2" sx={{ color: 'var(--text-primary)', fontWeight: 700, mb: 1 }}>
                             Issues found ({s.issues.length})
                           </Typography>
                           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.75 }}>
                             {s.issues.map((issue) => (
                               <Box key={issue} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                 <ErrorOutlineIcon sx={{ fontSize: '1rem', color: '#F59E0B' }} />
-                                <Typography variant="body2" sx={{ color: '#CBD5E1' }}>
+                                <Typography variant="body2" sx={{ color: 'var(--text-secondary)' }}>
                                   {issue}
                                 </Typography>
                               </Box>
@@ -799,15 +799,15 @@ export default function DemoDashboardPage() {
             mt: 4,
             p: { xs: 3, md: 5 },
             textAlign: 'center',
-            borderRadius: '24px',
-            background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(234, 88, 12, 0.1) 100%)',
-            border: '1px solid rgba(249, 115, 22, 0.25)',
+            borderRadius: '12px',
+            background: 'linear-gradient(135deg, rgba(252, 82, 63, 0.15) 0%, rgba(252, 82, 63, 0.1) 100%)',
+            border: '1px solid rgba(252, 82, 63, 0.25)',
           }}
         >
-          <Typography variant="h5" sx={{ fontWeight: 800, color: '#F1F5F9', mb: 1 }}>
+          <Typography variant="h5" sx={{ fontWeight: 800, color: 'var(--text-primary)', mb: 1 }}>
             Like what you see? Do it with real data.
           </Typography>
-          <Typography variant="body2" sx={{ color: '#94A3B8', mb: 3 }}>
+          <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 3 }}>
             Create a free account and run a real scan with AI insights in under a minute.
           </Typography>
           <Button
@@ -821,10 +821,10 @@ export default function DemoDashboardPage() {
               fontSize: '1.05rem',
               fontWeight: 700,
               textTransform: 'none',
-              borderRadius: '14px',
-              background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
-              boxShadow: '0 8px 32px rgba(249, 115, 22, 0.45)',
-              '&:hover': { background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)' },
+              borderRadius: '10px',
+              background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
+              boxShadow: '0 8px 32px rgba(252, 82, 63, 0.45)',
+              '&:hover': { background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)' },
             }}
           >
             Start Free

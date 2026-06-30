@@ -13,9 +13,9 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ title, score, color = 'primary' }
   const getColorValue = () => {
     switch (color) {
       case 'primary':
-        return '#F97316';
+        return '#FC523F';
       case 'secondary':
-        return '#F97316';
+        return '#FC523F';
       case 'success':
         return '#22C55E';
       case 'error':
@@ -23,9 +23,9 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ title, score, color = 'primary' }
       case 'warning':
         return '#F59E0B';
       case 'info':
-        return '#FB923C';
+        return '#FD7565';
       default:
-        return '#F97316';
+        return '#FC523F';
     }
   };
 
@@ -43,7 +43,7 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ title, score, color = 'primary' }
           background: `linear-gradient(135deg, ${getColorValue()}15 0%, ${getColorValue()}05 100%)`,
           backdropFilter: 'blur(20px)',
           border: `1px solid ${getColorValue()}30`,
-          borderRadius: '12px',
+          borderRadius: '8px',
           position: 'relative',
           overflow: 'hidden',
           '&::before': {
@@ -62,7 +62,7 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ title, score, color = 'primary' }
         }}
       >
         <CardContent>
-          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: '#F1F5F9' }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600, color: 'var(--text-primary)' }}>
             {title}
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -79,7 +79,7 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ title, score, color = 'primary' }
             >
               {score}
             </Typography>
-            <Typography variant="h6" sx={{ ml: 1, color: '#94A3B8', fontWeight: 500 }}>
+            <Typography variant="h6" sx={{ ml: 1, color: 'var(--text-muted)', fontWeight: 500 }}>
               /100
             </Typography>
           </Box>
@@ -89,7 +89,7 @@ const ScoreCard: React.FC<ScoreCardProps> = ({ title, score, color = 'primary' }
             sx={{
               height: 8,
               borderRadius: 4,
-              background: 'rgba(255, 255, 255, 0.1)',
+              background: 'var(--overlay-10)',
               '& .MuiLinearProgress-bar': {
                 background: `linear-gradient(90deg, ${getColorValue()} 0%, ${getColorValue()}80 100%)`,
                 borderRadius: 4,

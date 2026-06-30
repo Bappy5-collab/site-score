@@ -37,13 +37,13 @@ function AnimatedAreaChart() {
       <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="100%" preserveAspectRatio="none" style={{ display: 'block', overflow: 'visible' }}>
         <defs>
           <linearGradient id="heroArea" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#F97316" stopOpacity="0.38" />
-            <stop offset="60%" stopColor="#F97316" stopOpacity="0.08" />
-            <stop offset="100%" stopColor="#F97316" stopOpacity="0" />
+            <stop offset="0%" stopColor="#FC523F" stopOpacity="0.38" />
+            <stop offset="60%" stopColor="#FC523F" stopOpacity="0.08" />
+            <stop offset="100%" stopColor="#FC523F" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="heroLine" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#FB923C" />
-            <stop offset="100%" stopColor="#F97316" />
+            <stop offset="0%" stopColor="#FD7565" />
+            <stop offset="100%" stopColor="#FC523F" />
           </linearGradient>
         </defs>
 
@@ -54,7 +54,7 @@ function AnimatedAreaChart() {
             x2={W - pad}
             y1={pad + g * (H - pad * 2)}
             y2={pad + g * (H - pad * 2)}
-            stroke="rgba(255,255,255,0.05)"
+            stroke="rgba(15,23,42,0.04)"
             strokeWidth={1}
           />
         ))}
@@ -71,7 +71,7 @@ function AnimatedAreaChart() {
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
           transition={{ duration: 1.6, delay: 0.5, ease: 'easeInOut' }}
-          style={{ filter: 'drop-shadow(0 4px 10px rgba(249,115,22,0.45))' }}
+          style={{ filter: 'drop-shadow(0 4px 10px rgba(252,82,63,0.45))' }}
         />
 
         {coords.map(([x, y], i) => (
@@ -80,8 +80,8 @@ function AnimatedAreaChart() {
             cx={x}
             cy={y}
             r={i === n - 1 ? 5 : 3}
-            fill={i === n - 1 ? '#FFFFFF' : '#FB923C'}
-            stroke="#0E1422"
+            fill={i === n - 1 ? '#0F172A' : '#FD7565'}
+            stroke="#F8FAFC"
             strokeWidth={2}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -94,7 +94,7 @@ function AnimatedAreaChart() {
           cy={last[1]}
           r={5}
           fill="none"
-          stroke="#FB923C"
+          stroke="#FD7565"
           strokeWidth={2}
           initial={{ scale: 1, opacity: 0.8 }}
           animate={{ scale: [1, 2.4], opacity: [0.7, 0] }}
@@ -144,7 +144,7 @@ export default function HeroSection() {
           position: 'absolute',
           inset: 0,
           backgroundImage:
-            'linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px)',
+            'linear-gradient(rgba(15,23,42,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.022) 1px, transparent 1px)',
           backgroundSize: '48px 48px',
           maskImage: 'radial-gradient(ellipse 90% 70% at 50% 30%, #000 40%, transparent 100%)',
           WebkitMaskImage: 'radial-gradient(ellipse 90% 70% at 50% 30%, #000 40%, transparent 100%)',
@@ -163,7 +163,7 @@ export default function HeroSection() {
           right: '-6%',
           width: 620,
           height: 620,
-          background: 'radial-gradient(circle, rgba(249, 115, 22, 0.3) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(252, 82, 63, 0.3) 0%, transparent 70%)',
           borderRadius: '50%',
           filter: 'blur(90px)',
         }}
@@ -178,7 +178,7 @@ export default function HeroSection() {
           left: '-10%',
           width: 520,
           height: 520,
-          background: 'radial-gradient(circle, rgba(234, 88, 12, 0.26) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(252, 82, 63, 0.26) 0%, transparent 70%)',
           borderRadius: '50%',
           filter: 'blur(90px)',
         }}
@@ -204,21 +204,21 @@ export default function HeroSection() {
                     px: 2,
                     py: 0.75,
                     borderRadius: '9999px',
-                    background: 'rgba(249, 115, 22, 0.08)',
-                    border: '1px solid rgba(249, 115, 22, 0.22)',
+                    background: 'rgba(252, 82, 63, 0.08)',
+                    border: '1px solid rgba(252, 82, 63, 0.22)',
                     backdropFilter: 'blur(8px)',
                   }}
                 >
-                  <AutoAwesomeIcon sx={{ fontSize: 16, color: '#FB923C' }} />
-                  <Typography variant="caption" sx={{ color: '#FDBA74', fontWeight: 700, letterSpacing: '0.04em', fontSize: '0.78rem' }}>
+                  <AutoAwesomeIcon sx={{ fontSize: 16, color: '#FD7565' }} />
+                  <Typography variant="caption" sx={{ color: '#FDA294', fontWeight: 700, letterSpacing: '0.04em', fontSize: '0.78rem' }}>
                     AI-Powered Growth OS
                   </Typography>
-                  <Box sx={{ width: '1px', height: 14, background: 'rgba(249,115,22,0.3)' }} />
-                  <Typography variant="caption" sx={{ color: '#94A3B8', fontWeight: 600, fontSize: '0.74rem' }}>
+                  <Box sx={{ width: '1px', height: 14, background: 'rgba(252,82,63,0.3)' }} />
+                  <Typography variant="caption" sx={{ color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.74rem' }}>
                     Now with Growth Brain
                   </Typography>
                   <Box component={motion.span} animate={{ x: [0, 4, 0] }} transition={{ duration: 1.4, repeat: Infinity }} sx={{ display: 'inline-flex' }}>
-                    <ArrowForwardIcon sx={{ fontSize: 14, color: '#FB923C' }} />
+                    <ArrowForwardIcon sx={{ fontSize: 14, color: '#FD7565' }} />
                   </Box>
                 </Box>
               </motion.div>
@@ -234,13 +234,13 @@ export default function HeroSection() {
                     mb: 2.5,
                   }}
                 >
-                  <Box component="span" sx={{ color: '#F8FAFC' }}>
+                  <Box component="span" sx={{ color: 'var(--text-primary)' }}>
                     Turn website data into
                   </Box>{' '}
                   <Box
                     component="span"
                     sx={{
-                      background: 'linear-gradient(135deg, #FB923C 0%, #F97316 55%, #EA580C 100%)',
+                      background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 55%, #E13E2C 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
@@ -256,7 +256,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.15 }}
                 style={{
-                  color: '#94A3B8',
+                  color: 'var(--text-muted)',
                   fontSize: 'clamp(1.02rem, 1.5vw, 1.2rem)',
                   maxWidth: 540,
                   margin: '0 0 2rem',
@@ -285,12 +285,12 @@ export default function HeroSection() {
                     fontSize: '1.05rem',
                     fontWeight: 700,
                     textTransform: 'none',
-                    borderRadius: '14px',
-                    background: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
-                    boxShadow: '0 8px 32px rgba(249, 115, 22, 0.4)',
+                    borderRadius: '10px',
+                    background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
+                    boxShadow: '0 8px 32px rgba(252, 82, 63, 0.4)',
                     '&:hover': {
-                      background: 'linear-gradient(135deg, #FB923C 0%, #FB923C 100%)',
-                      boxShadow: '0 12px 40px rgba(249, 115, 22, 0.5)',
+                      background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)',
+                      boxShadow: '0 12px 40px rgba(252, 82, 63, 0.5)',
                     },
                   }}
                 >
@@ -310,12 +310,12 @@ export default function HeroSection() {
                     fontSize: '1.05rem',
                     fontWeight: 600,
                     textTransform: 'none',
-                    borderRadius: '14px',
-                    borderColor: 'rgba(255, 255, 255, 0.18)',
-                    color: '#F1F5F9',
+                    borderRadius: '10px',
+                    borderColor: 'var(--border)',
+                    color: 'var(--text-primary)',
                     '&:hover': {
-                      borderColor: 'rgba(249, 115, 22, 0.6)',
-                      background: 'rgba(249, 115, 22, 0.08)',
+                      borderColor: 'rgba(252, 82, 63, 0.6)',
+                      background: 'rgba(252, 82, 63, 0.08)',
                     },
                   }}
                 >
@@ -348,8 +348,8 @@ export default function HeroSection() {
                           height: 38,
                           borderRadius: '50%',
                           objectFit: 'cover',
-                          border: '2px solid #0A0E27',
-                          background: '#1E293B',
+                          border: '2px solid var(--bg-base)',
+                          background: 'var(--bg-elevated)',
                           ml: i === 0 ? 0 : '-10px',
                         }}
                       />
@@ -360,11 +360,11 @@ export default function HeroSection() {
                       {[...Array(5)].map((_, i) => (
                         <StarRoundedIcon key={i} sx={{ fontSize: 18, color: '#FBBF24' }} />
                       ))}
-                      <Typography component="span" sx={{ ml: 0.75, color: '#F1F5F9', fontWeight: 700, fontSize: '0.85rem' }}>
+                      <Typography component="span" sx={{ ml: 0.75, color: 'var(--text-primary)', fontWeight: 700, fontSize: '0.85rem' }}>
                         4.9/5
                       </Typography>
                     </Box>
-                    <Typography sx={{ color: '#94A3B8', fontSize: '0.8rem' }}>
+                    <Typography sx={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
                       Loved by 2,000+ growth teams
                     </Typography>
                   </Box>
@@ -392,15 +392,15 @@ export default function HeroSection() {
                   gap: 0.75,
                   px: 1.5,
                   py: 0.75,
-                  borderRadius: '10px',
-                  background: 'rgba(13, 18, 33, 0.92)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  boxShadow: '0 12px 28px rgba(0,0,0,0.4)',
+                  borderRadius: '8px',
+                  background: 'var(--bg-surface)',
+                  border: '1px solid var(--border-strong)',
+                  boxShadow: 'var(--shadow-md)',
                   backdropFilter: 'blur(8px)',
                 }}
               >
                 <VerifiedUserRoundedIcon sx={{ fontSize: 16, color: '#4ADE80' }} />
-                <Typography variant="caption" sx={{ color: '#E2E8F0', fontWeight: 600, fontSize: '0.72rem' }}>
+                <Typography variant="caption" sx={{ color: 'var(--text-secondary)', fontWeight: 600, fontSize: '0.72rem' }}>
                   SOC 2 · GDPR ready
                 </Typography>
               </Box>
@@ -409,13 +409,13 @@ export default function HeroSection() {
                 <Box
                   sx={{
                     position: 'relative',
-                    background: 'rgba(255, 255, 255, 0.03)',
+                    background: 'var(--overlay-03)',
                     backdropFilter: 'blur(24px)',
                     WebkitBackdropFilter: 'blur(24px)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    borderRadius: '22px',
+                    border: '1px solid var(--border)',
+                    borderRadius: '12px',
                     overflow: 'hidden',
-                    boxShadow: '0 40px 80px -20px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.05)',
+                    boxShadow: 'var(--shadow-md)',
                   }}
                 >
                   <Box
@@ -425,16 +425,16 @@ export default function HeroSection() {
                       left: '15%',
                       right: '15%',
                       height: '1px',
-                      background: 'linear-gradient(90deg, transparent, rgba(249,115,22,0.7), transparent)',
+                      background: 'linear-gradient(90deg, transparent, rgba(252,82,63,0.7), transparent)',
                     }}
                   />
 
                   {/* window chrome */}
-                  <Box sx={{ p: 1.75, borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 1.25 }}>
+                  <Box sx={{ p: 1.75, borderBottom: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', gap: 1.25 }}>
                     <Box sx={{ width: 11, height: 11, borderRadius: '50%', bgcolor: 'rgba(239, 68, 68, 0.8)' }} />
                     <Box sx={{ width: 11, height: 11, borderRadius: '50%', bgcolor: 'rgba(245, 158, 11, 0.8)' }} />
                     <Box sx={{ width: 11, height: 11, borderRadius: '50%', bgcolor: 'rgba(34, 197, 94, 0.8)' }} />
-                    <Typography variant="caption" sx={{ color: '#64748B', ml: 0.5 }}>
+                    <Typography variant="caption" sx={{ color: 'var(--text-muted)', ml: 0.5 }}>
                       Growth Brain · SiteScore AI
                     </Typography>
                   </Box>
@@ -443,11 +443,11 @@ export default function HeroSection() {
                     {/* Score + trend header */}
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
                       <Box>
-                        <Typography sx={{ fontSize: '0.72rem', color: '#94A3B8', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                        <Typography sx={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                           Growth Score
                         </Typography>
                         <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1 }}>
-                          <Typography sx={{ fontSize: '2.6rem', fontWeight: 800, color: '#F8FAFC', lineHeight: 1 }}>{score}</Typography>
+                          <Typography sx={{ fontSize: '2.6rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>{score}</Typography>
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.4 }}>
                             <TrendingUpIcon sx={{ fontSize: 16, color: '#22C55E' }} />
                             <Typography sx={{ fontSize: '0.78rem', color: '#22C55E', fontWeight: 700 }}>+18%</Typography>
@@ -461,7 +461,7 @@ export default function HeroSection() {
                           gap: 0.5,
                           px: 1.25,
                           py: 0.5,
-                          borderRadius: '8px',
+                          borderRadius: '6px',
                           background: 'rgba(34, 197, 94, 0.12)',
                           border: '1px solid rgba(34,197,94,0.25)',
                         }}
@@ -476,9 +476,9 @@ export default function HeroSection() {
                     {/* Graph */}
                     <Box
                       sx={{
-                        borderRadius: '14px',
-                        background: 'rgba(255,255,255,0.02)',
-                        border: '1px solid rgba(255,255,255,0.06)',
+                        borderRadius: '10px',
+                        background: 'var(--overlay-02)',
+                        border: '1px solid var(--border-subtle)',
                         p: 1.5,
                         mb: 2,
                       }}
@@ -501,8 +501,8 @@ export default function HeroSection() {
                             position: 'relative',
                             height: 26,
                             borderRadius: '9px',
-                            background: 'rgba(255,255,255,0.05)',
-                            border: '1px solid rgba(255,255,255,0.06)',
+                            background: 'var(--overlay-04)',
+                            border: '1px solid var(--border-subtle)',
                             display: 'flex',
                             alignItems: 'center',
                             px: 1.5,
@@ -520,10 +520,10 @@ export default function HeroSection() {
                               top: 0,
                               bottom: 0,
                               borderRadius: '9px',
-                              background: 'linear-gradient(90deg, rgba(249, 115, 22, 0.45), rgba(234, 88, 12, 0.3))',
+                              background: 'linear-gradient(90deg, rgba(252, 82, 63, 0.45), rgba(252, 82, 63, 0.3))',
                             }}
                           />
-                          <Typography variant="caption" sx={{ color: '#E2E8F0', position: 'relative', zIndex: 1, fontSize: '0.72rem' }}>
+                          <Typography variant="caption" sx={{ color: 'var(--text-secondary)', position: 'relative', zIndex: 1, fontSize: '0.72rem' }}>
                             {label}
                           </Typography>
                         </Box>
@@ -538,12 +538,12 @@ export default function HeroSection() {
                             sx={{
                               py: 1,
                               px: 1.5,
-                              borderRadius: '10px',
-                              background: i === 0 ? 'rgba(34, 197, 94, 0.12)' : 'rgba(249, 115, 22, 0.12)',
-                              border: '1px solid rgba(255,255,255,0.06)',
+                              borderRadius: '8px',
+                              background: i === 0 ? 'rgba(34, 197, 94, 0.12)' : 'rgba(252, 82, 63, 0.12)',
+                              border: '1px solid var(--border-subtle)',
                             }}
                           >
-                            <Typography variant="caption" sx={{ color: '#E2E8F0', fontSize: '0.72rem' }}>
+                            <Typography variant="caption" sx={{ color: 'var(--text-secondary)', fontSize: '0.72rem' }}>
                               {text}
                             </Typography>
                           </Box>
@@ -562,7 +562,7 @@ export default function HeroSection() {
           <Box sx={{ mt: { xs: 7, md: 9 }, textAlign: 'center' }}>
             <Typography
               variant="caption"
-              sx={{ color: '#64748B', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', fontSize: '0.72rem' }}
+              sx={{ color: 'var(--text-muted)', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', fontSize: '0.72rem' }}
             >
               Trusted by teams building the web&apos;s best sites
             </Typography>
@@ -580,13 +580,13 @@ export default function HeroSection() {
                 <Typography
                   key={logo}
                   sx={{
-                    color: '#475569',
+                    color: 'var(--text-tertiary)',
                     fontWeight: 700,
                     fontSize: { xs: '1.05rem', md: '1.25rem' },
                     letterSpacing: '-0.01em',
                     transition: 'color 0.2s ease',
                     cursor: 'default',
-                    '&:hover': { color: '#94A3B8' },
+                    '&:hover': { color: 'var(--text-muted)' },
                   }}
                 >
                   {logo}

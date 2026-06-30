@@ -45,15 +45,15 @@ function getRating(metric: string, value: number | null): Rating {
 }
 
 const RATING_STYLES: Record<Rating, { bg: string; border: string; text: string; label: string }> = {
-  'good':              { bg: 'rgba(16,185,129,0.1)',  border: 'rgba(16,185,129,0.35)',  text: '#10B981', label: 'Good' },
-  'needs-improvement': { bg: 'rgba(245,158,11,0.1)',  border: 'rgba(245,158,11,0.35)',  text: '#F59E0B', label: 'Needs Work' },
-  'poor':              { bg: 'rgba(239,68,68,0.1)',   border: 'rgba(239,68,68,0.35)',   text: '#EF4444', label: 'Poor' },
+  'good':              { bg: 'rgba(22,163,74,0.08)',  border: 'rgba(22,163,74,0.25)',  text: '#16A34A', label: 'Good' },
+  'needs-improvement': { bg: 'rgba(217,119,6,0.08)',  border: 'rgba(217,119,6,0.25)',  text: '#D97706', label: 'Needs Work' },
+  'poor':              { bg: 'rgba(220,38,38,0.08)',  border: 'rgba(220,38,38,0.25)',  text: '#DC2626', label: 'Poor' },
 };
 
 function getScoreColor(score: number) {
-  if (score >= 90) return '#10B981';
-  if (score >= 50) return '#F59E0B';
-  return '#EF4444';
+  if (score >= 90) return '#16A34A';
+  if (score >= 50) return '#D97706';
+  return '#DC2626';
 }
 
 // ─── Score Gauge ──────────────────────────────────────────────────────────────
@@ -79,7 +79,7 @@ function ScoreGauge({ score }: { score: number }) {
         viewBox="0 0 140 140"
         style={{ display: 'block' }}
       >
-        <circle cx="70" cy="70" r={R} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="10" />
+        <circle cx="70" cy="70" r={R} fill="none" stroke="rgba(15,23,42,0.08)" strokeWidth="10" />
         <circle
           cx="70" cy="70" r={R}
           fill="none"
@@ -112,7 +112,7 @@ function ScoreGauge({ score }: { score: number }) {
         >
           {score}
         </Typography>
-        <Typography variant="caption" sx={{ color: '#94A3B8', mt: 0.3 }}>
+        <Typography variant="caption" sx={{ color: 'var(--text-muted)', mt: 0.3 }}>
           / 100
         </Typography>
       </Box>
@@ -143,7 +143,7 @@ function MetricCard({
         p: { xs: 1.5, sm: 2 },
         background: s.bg,
         border: `1px solid ${s.border}`,
-        borderRadius: '16px',
+        borderRadius: '8px',
         height: '100%',
       }}
     >
@@ -151,7 +151,7 @@ function MetricCard({
         <Typography
           variant="caption"
           sx={{
-            color: '#94A3B8',
+            color: 'var(--text-muted)',
             fontWeight: 600,
             letterSpacing: '0.03em',
             fontSize: { xs: '0.6rem', sm: '0.7rem' },
@@ -161,7 +161,7 @@ function MetricCard({
           {label}
         </Typography>
         <Tooltip title={description} placement="top" arrow>
-          <InfoOutlinedIcon sx={{ fontSize: 13, color: '#475569', cursor: 'help', flexShrink: 0, mt: '1px' }} />
+          <InfoOutlinedIcon sx={{ fontSize: 13, color: 'var(--text-tertiary)', cursor: 'help', flexShrink: 0, mt: '1px' }} />
         </Tooltip>
       </Box>
       <Typography
@@ -211,21 +211,22 @@ function DeviceButton({
       startIcon={icon}
       sx={{
         flex: 1,
-        background: active ? 'rgba(249, 115, 22,0.85)' : 'transparent',
-        border: `1px solid ${active ? 'rgba(249, 115, 22,0.7)' : 'rgba(249, 115, 22,0.35)'}`,
-        color: active ? '#fff' : '#94A3B8',
+        background: active ? '#FC523F' : 'var(--bg-surface)',
+        border: `1px solid ${active ? '#FC523F' : 'var(--border)'}`,
+        color: active ? '#FFFFFF' : 'var(--text-muted)',
         fontWeight: 600,
-        borderRadius: '10px',
+        borderRadius: '8px',
         fontSize: { xs: '0.75rem', sm: '0.8rem' },
         px: { xs: 1, sm: 1.5 },
         minWidth: 0,
+        boxShadow: 'none',
         '&:hover': {
-          background: 'rgba(249, 115, 22,0.5)',
-          borderColor: 'rgba(249, 115, 22,0.6)',
+          background: active ? '#E13E2C' : 'var(--overlay-03)',
+          borderColor: active ? '#E13E2C' : 'var(--border-strong)',
         },
         '&.Mui-disabled': {
-          opacity: 0.45,
-          color: active ? '#fff' : '#64748B',
+          opacity: 0.5,
+          color: active ? '#FFFFFF' : 'var(--text-muted)',
         },
       }}
     >
@@ -269,10 +270,10 @@ export default function LighthousePanel({ url, scanId, onAuditComplete }: Props)
     <Paper
       sx={{
         p: { xs: 2, sm: 3 },
-        background: 'rgba(255,255,255,0.03)',
-        backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(255,255,255,0.08)',
-        borderRadius: '12px',
+        background: 'var(--bg-surface)',
+        border: '1px solid var(--border)',
+        borderRadius: '10px',
+        boxShadow: 'var(--shadow-sm)',
       }}
     >
       {/* ── Header ─────────────────────────────────────────────────────────── */}
@@ -290,23 +291,23 @@ export default function LighthousePanel({ url, scanId, onAuditComplete }: Props)
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
           <Box
             sx={{
-              width: 36,
-              height: 36,
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, #F97316 0%, #EF4444 100%)',
+              width: 32,
+              height: 32,
+              borderRadius: '8px',
+              background: 'rgba(252, 82, 63, 0.1)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               flexShrink: 0,
             }}
           >
-            <SpeedIcon sx={{ fontSize: 20, color: '#fff' }} />
+            <SpeedIcon sx={{ fontSize: 19, color: '#FC523F' }} />
           </Box>
           <Box>
-            <Typography variant="h6" sx={{ fontWeight: 700, color: '#F1F5F9', lineHeight: 1.2 }}>
+            <Typography sx={{ fontWeight: 600, fontSize: '1.0625rem', color: 'var(--text-primary)', lineHeight: 1.2, letterSpacing: '-0.01em' }}>
               Lighthouse Audit
             </Typography>
-            <Typography variant="caption" sx={{ color: '#64748B' }}>
+            <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>
               Powered by Google Core Web Vitals
             </Typography>
           </Box>
@@ -361,24 +362,21 @@ export default function LighthousePanel({ url, scanId, onAuditComplete }: Props)
             }
             sx={{
               width: { xs: '100%', sm: 'auto' },
-              background: loading
-                ? 'rgba(249,115,22,0.3)'
-                : 'linear-gradient(135deg, #F97316 0%, #EF4444 100%)',
-              boxShadow: loading ? 'none' : '0 5px 18px rgba(249,115,22,0.35)',
+              background: '#FC523F',
+              boxShadow: '0 1px 2px rgba(252, 82, 63, 0.3)',
               fontWeight: 600,
               fontSize: { xs: '0.85rem', sm: '0.875rem' },
               px: { xs: 2, sm: 2.5 },
               py: { xs: 1, sm: 0.9 },
-              borderRadius: '10px',
+              borderRadius: '8px',
               whiteSpace: 'nowrap',
               '&:hover': {
-                background: 'linear-gradient(135deg, #FB923C 0%, #F87171 100%)',
-                boxShadow: '0 8px 24px rgba(249,115,22,0.45)',
-                transform: 'translateY(-1px)',
+                background: '#E13E2C',
+                boxShadow: 'none',
               },
               '&.Mui-disabled': {
-                background: 'rgba(249,115,22,0.25)',
-                color: 'rgba(255,255,255,0.45)',
+                background: 'rgba(252,82,63,0.4)',
+                color: '#FFFFFF',
               },
             }}
           >
@@ -400,23 +398,23 @@ export default function LighthousePanel({ url, scanId, onAuditComplete }: Props)
               sx={{
                 mb: 3,
                 p: { xs: 1.5, sm: 2 },
-                background: 'rgba(249,115,22,0.07)',
-                border: '1px solid rgba(249,115,22,0.2)',
-                borderRadius: '12px',
+                background: 'rgba(252,82,63,0.07)',
+                border: '1px solid rgba(252,82,63,0.2)',
+                borderRadius: '8px',
                 display: 'flex',
                 alignItems: 'flex-start',
                 gap: 1.5,
               }}
             >
-              <CircularProgress size={18} sx={{ color: '#F97316', flexShrink: 0, mt: '2px' }} />
+              <CircularProgress size={18} sx={{ color: '#FC523F', flexShrink: 0, mt: '2px' }} />
               <Box sx={{ minWidth: 0 }}>
-                <Typography variant="body2" sx={{ color: '#F97316', fontWeight: 600 }}>
+                <Typography variant="body2" sx={{ color: '#FC523F', fontWeight: 600 }}>
                   Running {device} audit — this takes 20–40 seconds
                 </Typography>
                 <Typography
                   variant="caption"
                   sx={{
-                    color: '#78716C',
+                    color: 'var(--text-muted)',
                     display: 'block',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
@@ -444,12 +442,12 @@ export default function LighthousePanel({ url, scanId, onAuditComplete }: Props)
               sx={{
                 mb: 3,
                 p: { xs: 1.5, sm: 2 },
-                background: 'rgba(239,68,68,0.08)',
-                border: '1px solid rgba(239,68,68,0.3)',
-                borderRadius: '12px',
+                background: 'rgba(220,38,38,0.08)',
+                border: '1px solid rgba(220,38,38,0.2)',
+                borderRadius: '8px',
               }}
             >
-              <Typography variant="body2" sx={{ color: '#EF4444' }}>
+              <Typography variant="body2" sx={{ color: '#B91C1C' }}>
                 {error}
               </Typography>
             </Box>
@@ -463,15 +461,15 @@ export default function LighthousePanel({ url, scanId, onAuditComplete }: Props)
           sx={{
             py: { xs: 4, sm: 5 },
             textAlign: 'center',
-            border: '1px dashed rgba(255,255,255,0.08)',
-            borderRadius: '16px',
+            border: '1px dashed var(--border)',
+            borderRadius: '8px',
           }}
         >
-          <SpeedIcon sx={{ fontSize: { xs: 38, sm: 48 }, color: '#334155', mb: 1.5 }} />
-          <Typography variant="body1" sx={{ color: '#475569', fontWeight: 500 }}>
+          <SpeedIcon sx={{ fontSize: { xs: 38, sm: 48 }, color: 'var(--text-secondary)', mb: 1.5 }} />
+          <Typography variant="body1" sx={{ color: 'var(--text-tertiary)', fontWeight: 500 }}>
             Run an audit to see Core Web Vitals
           </Typography>
-          <Typography variant="caption" sx={{ color: '#334155' }}>
+          <Typography variant="caption" sx={{ color: 'var(--text-secondary)' }}>
             Choose Desktop or Mobile above, then click Run Audit
           </Typography>
         </Box>
@@ -510,7 +508,7 @@ export default function LighthousePanel({ url, scanId, onAuditComplete }: Props)
                     flexWrap: 'wrap',
                   }}
                 >
-                  <Typography variant="h6" sx={{ color: '#F1F5F9', fontWeight: 700 }}>
+                  <Typography variant="h6" sx={{ color: 'var(--text-primary)', fontWeight: 700 }}>
                     Performance Score
                   </Typography>
                   <Chip
@@ -524,16 +522,17 @@ export default function LighthousePanel({ url, scanId, onAuditComplete }: Props)
                     label={result.deviceType === 'mobile' ? 'Mobile' : 'Desktop'}
                     size="small"
                     sx={{
-                      background: 'rgba(249, 115, 22,0.15)',
-                      border: '1px solid rgba(249, 115, 22,0.3)',
-                      color: '#FB923C',
+                      background: 'rgba(252, 82, 63,0.1)',
+                      border: '1px solid rgba(252, 82, 63,0.25)',
+                      color: '#FC523F',
                       fontWeight: 600,
                       height: 22,
+                      borderRadius: '6px',
                     }}
                   />
                 </Box>
 
-                <Typography variant="body2" sx={{ color: '#64748B', mb: 0.75 }}>
+                <Typography variant="body2" sx={{ color: 'var(--text-muted)', mb: 0.75 }}>
                   Audited at {new Date(result.auditedAt).toLocaleTimeString()}
                 </Typography>
 
@@ -558,12 +557,12 @@ export default function LighthousePanel({ url, scanId, onAuditComplete }: Props)
               </Box>
             </Box>
 
-            <Divider sx={{ borderColor: 'rgba(255,255,255,0.06)', mb: 3 }} />
+            <Divider sx={{ borderColor: 'var(--border-subtle)', mb: 3 }} />
 
             {/* Core Web Vitals */}
             <Typography
               variant="subtitle2"
-              sx={{ color: '#94A3B8', fontWeight: 700, letterSpacing: '0.08em', mb: 1.5, fontSize: { xs: '0.7rem', sm: '0.75rem' } }}
+              sx={{ color: 'var(--text-muted)', fontWeight: 700, letterSpacing: '0.08em', mb: 1.5, fontSize: { xs: '0.7rem', sm: '0.75rem' } }}
             >
               CORE WEB VITALS
             </Typography>
@@ -600,7 +599,7 @@ export default function LighthousePanel({ url, scanId, onAuditComplete }: Props)
             {/* Additional metrics */}
             <Typography
               variant="subtitle2"
-              sx={{ color: '#94A3B8', fontWeight: 700, letterSpacing: '0.08em', mb: 1.5, fontSize: { xs: '0.7rem', sm: '0.75rem' } }}
+              sx={{ color: 'var(--text-muted)', fontWeight: 700, letterSpacing: '0.08em', mb: 1.5, fontSize: { xs: '0.7rem', sm: '0.75rem' } }}
             >
               ADDITIONAL METRICS
             </Typography>
@@ -646,10 +645,10 @@ export default function LighthousePanel({ url, scanId, onAuditComplete }: Props)
             {/* Issues */}
             {result.lighthouseIssues && result.lighthouseIssues.length > 0 && (
               <>
-                <Divider sx={{ borderColor: 'rgba(255,255,255,0.06)', mb: 2 }} />
+                <Divider sx={{ borderColor: 'var(--border-subtle)', mb: 2 }} />
                 <Typography
                   variant="subtitle2"
-                  sx={{ color: '#94A3B8', fontWeight: 700, letterSpacing: '0.08em', mb: 1.5, fontSize: { xs: '0.7rem', sm: '0.75rem' } }}
+                  sx={{ color: 'var(--text-muted)', fontWeight: 700, letterSpacing: '0.08em', mb: 1.5, fontSize: { xs: '0.7rem', sm: '0.75rem' } }}
                 >
                   ISSUES DETECTED
                 </Typography>
@@ -659,11 +658,12 @@ export default function LighthousePanel({ url, scanId, onAuditComplete }: Props)
                       key={i}
                       label={issue}
                       sx={{
-                        background: 'rgba(239,68,68,0.08)',
-                        border: '1px solid rgba(239,68,68,0.25)',
-                        color: '#F87171',
+                        background: 'rgba(220,38,38,0.08)',
+                        border: '1px solid rgba(220,38,38,0.2)',
+                        color: '#B91C1C',
                         fontSize: { xs: '0.68rem', sm: '0.75rem' },
                         height: 'auto',
+                        borderRadius: '6px',
                         '& .MuiChip-label': { whiteSpace: 'normal', py: 0.5 },
                       }}
                     />

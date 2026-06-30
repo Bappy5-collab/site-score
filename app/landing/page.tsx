@@ -20,7 +20,7 @@ export default function LandingPage() {
     <Box
       sx={{
         minHeight: '100vh',
-        background: 'linear-gradient(180deg, #0A0E27 0%, #151932 45%, #0A0E27 100%)',
+        background: 'var(--bg-base)',
         position: 'relative',
         overflow: 'hidden',
       }}

@@ -32,20 +32,20 @@ import { io, Socket } from 'socket.io-client';
 
 const cardSx = {
   p: 3,
-  borderRadius: '12px',
-  background: '#111827',
+  borderRadius: '8px',
+  background: 'var(--bg-surface)',
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(255, 255, 255, 0.08)',
+  border: '1px solid var(--border)',
   transition: 'all 0.3s ease',
-  '&:hover': { borderColor: 'rgba(249, 115, 22, 0.25)' },
+  '&:hover': { borderColor: 'rgba(252, 82, 63, 0.25)' },
 };
 
 const scoreLabels: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
-  overall: { label: 'Overall', icon: <TrendingUpIcon />, color: '#F97316' },
+  overall: { label: 'Overall', icon: <TrendingUpIcon />, color: '#FC523F' },
   seo: { label: 'SEO', icon: <SearchIcon />, color: '#22C55E' },
-  performance: { label: 'Performance', icon: <SpeedIcon />, color: '#FB923C' },
+  performance: { label: 'Performance', icon: <SpeedIcon />, color: '#FD7565' },
   authority: { label: 'Authority', icon: <ShieldIcon />, color: '#F59E0B' },
-  content: { label: 'Content', icon: <ArticleIcon />, color: '#F97316' },
+  content: { label: 'Content', icon: <ArticleIcon />, color: '#FC523F' },
 };
 
 export default function GrowthOSPage() {
@@ -139,21 +139,21 @@ export default function GrowthOSPage() {
                   sx={{
                     width: 48,
                     height: 48,
-                    borderRadius: '14px',
-                    background: 'linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%)',
-                    border: '1px solid rgba(249, 115, 22, 0.3)',
+                    borderRadius: '10px',
+                    background: 'linear-gradient(135deg, rgba(252, 82, 63, 0.2) 0%, rgba(252, 82, 63, 0.2) 100%)',
+                    border: '1px solid rgba(252, 82, 63, 0.3)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}
                 >
-                  <PsychologyIcon sx={{ color: '#F97316', fontSize: 28 }} />
+                  <PsychologyIcon sx={{ color: '#FC523F', fontSize: 28 }} />
                 </Box>
                 <Box>
-                  <Typography variant="h4" sx={{ fontWeight: 800, color: '#F1F5F9', letterSpacing: '-0.02em' }}>
+                  <Typography variant="h4" sx={{ fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>
                     Growth Brain
                   </Typography>
-                  <Typography variant="body2" sx={{ color: '#94A3B8', mt: 0.25 }}>
+                  <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.25 }}>
                     AI-powered action plan and growth score
                   </Typography>
                 </Box>
@@ -163,7 +163,7 @@ export default function GrowthOSPage() {
                 startIcon={refreshing ? <CircularProgress size={18} color="inherit" /> : <RefreshIcon />}
                 onClick={handleRefresh}
                 disabled={refreshing}
-                sx={{ borderRadius: '14px', borderColor: 'rgba(249, 115, 22, 0.5)', color: '#F97316', textTransform: 'none' }}
+                sx={{ borderRadius: '10px', borderColor: 'rgba(252, 82, 63, 0.5)', color: '#FC523F', textTransform: 'none' }}
               >
                 Refresh plan
               </Button>
@@ -176,7 +176,7 @@ export default function GrowthOSPage() {
             )}
             {loading ? (
               <Box sx={{ display: 'flex', justifyContent: 'center', py: 6 }}>
-                <CircularProgress sx={{ color: '#F97316' }} />
+                <CircularProgress sx={{ color: '#FC523F' }} />
               </Box>
             ) : (
               <>
@@ -184,14 +184,14 @@ export default function GrowthOSPage() {
                   <Grid container spacing={3} sx={{ mb: 3 }}>
                     <Grid item xs={12} md={4}>
                       <Paper elevation={0} sx={cardSx}>
-                        <Typography variant="subtitle2" sx={{ color: '#94A3B8', mb: 2 }}>
+                        <Typography variant="subtitle2" sx={{ color: 'var(--text-muted)', mb: 2 }}>
                           Growth Score
                         </Typography>
                         <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1, mb: 2 }}>
-                          <Typography variant="h3" sx={{ fontWeight: 800, color: '#F1F5F9' }}>
+                          <Typography variant="h3" sx={{ fontWeight: 800, color: 'var(--text-primary)' }}>
                             {score.overall}
                           </Typography>
-                          <Typography variant="body1" sx={{ color: '#64748B' }}>/100</Typography>
+                          <Typography variant="body1" sx={{ color: 'var(--text-muted)' }}>/100</Typography>
                         </Box>
                         <LinearProgress
                           variant="determinate"
@@ -199,8 +199,8 @@ export default function GrowthOSPage() {
                           sx={{
                             height: 10,
                             borderRadius: 5,
-                            bgcolor: 'rgba(255,255,255,0.06)',
-                            '& .MuiLinearProgress-bar': { bgcolor: '#F97316', borderRadius: 5 },
+                            bgcolor: 'var(--overlay-05)',
+                            '& .MuiLinearProgress-bar': { bgcolor: '#FC523F', borderRadius: 5 },
                           }}
                         />
                         <Grid container spacing={1} sx={{ mt: 2 }}>
@@ -208,7 +208,7 @@ export default function GrowthOSPage() {
                             <Grid item xs={6} key={k}>
                               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                                 <Box sx={{ color: scoreLabels[k]?.color }}>{scoreLabels[k]?.icon}</Box>
-                                <Typography variant="caption" sx={{ color: '#94A3B8' }}>
+                                <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>
                                   {scoreLabels[k]?.label}: {score[k]}
                                 </Typography>
                               </Box>
@@ -219,22 +219,22 @@ export default function GrowthOSPage() {
                     </Grid>
                     <Grid item xs={12} md={8}>
                       <Paper elevation={0} sx={cardSx}>
-                        <Typography variant="subtitle2" sx={{ color: '#94A3B8', mb: 2 }}>
+                        <Typography variant="subtitle2" sx={{ color: 'var(--text-muted)', mb: 2 }}>
                           Insights
                         </Typography>
                         {insights.length === 0 ? (
-                          <Typography sx={{ color: '#64748B' }}>Run a scan and click Refresh plan to generate insights.</Typography>
+                          <Typography sx={{ color: 'var(--text-muted)' }}>Run a scan and click Refresh plan to generate insights.</Typography>
                         ) : (
                           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
                             {insights.slice(0, 6).map((i) => (
-                              <Card key={i._id} elevation={0} sx={{ bgcolor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px' }}>
+                              <Card key={i._id} elevation={0} sx={{ bgcolor: 'var(--overlay-03)', border: '1px solid var(--border-subtle)', borderRadius: '8px' }}>
                                 <CardContent sx={{ py: 1.5, '&:last-child': { pb: 1.5 } }}>
                                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
-                                    <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#F1F5F9' }}>{i.title}</Typography>
+                                    <Typography variant="subtitle1" sx={{ fontWeight: 600, color: 'var(--text-primary)' }}>{i.title}</Typography>
                                     <Chip size="small" label={i.category} sx={{ textTransform: 'capitalize', fontSize: '0.7rem' }} />
                                     {i.status === 'addressed' && <Chip size="small" label="Done" color="success" />}
                                   </Box>
-                                  {i.description && <Typography variant="body2" sx={{ color: '#94A3B8', mt: 0.5 }}>{i.description}</Typography>}
+                                  {i.description && <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.5 }}>{i.description}</Typography>}
                                 </CardContent>
                               </Card>
                             ))}
@@ -246,11 +246,11 @@ export default function GrowthOSPage() {
                 )}
 
                 <Paper elevation={0} sx={cardSx}>
-                  <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 2 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 2 }}>
                     Action plan
                   </Typography>
                   {actions.length === 0 ? (
-                    <Typography sx={{ color: '#64748B' }}>No actions yet. Refresh plan to generate tasks from your scans.</Typography>
+                    <Typography sx={{ color: 'var(--text-muted)' }}>No actions yet. Refresh plan to generate tasks from your scans.</Typography>
                   ) : (
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                       {actions.map((a) => (
@@ -262,24 +262,24 @@ export default function GrowthOSPage() {
                             gap: 2,
                             py: 1.5,
                             px: 2,
-                            borderRadius: '12px',
-                            bgcolor: a.completedAt ? 'rgba(34, 197, 94, 0.08)' : 'rgba(255,255,255,0.04)',
-                            border: '1px solid rgba(255,255,255,0.06)',
+                            borderRadius: '8px',
+                            bgcolor: a.completedAt ? 'rgba(34, 197, 94, 0.08)' : 'var(--overlay-03)',
+                            border: '1px solid var(--border-subtle)',
                           }}
                         >
                           <Checkbox
                             checked={!!a.completedAt}
                             onChange={() => handleToggleAction(a)}
                             disabled={actionUpdating === a._id}
-                            sx={{ color: '#F97316', '&.Mui-checked': { color: '#22C55E' } }}
+                            sx={{ color: '#FC523F', '&.Mui-checked': { color: '#22C55E' } }}
                           />
                           <Box sx={{ flex: 1 }}>
-                            <Typography variant="body1" sx={{ color: '#F1F5F9', textDecoration: a.completedAt ? 'line-through' : 'none' }}>
+                            <Typography variant="body1" sx={{ color: 'var(--text-primary)', textDecoration: a.completedAt ? 'line-through' : 'none' }}>
                               {a.title}
                             </Typography>
-                            {a.category && <Typography variant="caption" sx={{ color: '#64748B', textTransform: 'capitalize' }}>{a.category}</Typography>}
+                            {a.category && <Typography variant="caption" sx={{ color: 'var(--text-muted)', textTransform: 'capitalize' }}>{a.category}</Typography>}
                           </Box>
-                          {actionUpdating === a._id && <CircularProgress size={20} sx={{ color: '#F97316' }} />}
+                          {actionUpdating === a._id && <CircularProgress size={20} sx={{ color: '#FC523F' }} />}
                         </Box>
                       ))}
                     </Box>

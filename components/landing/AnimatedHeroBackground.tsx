@@ -88,7 +88,7 @@ export default function AnimatedHeroBackground() {
           const dist = Math.hypot(dx, dy);
           if (dist < LINK_DIST) {
             const alpha = (1 - dist / LINK_DIST) * 0.5;
-            ctx.strokeStyle = `rgba(249, 115, 22, ${alpha})`;
+            ctx.strokeStyle = `rgba(252, 82, 63, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -102,7 +102,7 @@ export default function AnimatedHeroBackground() {
       for (const p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, 1.7, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(196, 181, 253, 0.85)';
+        ctx.fillStyle = 'rgba(252, 82, 63, 0.85)';
         ctx.fill();
       }
 
@@ -140,7 +140,7 @@ export default function AnimatedHeroBackground() {
           position: 'absolute',
           inset: 0,
           backgroundImage:
-            'linear-gradient(rgba(249, 115, 22,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(249, 115, 22,0.06) 1px, transparent 1px)',
+            'linear-gradient(rgba(252, 82, 63,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(252, 82, 63,0.06) 1px, transparent 1px)',
           backgroundSize: '44px 44px',
           maskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%)',
           WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%)',
@@ -164,14 +164,14 @@ export default function AnimatedHeroBackground() {
             justifyContent: 'center',
             width: 50,
             height: 50,
-            borderRadius: '15px',
-            background: 'rgba(249, 115, 22, 0.1)',
-            border: '1px solid rgba(249, 115, 22, 0.25)',
+            borderRadius: '10px',
+            background: 'rgba(252, 82, 63, 0.1)',
+            border: '1px solid rgba(252, 82, 63, 0.25)',
             backdropFilter: 'blur(8px)',
-            boxShadow: '0 8px 24px rgba(249, 115, 22, 0.15)',
+            boxShadow: '0 8px 24px rgba(252, 82, 63, 0.15)',
           }}
         >
-          <Icon sx={{ color: '#FB923C', fontSize: '1.4rem' }} />
+          <Icon sx={{ color: '#FD7565', fontSize: '1.4rem' }} />
         </Box>
       ))}
     </Box>

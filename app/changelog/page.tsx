@@ -14,7 +14,7 @@ interface Entry {
 
 const tagColor: Record<Entry['tag'], string> = {
   New: '#22C55E',
-  Improved: '#F97316',
+  Improved: '#FC523F',
   Fixed: '#06B6D4',
 };
 
@@ -79,11 +79,11 @@ export default function ChangelogPage() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <Typography
             variant="h1"
-            sx={{ fontSize: { xs: '2rem', md: '2.75rem' }, fontWeight: 800, color: '#F1F5F9', letterSpacing: '-0.02em', mb: 1 }}
+            sx={{ fontSize: { xs: '2rem', md: '2.75rem' }, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em', mb: 1 }}
           >
             Changelog
           </Typography>
-          <Typography sx={{ color: '#94A3B8', fontSize: '1.1rem', mb: 5 }}>
+          <Typography sx={{ color: 'var(--text-muted)', fontSize: '1.1rem', mb: 5 }}>
             Everything new in SiteScore AI. We ship improvements every week.
           </Typography>
 
@@ -96,7 +96,7 @@ export default function ChangelogPage() {
                 top: 6,
                 bottom: 6,
                 width: '2px',
-                background: 'linear-gradient(180deg, rgba(249, 115, 22, 0.5), rgba(255,255,255,0.05))',
+                background: 'linear-gradient(180deg, rgba(252, 82, 63, 0.5), var(--border-subtle))',
               }}
             />
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
@@ -120,16 +120,16 @@ export default function ChangelogPage() {
                       height: 12,
                       borderRadius: '50%',
                       background: tagColor[entry.tag],
-                      border: '2px solid #0A0E27',
+                      border: '2px solid var(--bg-base)',
                       boxShadow: `0 0 10px ${tagColor[entry.tag]}`,
                     }}
                   />
                   <Box
                     sx={{
                       p: 3,
-                      borderRadius: '16px',
-                      background: 'rgba(255, 255, 255, 0.03)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      borderRadius: '10px',
+                      background: 'var(--overlay-03)',
+                      border: '1px solid var(--border)',
                     }}
                   >
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexWrap: 'wrap', mb: 1.5 }}>
@@ -138,19 +138,19 @@ export default function ChangelogPage() {
                         size="small"
                         sx={{ background: `${tagColor[entry.tag]}22`, color: tagColor[entry.tag], fontWeight: 700, borderRadius: '6px' }}
                       />
-                      <Typography variant="body2" sx={{ color: '#F1F5F9', fontWeight: 700 }}>
+                      <Typography variant="body2" sx={{ color: 'var(--text-primary)', fontWeight: 700 }}>
                         {entry.version}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#64748B' }}>
+                      <Typography variant="caption" sx={{ color: 'var(--text-muted)' }}>
                         {entry.date}
                       </Typography>
                     </Box>
-                    <Typography variant="h6" sx={{ fontWeight: 600, color: '#F1F5F9', mb: 1 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 1 }}>
                       {entry.title}
                     </Typography>
                     <Box component="ul" sx={{ m: 0, pl: 2.5, display: 'flex', flexDirection: 'column', gap: 0.5 }}>
                       {entry.points.map((p) => (
-                        <Typography key={p} component="li" variant="body2" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+                        <Typography key={p} component="li" variant="body2" sx={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                           {p}
                         </Typography>
                       ))}

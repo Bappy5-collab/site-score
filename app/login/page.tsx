@@ -49,7 +49,7 @@ const LoginPage = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(180deg, #0A0E27 0%, #151932 50%, #0A0E27 100%)',
+        background: 'var(--bg-base)',
         position: 'relative',
         overflow: 'hidden',
         py: 4,
@@ -66,7 +66,7 @@ const LoginPage = () => {
           right: '-10%',
           width: 500,
           height: 500,
-          background: 'radial-gradient(circle, rgba(249, 115, 22, 0.35) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(252, 82, 63, 0.35) 0%, transparent 70%)',
           borderRadius: '50%',
           filter: 'blur(60px)',
         }}
@@ -81,7 +81,7 @@ const LoginPage = () => {
           left: '-10%',
           width: 400,
           height: 400,
-          background: 'radial-gradient(circle, rgba(249, 115, 22, 0.3) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(252, 82, 63, 0.3) 0%, transparent 70%)',
           borderRadius: '50%',
           filter: 'blur(60px)',
         }}
@@ -96,16 +96,16 @@ const LoginPage = () => {
           <Box
             sx={{
               p: { xs: 3, sm: 4 },
-              borderRadius: '14px',
-              background: '#111827',
+              borderRadius: '10px',
+              background: 'var(--bg-surface)',
               backdropFilter: 'blur(24px)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              boxShadow: '0 24px 48px rgba(0, 0, 0, 0.2)',
+              border: '1px solid var(--border)',
+              boxShadow: 'var(--shadow-md)',
             }}
           >
             <Box sx={{ textAlign: 'center', mb: 3 }}>
               <Logo size={44} fontSize="1.6rem" sx={{ justifyContent: 'center', mb: 1 }} />
-              <Typography sx={{ color: '#94A3B8', mt: 1, fontWeight: 500 }}>
+              <Typography sx={{ color: 'var(--text-muted)', mt: 1, fontWeight: 500 }}>
                 Welcome back — sign in to continue
               </Typography>
             </Box>
@@ -118,7 +118,7 @@ const LoginPage = () => {
                   background: 'rgba(239, 68, 68, 0.15)',
                   border: '1px solid rgba(239, 68, 68, 0.3)',
                   color: '#FCA5A5',
-                  borderRadius: '12px',
+                  borderRadius: '8px',
                 }}
               >
                 {error}
@@ -140,29 +140,29 @@ const LoginPage = () => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <EmailOutlinedIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                      <EmailOutlinedIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                     </InputAdornment>
                   ),
                 }}
                 sx={{
                   mb: 2,
                   '& .MuiOutlinedInput-root': {
-                    borderRadius: '14px',
-                    background: 'rgba(255, 255, 255, 0.04)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    color: '#F1F5F9',
+                    borderRadius: '10px',
+                    background: 'var(--overlay-03)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-primary)',
                     '& fieldset': { border: 'none' },
                     '&:hover': {
-                      background: 'rgba(255, 255, 255, 0.06)',
-                      borderColor: 'rgba(249, 115, 22, 0.3)',
+                      background: 'var(--overlay-05)',
+                      borderColor: 'rgba(252, 82, 63, 0.3)',
                     },
                     '&.Mui-focused': {
-                      borderColor: 'rgba(249, 115, 22, 0.6)',
-                      boxShadow: '0 0 0 3px rgba(249, 115, 22, 0.15)',
+                      borderColor: 'rgba(252, 82, 63, 0.6)',
+                      boxShadow: '0 0 0 3px rgba(252, 82, 63, 0.15)',
                     },
                   },
-                  '& .MuiInputLabel-root': { color: '#94A3B8' },
-                  '& .MuiInputLabel-root.Mui-focused': { color: '#F97316' },
+                  '& .MuiInputLabel-root': { color: 'var(--text-muted)' },
+                  '& .MuiInputLabel-root.Mui-focused': { color: '#FC523F' },
                 }}
               />
               <TextField
@@ -178,29 +178,29 @@ const LoginPage = () => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <LockOutlinedIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                      <LockOutlinedIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                     </InputAdornment>
                   ),
                 }}
                 sx={{
                   mb: 3,
                   '& .MuiOutlinedInput-root': {
-                    borderRadius: '14px',
-                    background: 'rgba(255, 255, 255, 0.04)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    color: '#F1F5F9',
+                    borderRadius: '10px',
+                    background: 'var(--overlay-03)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-primary)',
                     '& fieldset': { border: 'none' },
                     '&:hover': {
-                      background: 'rgba(255, 255, 255, 0.06)',
-                      borderColor: 'rgba(249, 115, 22, 0.3)',
+                      background: 'var(--overlay-05)',
+                      borderColor: 'rgba(252, 82, 63, 0.3)',
                     },
                     '&.Mui-focused': {
-                      borderColor: 'rgba(249, 115, 22, 0.6)',
-                      boxShadow: '0 0 0 3px rgba(249, 115, 22, 0.15)',
+                      borderColor: 'rgba(252, 82, 63, 0.6)',
+                      boxShadow: '0 0 0 3px rgba(252, 82, 63, 0.15)',
                     },
                   },
-                  '& .MuiInputLabel-root': { color: '#94A3B8' },
-                  '& .MuiInputLabel-root.Mui-focused': { color: '#F97316' },
+                  '& .MuiInputLabel-root': { color: 'var(--text-muted)' },
+                  '& .MuiInputLabel-root.Mui-focused': { color: '#FC523F' },
                 }}
               />
 
@@ -214,18 +214,18 @@ const LoginPage = () => {
                 whileTap={{ scale: 0.99 }}
                 sx={{
                   py: 1.5,
-                  borderRadius: '14px',
+                  borderRadius: '10px',
                   fontSize: '1rem',
                   fontWeight: 700,
                   textTransform: 'none',
-                  background: '#EA580C',
+                  background: '#E13E2C',
                   boxShadow: 'none',
                   '&:hover': {
-                    background: '#C2410C',
+                    background: '#C9341F',
                     boxShadow: 'none',
                   },
                   '&:disabled': {
-                    background: 'rgba(249, 115, 22, 0.4)',
+                    background: 'rgba(252, 82, 63, 0.4)',
                     color: 'rgba(255,255,255,0.7)',
                   },
                 }}
@@ -239,14 +239,14 @@ const LoginPage = () => {
                 <Link
                   href="/signup"
                   style={{
-                    color: '#94A3B8',
+                    color: 'var(--text-muted)',
                     textDecoration: 'none',
                     fontWeight: 600,
                     transition: 'color 0.2s',
                   }}
                 >
                   Don&apos;t have an account?{' '}
-                  <Box component="span" sx={{ color: '#F97316' }}>
+                  <Box component="span" sx={{ color: '#FC523F' }}>
                     Sign up
                   </Box>
                 </Link>

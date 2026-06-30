@@ -37,10 +37,10 @@ const cardSx = {
   width: '100%',
   maxWidth: 560,
   p: { xs: 3, sm: 5 },
-  borderRadius: '20px',
-  background: '#111827',
-  border: '1px solid rgba(255, 255, 255, 0.08)',
-  boxShadow: '0 24px 48px rgba(0, 0, 0, 0.3)',
+  borderRadius: '12px',
+  background: 'var(--bg-surface)',
+  border: '1px solid var(--border)',
+  boxShadow: 'var(--shadow-md)',
 };
 
 export default function OnboardingPage() {
@@ -106,31 +106,31 @@ export default function OnboardingPage() {
         textAlign: 'left',
         cursor: 'pointer',
         p: 1.75,
-        borderRadius: '14px',
-        background: active ? 'rgba(249, 115, 22, 0.12)' : 'rgba(255,255,255,0.03)',
-        border: active ? '1px solid rgba(249, 115, 22, 0.5)' : '1px solid rgba(255,255,255,0.08)',
-        color: '#F1F5F9',
+        borderRadius: '10px',
+        background: active ? 'rgba(252, 82, 63, 0.12)' : 'var(--overlay-03)',
+        border: active ? '1px solid rgba(252, 82, 63, 0.5)' : '1px solid var(--border)',
+        color: 'var(--text-primary)',
         transition: 'background 0.15s ease, border-color 0.15s ease',
-        '&:hover': { borderColor: 'rgba(249, 115, 22, 0.4)' },
+        '&:hover': { borderColor: 'rgba(252, 82, 63, 0.4)' },
       }}
     >
       <Box
         sx={{
           width: 38,
           height: 38,
-          borderRadius: '10px',
+          borderRadius: '8px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0,
-          color: active ? '#FB923C' : '#94A3B8',
-          background: active ? 'rgba(249, 115, 22, 0.18)' : 'rgba(255,255,255,0.05)',
+          color: active ? '#FD7565' : 'var(--text-muted)',
+          background: active ? 'rgba(252, 82, 63, 0.18)' : 'var(--overlay-04)',
         }}
       >
         <Icon sx={{ fontSize: 20 }} />
       </Box>
       <Typography sx={{ fontWeight: 600, fontSize: '0.95rem', flex: 1 }}>{label}</Typography>
-      {active && <CheckCircleRoundedIcon sx={{ color: '#F97316', fontSize: 20 }} />}
+      {active && <CheckCircleRoundedIcon sx={{ color: '#FC523F', fontSize: 20 }} />}
     </Box>
   );
 
@@ -143,7 +143,7 @@ export default function OnboardingPage() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(180deg, #0A0E27 0%, #151932 50%, #0A0E27 100%)',
+          background: 'var(--bg-base)',
           position: 'relative',
           overflow: 'hidden',
           p: 2,
@@ -159,7 +159,7 @@ export default function OnboardingPage() {
             right: '-10%',
             width: 500,
             height: 500,
-            background: 'radial-gradient(circle, rgba(249, 115, 22, 0.3) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(252, 82, 63, 0.3) 0%, transparent 70%)',
             borderRadius: '50%',
             filter: 'blur(70px)',
           }}
@@ -174,7 +174,7 @@ export default function OnboardingPage() {
                 height: 6,
                 width: i === step ? 28 : 6,
                 borderRadius: '9999px',
-                background: i <= step ? 'linear-gradient(90deg, #F97316, #EA580C)' : 'rgba(255,255,255,0.12)',
+                background: i <= step ? 'linear-gradient(90deg, #FC523F, #E13E2C)' : 'var(--overlay-10)',
                 transition: 'all 0.3s ease',
               }}
             />
@@ -191,13 +191,13 @@ export default function OnboardingPage() {
             {step === 0 && (
               <motion.div key="s0" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.3 }}>
                 <Box sx={{ textAlign: 'center' }}>
-                  <Box sx={{ width: 64, height: 64, mx: 'auto', mb: 2, borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(249, 115, 22, 0.15)' }}>
-                    <RocketLaunchIcon sx={{ fontSize: 32, color: '#F97316' }} />
+                  <Box sx={{ width: 64, height: 64, mx: 'auto', mb: 2, borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(252, 82, 63, 0.15)' }}>
+                    <RocketLaunchIcon sx={{ fontSize: 32, color: '#FC523F' }} />
                   </Box>
-                  <Typography variant="h4" sx={{ fontWeight: 800, color: '#F8FAFC', mb: 1 }}>
+                  <Typography variant="h4" sx={{ fontWeight: 800, color: 'var(--text-primary)', mb: 1 }}>
                     Welcome, {firstName}! 👋
                   </Typography>
-                  <Typography sx={{ color: '#94A3B8', fontSize: '1rem', mb: 4, lineHeight: 1.6 }}>
+                  <Typography sx={{ color: 'var(--text-muted)', fontSize: '1rem', mb: 4, lineHeight: 1.6 }}>
                     Let&apos;s set up your growth workspace in under a minute. We&apos;ll tailor SiteScore AI to what matters most to you.
                   </Typography>
                   <Button fullWidth variant="contained" onClick={next} sx={primaryBtn}>
@@ -210,10 +210,10 @@ export default function OnboardingPage() {
             {/* STEP 1 — Website */}
             {step === 1 && (
               <motion.div key="s1" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.3 }}>
-                <Typography variant="h5" sx={{ fontWeight: 700, color: '#F8FAFC', mb: 1 }}>
+                <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary)', mb: 1 }}>
                   What site do you want to grow?
                 </Typography>
-                <Typography sx={{ color: '#94A3B8', mb: 3 }}>
+                <Typography sx={{ color: 'var(--text-muted)', mb: 3 }}>
                   Add your website so we can run your first scan. You can change this later.
                 </Typography>
                 <TextField
@@ -224,7 +224,7 @@ export default function OnboardingPage() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <LanguageIcon sx={{ color: '#64748B', fontSize: 20 }} />
+                        <LanguageIcon sx={{ color: 'var(--text-muted)', fontSize: 20 }} />
                       </InputAdornment>
                     ),
                   }}
@@ -244,10 +244,10 @@ export default function OnboardingPage() {
             {/* STEP 2 — Goal */}
             {step === 2 && (
               <motion.div key="s2" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.3 }}>
-                <Typography variant="h5" sx={{ fontWeight: 700, color: '#F8FAFC', mb: 1 }}>
+                <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary)', mb: 1 }}>
                   What&apos;s your main goal?
                 </Typography>
-                <Typography sx={{ color: '#94A3B8', mb: 3 }}>
+                <Typography sx={{ color: 'var(--text-muted)', mb: 3 }}>
                   We&apos;ll prioritize your action plan around this.
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25 }}>
@@ -269,10 +269,10 @@ export default function OnboardingPage() {
             {/* STEP 3 — Role + finish */}
             {step === 3 && (
               <motion.div key="s3" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.3 }}>
-                <Typography variant="h5" sx={{ fontWeight: 700, color: '#F8FAFC', mb: 1 }}>
+                <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text-primary)', mb: 1 }}>
                   Who&apos;s growing with you?
                 </Typography>
-                <Typography sx={{ color: '#94A3B8', mb: 3 }}>
+                <Typography sx={{ color: 'var(--text-muted)', mb: 3 }}>
                   This helps us recommend the right collaboration features.
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25 }}>
@@ -294,7 +294,7 @@ export default function OnboardingPage() {
         </Box>
 
         {step === 0 && (
-          <Button onClick={() => finish(false)} sx={{ mt: 2, color: '#64748B', textTransform: 'none', zIndex: 1, '&:hover': { color: '#94A3B8', background: 'transparent' } }}>
+          <Button onClick={() => finish(false)} sx={{ mt: 2, color: 'var(--text-muted)', textTransform: 'none', zIndex: 1, '&:hover': { color: 'var(--text-primary)', background: 'transparent' } }}>
             Skip onboarding
           </Button>
         )}
@@ -305,35 +305,35 @@ export default function OnboardingPage() {
 
 const primaryBtn = {
   py: 1.4,
-  borderRadius: '12px',
+  borderRadius: '8px',
   fontSize: '1rem',
   fontWeight: 700,
   textTransform: 'none',
-  background: '#EA580C',
+  background: '#E13E2C',
   boxShadow: 'none',
-  '&:hover': { background: '#C2410C', boxShadow: 'none' },
-  '&:disabled': { background: 'rgba(249, 115, 22, 0.35)', color: 'rgba(255,255,255,0.6)' },
+  '&:hover': { background: '#C9341F', boxShadow: 'none' },
+  '&:disabled': { background: 'rgba(252, 82, 63, 0.35)', color: 'rgba(255,255,255,0.6)' },
 };
 
 const ghostBtn = {
   py: 1.4,
   px: 3,
-  borderRadius: '12px',
+  borderRadius: '8px',
   fontSize: '1rem',
   fontWeight: 600,
   textTransform: 'none',
-  color: '#94A3B8',
-  '&:hover': { background: 'rgba(255,255,255,0.05)', color: '#F1F5F9' },
+  color: 'var(--text-muted)',
+  '&:hover': { background: 'var(--overlay-04)', color: 'var(--text-primary)' },
 };
 
 const inputSx = {
   '& .MuiOutlinedInput-root': {
-    borderRadius: '14px',
-    background: 'rgba(255, 255, 255, 0.04)',
-    border: '1px solid rgba(255, 255, 255, 0.08)',
-    color: '#F1F5F9',
+    borderRadius: '10px',
+    background: 'var(--overlay-03)',
+    border: '1px solid var(--border)',
+    color: 'var(--text-primary)',
     '& fieldset': { border: 'none' },
-    '&:hover': { borderColor: 'rgba(249, 115, 22, 0.3)' },
-    '&.Mui-focused': { borderColor: 'rgba(249, 115, 22, 0.6)', boxShadow: '0 0 0 3px rgba(249, 115, 22, 0.15)' },
+    '&:hover': { borderColor: 'rgba(252, 82, 63, 0.3)' },
+    '&.Mui-focused': { borderColor: 'rgba(252, 82, 63, 0.6)', boxShadow: '0 0 0 3px rgba(252, 82, 63, 0.15)' },
   },
 };
