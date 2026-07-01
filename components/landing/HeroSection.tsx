@@ -1,105 +1,105 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Box, Container, Typography, Button, Grid } from '@mui/material';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import BoltIcon from '@mui/icons-material/Bolt';
-import StarRoundedIcon from '@mui/icons-material/StarRounded';
-import VerifiedUserRoundedIcon from '@mui/icons-material/VerifiedUserRounded';
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import BoltRoundedIcon from '@mui/icons-material/BoltRounded';
 import { useRouter } from 'next/navigation';
 
-// ---- Static SVG area chart used inside the hero preview card ----
-const chartPoints = [54, 58, 56, 64, 62, 70, 68, 76, 84];
+// ── Real capabilities surfaced in the hero (grounded in the actual product) ──
+const categories = [
+  { label: 'SEO', score: 82, color: '#FC523F' },
+  { label: 'Performance', score: 78, color: '#D97706' },
+  { label: 'Security', score: 88, color: '#16A34A' },
+  { label: 'Accessibility', score: 91, color: '#0EA5E9' },
+];
 
-function AreaChart() {
-  const W = 520;
-  const H = 150;
-  const pad = 10;
-  const max = 100;
-  const n = chartPoints.length;
-  const stepX = (W - pad * 2) / (n - 1);
-  const coords = chartPoints.map((v, i) => {
-    const x = pad + i * stepX;
-    const y = H - pad - (v / max) * (H - pad * 2);
-    return [x, y] as const;
-  });
-  const linePath = coords.map(([x, y], i) => `${i === 0 ? 'M' : 'L'} ${x.toFixed(1)} ${y.toFixed(1)}`).join(' ');
-  const areaPath = `${linePath} L ${coords[n - 1][0].toFixed(1)} ${H} L ${coords[0][0].toFixed(1)} ${H} Z`;
+const webVitals = [
+  { label: 'LCP', value: '2.1s', ok: true },
+  { label: 'CLS', value: '0.06', ok: true },
+  { label: 'INP', value: '180ms', ok: true },
+];
 
+const actions = [
+  { p: 'P1', text: 'Add a meta description to 4 pages', done: false },
+  { p: 'P2', text: 'Compress hero image · −480 KB', done: false },
+  { p: 'P3', text: 'Add alt text to 12 images', done: true },
+];
+
+const poweredBy = ['Google Lighthouse', 'Core Web Vitals', 'OpenAI'];
+
+// Circular score gauge (static SVG)
+function ScoreGauge({ score }: { score: number }) {
+  const size = 132;
+  const stroke = 10;
+  const r = (size - stroke) / 2;
+  const c = 2 * Math.PI * r;
+  const offset = c * (1 - score / 100);
   return (
-    <Box sx={{ position: 'relative', width: '100%' }}>
-      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="100%" preserveAspectRatio="none" style={{ display: 'block', overflow: 'visible' }}>
+    <Box sx={{ position: 'relative', width: size, height: size, flexShrink: 0 }}>
+      <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
         <defs>
-          <linearGradient id="heroArea" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#FC523F" stopOpacity="0.38" />
-            <stop offset="60%" stopColor="#FC523F" stopOpacity="0.08" />
-            <stop offset="100%" stopColor="#FC523F" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient id="heroLine" x1="0" y1="0" x2="1" y2="0">
+          <linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#FD7565" />
-            <stop offset="100%" stopColor="#FC523F" />
+            <stop offset="100%" stopColor="#E13E2C" />
           </linearGradient>
         </defs>
-
-        {[0.25, 0.5, 0.75].map((g) => (
-          <line
-            key={g}
-            x1={pad}
-            x2={W - pad}
-            y1={pad + g * (H - pad * 2)}
-            y2={pad + g * (H - pad * 2)}
-            stroke="rgba(15,23,42,0.04)"
-            strokeWidth={1}
-          />
-        ))}
-
-        <path d={areaPath} fill="url(#heroArea)" />
-
-        <path
-          d={linePath}
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="var(--overlay-08)" strokeWidth={stroke} />
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={r}
           fill="none"
-          stroke="url(#heroLine)"
-          strokeWidth={3}
+          stroke="url(#gaugeGrad)"
+          strokeWidth={stroke}
           strokeLinecap="round"
-          strokeLinejoin="round"
-          style={{ filter: 'drop-shadow(0 4px 10px rgba(252,82,63,0.45))' }}
+          strokeDasharray={c}
+          strokeDashoffset={offset}
         />
-
-        {coords.map(([x, y], i) => (
-          <circle
-            key={i}
-            cx={x}
-            cy={y}
-            r={i === n - 1 ? 5 : 3}
-            fill={i === n - 1 ? '#0F172A' : '#FD7565'}
-            stroke="#F8FAFC"
-            strokeWidth={2}
-          />
-        ))}
       </svg>
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Typography sx={{ fontSize: '2.4rem', fontWeight: 800, lineHeight: 1, color: 'var(--text-primary)' }}>
+          {score}
+        </Typography>
+        <Typography sx={{ fontSize: '0.66rem', fontWeight: 700, letterSpacing: '0.08em', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
+          Growth Score
+        </Typography>
+      </Box>
     </Box>
   );
 }
 
-const avatars = [
-  { initials: 'AR', color: '#6366F1' },
-  { initials: 'MK', color: '#0EA5E9' },
-  { initials: 'SD', color: '#10B981' },
-  { initials: 'JT', color: '#F59E0B' },
-  { initials: 'PN', color: '#EC4899' },
-];
-
-const trustLogos = ['Vertex', 'Lumen', 'Northwind', 'Cobalt', 'Quanta', 'Nimbus'];
-
 export default function HeroSection() {
   const router = useRouter();
-  const score = 84;
+  const [url, setUrl] = useState('');
+  const [barsIn, setBarsIn] = useState(false);
+
+  // Fill the category score bars once, shortly after mount.
+  useEffect(() => {
+    const t = setTimeout(() => setBarsIn(true), 200);
+    return () => clearTimeout(t);
+  }, []);
+
+  const handleScan = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = url.trim();
+    router.push(trimmed ? `/analyzer?url=${encodeURIComponent(trimmed)}` : '/signup');
+  };
 
   return (
-    <Box sx={{ position: 'relative', overflow: 'hidden', pt: { xs: 6, md: 9 }, pb: { xs: 7, md: 10 } }}>
-      {/* Subtle grid overlay */}
+    <Box sx={{ position: 'relative', overflow: 'hidden', pt: { xs: 3, md: 5 }, pb: { xs: 7, md: 11 } }}>
+      {/* Subtle grid + soft static wash */}
       <Box
         sx={{
           position: 'absolute',
@@ -107,33 +107,18 @@ export default function HeroSection() {
           backgroundImage:
             'linear-gradient(rgba(15,23,42,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.022) 1px, transparent 1px)',
           backgroundSize: '48px 48px',
-          maskImage: 'radial-gradient(ellipse 90% 70% at 50% 30%, #000 40%, transparent 100%)',
-          WebkitMaskImage: 'radial-gradient(ellipse 90% 70% at 50% 30%, #000 40%, transparent 100%)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Static gradient orbs (restrained, tasteful) */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '-25%',
-          right: '-6%',
-          width: 620,
-          height: 620,
-          background: 'radial-gradient(circle, rgba(252, 82, 63, 0.18) 0%, transparent 70%)',
-          borderRadius: '50%',
-          filter: 'blur(90px)',
+          maskImage: 'radial-gradient(ellipse 85% 70% at 50% 20%, #000 40%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 85% 70% at 50% 20%, #000 40%, transparent 100%)',
           pointerEvents: 'none',
         }}
       />
       <Box
         sx={{
           position: 'absolute',
-          bottom: '-25%',
-          left: '-10%',
-          width: 520,
-          height: 520,
+          top: '-20%',
+          right: '-8%',
+          width: 560,
+          height: 560,
           background: 'radial-gradient(circle, rgba(252, 82, 63, 0.14) 0%, transparent 70%)',
           borderRadius: '50%',
           filter: 'blur(90px)',
@@ -142,48 +127,41 @@ export default function HeroSection() {
       />
 
       <Container maxWidth={false} sx={{ position: 'relative', zIndex: 1, px: { xs: 2, sm: 4, md: 6, lg: 8 } }}>
-        <Grid container spacing={{ xs: 5, md: 6 }} alignItems="center">
-          {/* LEFT — copy */}
+        <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
+          {/* LEFT — copy + scan input */}
           <Grid item xs={12} md={6}>
             <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
-              {/* Badge pill */}
               <Box
                 sx={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 1,
-                  px: 2,
-                  py: 0.75,
-                  mb: '26px',
+                  px: 1.75,
+                  py: 0.6,
+                  mb: 3,
                   borderRadius: '9999px',
                   background: 'rgba(252, 82, 63, 0.08)',
-                  border: '1px solid rgba(252, 82, 63, 0.22)',
+                  border: '1px solid rgba(252, 82, 63, 0.2)',
                 }}
               >
-                <AutoAwesomeIcon sx={{ fontSize: 16, color: '#FD7565' }} />
-                <Typography variant="caption" sx={{ color: '#FDA294', fontWeight: 700, letterSpacing: '0.04em', fontSize: '0.78rem' }}>
-                  AI-Powered Growth OS
+                <Box sx={{ width: 6, height: 6, borderRadius: '50%', background: '#16A34A' }} />
+                <Typography variant="caption" sx={{ color: 'var(--text-tertiary)', fontWeight: 600, fontSize: '0.76rem' }}>
+                  AI-powered website audits
                 </Typography>
-                <Box sx={{ width: '1px', height: 14, background: 'rgba(252,82,63,0.3)' }} />
-                <Typography variant="caption" sx={{ color: 'var(--text-muted)', fontWeight: 600, fontSize: '0.74rem' }}>
-                  Now with Growth Brain
-                </Typography>
-                <ArrowForwardIcon sx={{ fontSize: 14, color: '#FD7565' }} />
               </Box>
 
               <Typography
                 variant="h1"
                 sx={{
-                  fontSize: { xs: '2.5rem', sm: '3.3rem', md: '3.5rem', lg: '4.25rem' },
+                  fontSize: { xs: '2.4rem', sm: '3.1rem', md: '3.35rem', lg: '3.9rem' },
                   fontWeight: 800,
-                  lineHeight: 1.08,
+                  lineHeight: 1.1,
                   letterSpacing: '-0.035em',
+                  color: 'var(--text-primary)',
                   mb: 2.5,
                 }}
               >
-                <Box component="span" sx={{ color: 'var(--text-primary)' }}>
-                  Turn website data into
-                </Box>{' '}
+                Turn a website audit into a{' '}
                 <Box
                   component="span"
                   sx={{
@@ -193,282 +171,286 @@ export default function HeroSection() {
                     backgroundClip: 'text',
                   }}
                 >
-                  real growth.
+                  ranked fix-list.
                 </Box>
               </Typography>
 
               <Typography
                 sx={{
                   color: 'var(--text-muted)',
-                  fontSize: 'clamp(1.02rem, 1.5vw, 1.2rem)',
-                  maxWidth: 540,
+                  fontSize: { xs: '1.02rem', md: '1.15rem' },
+                  maxWidth: 520,
                   mx: { xs: 'auto', md: 0 },
-                  mb: '2rem',
-                  lineHeight: 1.65,
+                  mb: 3.5,
+                  lineHeight: 1.6,
                 }}
               >
-                SiteScore AI scans your site, then hands you a prioritized action plan—not just another report. Track your Growth Score, complete AI-suggested fixes, and watch your rankings climb in real time.
+                SiteScore AI scans any URL for SEO, performance, security, and Core Web Vitals—then
+                turns the results into a prioritized, do-this-next action plan. Complete fixes and watch
+                your Growth Score climb.
               </Typography>
 
-              <Box sx={{ display: 'flex', gap: '14px', flexWrap: 'wrap', justifyContent: { xs: 'center', md: 'flex-start' } }}>
-                <Button
-                  variant="contained"
-                  size="large"
-                  onClick={() => router.push('/signup')}
+              {/* URL scan form — the classic audit-tool entry point */}
+              <Box
+                component="form"
+                onSubmit={handleScan}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
+                  p: 0.6,
+                  maxWidth: 480,
+                  mx: { xs: 'auto', md: 0 },
+                  borderRadius: '12px',
+                  background: 'var(--bg-surface)',
+                  border: '1px solid var(--border-strong)',
+                  boxShadow: 'var(--shadow-sm)',
+                  transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+                  '&:focus-within': {
+                    borderColor: 'rgba(252, 82, 63, 0.55)',
+                    boxShadow: '0 0 0 3px rgba(252, 82, 63, 0.12)',
+                  },
+                }}
+              >
+                <Box sx={{ pl: 1.25, display: 'flex', color: 'var(--text-faint)' }}>
+                  <SearchRoundedIcon sx={{ fontSize: 20 }} />
+                </Box>
+                <Box
+                  component="input"
+                  value={url}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUrl(e.target.value)}
+                  placeholder="Enter your website URL"
+                  aria-label="Website URL"
                   sx={{
-                    px: 4,
-                    py: 1.6,
-                    fontSize: '1.05rem',
+                    flex: 1,
+                    minWidth: 0,
+                    border: 'none',
+                    outline: 'none',
+                    background: 'transparent',
+                    color: 'var(--text-primary)',
+                    fontSize: '0.95rem',
+                    fontFamily: 'inherit',
+                    py: 1,
+                    '::placeholder': { color: 'var(--text-faint)' },
+                  }}
+                />
+                <Button
+                  type="submit"
+                  variant="contained"
+                  endIcon={<ArrowForwardRoundedIcon />}
+                  sx={{
+                    flexShrink: 0,
+                    px: 2.5,
+                    py: 1.15,
+                    fontSize: '0.92rem',
                     fontWeight: 700,
                     textTransform: 'none',
-                    borderRadius: '10px',
+                    borderRadius: '9px',
+                    whiteSpace: 'nowrap',
                     background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
-                    boxShadow: '0 8px 24px rgba(252, 82, 63, 0.28)',
-                    '&:hover': {
-                      background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)',
-                      boxShadow: '0 12px 32px rgba(252, 82, 63, 0.35)',
-                    },
+                    boxShadow: 'none',
+                    '&:hover': { background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)', boxShadow: 'none' },
                   }}
                 >
-                  Start Free
-                </Button>
-                <Button
-                  variant="outlined"
-                  size="large"
-                  startIcon={<PlayArrowIcon />}
-                  onClick={() => router.push('/demo')}
-                  sx={{
-                    px: 4,
-                    py: 1.6,
-                    fontSize: '1.05rem',
-                    fontWeight: 600,
-                    textTransform: 'none',
-                    borderRadius: '10px',
-                    borderColor: 'var(--border)',
-                    color: 'var(--text-primary)',
-                    '&:hover': {
-                      borderColor: 'rgba(252, 82, 63, 0.6)',
-                      background: 'rgba(252, 82, 63, 0.08)',
-                    },
-                  }}
-                >
-                  View Demo
+                  Run free scan
                 </Button>
               </Box>
 
-              {/* Social proof — avatars + rating */}
               <Box
                 sx={{
-                  mt: 4,
+                  mt: 2,
                   display: 'flex',
-                  alignItems: 'center',
-                  gap: 2,
                   flexWrap: 'wrap',
+                  gap: { xs: 1.5, sm: 2.5 },
                   justifyContent: { xs: 'center', md: 'flex-start' },
                 }}
               >
-                <Box sx={{ display: 'flex' }}>
-                  {avatars.map((a, i) => (
+                {['Free plan, no credit card', 'Results in ~30 seconds', 'Desktop & mobile'].map((t) => (
+                  <Box key={t} sx={{ display: 'flex', alignItems: 'center', gap: 0.6 }}>
+                    <CheckCircleRoundedIcon sx={{ fontSize: 16, color: '#16A34A' }} />
+                    <Typography sx={{ color: 'var(--text-muted)', fontSize: '0.82rem' }}>{t}</Typography>
+                  </Box>
+                ))}
+              </Box>
+
+              {/* Honest "powered by" strip instead of fake customer logos */}
+              <Box sx={{ mt: 4.5 }}>
+                <Typography
+                  variant="caption"
+                  sx={{ color: 'var(--text-faint)', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', fontSize: '0.68rem' }}
+                >
+                  Audits powered by
+                </Typography>
+                <Box
+                  sx={{
+                    mt: 1.25,
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: { xs: 1, sm: 1.25 },
+                    justifyContent: { xs: 'center', md: 'flex-start' },
+                  }}
+                >
+                  {poweredBy.map((name) => (
                     <Box
-                      key={i}
+                      key={name}
                       sx={{
-                        width: 38,
-                        height: 38,
-                        borderRadius: '50%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '0.78rem',
-                        fontWeight: 700,
-                        color: '#fff',
-                        background: a.color,
-                        border: '2px solid var(--bg-base)',
-                        ml: i === 0 ? 0 : '-10px',
+                        px: 1.5,
+                        py: 0.6,
+                        borderRadius: '8px',
+                        background: 'var(--overlay-03)',
+                        border: '1px solid var(--border)',
                       }}
                     >
-                      {a.initials}
+                      <Typography sx={{ color: 'var(--text-tertiary)', fontWeight: 600, fontSize: '0.82rem' }}>
+                        {name}
+                      </Typography>
                     </Box>
                   ))}
-                </Box>
-                <Box sx={{ textAlign: 'left' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-                    {[...Array(5)].map((_, i) => (
-                      <StarRoundedIcon key={i} sx={{ fontSize: 18, color: '#FBBF24' }} />
-                    ))}
-                    <Typography component="span" sx={{ ml: 0.75, color: 'var(--text-primary)', fontWeight: 700, fontSize: '0.85rem' }}>
-                      4.9/5
-                    </Typography>
-                  </Box>
-                  <Typography sx={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
-                    Rated by early adopters and growth teams
-                  </Typography>
                 </Box>
               </Box>
             </Box>
           </Grid>
 
-          {/* RIGHT — preview card */}
+          {/* RIGHT — realistic scan-result preview */}
           <Grid item xs={12} md={6}>
-            <Box sx={{ position: 'relative', maxWidth: 540, mx: { xs: 'auto', md: 0 }, ml: { md: 'auto' } }}>
-              {/* Floating trust chip */}
-              <Box
-                sx={{
-                  position: 'absolute',
-                  top: -16,
-                  left: { xs: 12, md: -18 },
-                  zIndex: 2,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 0.75,
-                  px: 1.5,
-                  py: 0.75,
-                  borderRadius: '8px',
-                  background: 'var(--bg-surface)',
-                  border: '1px solid var(--border-strong)',
-                  boxShadow: 'var(--shadow-md)',
-                }}
-              >
-                <VerifiedUserRoundedIcon sx={{ fontSize: 16, color: '#4ADE80' }} />
-                <Typography variant="caption" sx={{ color: 'var(--text-secondary)', fontWeight: 600, fontSize: '0.72rem' }}>
-                  SOC 2 · GDPR ready
-                </Typography>
-              </Box>
-
+            <Box sx={{ position: 'relative', maxWidth: 500, mx: 'auto', ml: { md: 'auto' } }}>
               <Box
                 sx={{
                   position: 'relative',
                   background: 'var(--bg-surface)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '12px',
+                  border: '1px solid var(--border-strong)',
+                  borderRadius: '16px',
                   overflow: 'hidden',
-                  boxShadow: 'var(--shadow-md)',
+                  boxShadow: '0 24px 60px -24px rgba(15,23,42,0.35)',
                 }}
               >
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: '15%',
-                    right: '15%',
-                    height: '1px',
-                    background: 'linear-gradient(90deg, transparent, rgba(252,82,63,0.7), transparent)',
-                  }}
-                />
-
                 {/* window chrome */}
-                <Box sx={{ p: 1.75, borderBottom: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', gap: 1.25 }}>
-                  <Box sx={{ width: 11, height: 11, borderRadius: '50%', bgcolor: 'rgba(239, 68, 68, 0.8)' }} />
-                  <Box sx={{ width: 11, height: 11, borderRadius: '50%', bgcolor: 'rgba(245, 158, 11, 0.8)' }} />
-                  <Box sx={{ width: 11, height: 11, borderRadius: '50%', bgcolor: 'rgba(34, 197, 94, 0.8)' }} />
-                  <Typography variant="caption" sx={{ color: 'var(--text-muted)', ml: 0.5 }}>
-                    Growth Brain · SiteScore AI
-                  </Typography>
-                </Box>
-
-                <Box sx={{ p: { xs: 2, md: 2.5 } }}>
-                  {/* Score + trend header */}
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
-                    <Box>
-                      <Typography sx={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                        Growth Score
-                      </Typography>
-                      <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1 }}>
-                        <Typography sx={{ fontSize: '2.6rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>{score}</Typography>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.4 }}>
-                          <TrendingUpIcon sx={{ fontSize: 16, color: '#22C55E' }} />
-                          <Typography sx={{ fontSize: '0.78rem', color: '#22C55E', fontWeight: 700 }}>+18%</Typography>
-                        </Box>
-                      </Box>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 0.5,
-                        px: 1.25,
-                        py: 0.5,
-                        borderRadius: '6px',
-                        background: 'rgba(34, 197, 94, 0.12)',
-                        border: '1px solid rgba(34,197,94,0.25)',
-                      }}
-                    >
-                      <BoltIcon sx={{ fontSize: 14, color: '#4ADE80' }} />
-                      <Typography variant="caption" sx={{ color: '#4ADE80', fontWeight: 700, fontSize: '0.7rem' }}>
-                        Live
-                      </Typography>
-                    </Box>
-                  </Box>
-
-                  {/* Graph */}
+                <Box sx={{ px: 2, py: 1.5, borderBottom: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <Box sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: 'rgba(239, 68, 68, 0.75)' }} />
+                  <Box sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: 'rgba(245, 158, 11, 0.75)' }} />
+                  <Box sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: 'rgba(34, 197, 94, 0.75)' }} />
                   <Box
                     sx={{
-                      borderRadius: '10px',
-                      background: 'var(--overlay-02)',
-                      border: '1px solid var(--border-subtle)',
-                      p: 1.5,
-                      mb: 2,
+                      ml: 1,
+                      flex: 1,
+                      px: 1.5,
+                      py: 0.4,
+                      borderRadius: '6px',
+                      background: 'var(--overlay-04)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 0.75,
                     }}
                   >
-                    <Box sx={{ height: 130, display: 'flex', alignItems: 'flex-end' }}>
-                      <AreaChart />
+                    <Box sx={{ width: 6, height: 6, borderRadius: '50%', background: '#16A34A' }} />
+                    <Typography sx={{ color: 'var(--text-muted)', fontSize: '0.74rem' }}>example.com</Typography>
+                  </Box>
+                </Box>
+
+                <Box sx={{ p: { xs: 2.25, md: 3 } }}>
+                  {/* Score gauge + category scores */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2.5, mb: 3 }}>
+                    <ScoreGauge score={84} />
+                    <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 1.1 }}>
+                      {categories.map((cat, i) => (
+                        <Box key={cat.label}>
+                          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.4 }}>
+                            <Typography sx={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+                              {cat.label}
+                            </Typography>
+                            <Typography sx={{ fontSize: '0.78rem', color: 'var(--text-primary)', fontWeight: 700 }}>
+                              {cat.score}
+                            </Typography>
+                          </Box>
+                          <Box sx={{ height: 6, borderRadius: '3px', background: 'var(--overlay-05)', overflow: 'hidden' }}>
+                            <Box
+                              sx={{
+                                height: '100%',
+                                width: barsIn ? `${cat.score}%` : 0,
+                                borderRadius: '3px',
+                                background: cat.color,
+                                transition: 'width 1.1s cubic-bezier(0.22, 1, 0.36, 1)',
+                                transitionDelay: `${i * 0.12}s`,
+                              }}
+                            />
+                          </Box>
+                        </Box>
+                      ))}
                     </Box>
                   </Box>
 
-                  {/* Category bars */}
-                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 2 }}>
-                    {[
-                      { label: 'SEO · 82', pct: 82 },
-                      { label: 'Performance · 78', pct: 78 },
-                      { label: 'Authority · 88', pct: 88 },
-                    ].map(({ label, pct }) => (
+                  {/* Core Web Vitals */}
+                  <Box sx={{ display: 'flex', gap: 1, mb: 3 }}>
+                    {webVitals.map((v) => (
                       <Box
-                        key={label}
+                        key={v.label}
                         sx={{
-                          position: 'relative',
-                          height: 26,
-                          borderRadius: '9px',
-                          background: 'var(--overlay-04)',
-                          border: '1px solid var(--border-subtle)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          px: 1.5,
-                          overflow: 'hidden',
+                          flex: 1,
+                          textAlign: 'center',
+                          py: 1.1,
+                          borderRadius: '10px',
+                          background: 'rgba(22,163,74,0.06)',
+                          border: '1px solid rgba(22,163,74,0.2)',
                         }}
                       >
-                        <Box
-                          sx={{
-                            position: 'absolute',
-                            left: 0,
-                            top: 0,
-                            bottom: 0,
-                            width: `${pct}%`,
-                            borderRadius: '9px',
-                            background: 'linear-gradient(90deg, rgba(252, 82, 63, 0.45), rgba(252, 82, 63, 0.3))',
-                          }}
-                        />
-                        <Typography variant="caption" sx={{ color: 'var(--text-secondary)', position: 'relative', zIndex: 1, fontSize: '0.72rem' }}>
-                          {label}
+                        <Typography sx={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
+                          {v.label}
                         </Typography>
+                        <Typography sx={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1.3 }}>
+                          {v.value}
+                        </Typography>
+                        <Typography sx={{ fontSize: '0.62rem', fontWeight: 700, color: '#16A34A' }}>Good</Typography>
                       </Box>
                     ))}
                   </Box>
 
-                  {/* Action chips */}
+                  {/* Growth Brain action plan */}
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, mb: 1.25 }}>
+                    <BoltRoundedIcon sx={{ fontSize: 16, color: '#FC523F' }} />
+                    <Typography sx={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                      Growth Brain · Next actions
+                    </Typography>
+                  </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.85 }}>
-                    {['✓ Action completed: Add meta tags', '◆ Growth plan ready: 5 actions'].map((text, i) => (
+                    {actions.map((a) => (
                       <Box
-                        key={text}
+                        key={a.text}
                         sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 1.25,
                           py: 1,
-                          px: 1.5,
-                          borderRadius: '8px',
-                          background: i === 0 ? 'rgba(34, 197, 94, 0.12)' : 'rgba(252, 82, 63, 0.12)',
+                          px: 1.25,
+                          borderRadius: '9px',
+                          background: 'var(--overlay-03)',
                           border: '1px solid var(--border-subtle)',
                         }}
                       >
-                        <Typography variant="caption" sx={{ color: 'var(--text-secondary)', fontSize: '0.72rem' }}>
-                          {text}
+                        <Box
+                          sx={{
+                            flexShrink: 0,
+                            px: 0.85,
+                            py: 0.25,
+                            borderRadius: '6px',
+                            fontSize: '0.66rem',
+                            fontWeight: 800,
+                            color: a.done ? '#16A34A' : '#FC523F',
+                            background: a.done ? 'rgba(22,163,74,0.12)' : 'rgba(252,82,63,0.12)',
+                          }}
+                        >
+                          {a.p}
+                        </Box>
+                        <Typography
+                          sx={{
+                            flex: 1,
+                            fontSize: '0.8rem',
+                            color: a.done ? 'var(--text-faint)' : 'var(--text-secondary)',
+                            textDecoration: a.done ? 'line-through' : 'none',
+                          }}
+                        >
+                          {a.text}
                         </Typography>
+                        {a.done && <CheckCircleRoundedIcon sx={{ fontSize: 16, color: '#16A34A' }} />}
                       </Box>
                     ))}
                   </Box>
@@ -477,42 +459,6 @@ export default function HeroSection() {
             </Box>
           </Grid>
         </Grid>
-
-        {/* Trust logo strip */}
-        <Box sx={{ mt: { xs: 7, md: 9 }, textAlign: 'center' }}>
-          <Typography
-            variant="caption"
-            sx={{ color: 'var(--text-muted)', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', fontSize: '0.72rem' }}
-          >
-            Trusted by teams building the web&apos;s best sites
-          </Typography>
-          <Box
-            sx={{
-              mt: 2.5,
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: { xs: 3, sm: 5, md: 7 },
-            }}
-          >
-            {trustLogos.map((logo) => (
-              <Typography
-                key={logo}
-                sx={{
-                  color: 'var(--text-tertiary)',
-                  fontWeight: 700,
-                  fontSize: { xs: '1.05rem', md: '1.25rem' },
-                  letterSpacing: '-0.01em',
-                  cursor: 'default',
-                  '&:hover': { color: 'var(--text-muted)' },
-                }}
-              >
-                {logo}
-              </Typography>
-            ))}
-          </Box>
-        </Box>
       </Container>
     </Box>
   );
