@@ -152,16 +152,33 @@ const stats = [
 const cardSx = {
   p: { xs: 2.5, md: 3 },
   height: '100%',
-  background: 'var(--bg-surface)',
-  border: '1px solid var(--border)',
-  borderRadius: '12px',
-  backdropFilter: 'blur(20px)',
+  position: 'relative',
+  background: 'linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-elevated) 160%)',
+  border: '1px solid var(--border-strong)',
+  borderRadius: '16px',
+  boxShadow: '0 1px 2px rgba(15,23,42,0.04), 0 24px 52px -22px rgba(15,23,42,0.3)',
+  transition: 'box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease',
+  '&:hover': {
+    borderColor: 'var(--border-strong)',
+    boxShadow: '0 1px 2px rgba(15,23,42,0.04), 0 28px 60px -20px rgba(15,23,42,0.36)',
+  },
 };
 
 const ChartTitle = ({ children }: { children: React.ReactNode }) => (
-  <Typography variant="subtitle1" sx={{ fontWeight: 600, color: 'var(--text-primary)', mb: 2 }}>
-    {children}
-  </Typography>
+  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
+    <Box
+      sx={{
+        width: 4,
+        height: 16,
+        borderRadius: '4px',
+        background: 'linear-gradient(180deg, #FD7565, #E13E2C)',
+        flexShrink: 0,
+      }}
+    />
+    <Typography variant="subtitle1" sx={{ fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>
+      {children}
+    </Typography>
+  </Box>
 );
 
 export default function MetricsShowcaseSection() {
@@ -295,32 +312,63 @@ export default function MetricsShowcaseSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.07 }}
-                  sx={cardSx}
+                  whileHover={{ y: -4 }}
+                  sx={{
+                    ...cardSx,
+                    border: `1px solid ${s.color}55`,
+                    overflow: 'hidden',
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: '3px',
+                      background: `linear-gradient(90deg, ${s.color}, ${s.color}00)`,
+                    },
+                    '&:hover': {
+                      ...cardSx['&:hover'],
+                      borderColor: `${s.color}80`,
+                    },
+                  }}
                 >
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, mb: 1.5 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
                     <Box
                       sx={{
-                        width: 36,
-                        height: 36,
-                        borderRadius: '8px',
+                        width: 42,
+                        height: 42,
+                        borderRadius: '11px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         color: s.color,
-                        background: `${s.color}22`,
+                        background: `linear-gradient(135deg, ${s.color}26, ${s.color}12)`,
                         border: `1px solid ${s.color}33`,
+                        boxShadow: `0 6px 16px -8px ${s.color}80`,
                       }}
                     >
-                      <Icon sx={{ fontSize: 20 }} />
+                      <Icon sx={{ fontSize: 22 }} />
                     </Box>
-                    <Typography variant="caption" sx={{ color: '#22C55E', fontWeight: 700 }}>
-                      {s.delta}
-                    </Typography>
+                    <Box
+                      sx={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        px: 0.85,
+                        py: 0.3,
+                        borderRadius: '9999px',
+                        background: 'rgba(34, 197, 94, 0.12)',
+                        border: '1px solid rgba(34, 197, 94, 0.22)',
+                      }}
+                    >
+                      <Typography variant="caption" sx={{ color: '#16A34A', fontWeight: 700, fontSize: '0.72rem' }}>
+                        {s.delta}
+                      </Typography>
+                    </Box>
                   </Box>
-                  <Typography sx={{ fontSize: '1.9rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>
+                  <Typography sx={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1, letterSpacing: '-0.02em' }}>
                     {s.value}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.5 }}>
+                  <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.75 }}>
                     {s.label}
                   </Typography>
                 </Paper>

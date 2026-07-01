@@ -60,14 +60,16 @@ export default function PricingSection() {
                   display: 'flex',
                   flexDirection: 'column',
                   position: 'relative',
-                  borderRadius: '12px',
+                  borderRadius: '16px',
                   overflow: 'visible',
                   background: plan.recommended
                     ? 'linear-gradient(180deg, rgba(252, 82, 63, 0.12) 0%, var(--bg-surface) 28%)'
-                    : 'var(--overlay-03)',
-                  backdropFilter: 'blur(24px)',
-                  border: plan.recommended ? '1px solid rgba(252, 82, 63, 0.4)' : '1px solid var(--border)',
-                  boxShadow: plan.recommended ? '0 0 0 1px rgba(252, 82, 63, 0.2), 0 24px 48px -12px rgba(15, 23, 42, 0.12)' : 'none',
+                    : 'var(--bg-surface)',
+                  border: plan.recommended ? '1px solid rgba(252, 82, 63, 0.4)' : '1px solid var(--border-strong)',
+                  boxShadow: plan.recommended
+                    ? '0 0 0 1px rgba(252, 82, 63, 0.2), 0 24px 48px -12px rgba(15, 23, 42, 0.16)'
+                    : '0 16px 40px -22px rgba(15, 23, 42, 0.22)',
+                  transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
                 }}
               >
                 {plan.recommended && (

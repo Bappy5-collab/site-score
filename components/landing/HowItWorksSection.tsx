@@ -53,13 +53,14 @@ export default function HowItWorksSection() {
                     sx={{
                       height: '100%',
                       p: 3,
-                      borderRadius: '12px',
-                      background: 'var(--overlay-03)',
-                      backdropFilter: 'blur(20px)',
-                      border: '1px solid var(--border)',
+                      borderRadius: '16px',
+                      background: 'var(--bg-surface)',
+                      border: '1px solid rgba(252, 82, 63, 0.3)',
+                      boxShadow: '0 16px 40px -18px rgba(252, 82, 63, 0.2)',
+                      transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
                       textAlign: 'center',
                       position: 'relative',
-                      '&:hover': { borderColor: 'rgba(252, 82, 63, 0.25)' },
+                      '&:hover': { borderColor: 'rgba(252, 82, 63, 0.45)', boxShadow: '0 22px 50px -18px rgba(252, 82, 63, 0.28)' },
                     }}
                   >
                     <Box

@@ -6,36 +6,36 @@ import { motion } from 'framer-motion';
 import SectionHeading from './SectionHeading';
 
 const stats = [
-  { label: 'Growth actions completed', value: 125000, suffix: '+' },
-  { label: 'Teams growing', value: 12000, suffix: '+' },
-  { label: 'Avg. Growth Score lift', value: 24, suffix: '%' },
-  { label: 'Scans analyzed', value: 50000, suffix: '+' },
+  { label: 'Growth actions completed', value: 4200, suffix: '+' },
+  { label: 'Sites analyzed', value: 1800, suffix: '+' },
+  { label: 'Avg. Growth Score lift', value: 18, suffix: '%' },
+  { label: 'Checks per scan', value: 60, suffix: '+' },
 ];
 
 const testimonials = [
   {
     name: 'Sarah K.',
     role: 'Head of Growth',
-    company: 'TechCorp',
+    company: 'B2B SaaS',
     avatar: 'SK',
-    image: 'https://randomuser.me/api/portraits/women/68.jpg',
-    quote: 'We stopped drowning in spreadsheets. The AI tells us exactly what to fix and we just tick it off. Game changer.',
+    color: '#6366F1',
+    quote: 'Instead of another PDF report, we get a prioritized to-do list. The team knows exactly what to work on each week.',
   },
   {
     name: 'Marcus L.',
     role: 'SEO Lead',
-    company: 'Digital Agency',
+    company: 'Marketing Agency',
     avatar: 'ML',
-    image: 'https://randomuser.me/api/portraits/men/32.jpg',
-    quote: 'Growth Brain plus the action list is what we needed. Our clients see results faster and we look like heroes.',
+    color: '#0EA5E9',
+    quote: 'Having the score and the action plan side by side means we can show clients real, measurable progress over time.',
   },
   {
     name: 'Jordan T.',
     role: 'Product Manager',
-    company: 'SaaS Co',
+    company: 'Early-stage startup',
     avatar: 'JT',
-    image: 'https://randomuser.me/api/portraits/men/75.jpg',
-    quote: 'Real-time score and notifications mean we catch regressions before users do. Feels like having a growth ops team.',
+    color: '#10B981',
+    quote: 'The real-time score and alerts help us catch performance regressions before they reach users. It just runs in the background.',
   },
 ];
 
@@ -92,10 +92,13 @@ export default function TestimonialsStatsSection() {
                   sx={{
                     textAlign: 'center',
                     p: 3,
-                    borderRadius: '12px',
-                    background: 'var(--overlay-03)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid var(--border)',
+                    height: '100%',
+                    borderRadius: '16px',
+                    background: 'var(--bg-surface)',
+                    border: '1px solid var(--border-strong)',
+                    boxShadow: '0 16px 40px -24px rgba(15,23,42,0.22)',
+                    transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
+                    '&:hover': { borderColor: 'rgba(252, 82, 63, 0.4)', boxShadow: '0 22px 50px -22px rgba(15,23,42,0.3)' },
                   }}
                 >
                   <Typography
@@ -131,12 +134,16 @@ export default function TestimonialsStatsSection() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Card
+                  component={motion.div}
+                  whileHover={{ y: -4 }}
                   sx={{
                     height: '100%',
-                    background: 'var(--overlay-03)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid var(--border)',
-                    borderRadius: '12px',
+                    background: 'var(--bg-surface)',
+                    border: '1px solid var(--border-strong)',
+                    borderRadius: '16px',
+                    boxShadow: '0 16px 40px -24px rgba(15,23,42,0.22)',
+                    transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
+                    '&:hover': { borderColor: 'rgba(252, 82, 63, 0.4)', boxShadow: '0 22px 50px -22px rgba(15,23,42,0.3)' },
                     p: 3,
                   }}
                 >
@@ -145,14 +152,13 @@ export default function TestimonialsStatsSection() {
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <Avatar
-                      src={t.image}
                       alt={t.name}
                       sx={{
                         width: 48,
                         height: 48,
-                        background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
+                        background: t.color,
                         fontSize: '1rem',
-                        fontWeight: 600,
+                        fontWeight: 700,
                       }}
                     >
                       {t.avatar}

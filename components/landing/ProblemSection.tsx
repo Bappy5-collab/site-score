@@ -51,20 +51,24 @@ export default function ProblemSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.08 }}
+                  style={{ height: '100%' }}
                 >
                   <Card
                     component={motion.div}
                     whileHover={{ y: -6 }}
                     sx={{
                       height: '100%',
-                      background: 'var(--overlay-03)',
-                      backdropFilter: 'blur(20px)',
-                      border: '1px solid var(--border)',
-                      borderRadius: '12px',
-                      '&:hover': { borderColor: 'rgba(239, 68, 68, 0.25)', boxShadow: '0 8px 32px rgba(239, 68, 68, 0.1)' },
+                      display: 'flex',
+                      flexDirection: 'column',
+                      background: 'var(--bg-surface)',
+                      border: '1px solid rgba(239, 68, 68, 0.3)',
+                      borderRadius: '16px',
+                      transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
+                      boxShadow: '0 12px 28px -12px rgba(239, 68, 68, 0.25)',
+                      '&:hover': { borderColor: 'rgba(239, 68, 68, 0.45)', boxShadow: '0 16px 34px -12px rgba(239, 68, 68, 0.32)' },
                     }}
                   >
-                    <CardContent sx={{ p: 3 }}>
+                    <CardContent sx={{ p: 3, flexGrow: 1 }}>
                       <Box
                         sx={{
                           width: 48,
