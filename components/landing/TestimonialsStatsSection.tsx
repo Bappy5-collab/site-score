@@ -92,10 +92,13 @@ export default function TestimonialsStatsSection() {
                   sx={{
                     textAlign: 'center',
                     p: 3,
-                    borderRadius: '12px',
-                    background: 'var(--overlay-03)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid var(--border)',
+                    height: '100%',
+                    borderRadius: '16px',
+                    background: 'var(--bg-surface)',
+                    border: '1px solid var(--border-strong)',
+                    boxShadow: '0 16px 40px -24px rgba(15,23,42,0.22)',
+                    transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
+                    '&:hover': { borderColor: 'rgba(252, 82, 63, 0.4)', boxShadow: '0 22px 50px -22px rgba(15,23,42,0.3)' },
                   }}
                 >
                   <Typography
@@ -131,12 +134,16 @@ export default function TestimonialsStatsSection() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Card
+                  component={motion.div}
+                  whileHover={{ y: -4 }}
                   sx={{
                     height: '100%',
-                    background: 'var(--overlay-03)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid var(--border)',
-                    borderRadius: '12px',
+                    background: 'var(--bg-surface)',
+                    border: '1px solid var(--border-strong)',
+                    borderRadius: '16px',
+                    boxShadow: '0 16px 40px -24px rgba(15,23,42,0.22)',
+                    transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
+                    '&:hover': { borderColor: 'rgba(252, 82, 63, 0.4)', boxShadow: '0 22px 50px -22px rgba(15,23,42,0.3)' },
                     p: 3,
                   }}
                 >

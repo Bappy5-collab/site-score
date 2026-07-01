@@ -61,14 +61,14 @@ export default function FeaturesSection() {
                   whileHover={{ y: -8, transition: { duration: 0.2 } }}
                   sx={{
                     width: '100%',
-                    background: 'var(--overlay-03)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid var(--border)',
-                    borderRadius: '12px',
+                    background: 'var(--bg-surface)',
+                    border: '1px solid rgba(252, 82, 63, 0.35)',
+                    borderRadius: '16px',
                     transition: 'all 0.3s ease',
+                    boxShadow: '0 12px 40px rgba(252, 82, 63, 0.15)',
                     '&:hover': {
-                      borderColor: 'rgba(252, 82, 63, 0.35)',
-                      boxShadow: '0 12px 40px rgba(252, 82, 63, 0.15)',
+                      borderColor: 'rgba(252, 82, 63, 0.5)',
+                      boxShadow: '0 18px 48px rgba(252, 82, 63, 0.22)',
                     },
                   }}
                 >

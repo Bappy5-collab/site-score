@@ -122,14 +122,14 @@ export default function DashboardFeaturesSection() {
                           width: '100%',
                           p: 2.5,
                           cursor: 'pointer',
-                          borderRadius: '10px',
-                          background: 'var(--overlay-03)',
-                          backdropFilter: 'blur(20px)',
-                          border: '1px solid var(--border)',
+                          borderRadius: '14px',
+                          background: 'var(--bg-surface)',
+                          border: `1px solid ${group.color}66`,
+                          boxShadow: `0 12px 32px ${group.color}1f`,
                           transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
                           '&:hover': {
-                            borderColor: `${group.color}66`,
-                            boxShadow: `0 12px 32px ${group.color}1f`,
+                            borderColor: `${group.color}99`,
+                            boxShadow: `0 18px 42px ${group.color}2e`,
                           },
                         }}
                       >
