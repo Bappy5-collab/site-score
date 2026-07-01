@@ -30,13 +30,36 @@ const actions = [
 
 const poweredBy = ['Google Lighthouse', 'Core Web Vitals', 'OpenAI'];
 
-// Circular score gauge (static SVG)
+// Circular score gauge — animates the ring sweep and the number on mount
 function ScoreGauge({ score }: { score: number }) {
   const size = 132;
   const stroke = 10;
   const r = (size - stroke) / 2;
   const c = 2 * Math.PI * r;
-  const offset = c * (1 - score / 100);
+
+  const [progress, setProgress] = useState(0); // 0 → 1, drives both ring and number
+
+  useEffect(() => {
+    const duration = 1400; // ms
+    let raf = 0;
+    let start = 0;
+    const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+    const step = (ts: number) => {
+      if (!start) start = ts;
+      const t = Math.min((ts - start) / duration, 1);
+      setProgress(easeOut(t));
+      if (t < 1) raf = requestAnimationFrame(step);
+    };
+    const delay = setTimeout(() => {
+      raf = requestAnimationFrame(step);
+    }, 200);
+    return () => {
+      clearTimeout(delay);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  const offset = c * (1 - (score * progress) / 100);
   return (
     <Box sx={{ position: 'relative', width: size, height: size, flexShrink: 0 }}>
       <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
@@ -70,7 +93,7 @@ function ScoreGauge({ score }: { score: number }) {
         }}
       >
         <Typography sx={{ fontSize: '2.4rem', fontWeight: 800, lineHeight: 1, color: 'var(--text-primary)' }}>
-          {score}
+          {Math.round(score * progress)}
         </Typography>
         <Typography sx={{ fontSize: '0.66rem', fontWeight: 700, letterSpacing: '0.08em', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
           Growth Score
