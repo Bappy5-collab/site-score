@@ -106,11 +106,11 @@ function AnimatedAreaChart() {
 }
 
 const avatars = [
-  'https://randomuser.me/api/portraits/women/68.jpg',
-  'https://randomuser.me/api/portraits/men/32.jpg',
-  'https://randomuser.me/api/portraits/women/44.jpg',
-  'https://randomuser.me/api/portraits/men/75.jpg',
-  'https://randomuser.me/api/portraits/women/12.jpg',
+  { initials: 'AR', color: '#6366F1' },
+  { initials: 'MK', color: '#0EA5E9' },
+  { initials: 'SD', color: '#10B981' },
+  { initials: 'JT', color: '#F59E0B' },
+  { initials: 'PN', color: '#EC4899' },
 ];
 
 const trustLogos = ['Vertex', 'Lumen', 'Northwind', 'Cobalt', 'Quanta', 'Nimbus'];
@@ -287,10 +287,10 @@ export default function HeroSection() {
                     textTransform: 'none',
                     borderRadius: '10px',
                     background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
-                    boxShadow: '0 8px 32px rgba(252, 82, 63, 0.4)',
+                    boxShadow: '0 8px 24px rgba(252, 82, 63, 0.28)',
                     '&:hover': {
                       background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)',
-                      boxShadow: '0 12px 40px rgba(252, 82, 63, 0.5)',
+                      boxShadow: '0 12px 32px rgba(252, 82, 63, 0.35)',
                     },
                   }}
                 >
@@ -336,23 +336,26 @@ export default function HeroSection() {
                   }}
                 >
                   <Box sx={{ display: 'flex' }}>
-                    {avatars.map((src, i) => (
+                    {avatars.map((a, i) => (
                       <Box
                         key={i}
-                        component="img"
-                        src={src}
-                        alt="Customer"
-                        loading="lazy"
                         sx={{
                           width: 38,
                           height: 38,
                           borderRadius: '50%',
-                          objectFit: 'cover',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '0.78rem',
+                          fontWeight: 700,
+                          color: '#fff',
+                          background: a.color,
                           border: '2px solid var(--bg-base)',
-                          background: 'var(--bg-elevated)',
                           ml: i === 0 ? 0 : '-10px',
                         }}
-                      />
+                      >
+                        {a.initials}
+                      </Box>
                     ))}
                   </Box>
                   <Box sx={{ textAlign: 'left' }}>
@@ -365,7 +368,7 @@ export default function HeroSection() {
                       </Typography>
                     </Box>
                     <Typography sx={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
-                      Loved by 2,000+ growth teams
+                      Rated by early adopters and growth teams
                     </Typography>
                   </Box>
                 </Box>

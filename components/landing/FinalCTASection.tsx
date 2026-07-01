@@ -19,8 +19,8 @@ export default function FinalCTASection() {
     >
       <Box
         component={motion.div}
-        animate={{ opacity: [0.2, 0.35, 0.2] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        animate={{ opacity: [0.12, 0.2, 0.12] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         sx={{
           position: 'absolute',
           top: '50%',
@@ -28,9 +28,9 @@ export default function FinalCTASection() {
           transform: 'translate(-50%, -50%)',
           width: 'min(80vw, 600px)',
           height: 400,
-          background: 'radial-gradient(ellipse, rgba(252, 82, 63, 0.25) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, rgba(252, 82, 63, 0.18) 0%, transparent 70%)',
           borderRadius: '50%',
-          filter: 'blur(60px)',
+          filter: 'blur(70px)',
         }}
       />
       <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
@@ -100,10 +100,10 @@ export default function FinalCTASection() {
               textTransform: 'none',
               borderRadius: '10px',
               background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
-              boxShadow: '0 12px 40px rgba(252, 82, 63, 0.5)',
+              boxShadow: '0 8px 24px rgba(252, 82, 63, 0.28)',
               '&:hover': {
                 background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)',
-                boxShadow: '0 16px 48px rgba(252, 82, 63, 0.55)',
+                boxShadow: '0 12px 32px rgba(252, 82, 63, 0.35)',
               },
             }}
           >

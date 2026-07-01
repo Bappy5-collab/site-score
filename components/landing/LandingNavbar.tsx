@@ -144,10 +144,10 @@ export default function LandingNavbar() {
               fontSize: '0.9rem',
               textTransform: 'none',
               background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
-              boxShadow: '0 4px 20px rgba(252, 82, 63, 0.4)',
+              boxShadow: '0 4px 14px rgba(252, 82, 63, 0.25)',
               '&:hover': {
                 background: 'linear-gradient(135deg, #FD7565 0%, #FC523F 100%)',
-                boxShadow: '0 6px 28px rgba(252, 82, 63, 0.5)',
+                boxShadow: '0 6px 20px rgba(252, 82, 63, 0.32)',
               },
             }}
           >

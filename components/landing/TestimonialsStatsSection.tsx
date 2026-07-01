@@ -6,36 +6,36 @@ import { motion } from 'framer-motion';
 import SectionHeading from './SectionHeading';
 
 const stats = [
-  { label: 'Growth actions completed', value: 125000, suffix: '+' },
-  { label: 'Teams growing', value: 12000, suffix: '+' },
-  { label: 'Avg. Growth Score lift', value: 24, suffix: '%' },
-  { label: 'Scans analyzed', value: 50000, suffix: '+' },
+  { label: 'Growth actions completed', value: 4200, suffix: '+' },
+  { label: 'Sites analyzed', value: 1800, suffix: '+' },
+  { label: 'Avg. Growth Score lift', value: 18, suffix: '%' },
+  { label: 'Checks per scan', value: 60, suffix: '+' },
 ];
 
 const testimonials = [
   {
     name: 'Sarah K.',
     role: 'Head of Growth',
-    company: 'TechCorp',
+    company: 'B2B SaaS',
     avatar: 'SK',
-    image: 'https://randomuser.me/api/portraits/women/68.jpg',
-    quote: 'We stopped drowning in spreadsheets. The AI tells us exactly what to fix and we just tick it off. Game changer.',
+    color: '#6366F1',
+    quote: 'Instead of another PDF report, we get a prioritized to-do list. The team knows exactly what to work on each week.',
   },
   {
     name: 'Marcus L.',
     role: 'SEO Lead',
-    company: 'Digital Agency',
+    company: 'Marketing Agency',
     avatar: 'ML',
-    image: 'https://randomuser.me/api/portraits/men/32.jpg',
-    quote: 'Growth Brain plus the action list is what we needed. Our clients see results faster and we look like heroes.',
+    color: '#0EA5E9',
+    quote: 'Having the score and the action plan side by side means we can show clients real, measurable progress over time.',
   },
   {
     name: 'Jordan T.',
     role: 'Product Manager',
-    company: 'SaaS Co',
+    company: 'Early-stage startup',
     avatar: 'JT',
-    image: 'https://randomuser.me/api/portraits/men/75.jpg',
-    quote: 'Real-time score and notifications mean we catch regressions before users do. Feels like having a growth ops team.',
+    color: '#10B981',
+    quote: 'The real-time score and alerts help us catch performance regressions before they reach users. It just runs in the background.',
   },
 ];
 
@@ -145,14 +145,13 @@ export default function TestimonialsStatsSection() {
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <Avatar
-                      src={t.image}
                       alt={t.name}
                       sx={{
                         width: 48,
                         height: 48,
-                        background: 'linear-gradient(135deg, #FC523F 0%, #E13E2C 100%)',
+                        background: t.color,
                         fontSize: '1rem',
-                        fontWeight: 600,
+                        fontWeight: 700,
                       }}
                     >
                       {t.avatar}
