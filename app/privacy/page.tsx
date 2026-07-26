@@ -32,7 +32,7 @@ export default function PrivacyPage() {
             Privacy Policy
           </Typography>
           <Typography sx={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.7, mb: 4 }}>
-            SiteScore AI (“we”, “us”) is committed to protecting your privacy. This policy describes how we collect, use, and safeguard your information when you use our AI Growth Operating System and related services.
+            Opus Site Score (“we”, “us”) is committed to protecting your privacy. This policy describes how we collect, use, and safeguard your information when you use our AI Growth Operating System and related services.
           </Typography>
 
           {sections.map((sec, i) => (

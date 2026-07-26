@@ -117,7 +117,7 @@ export default function LandingFooter() {
         </Grid>
         <Box sx={{ mt: 4, pt: 4, borderTop: '1px solid var(--border)', textAlign: 'center' }}>
           <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
-            © {new Date().getFullYear()} SiteScore AI. All rights reserved.
+            © {new Date().getFullYear()} Opus Site Score. All rights reserved.
           </Typography>
         </Box>
       </Container>

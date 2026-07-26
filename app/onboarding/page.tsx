@@ -198,7 +198,7 @@ export default function OnboardingPage() {
                     Welcome, {firstName}! 👋
                   </Typography>
                   <Typography sx={{ color: 'var(--text-muted)', fontSize: '1rem', mb: 4, lineHeight: 1.6 }}>
-                    Let&apos;s set up your growth workspace in under a minute. We&apos;ll tailor SiteScore AI to what matters most to you.
+                    Let&apos;s set up your growth workspace in under a minute. We&apos;ll tailor Opus Site Score to what matters most to you.
                   </Typography>
                   <Button fullWidth variant="contained" onClick={next} sx={primaryBtn}>
                     Let&apos;s go

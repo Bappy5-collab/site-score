@@ -208,7 +208,7 @@ export default function HeroSection() {
                   lineHeight: 1.6,
                 }}
               >
-                SiteScore AI scans any URL for SEO, performance, security, and Core Web Vitals—then
+                Opus Site Score scans any URL for SEO, performance, security, and Core Web Vitals—then
                 turns the results into a prioritized, do-this-next action plan. Complete fixes and watch
                 your Growth Score climb.
               </Typography>

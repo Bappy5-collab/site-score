@@ -22,10 +22,10 @@ export default function AboutPage() {
               mb: 2,
             }}
           >
-            About SiteScore AI
+            About Opus Site Score
           </Typography>
           <Typography sx={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.7, mb: 4 }}>
-            We built SiteScore AI because we were tired of SEO and performance tools that hand you reports and leave you guessing what to do next. Our mission is simple: turn data into a clear action plan so you can grow instead of just measure.
+            We built Opus Site Score because we were tired of SEO and performance tools that hand you reports and leave you guessing what to do next. Our mission is simple: turn data into a clear action plan so you can grow instead of just measure.
           </Typography>
 
           <Typography variant="h2" sx={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)', mb: 2, mt: 4 }}>

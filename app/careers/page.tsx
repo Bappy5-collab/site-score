@@ -33,7 +33,7 @@ export default function CareersPage() {
               mb: 2,
             }}
           >
-            Careers at SiteScore AI
+            Careers at Opus Site Score
           </Typography>
           <Typography sx={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.7, mb: 5 }}>
             We’re a small team building the AI Growth Operating System. If you want to help turn data into action for thousands of teams, we’d love to hear from you.

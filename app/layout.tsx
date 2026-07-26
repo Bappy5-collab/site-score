@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'SiteScore AI - Website Analyzer',
+  title: 'Opus Site Score - Website Analyzer',
   description: 'Analyze and improve your website performance',
 };
 

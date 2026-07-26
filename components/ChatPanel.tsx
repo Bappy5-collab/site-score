@@ -25,8 +25,8 @@ interface ChatPanelProps {
 const getDefaultMessage = (isGeneral: boolean): ChatMessage => ({
   role: 'assistant',
   content: isGeneral
-    ? "Hi! I'm your SiteScore AI assistant. Ask me about SEO, performance, or security — or run a scan to get advice for your website."
-    : "Hi! I'm your SiteScore AI assistant. Ask me about improving your website SEO, performance, or security.",
+    ? "Hi! I'm your Opus Site Score assistant. Ask me about SEO, performance, or security — or run a scan to get advice for your website."
+    : "Hi! I'm your Opus Site Score assistant. Ask me about improving your website SEO, performance, or security.",
   timestamp: new Date().toISOString(),
 });
 
