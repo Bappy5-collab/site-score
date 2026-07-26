@@ -20,7 +20,7 @@ const steps: Step[] = [
   {
     target: '[data-tour="analyze"]',
     title: 'Analyze a new site',
-    content: 'Start here. Paste any URL and SiteScore AI audits SEO, performance and security in one scan.',
+    content: 'Start here. Paste any URL and Opus Site Score audits SEO, performance and security in one scan.',
   },
   {
     target: '[data-tour="stats"]',

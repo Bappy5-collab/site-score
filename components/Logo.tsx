@@ -7,9 +7,9 @@ import { useId } from 'react';
 interface LogoProps {
   /** Size of the square mark in px */
   size?: number;
-  /** Show the "SiteScore AI" wordmark next to the mark */
+  /** Show the "Opus Site Score" wordmark next to the mark */
   showText?: boolean;
-  /** Colour of the "SiteScore" part of the wordmark */
+  /** Colour of the "Opus Site Score" part of the wordmark */
   textColor?: string;
   /** Wordmark font size (CSS value) */
   fontSize?: number | string;
@@ -18,7 +18,7 @@ interface LogoProps {
 }
 
 /**
- * SiteScore AI brand logo — an orange "trending up" badge + wordmark.
+ * Opus Site Score brand logo — an orange "trending up" badge + wordmark.
  * Reusable across the app (sidebar, navbars, footers, auth, demo, favicon).
  */
 export default function Logo({
@@ -51,7 +51,7 @@ export default function Logo({
         viewBox="0 0 40 40"
         fill="none"
         role="img"
-        aria-label="SiteScore AI"
+        aria-label="Opus Site Score"
         sx={{ flexShrink: 0, display: 'block' }}
       >
         <defs>
@@ -79,10 +79,10 @@ export default function Logo({
             whiteSpace: 'nowrap',
           }}
         >
-          SiteScore
+          Opus Site
           <Box component="span" sx={{ color: '#FC523F' }}>
             {' '}
-            AI
+            Score
           </Box>
         </Typography>
       )}

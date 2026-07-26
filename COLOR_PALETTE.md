@@ -1,4 +1,4 @@
-# New Color Palette - SiteScore AI
+# New Color Palette - Opus Site Score
 
 ## 🎨 Updated Color Scheme
 

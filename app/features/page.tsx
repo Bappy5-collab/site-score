@@ -47,7 +47,7 @@ export default function FeaturesPage() {
               Everything you need to grow
             </Typography>
             <Typography sx={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.7, maxWidth: 640, mx: 'auto' }}>
-              SiteScore AI is a full growth operating system—from deep audits to AI-driven action plans, automation, and reporting.
+              Opus Site Score is a full growth operating system—from deep audits to AI-driven action plans, automation, and reporting.
             </Typography>
           </Box>
 

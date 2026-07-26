@@ -1,4 +1,4 @@
-# SiteScore AI - Frontend Client
+# Opus Site Score - Frontend Client
 
 ## Setup
 

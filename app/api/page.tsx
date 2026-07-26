@@ -41,7 +41,7 @@ export default function ApiPage() {
               variant="h1"
               sx={{ fontSize: { xs: '2rem', md: '2.75rem' }, fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em', mb: 2 }}
             >
-              Build on the SiteScore API
+              Build on the Opus Site Score API
             </Typography>
             <Typography sx={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.7, maxWidth: 620, mx: 'auto' }}>
               Automate audits, stream results into your own tools, and react to changes in real time with webhooks.

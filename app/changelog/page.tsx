@@ -84,7 +84,7 @@ export default function ChangelogPage() {
             Changelog
           </Typography>
           <Typography sx={{ color: 'var(--text-muted)', fontSize: '1.1rem', mb: 5 }}>
-            Everything new in SiteScore AI. We ship improvements every week.
+            Everything new in Opus Site Score. We ship improvements every week.
           </Typography>
 
           <Box sx={{ position: 'relative', pl: { xs: 2.5, sm: 3 } }}>
